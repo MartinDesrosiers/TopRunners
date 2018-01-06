@@ -1,0 +1,661 @@
+fileFormatVersion: 2
+guid: 18b34d794e1e41e44b9d868cfcaa7ed8
+timeCreated: 1493925445
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Hair
+    21300002: torso
+    21300004: normal_eye
+    21300006: angry_eye
+    21300008: angry_mouth_closed
+    21300010: Angry_mouth_open
+    21300012: open_mouth_small
+    21300014: open_mouth_large
+    21300016: lower_arm
+    21300018: upper_arm
+    21300020: normal_mouth
+    21300022: closed_eye
+    21300024: shirt
+    21300026: head
+    21300028: butt
+    21300030: panty
+    21300032: upper_gear
+    21300034: sock
+    21300036: open_hand
+    21300038: upper_leg
+    21300040: lower_leg
+    21300042: ponytail
+    21300044: close_right_hand
+    21300046: short
+    21300048: lower_gear
+    21300050: close_left_hand
+    21300052: right_shoe
+    21300054: left_shoe
+    21300056: right_feet
+    21300058: left_feet
+    21300060: angry_pupil
+    21300062: normal_pupil
+    21300064: large_tongue
+    21300066: medium_tongue
+    21300068: small_tongue
+    21300070: GearAttach
+    21300072: Gear_white
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hair
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 500
+        width: 238
+        height: 192
+      alignment: 9
+      pivot: {x: 0.30175698, y: 0.5728114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: torso
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 385
+        width: 118
+        height: 302
+      alignment: 9
+      pivot: {x: 0.59264416, y: 0.047513746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: normal_eye
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 658
+        width: 30
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5090027, y: 0.5756201}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: angry_eye
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 658
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: angry_mouth_closed
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 616
+        width: 37
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Angry_mouth_open
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 612
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: open_mouth_small
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 579
+        width: 17
+        height: 13
+      alignment: 9
+      pivot: {x: 0.802063, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: open_mouth_large
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 575
+        width: 34
+        height: 25
+      alignment: 9
+      pivot: {x: 0.90275127, y: 0.4486499}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lower_arm
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 426
+        width: 48
+        height: 151
+      alignment: 9
+      pivot: {x: 0.49999937, y: 0.861989}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: upper_arm
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 376
+        width: 59
+        height: 170
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8751199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: normal_mouth
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 537
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: closed_eye
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 544
+        width: 30
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shirt
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 321
+        width: 125
+        height: 173
+      alignment: 9
+      pivot: {x: 0.59545606, y: 0.07385715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 329
+        width: 140
+        height: 162
+      alignment: 9
+      pivot: {x: 0.3008357, y: 0.27529344}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: butt
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 397
+        width: 118
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5772038, y: 0.9408092}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: panty
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 187
+        width: 119
+        height: 134
+      alignment: 9
+      pivot: {x: 0.56124395, y: 0.9215104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: upper_gear
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 201
+        width: 80
+        height: 118
+      alignment: 9
+      pivot: {x: 0.35197717, y: 0.8713118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sock
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 94
+        width: 70
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: open_hand
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 294
+        width: 52
+        height: 93
+      alignment: 9
+      pivot: {x: 0.28976732, y: 0.872239}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: upper_leg
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 113
+        width: 92
+        height: 239
+      alignment: 9
+      pivot: {x: 0.51234007, y: 0.9326621}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lower_leg
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 101
+        width: 71
+        height: 260
+      alignment: 9
+      pivot: {x: 0.62830967, y: 0.9625108}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ponytail
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 94
+        width: 100
+        height: 254
+      alignment: 9
+      pivot: {x: 0.84618163, y: 0.88735676}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: close_right_hand
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 192
+        width: 66
+        height: 83
+      alignment: 9
+      pivot: {x: 0.17297168, y: 0.31151685}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: short
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 113
+        height: 187
+      alignment: 9
+      pivot: {x: 0.51612383, y: 0.77067494}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lower_gear
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 110
+        width: 50
+        height: 58
+      alignment: 9
+      pivot: {x: 0.21350442, y: 0.52041703}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: close_left_hand
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 101
+        width: 61
+        height: 78
+      alignment: 9
+      pivot: {x: 0.13067256, y: 0.33732033}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: right_shoe
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 0
+        width: 139
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: left_shoe
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 2
+        width: 141
+        height: 88
+      alignment: 9
+      pivot: {x: 0.12525994, y: 0.87268454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: right_feet
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 6
+        width: 120
+        height: 84
+      alignment: 9
+      pivot: {x: 0.22669831, y: 0.8470502}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: left_feet
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 18
+        width: 134
+        height: 68
+      alignment: 9
+      pivot: {x: 0.17366916, y: 0.7947375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: angry_pupil
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 658
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: normal_pupil
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 659
+        width: 8
+        height: 12
+      alignment: 9
+      pivot: {x: 0.47278705, y: 0.43073064}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: large_tongue
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 638
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: medium_tongue
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 613
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: small_tongue
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 597
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GearAttach
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 141
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gear_white
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 555
+        width: 41
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
