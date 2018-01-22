@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class TriggerDestroy : MonoBehaviour {
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void DestroyObj(GameObject obj, float time = 0.0f)
     {
-        if (collision.tag == "Player")
-            Destroy(gameObject);
+        Destroy(obj, time);
     }
 }

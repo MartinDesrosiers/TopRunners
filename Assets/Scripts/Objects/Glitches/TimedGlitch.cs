@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 
-public class TimedGlitch : MonoBehaviour {
-
+public class TimedGlitch : TriggerDestroy
+{
 	public string glitchType;
 	public float timerDelay;
 
-	public void OnTriggerEnter2D(Collider2D col) {
-		if(col.tag == "Player") {
-			col.transform.parent.gameObject.GetComponentInParent<PlayerController>().StartGlitchTimer(glitchType, timerDelay);
-		}
-	}
+    public void GlitchInfo(ref string glitch, ref float timer)
+    {
+        glitch = glitchType;
+        timer = timerDelay;
+        if(!gameObject.name.Contains("AccelerationPad"))
+            DestroyObj(gameObject);
+    }
 }

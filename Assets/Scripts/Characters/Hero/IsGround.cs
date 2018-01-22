@@ -21,7 +21,7 @@ public class IsGround : Destructible {
                         transform.parent.parent.gameObject.transform.SetParent(col.gameObject.transform);
                     }
                 }
-                else if (transform.tag == "Enemies")
+                else if (transform.tag == "Enemies" && transform.gameObject.activeInHierarchy)
                 {
                     transform.parent.GetComponentInParent<EnemyAI>().IsGrounded(true);
                 }
@@ -45,7 +45,7 @@ public class IsGround : Destructible {
                 {
                     transform.parent.GetComponentInParent<PlayerController>().IsGrounded(false);
                 }
-                else if (transform.tag == "Enemies")
+                else if (transform.tag == "Enemies" && transform.gameObject.activeInHierarchy)
                 {
                     transform.parent.GetComponentInParent<EnemyAI>().IsGrounded(false);
                 }
@@ -61,7 +61,7 @@ public class IsGround : Destructible {
 		if(!LevelManager.Instance.isPaused && others.Count > 0) {
             for (int i = 0; i < others.Count; i++)
             {
-                if (others[i] == null)
+                if (!others[i].gameObject.activeInHierarchy)
                 {
                     others.RemoveAt(0);
                 }

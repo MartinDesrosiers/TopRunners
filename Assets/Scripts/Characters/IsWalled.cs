@@ -19,7 +19,9 @@ public class IsWalled : Destructible
                     if (col.gameObject.name.Contains("InnerShadow") && col.gameObject.GetComponent<BoxCollider2D>().isTrigger)
                         return;
                     else if (!col.gameObject.name.Contains("PipeCol") && !col.gameObject.name.Contains("CrossableGround"))
+                    {
                         transform.parent.GetComponentInParent<PlayerController>().IsWalled(true);
+                    }
                 }
                 else if (gameObject.name == "WallCollider")
                     transform.parent.GetComponentInParent<EnemyAI>().IsWalled(true);
@@ -57,7 +59,7 @@ public class IsWalled : Destructible
         {
             for (int i = 0; i < others.Count; i++)
             {
-                if (others[i] == null)
+                if (!others[i].gameObject.activeInHierarchy)
                 {
                     others.RemoveAt(i);
                 }

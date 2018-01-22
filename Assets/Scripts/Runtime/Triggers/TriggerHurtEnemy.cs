@@ -9,7 +9,7 @@ public class TriggerHurtEnemy : MonoBehaviour {
 		if(col.gameObject.name == "NormalColliders" || col.gameObject.name == "RollCollider") {
 
             PlayerController controller = col.transform.parent.GetComponentInParent<PlayerController>();
-			if(!controller.GetMovementState[BooleenStruct.ISDASHING] && !controller.GetHurt) {
+			if(!controller.GetMovementState[BooleenStruct.ISDASHING] && !controller.GetHurt || transform.tag == "Trap") {
 				bool b;
 				if (transform.parent.GetComponentInParent<EnemyAI>())
 				    transform.parent.GetComponentInParent<EnemyAI>().SetDashState();

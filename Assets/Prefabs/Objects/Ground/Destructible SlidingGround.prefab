@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212265855257285968}
   - component: {fileID: 61063804009760690}
   - component: {fileID: 95254407095313670}
+  - component: {fileID: 114241447111129932}
   m_Layer: 8
   m_Name: Destructible SlidingGround
   m_TagString: Destructible
@@ -84,6 +85,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114241447111129932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403040673997888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8fd16db45990646a27b9a247a24731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212265855257285968
 SpriteRenderer:
   m_ObjectHideFlags: 1

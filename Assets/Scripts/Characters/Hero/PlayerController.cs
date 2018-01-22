@@ -9,13 +9,12 @@ public struct BooleenStruct
 }
 public class PlayerController : CharacterMotor
 {
-    int i = 0;
 	#region Variables
 	List<Coroutine> glitches = new List<Coroutine>();
     TimeSlower timeSlower;
 	[SerializeField]
 	public PlayerUI playerUI;
-    EdgeCollider2D edgeCol;
+    GameObject colliders;
     GameObject body;
     GameObject ennemyObj;
     public GameObject jumpButton;
@@ -42,7 +41,7 @@ public class PlayerController : CharacterMotor
 
     private short _key;
     bool[] movementState;
-    bool jump, cantJump, roll, isSprintRefilling, isInvincible;
+    bool jump, cantJump, roll, isSprintRefilling, isInvincible, playerControl;
     //Player statistics.
     float[] axisXY;
     float _maxWallJumpDist;
@@ -65,7 +64,8 @@ public class PlayerController : CharacterMotor
 #endregion
     #region GET SET 
     public bool[] GetMovementState { get { return movementState; } }
-    public short GetKey { get { return _key; }}
+    public short GetKey { get { return _key; } }
+    public InputScript GetInputScript { get { return inputScript; } }
     public bool GetHurt { get { return _gettingHurt; } set { _gettingHurt = value; } }
     public bool GetInEnemiesRange { get { return inEnemiesRange; } set { inEnemiesRange = value; } }
     public bool GetIsWalled { get { return _isWalled; } }
@@ -76,84 +76,86 @@ public class PlayerController : CharacterMotor
     public PlayerUI GetPlayerUI { get { return playerUI; } }
     #endregion
     private void Awake() {
-        Initialize();
+        Initialize(true);
     }
 
-    public void Initialize() {
+    public void Initialize(bool t_playerControl) {
         //GameManager.Instance.LoadStats();
-        Initialize(GameManager.Instance.myList);
+        playerControl = t_playerControl;
+        colliders = transform.GetChild(0).gameObject;
+        inputScript = new InputScript();
+        axisXY = new float[2];
+        movementState = new bool[10];
+        if (t_playerControl)
+        {
+            playerColor = new List<SpriteRenderer>();
+            PlayerBodyColor();
+            for (int i = 0; i < _timedGlitches.Length; i++)
+            {
+                _timedGlitches[i] = new bool();
+                _timedGlitches[i] = false;
+            }
+        }
+        ReInitialize(GameManager.Instance.myList);
     }
 
     //ushort health, ushort combo, ushort strength, ushort range,float topSpeed, float acceleration, float stamina, float recuperation, float propulsion, float dashSpeed, float dodge
-    public void Initialize(List<int> list) {
-        inputScript = new InputScript();
+    public void ReInitialize(List<int> list)
+    {
         rg = transform.GetComponent<Rigidbody2D>();
-        body = transform.GetChild(1).GetChild(0).gameObject;
-        axisXY = new float[2];
         _convoyerBeltForce = 0;
-        playerColor = new List<SpriteRenderer>();
-		animator.Play("idle");
-        playerColor.Add(body.transform.GetComponent<SpriteRenderer>());
+        animator.Play("idle");
+        for (int i = 0; i < movementState.Length; i++)
+            movementState[i] = false;
+        _gettingHurt = false;
+        //Player Stats
+        _health = 3; //(ushort)list[0];
+        _strength = 4; //(ushort)list[2];
+        _range = 5; //(ushort)list[3];
+        _topSpeed = 10; //list[4];
+        _acceleration = 2; //_acc = list[5];
+        _stamina = 10; //list[6];
+        _maxWallJumpDist = 3;
+        decelerationSpeed = 2;
+        _isRecovering = false;
+        _jumpForce = 6f; //Down from 10f
+        _maxJumpHeight = 2f; //Possibly redundant
+        _speed = 1f;
+        _speedModifier = 1.5f;
+        _currentStamina = _stamina;
+        _staminaUseSpeed = 5f;
+        _key = 0;
+        originalXPos = 0f;
+        jump = roll = cantJump = isSprintRefilling = _isDead = isInvincible = false;
+        axisXY[X] = axisXY[Y] = 0;
+        _dashTarget = Vector2.zero;
+        RuntimeUI.GetStartTimer = false;
+    }
+    public void PlayerBodyColor()
+    {
         //for every part of the body the character has, it put that in a list to make all of them invisible when the glitch is taken
+        GameObject body = transform.GetChild(1).GetChild(0).gameObject;
+        playerColor.Add(body.transform.GetComponent<SpriteRenderer>());
         for (int i = 0; i < body.transform.childCount; i++)
         {
             playerColor.Add(body.transform.GetChild(i).GetComponent<SpriteRenderer>());
-            for(int j = 0; j < body.transform.GetChild(i).childCount; j++)
+            for (int j = 0; j < body.transform.GetChild(i).childCount; j++)
             {
-                playerColor.Add(body.transform.GetChild(i).GetChild(j).GetComponent<SpriteRenderer>());
-                if(body.transform.GetChild(i).GetChild(j).childCount > 0)
-                    for(int k = 0; k < body.transform.GetChild(i).GetChild(j).childCount; k++)
+            playerColor.Add(body.transform.GetChild(i).GetChild(j).GetComponent<SpriteRenderer>());
+                if (body.transform.GetChild(i).GetChild(j).childCount > 0)
+                {
+                    for (int k = 0; k < body.transform.GetChild(i).GetChild(j).childCount; k++)
                     {
                         playerColor.Add(body.transform.GetChild(i).GetChild(j).GetChild(k).GetComponent<SpriteRenderer>());
                         if (body.transform.GetChild(i).GetChild(j).GetChild(k).childCount > 0)
                         {
-                            for(int l = 0; l < body.transform.GetChild(i).GetChild(j).GetChild(k).childCount; l++)
+                            for (int l = 0; l < body.transform.GetChild(i).GetChild(j).GetChild(k).childCount; l++)
                                 playerColor.Add(body.transform.GetChild(i).GetChild(j).GetChild(k).GetChild(l).GetComponent<SpriteRenderer>());
                         }
                     }
+                }
             }
         }
-        //***for every part of the body the character has, it put that in a list to make all of them invisible when the glitch is taken
-
-        movementState = new bool[10];
-        for (int i = 0; i < movementState.Length; i++)
-            movementState[i] = false;
-        _gettingHurt = false;
-		//Player Stats
-		_health = 3; //(ushort)list[0];
-		//_dashRecovery = 20; // (ushort)list[1];
-		_strength = 4; //(ushort)list[2];
-		_range = 5; //(ushort)list[3];
-		_topSpeed = 10; //list[4];
-		_acceleration = 2; //_acc = list[5];
-		_stamina = 10; //list[6];
-		//_recuparation = 4; //list[7];
-		//_propulsion = 8; //list[8];
-		//_dashSpeed = 15; //list[9];
-		//_dodge = 4; //list[10];
-		_maxWallJumpDist = 4;
-        decelerationSpeed = 2;
-        _isRecovering = false;
-		_jumpForce = 6f; //Down from 10f
-		_maxJumpHeight = 2f; //Possibly redundant
-        _speed = 1f;
-        _speedModifier = 1.5f;
-		_currentStamina = _stamina;
-		_staminaUseSpeed = 5f;
-        _key = 0;
-        originalXPos = 0f;
-        //speedReminder = 0f;
-        jump = roll = cantJump = isSprintRefilling = _isDead = isInvincible = false;
-        inEnemiesRange = false;
-        axisXY[X] = axisXY[Y] = 0;
-        //hit = new Collider2D();
-		_dashTarget = Vector2.zero;
-
-        for (int i = 0; i < _timedGlitches.Length; i++) {
-			_timedGlitches[i] = new bool();
-			_timedGlitches[i] = false;
-		}
-        RuntimeUI.GetStartTimer = false;
     }
 
     public void PlayerUIInit() {
@@ -166,15 +168,8 @@ public class PlayerController : CharacterMotor
         //TODO capter les controls dans l'update et appliquer leurs behaviors dans le fixed update
         if (!LevelManager.Instance.isPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
         {
-            /*Debug.Log(movementState[BooleenStruct.ISMOVING] + " = ISMOVING");
-            Debug.Log(movementState[BooleenStruct.ISDASHING] + " = ISDASHING");
-            Debug.Log(movementState[BooleenStruct.ISRECOVERING] + " = ISRECOVERING");
-            Debug.Log(movementState[BooleenStruct.ISJUMPING] + " = ISJUMPING");
-            Debug.Log(movementState[BooleenStruct.ISIDLE] + " = ISIDLE");
-            Debug.Log(movementState[BooleenStruct.WALLJUMPING] + " = WALLJUMPING");
-            Debug.Log(movementState[BooleenStruct.WALLED] + " = WALLED");*/
             EnemyList.UpdateAreaAlpha(transform.position);
-            axisXY = inputScript.PlayerInput();
+            axisXY = inputScript.PlayerInput(true);
             if (!movementState[BooleenStruct.WALLJUMPING] && !movementState[BooleenStruct.ISDASHING] && !_gettingHurt)
             {
                 if (axisXY[X] != 0)
@@ -217,11 +212,13 @@ public class PlayerController : CharacterMotor
                 PerformeWallFlip();
             else
             {
-                if(!_gettingHurt)
-                    Dash(); 
+                if (!_gettingHurt)
+                    Dash();
             }
             if (axisXY[Y] > 0 && !movementState[BooleenStruct.ISDASHING] && !movementState[BooleenStruct.WALLJUMPING] && !cantJump)
             {
+                if (!transform.GetChild(0).GetChild(0).gameObject.activeInHierarchy)
+                    ToggleColliders(false);
                 if (_isGrounded && !movementState[BooleenStruct.ISJUMPING] && !movementState[BooleenStruct.WALLJUMPING] && !jump)
                 {
                     ResetBool(true, BooleenStruct.ISJUMPING);
@@ -233,7 +230,7 @@ public class PlayerController : CharacterMotor
                 }
                 else if (_isWalled && !jump && !movementState[BooleenStruct.ISROLLING])
                 {
-                    Debug.Log(jump + " : jump /// " + movementState[BooleenStruct.ISROLLING] + " : movementState[BooleenStruct.ISROLLING]");
+                    _playerHeight = transform.position.y;
                     movementState[BooleenStruct.WALLJUMPING] = true;
                     Animation("wallJump", movementState[BooleenStruct.WALLJUMPING]);
                     Movement(rg.velocity.x, Jump());
@@ -244,9 +241,13 @@ public class PlayerController : CharacterMotor
                 }
                 else if (inEnemiesRange && !movementState[BooleenStruct.ISDASHING] && !jump)
                 {
+                    RaycastHit2D hit;
+                    _ennemyPos = ennemyObj.transform.position;
+                    if (!DashAttemp(ennemyObj, out hit))
+                        return;
+                    _playerHeight = transform.position.y;
                     jump = true;
                     ResetBool(true, BooleenStruct.ISDASHING);
-                    _ennemyPos = ennemyObj.transform.position;
                     Normalized();
                     GetAngle();
                     if (_dashTarget.x < 0)
@@ -264,7 +265,6 @@ public class PlayerController : CharacterMotor
             }
             else if (axisXY[Y] == 0)
             {
-                //Debug.Log("Why");
                 jump = false;
                 roll = false;
             }
@@ -272,14 +272,16 @@ public class PlayerController : CharacterMotor
                 if (axisXY[0] != 0 || axisXY[1] != 0)
                     RuntimeUI.GetStartTimer = true;
         }
-		else if(GameManager.Instance.currentState == GameManager.GameState.LevelEditor) {
-			if(_refreshPlayer) {
-				_refreshPlayer = false;
-			}
-		}
+        else if (GameManager.Instance.currentState == GameManager.GameState.LevelEditor)
+        {
+            if (_refreshPlayer)
+            {
+                _refreshPlayer = false;
+            }
+        }
     }
 
-	private void FixedUpdate() {
+    private void FixedUpdate() {
         if(!LevelManager.Instance.isPaused) {
             //Debug.Log(animator.GetCurrentAnimatorClipInfo(animator.GetLayerIndex("Base Layer")).Length);
             animator.speed = _speed;
@@ -363,8 +365,21 @@ public class PlayerController : CharacterMotor
         float angle = Mathf.Atan2(transform.position.x - _ennemyPos.x, transform.position.y - _ennemyPos.y) * Mathf.Rad2Deg;
         return (90 - Mathf.Abs(angle)) * transform.localScale.x;// * -1;
     }
+    bool DashAttemp(GameObject enemies, out RaycastHit2D hit)
+    {
+        Vector2 start = transform.position;
+        Vector2 end = enemies.transform.position;
+        colliders.SetActive(false);
+        enemies.transform.parent.gameObject.SetActive(false);
+        hit = Physics2D.Linecast(start, end);
+        colliders.SetActive(true);
+        enemies.transform.parent.gameObject.SetActive(true);
+        if (hit.transform == null)
+            return true;
+        return false;
+    }
 
-	public void FillStamina() {
+    public void FillStamina() {
 		_currentStamina = _stamina;
 	}
 
@@ -376,28 +391,34 @@ public class PlayerController : CharacterMotor
         }
 	}
     //Roll for a determinate time or as long as there is something blocking the player the get back up
-	public IEnumerator RollTimer() {
-		float elapsedTime = 0f;
+    public IEnumerator RollTimer()
+    {
+        float elapsedTime = 0f;
 
-		while(movementState[BooleenStruct.ISROLLING] || elapsedTime == 0f) {
-            if (elapsedTime > 1f)
+        while (elapsedTime < 1f || cantJump)
+        {
+            RaycastHit2D hit;
+            hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
+            if (hit.transform != null)
             {
-                if (!Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(0f, 2f), 1f, 1 << LayerMask.NameToLayer("Ground")))
-                {
-                    break;
-                }
-                else
-                {
-                    if (!cantJump)
-                        cantJump = true;
-                }
+                if (!cantJump)
+                    cantJump = true;
             }
-			yield return new WaitForSeconds(0.1f);
-			elapsedTime += 0.1f;
+            else
+            {
+                if (cantJump)
+                    cantJump = false;
+            }
+            elapsedTime += 0.1f;
+            yield return new WaitForSeconds(0.1f);
         }
-        cantJump = false;
         Roll(false);
-	}
+    }
+    void ToggleColliders(bool state)
+    {
+        transform.GetChild(0).GetChild(0).gameObject.SetActive(!state);
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(state);
+    }
     //Apply jump depending on the speed of the player
     public float Jump(float boost = 1f) {
         //Triggers the jump animation.
@@ -416,8 +437,7 @@ public class PlayerController : CharacterMotor
         }
         else
             transform.GetChild(0).GetChild(2).GetComponent<EdgeCollider2D>().points = standWallCollider;
-        transform.GetChild(0).GetChild(0).gameObject.SetActive(!state);
-        transform.GetChild(0).GetChild(1).gameObject.SetActive(state);
+        ToggleColliders(state);
         Animation("roll", state);
     }
 	private void WallFlip(float direction)
@@ -627,37 +647,24 @@ public class PlayerController : CharacterMotor
 		StartCoroutine(Die());
     }
 
-    public void Restart() {
-		RuntimeUI.GetStartTimer = false;
-
-		//Stop all glitch coroutines and clear the coroutine list.
-		for(int i = 0; i < glitches.Count; i++) {
-			if(glitches[i] != null)
-				StopCoroutine(glitches[i]);
-		}
-		glitches.Clear();
-
-		//Reset all glitch affected variables to their default values.
-		GetComponent<Rigidbody2D>().gravityScale = 1f;
-		isInvincible = false;
-		isInvisible = false;
-		Invisible(1f);
-		Time.timeScale = 1f;
-		inputScript.GetSprint = false;
-		_speed = 1;
-		_jumpForce = 6f;
-		axisXY[X] = axisXY[Y] = 0;
-        ResetDash();
-        _isGrounded = true;
-        ChangeJumpButtonSprite(0);
-        ResetBool(true, BooleenStruct.ISIDLE);
-        animator.Play("idle");
-        transform.localRotation = new Quaternion(0f, 0f, 0f, 0f);
-        Movement(0, 0);
+    public void Restart()
+    {
+        RuntimeUI.GetStartTimer = false;
+        //LevelManager.Instance.isGhostReplayActive = true;
+        //Stop all glitch coroutines and clear the coroutine list.
+        for (int i = 0; i < glitches.Count; i++)
+        {
+            if (glitches[i] != null)
+                StopCoroutine(glitches[i]);
+        }
+        glitches.Clear();
         _health = 3;
+        _key = 0;
+        playerUI.ShowKeys(_key);
         playerUI.CheckHealth(_health);
-        LevelManager.Instance.ReloadLevel();
         transform.position = LevelManager.Instance.spawnPoint;
+        LevelManager.Instance.ReloadLevel();
+        ReInitialize(GameManager.Instance.myList);
         RuntimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
         LevelManager.Instance.finishLoading = true;
     }
@@ -670,6 +677,7 @@ public class PlayerController : CharacterMotor
             timer += 2f * Time.timeScale * Time.deltaTime;
         }
         StartCoroutine(LevelManager.Instance.LoadingScreen());
+        rg.velocity = Vector2.zero;
         Restart();
     }
 
@@ -722,15 +730,44 @@ public class PlayerController : CharacterMotor
         movementState[i] = b;
     }
 
-	public void ChangeJumpButtonSprite(int sprite) {
-        jumpButton.GetComponent<UnityEngine.UI.Image>().sprite = jumpDash[sprite];
-	}
+    public void ChangeJumpButtonSprite(int sprite)
+    {
+        if (playerControl)
+            playerUI.jumpButton.GetComponent<UnityEngine.UI.Image>().sprite = jumpDash[sprite];
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.transform.tag == "Glitch")
+        {
+            string glitch = "";
+            float timer = 0.0f;
+            col.transform.GetComponent<TimedGlitch>().GlitchInfo(ref glitch, ref timer);
+            StartCoroutine(GlitchTimer(glitch, timer));
+        }
+        else if (col.transform.tag == "Collectable")
+        {
+            switch (col.transform.GetComponent<Collectable>().CollectableName())
+            {
+                case "health_power_ups":
+                    AddHealth();
+                    break;
+                case "sprint_power_ups":
+                    FillStamina();
+                    break;
+                case "Ruby": //TODO Add a function for the ruby
+                    break;
+                case "Key":
+                    AddKey();
+                    break;
+                default:
+                    Debug.Log(col.transform.GetComponent<Collectable>().CollectableName());
+                    break;
+            }
+        }
         if (col.gameObject.name == "DashArea")
         {
-            if (!_isGrounded)
+            if (!_isGrounded && playerControl)
                 ChangeJumpButtonSprite(1);
             inEnemiesRange = true;
             ennemyObj = col.gameObject;
@@ -741,7 +778,8 @@ public class PlayerController : CharacterMotor
         if (col.gameObject.name == "DashArea")
         {
             inEnemiesRange = false;
-            ChangeJumpButtonSprite(0);
+            if (playerControl)
+                ChangeJumpButtonSprite(0);
             ResetDash();
         }
     }

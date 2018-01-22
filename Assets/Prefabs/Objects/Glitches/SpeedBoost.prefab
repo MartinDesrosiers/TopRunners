@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114222674835821176}
   m_Layer: 0
   m_Name: SpeedBoost
-  m_TagString: Untagged
+  m_TagString: Glitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

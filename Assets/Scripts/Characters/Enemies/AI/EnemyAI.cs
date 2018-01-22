@@ -50,7 +50,8 @@ public class EnemyAI : CharacterMotor
 
     #region GETSET
     public float SetEscapeModifier { set { escapeVelModifier = value; } }
-#endregion
+    public Vector2 GetOrigin { get { return origin; } }
+    #endregion
     public void Start()
     {
         Initialize();
@@ -60,11 +61,14 @@ public class EnemyAI : CharacterMotor
 		health--;
         if (health < 1)
         {
-            Destroy(gameObject);
+            Kill();
             _player.ResetDash();
         }
 	}
-
+    public void Kill()
+    {
+        gameObject.SetActive(false);
+    }
     public void Initialize() {
 		enemiesRender = transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         rg = transform.GetComponent<Rigidbody2D>();
