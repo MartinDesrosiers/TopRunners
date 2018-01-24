@@ -5,8 +5,12 @@ public class Destructible : MonoBehaviour {
 	float destructionDelay = 1f;
     protected List<Collider2D> others;
 
-    protected void SetDestroyTimer(GameObject obj) {
-        obj.gameObject.GetComponent<Animator>().SetBool("Destroy", true);
-		Destroy(obj.gameObject, destructionDelay);
-	}
+    protected void SetDestroyTimer(GameObject obj)
+    {
+        if (!obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).IsName("destroy-breaking"))
+        {
+            obj.gameObject.GetComponent<Animator>().SetBool("Destroy", true);
+            StartCoroutine(obj.GetComponent<SetObjActive>().SetObjectActive(obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).length + .1f));
+        }
+    }
 }

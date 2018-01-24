@@ -23,10 +23,9 @@ GameObject:
   - component: {fileID: 61619218337421072}
   - component: {fileID: 114363179789038986}
   - component: {fileID: 114045759646301868}
-  - component: {fileID: 114883691925932040}
   m_Layer: 0
   m_Name: Invisible
-  m_TagString: Untagged
+  m_TagString: Glitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,17 +90,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dee096c8142654c4a86fab3359009387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114883691925932040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1923373217751022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212479824293152172

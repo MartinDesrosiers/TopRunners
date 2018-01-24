@@ -323,6 +323,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 81323986056717526, guid: 99ff4a7ad197f73469286f535b7bdf20,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99ff4a7ad197f73469286f535b7bdf20, type: 2}
   m_IsPrefabParent: 0
@@ -2345,7 +2350,8 @@ Prefab:
       propertyPath: RuntimeEditorUI
       value: 
       objectReference: {fileID: 1596633375}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114675368143729416, guid: dae0e316d57017d41a8a4fd9be2ac87f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: dae0e316d57017d41a8a4fd9be2ac87f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1243548621

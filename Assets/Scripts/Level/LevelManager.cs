@@ -12,6 +12,7 @@ public class LevelManager : Singleton<LevelManager> {
     public bool isPaused;
     //bool hasBeenInit = false;
     public List<GameObject> monsterList;
+    public List<GameObject> destructibleList;
     public List<GameObject> doorList;
     /*public List<GameObject> ghostObjects;
     public GameObject ghostPlayer;
@@ -84,29 +85,21 @@ public class LevelManager : Singleton<LevelManager> {
 
 	public void ReloadLevel()
     {
-        foreach(GameObject o in monsterList)
-            Destroy(o.gameObject);
-        foreach (GameObject o in doorList)
-            Destroy(o.gameObject);
-
-        //Destroy the current level's gameobjects.
-        Destroy(mapContainer);
-        //Clear all the objects in the leveldata and uniqueobject lists.
-        for (int i = 0; i < levelData.objectList.Count; i++)
+        foreach (GameObject o in monsterList)
         {
-            for (int j = 0; j < levelData.objectList[i].Count; j++)
-            {
-                for (int k = levelData.objectList[i][j].Count - 1; k > 0; k--)
-                {
-                        Destroy(levelData.objectList[i][j][k]);
-                }
-            }
+            o.gameObject.SetActive(true);
+            o.transform.position = o.GetComponent<EnemyAI>().GetOrigin;
+            o.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
-        levelData = new LevelData();
-		_uniqueObjects = new UniqueObjects();
-        //Refill the lists using the serialized data.
-        DeserializeLevelData();
-		isReloading = true;
+        foreach (GameObject o in doorList)
+        {
+            o.gameObject.SetActive(true);
+        }
+        foreach (GameObject o in destructibleList)
+        {
+            o.gameObject.SetActive(true);
+        }
+        isReloading = true;
         /*finalGhostObjects = ghostObjects;
         for (int i = 0; i < ghostObjects.Count; i++)
             Destroy(ghostObjects[i].gameObject);
@@ -128,7 +121,6 @@ public class LevelManager : Singleton<LevelManager> {
 
 	//Reset all the level variables.
 	public void ClearLevel() {
-		GameManager.Instance.currentLevel = "";
 		isPaused = true;
 		player = null;
         levelData.objectList.Clear();
@@ -182,6 +174,7 @@ public class LevelManager : Singleton<LevelManager> {
         //Create a new GameObject to contain the level objects.
         monsterList = new List<GameObject>();
         doorList = new List<GameObject>();
+        destructibleList = new List<GameObject>();
         mapContainer = new GameObject();
 		mapContainer.name = "Map Container";
 
@@ -237,6 +230,8 @@ public class LevelManager : Singleton<LevelManager> {
                             monsterList.Add(tPrefab.gameObject);
                         else if (tPrefab.tag == "Connectable")
                             _tileConnector.SetSprite(ref tPrefab);
+                        else if (tPrefab.tag == "Destructible")
+                            destructibleList.Add(tPrefab.gameObject);
                     }
 
 					//Instantiate the prefab with the serialized object's position and links it to the map container.
@@ -417,9 +412,11 @@ public class LevelManager : Singleton<LevelManager> {
             monsterList.Add(tObj.gameObject);
         if (tObj.gameObject.name.Contains("Door"))
             doorList.Add(tObj.gameObject);
+        if (tObj.gameObject.name.Contains("Destructible"))
+            destructibleList.Add(tObj.gameObject);
 
-		//Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
-		if(_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
+        //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
+        if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
 			if(tObj.tag == "Connectable")
 				_tileConnector.SetSprite(ref tObj);
 
@@ -464,6 +461,12 @@ public class LevelManager : Singleton<LevelManager> {
                 {
                     if (doorList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
                         doorList.RemoveAt(i);
+                }
+            else if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Destructible")
+                for (int i = 0; i < destructibleList.Count; i++)
+                {
+                    if (destructibleList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
+                        destructibleList.RemoveAt(i);
                 }
             //Destroy the gameobject.
             Destroy(levelData.objectList[tColRow[0]][tColRow[1]][index]);
