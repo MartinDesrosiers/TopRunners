@@ -133,4 +133,26 @@ public class AccountManager : Singleton<AccountManager> {
 			loginInfo(null);
 		}
 	}
+
+	// Pings master server to determine whether or not device is connected to the Internet
+	private IEnumerator _CheckConnectionToMasterServer(System.Action<bool> connected) {
+		Ping pingMasterServer = new Ping("67.225.180.24");
+		float startTime = Time.time;
+		while (!pingMasterServer.isDone && Time.time < startTime + 5.0f) {
+			yield return new WaitForSeconds(0.1f);
+		}
+		if(pingMasterServer.isDone) {
+			connected(true);
+		} else {
+			connected(false);
+		}
+	}
+
+	public void CheckConnectionToMasterServer(System.Action<bool> connected) {
+		StartCoroutine(_CheckConnectionToMasterServer(_connected => {
+			connected(_connected);
+		}));
+	}
+
+
 }
