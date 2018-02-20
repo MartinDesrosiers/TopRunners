@@ -12,8 +12,10 @@ public class EnemyAI : CharacterMotor
     SpriteRenderer enemiesRender;
     public DashState dashState = DashState.passive;
     public Animator enemyAnimator;
+    Vector2 startPos;
+    float maxDistance;
 
-	public bool lookAtHero = false;
+    public bool lookAtHero = false;
 	public bool isFlying = false;
 
 	public bool stickToWalls = false;
@@ -52,7 +54,7 @@ public class EnemyAI : CharacterMotor
     public float SetEscapeModifier { set { escapeVelModifier = value; } }
     public Vector2 GetOrigin { get { return origin; } }
     #endregion
-    public void Start()
+    public void OnEnable()
     {
         Initialize();
     }
@@ -70,12 +72,14 @@ public class EnemyAI : CharacterMotor
         gameObject.SetActive(false);
     }
     public void Initialize() {
+        startPos = transform.position;
 		enemiesRender = transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         rg = transform.GetComponent<Rigidbody2D>();
         _objPlayer = GameObject.Find("PlayerTest").gameObject;
         _player = _objPlayer.GetComponent<PlayerController>();
         origin = transform.position;
         movementSpeed = 50.0f;
+        maxDistance = 6f;
 
         //Changes certain basic variables depending on basic behavior type.
         switch (basicBehavior) {
@@ -188,7 +192,7 @@ public class EnemyAI : CharacterMotor
 
 						if(basicBehavior == BasicBehavior.LeftRight || basicBehavior == BasicBehavior.WaveLR) {
 							if(isFlying) {
-								if(_isWalled && !ignoreWalls) {
+								if(_isWalled && !ignoreWalls || transform.position.x - startPos.x > maxDistance || transform.position.x < startPos.x) {
 									if(!stickToWalls) {
 										SwitchDirection();
 										Flip();
@@ -226,11 +230,13 @@ public class EnemyAI : CharacterMotor
 						}
 
 						if(isFlying) {
-							if(overrideMove)
-								rg.velocity = Vector2.zero;
-							else
-								rg.velocity = new Vector2(horiAxes * movementSpeed * escapeVelModifier * Time.fixedDeltaTime, vertAxis * movementSpeed * Time.fixedDeltaTime);
-						}
+                            if (overrideMove)
+                                rg.velocity = Vector2.zero;
+                            else
+                            {
+                                rg.velocity = new Vector2(horiAxes * movementSpeed * escapeVelModifier * Time.fixedDeltaTime, vertAxis * movementSpeed * Time.fixedDeltaTime);
+                            }
+                        }
 						else if(!overrideMove)
 							Movement(horiAxes * movementSpeed * escapeVelModifier * Time.fixedDeltaTime, rg.velocity.y);
 					}
@@ -309,3 +315,4 @@ public class EnemyAI : CharacterMotor
 			Movement(0f, 0f);
 	}
 }
+//18887762269

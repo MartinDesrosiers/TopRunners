@@ -651,7 +651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1737784528682330
 GameObject:
   m_ObjectHideFlags: 1
@@ -822,7 +822,6 @@ GameObject:
   - component: {fileID: 4683886827396724}
   - component: {fileID: 50057334290886354}
   - component: {fileID: 114474452252014376}
-  - component: {fileID: 114675368143729416}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Player
@@ -992,7 +991,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698160336178004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.581, z: 0}
+  m_LocalPosition: {x: 0, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4054006040061954}
@@ -1759,19 +1758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d516546020204ac45b1716dc29dce44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114675368143729416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1944800305587876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba09c29507df914fb37b68b1e850b9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  glitchType: 
-  timerDelay: 0
 --- !u!212 &212028240338924178
 SpriteRenderer:
   m_ObjectHideFlags: 1

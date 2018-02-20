@@ -2350,8 +2350,11 @@ Prefab:
       propertyPath: RuntimeEditorUI
       value: 
       objectReference: {fileID: 1596633375}
-    m_RemovedComponents:
-    - {fileID: 114675368143729416, guid: dae0e316d57017d41a8a4fd9be2ac87f, type: 2}
+    - target: {fileID: 1698160336178004, guid: dae0e316d57017d41a8a4fd9be2ac87f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dae0e316d57017d41a8a4fd9be2ac87f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1243548621

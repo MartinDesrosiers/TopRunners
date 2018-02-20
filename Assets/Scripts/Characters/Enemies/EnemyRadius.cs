@@ -14,10 +14,10 @@ public class EnemyRadius : MonoBehaviour {
 		area = gameObject.GetComponent<SpriteRenderer>();
 	}
 
-	private void OnDestroy() {
+	/*private void OnDestroy() {
 		//Removes itself from the global enemy list.
 		EnemyList.DestroyEnemy(this);
-	}
+	}*/
 
 	public void SetAlpha(float alpha) {
 		area.color = new Color(1f, 1f, 1f, alpha);
