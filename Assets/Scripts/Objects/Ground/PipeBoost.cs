@@ -19,7 +19,6 @@ public class PipeBoost : MonoBehaviour
             {
                 transform.GetComponent<Collider2D>().isTrigger = true;
                 ply.StartGlitchTimer("SpeedBoost", 1.5f);
-                ply.SetCantJump = true;
             }
         }
     }
@@ -28,7 +27,6 @@ public class PipeBoost : MonoBehaviour
         if (collision.gameObject.name == "RollCollider")
         {
             transform.GetComponent<Collider2D>().isTrigger = false;
-            collision.transform.parent.GetComponentInParent<PlayerController>().SetCantJump = false;
         }
         else if (collision.gameObject.name == "isGroundCollider")
             playerOnTop = false;

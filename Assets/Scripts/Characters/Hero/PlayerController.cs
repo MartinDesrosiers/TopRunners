@@ -398,7 +398,8 @@ public class PlayerController : CharacterMotor
         while (elapsedTime < 1f || cantJump)
         {
             RaycastHit2D hit;
-            hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
+            hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), Vector2.up, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
+           
             if (hit.transform != null)
             {
                 if (!cantJump)
@@ -409,6 +410,7 @@ public class PlayerController : CharacterMotor
                 if (cantJump)
                     cantJump = false;
             }
+            Debug.Log(elapsedTime);
             elapsedTime += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
@@ -660,6 +662,7 @@ public class PlayerController : CharacterMotor
         glitches.Clear();
         _health = 3;
         _key = 0;
+        rg.velocity = Vector3.zero;
         playerUI.ShowKeys(_key);
         playerUI.CheckHealth(_health);
         transform.position = LevelManager.Instance.spawnPoint;
@@ -775,7 +778,7 @@ public class PlayerController : CharacterMotor
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "DashArea")
+        if (col.gameObject.name == "DashArea" && !movementState[BooleenStruct.ISDASHING])
         {
             inEnemiesRange = false;
             if (playerControl)
