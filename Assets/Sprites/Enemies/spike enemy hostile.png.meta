@@ -1,26 +1,12 @@
 fileFormatVersion: 2
-guid: 4b8a3883f9dc53d4c8f6ad7bebea2f16
-timeCreated: 1518838523
+guid: 45548c290d643034190f81135a5a1ed1
+timeCreated: 1519265366
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Base
-    21300002: CaseGray2
-    21300004: StandLight
-    21300006: Light1
-    21300008: Light2
-    21300010: LightArrow
-    21300012: Stand
-    21300014: StandFront
-    21300016: CaseBlack1
-    21300018: CaseGray1
-    21300020: CaseBlack2
-    21300022: AccelerationPad
-    21300024: light1
-    21300026: light2
-    21300028: light3
-    21300030: largeLight
-    21300032: Pad_Light
+    21300000: spike enemy hostile_0
+    21300002: spike enemy hostile_2
+    21300004: spike enemy hostile_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -50,9 +36,9 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapU: -1
-    wrapV: -1
-    wrapW: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -88,6 +74,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
@@ -100,29 +94,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AccelerationPad
+      name: spike enemy hostile_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 117
-        width: 278
-        height: 95
+        x: 0
+        y: 828
+        width: 556
+        height: 303
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pad_Light
+      name: spike enemy hostile_2
       rect:
         serializedVersion: 2
-        x: 15
-        y: 9
-        width: 235
-        height: 92
+        x: 0
+        y: 474
+        width: 556
+        height: 303
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spike enemy hostile_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 556
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
