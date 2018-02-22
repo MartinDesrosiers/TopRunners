@@ -59,7 +59,8 @@ public class LevelManager : Singleton<LevelManager> {
     public void InitializeLevel() {
         //Security clean up.
         Destroy(mapContainer);
-		isPaused = true;
+        CreateMapContainer();
+        isPaused = true;
         player = GameObject.Find("PlayerTest");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
 		_tileConnector = GameObject.Find("TileConnector").GetComponent<TileConnector>();
@@ -117,7 +118,11 @@ public class LevelManager : Singleton<LevelManager> {
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
     }
-
+    void CreateMapContainer()
+    {
+        mapContainer = new GameObject();
+        mapContainer.name = "Map Container";
+    }
 
 	//Reset all the level variables.
 	public void ClearLevel() {
@@ -175,10 +180,10 @@ public class LevelManager : Singleton<LevelManager> {
         monsterList = new List<GameObject>();
         doorList = new List<GameObject>();
         destructibleList = new List<GameObject>();
-        mapContainer = new GameObject();
-		mapContainer.name = "Map Container";
+        if (mapContainer == null)
+            CreateMapContainer();
 
-		GameObject tPrefab;
+        GameObject tPrefab;
 
 		theme = serializedData.theme;
 		Camera.main.GetComponent<CameraController>().scrollerSpeed = serializedData.scrollerSpeed;
