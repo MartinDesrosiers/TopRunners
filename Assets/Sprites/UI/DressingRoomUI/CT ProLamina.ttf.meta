@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 64f964199365915468912f0baf897718
-timeCreated: 1473795710
+guid: feeafe21e968fcb4dbd92637e13ac127
+timeCreated: 1519279613
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,8 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: ProLamina
   fontNames:
-  - Permanent Marker
+  - ProLamina
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
