@@ -600,6 +600,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114820752569639128, guid: a200a0553bc4464458f8e245fc43b9c1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 246934445}
     - target: {fileID: 114583334403877290, guid: a200a0553bc4464458f8e245fc43b9c1,
         type: 2}
       propertyPath: levelEditor
@@ -615,27 +620,11 @@ Prefab:
       propertyPath: runtimeEditorUI
       value: 
       objectReference: {fileID: 289480038}
-    - target: {fileID: 114820752569639128, guid: a200a0553bc4464458f8e245fc43b9c1,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 246934445}
-    - target: {fileID: 224119107401822540, guid: a200a0553bc4464458f8e245fc43b9c1,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 1500
+    - target: {fileID: 1951005701136490, guid: a200a0553bc4464458f8e245fc43b9c1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224578914460084138, guid: a200a0553bc4464458f8e245fc43b9c1,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -80
-      objectReference: {fileID: 0}
-    - target: {fileID: 224119107401822540, guid: a200a0553bc4464458f8e245fc43b9c1,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -900
-      objectReference: {fileID: 0}
-    - target: {fileID: 1625693251729272, guid: a200a0553bc4464458f8e245fc43b9c1, type: 2}
+    - target: {fileID: 1648965022133174, guid: a200a0553bc4464458f8e245fc43b9c1, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
