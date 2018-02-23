@@ -18,7 +18,9 @@ public class IsWalled : Destructible
                 {
                     if (col.gameObject.name.Contains("InnerShadow") && col.gameObject.GetComponent<BoxCollider2D>().isTrigger)
                         return;
-                    else if (!col.gameObject.name.Contains("PipeCol") && !col.gameObject.name.Contains("CrossableGround"))
+                    else if (col.gameObject.name.Contains("PipeCol") && transform.parent.GetComponentInParent<PlayerController>().GetMovementState[BooleenStruct.ISROLLING])
+                        return;
+                    else if (!col.gameObject.name.Contains("CrossableGround"))
                     {
                         transform.parent.GetComponentInParent<PlayerController>().IsWalled(true);
                     }

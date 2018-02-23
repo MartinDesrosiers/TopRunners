@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 
-public class InputScript {
+public class InputScript
+{
     public float[] axisXY = { 0.0f, 0.0f };
     float pressedTimerA = 0f;
     float pressedTimerD = 0f;
@@ -45,48 +46,52 @@ public class InputScript {
     }*/
     public float[] PlayerInput(bool player)
     {
-        if (player)
-        {
 #if UNITY_ANDROID || UNITY_IOS
-		axisXY[0] = CrossPlatformInputManager.GetAxis("Horizontal");
-        if (axisXY[0] < 0){
-            axisXY[0] = -1f;
-            aPressed = true;
-            if (Time.time - pressedTimerA < delay)
-                sprinting = true;
-        }
-        else if (axisXY[0] > 0){
-            axisXY[0] = 1f;
-            dPressed = true;
-            if (Time.time - pressedTimerD < delay)
-                sprinting = true;
-        }
-        else{
-            axisXY[0] = 0f;
-            if (aPressed)
+            axisXY[0] = CrossPlatformInputManager.GetAxis("Horizontal");
+            if (axisXY[0] < 0)
             {
-                pressedTimerA = Time.time;
-                aPressed = false;
-                sprinting = false;
+                axisXY[0] = -1f;
+                aPressed = true;
+                if (Time.time - pressedTimerA < delay)
+                    sprinting = true;
             }
-            else if (dPressed)
+            else if (axisXY[0] > 0)
             {
-                pressedTimerD = Time.time;
-                dPressed = false;
-                sprinting = false;
+                axisXY[0] = 1f;
+                dPressed = true;
+                if (Time.time - pressedTimerD < delay)
+                    sprinting = true;
             }
-        }
-		axisXY[1] = CrossPlatformInputManager.GetAxis("Vertical");
-        if(axisXY[1] < 0){
-            axisXY[1] = -1f;
-        }
-        else if (axisXY[1] > 0){
-            axisXY[1] = 1f;
-        }
-        else{
-            axisXY[1] = 0f; 
-        }
-		return axisXY;
+            else
+            {
+                axisXY[0] = 0f;
+                if (aPressed)
+                {
+                    pressedTimerA = Time.time;
+                    aPressed = false;
+                    sprinting = false;
+                }
+                else if (dPressed)
+                {
+                    pressedTimerD = Time.time;
+                    dPressed = false;
+                    sprinting = false;
+                }
+            }
+            axisXY[1] = CrossPlatformInputManager.GetAxis("Vertical");
+            if (axisXY[1] < 0)
+            {
+                axisXY[1] = -1f;
+            }
+            else if (axisXY[1] > 0)
+            {
+                axisXY[1] = 1f;
+            }
+            else
+            {
+                axisXY[1] = 0f;
+            }
+            return axisXY;
 #elif UNITY_EDITOR || UNITY_STANDALONE
             /*if (aPressed || dPressed || wPressed || sPressed && reference == 0)
             {
