@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: feeafe21e968fcb4dbd92637e13ac127
+timeCreated: 1519279613
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ProLamina
+  fontNames:
+  - ProLamina
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

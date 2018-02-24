@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TimedGlitch : TriggerDestroy
+public class TimedGlitch : MonoBehaviour 
 {
 	public string glitchType;
 	public float timerDelay;
@@ -9,7 +9,8 @@ public class TimedGlitch : TriggerDestroy
     {
         glitch = glitchType;
         timer = timerDelay;
-        if(!gameObject.name.Contains("AccelerationPad"))
-            DestroyObj(gameObject);
+        /*Debug.Log("Please, don't destroy the pad");
+        if(!gameObject.name.Contains("AccelerationPad(Clone)"))
+            DestroyObj(gameObject);*/
     }
 }

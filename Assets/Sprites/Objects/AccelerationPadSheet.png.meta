@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4b8a3883f9dc53d4c8f6ad7bebea2f16
-timeCreated: 1502204086
+timeCreated: 1518838523
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -44,10 +46,13 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: -1
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -98,29 +103,32 @@ TextureImporter:
       name: AccelerationPad
       rect:
         serializedVersion: 2
-        x: 1
-        y: 41
-        width: 209
-        height: 52
+        x: 34
+        y: 117
+        width: 278
+        height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Pad_Light
       rect:
         serializedVersion: 2
-        x: 17
-        y: 3
-        width: 180
-        height: 36
+        x: 15
+        y: 9
+        width: 235
+        height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
