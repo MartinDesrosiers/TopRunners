@@ -242,16 +242,21 @@ public class PlayerController : CharacterMotor
                 else if (inEnemiesRange && !movementState[BooleenStruct.ISDASHING] && !jump)
                 {
                     RaycastHit2D hit;
-                    _ennemyPos = ennemyObj.transform.position;
-                    if (!DashAttemp(ennemyObj, out hit))
-                        return;
+                    if (ennemyObj != null)
+                    {
+                        _ennemyPos = ennemyObj.transform.position;
+                        if (!DashAttemp(ennemyObj, out hit))
+                            return;
                     _playerHeight = transform.position.y;
                     jump = true;
                     ResetBool(true, BooleenStruct.ISDASHING);
+                    Animation("jumpAttack", movementState[BooleenStruct.ISDASHING]); //FIX Dan 26 fevrier
+                        Debug.Log("salut");
                     Normalized();
                     GetAngle();
-                    if (_dashTarget.x < 0)
+                    if (transform.position.x - _dashTarget.x < 0)
                         transform.localScale = new Vector2(-1, 1);
+                    }
                 }
                 if (jump && !movementState[BooleenStruct.WALLJUMPING])
                 {
@@ -282,11 +287,10 @@ public class PlayerController : CharacterMotor
     }
 
     private void FixedUpdate() {
-        if(!LevelManager.Instance.isPaused) {
+        if(!LevelManager.Instance.isPaused && !_isDead) {
             //Debug.Log(animator.GetCurrentAnimatorClipInfo(animator.GetLayerIndex("Base Layer")).Length);
             animator.speed = _speed;
             animator.SetFloat("VelY", rg.velocity.y);
-
             if (!_isGrounded && _isWalled && !movementState[BooleenStruct.WALLED]) {
                 IsWalled(true);
             }
@@ -395,7 +399,7 @@ public class PlayerController : CharacterMotor
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < 1f || cantJump)
+        while (elapsedTime < .8f || cantJump)
         {
             RaycastHit2D hit;
             hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), Vector2.up, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
@@ -410,7 +414,6 @@ public class PlayerController : CharacterMotor
                 if (cantJump)
                     cantJump = false;
             }
-            Debug.Log(elapsedTime);
             elapsedTime += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
@@ -471,12 +474,11 @@ public class PlayerController : CharacterMotor
 
 	public void ResetDash() {
         //Resets all dashing values to zero.
+        ResetBool(false, BooleenStruct.ISDASHING);
         inEnemiesRange = false;
-        ResetBool(true, BooleenStruct.ISJUMPING);
-        Animation("jump", movementState[BooleenStruct.ISJUMPING]);
 		_dashTarget = Vector2.zero;
         ChangeJumpButtonSprite(0);
-	}
+    }
 
 	public void TakeDamage(ushort damage, bool overrideDash, bool hitOnLeftSide) {
 		//If invincible glitch is active, ignore damage.
@@ -496,6 +498,7 @@ public class PlayerController : CharacterMotor
                         afterHit = new Vector2(10, 1);
                     else
                         afterHit = new Vector2(-10, 1);
+                    ResetDash();
                     StartCoroutine(RecoverFromDamage());
                     _timer = Time.time;
                     _health -= damage;
@@ -686,6 +689,8 @@ public class PlayerController : CharacterMotor
 
     //use after dash to make the player jump after hit
     public void CheckPropulsion(float boost = 1f) {
+        SetBoolState(BooleenStruct.ISJUMPING, true); //FIX Dan 26 fevrier
+        Animation("jump", movementState[BooleenStruct.ISJUMPING]); //FIX Dan 26 fevrier
         jump = true;
         Movement(rg.velocity.x, Jump(boost));
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
@@ -778,7 +783,7 @@ public class PlayerController : CharacterMotor
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "DashArea" && !movementState[BooleenStruct.ISDASHING])
+        if (col.gameObject.name == "DashArea")
         {
             inEnemiesRange = false;
             if (playerControl)
