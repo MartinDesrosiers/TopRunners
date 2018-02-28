@@ -6,6 +6,6 @@ public class FinishScreenCloseButton : MonoBehaviour {
 
 	public void CloseWindow()
     {
-        LevelManager.Instance.isPaused = false;
+        LevelManager.Instance.isPaused = false; //FIX
     }
 }
