@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222858737959956310}
   - component: {fileID: 114325989011870204}
   - component: {fileID: 114605875908352544}
+  - component: {fileID: 114295748405532258}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -240,6 +241,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a35a46404136b49ad178aba6e8e533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114295748405532258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193727440348772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98328f3e15cbc2b4db9eaf764878be92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114325989011870204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,6 +443,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1248678210777384}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114295748405532258}
+        m_MethodName: CloseWindow
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

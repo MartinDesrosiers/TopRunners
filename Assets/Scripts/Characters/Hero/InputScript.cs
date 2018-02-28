@@ -193,7 +193,6 @@ public class InputScript
                     vertiTimePressed.Add(Time.time - reference);
                 }*/
             }
-        }
             /*else
             {
                 if (RuntimeUI.GetStartTimer)

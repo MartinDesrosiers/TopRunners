@@ -22,6 +22,8 @@ public class IsWalled : Destructible
                         return;
                     else if (!col.gameObject.name.Contains("CrossableGround"))
                     {
+                        if (transform.parent.GetComponentInParent<PlayerController>().GetMovementState[BooleenStruct.ISDASHING])//FIX dan 26fevrier
+                            transform.parent.GetComponentInParent<PlayerController>().ResetDash();//FIX dan 26fevrier
                         transform.parent.GetComponentInParent<PlayerController>().IsWalled(true);
                     }
                 }

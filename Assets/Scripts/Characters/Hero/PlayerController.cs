@@ -44,6 +44,7 @@ public class PlayerController : CharacterMotor
     bool jump, cantJump, roll, isSprintRefilling, isInvincible, playerControl;
     //Player statistics.
     float[] axisXY;
+    float inAirSpeed;// FIX
     float _maxWallJumpDist;
     float originalXPos;
     float decelerationSpeed;
@@ -86,6 +87,7 @@ public class PlayerController : CharacterMotor
         inputScript = new InputScript();
         axisXY = new float[2];
         movementState = new bool[10];
+        inAirSpeed = _speed / 2; // FIX
         if (t_playerControl)
         {
             playerColor = new List<SpriteRenderer>();
@@ -181,7 +183,11 @@ public class PlayerController : CharacterMotor
                         ChangeJumpButtonSprite(0);
                     }
                     if ((axisXY[X] < 0 && transform.localScale.x > 0) || (axisXY[X] > 0 && transform.localScale.x < 0))
+                    {
                         Flip();
+                        if (movementState[BooleenStruct.ISJUMPING])// FIX
+                            _speed = inAirSpeed;// FIX
+                    }
                     if (!_isWalled)
                     {
                         if (!inputScript.GetSprint)
@@ -201,6 +207,8 @@ public class PlayerController : CharacterMotor
                         SetToIdle();
                         ChangeJumpButtonSprite(0);
                     }
+                    else if (movementState[BooleenStruct.ISJUMPING])// FIX
+                        _speed = inAirSpeed;// FIX
                     Movement(rg.velocity.x - (rg.velocity.x * Time.deltaTime), rg.velocity.y);
                 }
             }
@@ -248,6 +256,7 @@ public class PlayerController : CharacterMotor
                     _playerHeight = transform.position.y;
                     jump = true;
                     ResetBool(true, BooleenStruct.ISDASHING);
+                    Animation("jumpAttack", movementState[BooleenStruct.ISDASHING]); //FIX Dan 26 fevrier
                     Normalized();
                     GetAngle();
                     if (_dashTarget.x < 0)
@@ -410,7 +419,6 @@ public class PlayerController : CharacterMotor
                 if (cantJump)
                     cantJump = false;
             }
-            Debug.Log(elapsedTime);
             elapsedTime += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
@@ -669,6 +677,7 @@ public class PlayerController : CharacterMotor
         LevelManager.Instance.ReloadLevel();
         ReInitialize(GameManager.Instance.myList);
         RuntimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
+        LevelManager.Instance.isPaused = false;// FIX
         LevelManager.Instance.finishLoading = true;
     }
 
@@ -685,7 +694,10 @@ public class PlayerController : CharacterMotor
     }
 
     //use after dash to make the player jump after hit
-    public void CheckPropulsion(float boost = 1f) {
+    public void CheckPropulsion(float boost = 1f)
+    {
+        SetBoolState(BooleenStruct.ISJUMPING, true); //FIX Dan 26 fevrier
+        Animation("jump", movementState[BooleenStruct.ISJUMPING]); //FIX Dan 26 fevrier
         jump = true;
         Movement(rg.velocity.x, Jump(boost));
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
@@ -711,6 +723,7 @@ public class PlayerController : CharacterMotor
 
     public void IsWalled(bool iswalled) {
         _isWalled = iswalled;
+        _speed = 1f;// FIX
         if (!_isGrounded && !movementState[BooleenStruct.WALLJUMPING] && !movementState[BooleenStruct.ISROLLING]) {
             Animation("wallIdle", _isWalled);
             movementState[BooleenStruct.WALLED] = _isWalled;
@@ -718,7 +731,7 @@ public class PlayerController : CharacterMotor
     }
 
 	public void IsGrounded(bool tof) {
-        //Debug.Log("salut");
+        _speed = 1f;// FIX
         _isGrounded = tof;
         jump = !_isGrounded;
         if (_isGrounded && !movementState[BooleenStruct.ISROLLING])

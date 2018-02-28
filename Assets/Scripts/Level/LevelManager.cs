@@ -86,6 +86,7 @@ public class LevelManager : Singleton<LevelManager> {
 
 	public void ReloadLevel()
     {
+        isPaused = true;//FIX dan 26 fevrier
         foreach (GameObject o in monsterList)
         {
             o.gameObject.SetActive(true);
@@ -101,6 +102,7 @@ public class LevelManager : Singleton<LevelManager> {
             o.gameObject.SetActive(true);
         }
         isReloading = true;
+        SetParallax();
         /*finalGhostObjects = ghostObjects;
         for (int i = 0; i < ghostObjects.Count; i++)
             Destroy(ghostObjects[i].gameObject);
