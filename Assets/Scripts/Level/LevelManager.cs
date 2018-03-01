@@ -102,7 +102,7 @@ public class LevelManager : Singleton<LevelManager> {
             o.gameObject.SetActive(true);
         }
         isReloading = true;
-        SetParallax();//FIX
+        SetParallax();
         /*finalGhostObjects = ghostObjects;
         for (int i = 0; i < ghostObjects.Count; i++)
             Destroy(ghostObjects[i].gameObject);
@@ -140,7 +140,7 @@ public class LevelManager : Singleton<LevelManager> {
 
 	//Fill the serialized level data.
 	public bool LoadSerializedData() {
-		//If there's no level selected, change selected level to the template.
+        //If there's no level selected, change selected level to the template.
 		if(GameManager.Instance.currentLevel == "") {
 			//Debug.Log("No level selected, loading template level.");
 			GameManager.Instance.currentLevel = "Tutorial2.sld";
@@ -153,9 +153,9 @@ public class LevelManager : Singleton<LevelManager> {
 		}
 		else
 			Debug.Log("Loading selected level.");
-
-		//Load the data inside the specified .sld file.
-		if(!FileManager.LoadLevel(GameManager.Instance.currentLevel, out serializedData)) {
+        
+        //Load the data inside the specified .sld file.
+        if (!FileManager.LoadLevel(GameManager.Instance.currentLevel, out serializedData)) {
 			Debug.Log("Error loading level.");
 			serializedData = new SerializedLevelData();
 			return false;
