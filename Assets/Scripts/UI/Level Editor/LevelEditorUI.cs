@@ -148,7 +148,6 @@ public class LevelEditorUI : MonoBehaviour {
 
         switch (currentObjType) {
             case 0:
-                Debug.Log("Order ID" + customEnemiesOrder[tId]);
                 levelEditor.objId = customEnemiesOrder[tId];
                 newName = enemiesSprites[tId].name;
                 break;

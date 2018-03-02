@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4979040700630974}
   - component: {fileID: 61295004710959734}
-  - component: {fileID: 114054335800912810}
+  - component: {fileID: 114258477653736896}
   m_Layer: 0
   m_Name: attack_power_up
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114054335800912810
+--- !u!114 &114258477653736896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1591857074243842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
+  m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212855646179760210

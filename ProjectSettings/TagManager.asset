@@ -14,6 +14,8 @@ TagManager:
   - Pipe
   - Destructible
   - Trap
+  - Glitch
+  - Collectable
   layers:
   - Default
   - TransparentFX

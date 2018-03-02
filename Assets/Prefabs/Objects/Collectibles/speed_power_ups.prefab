@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4616871821754624}
   - component: {fileID: 61835586773893566}
-  - component: {fileID: 114160327261912842}
   - component: {fileID: 114819420147952374}
+  - component: {fileID: 114907699316368452}
   m_Layer: 0
   m_Name: speed_power_ups
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,17 +115,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114160327261912842
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1076894327805678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114819420147952374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +128,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glitchType: SpeedBoost
   timerDelay: 15
+--- !u!114 &114907699316368452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076894327805678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212753378725901494
 SpriteRenderer:
   m_ObjectHideFlags: 1

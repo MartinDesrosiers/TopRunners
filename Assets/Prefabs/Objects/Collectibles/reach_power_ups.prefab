@@ -37,11 +37,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4468920373530826}
   - component: {fileID: 61909689663877180}
-  - component: {fileID: 114221908296464268}
   - component: {fileID: 114117450147110624}
+  - component: {fileID: 114676149092590728}
   m_Layer: 0
   m_Name: reach_power_ups
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glitchType: Reach
   timerDelay: 15
---- !u!114 &114221908296464268
+--- !u!114 &114676149092590728
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957027786548026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
+  m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212151348682844386

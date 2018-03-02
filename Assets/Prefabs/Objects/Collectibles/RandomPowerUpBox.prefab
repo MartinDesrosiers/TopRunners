@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4265371790850388}
   - component: {fileID: 61231101509634632}
-  - component: {fileID: 114380751514053450}
   - component: {fileID: 114233982304092130}
+  - component: {fileID: 114508249072753170}
   m_Layer: 0
   m_Name: RandomPowerUpBox
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae625324d6cc8cb49b3d736344065e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114380751514053450
+--- !u!114 &114508249072753170
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234613129615540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
+  m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212026864797209440

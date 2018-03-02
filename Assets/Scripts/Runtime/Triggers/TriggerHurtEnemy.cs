@@ -11,7 +11,6 @@ public class TriggerHurtEnemy : MonoBehaviour {
             PlayerController controller = col.transform.parent.GetComponentInParent<PlayerController>();
 			if(!controller.GetMovementState[BooleenStruct.ISDASHING] && !controller.GetHurt || transform.tag == "Trap" || overrideDash) {
 				bool b;
-                Debug.Log("tamere");
 				if (transform.parent.GetComponentInParent<EnemyAI>() != null)
 				    transform.parent.GetComponentInParent<EnemyAI>().SetDashState();
 

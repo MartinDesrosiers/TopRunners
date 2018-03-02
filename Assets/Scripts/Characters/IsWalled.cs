@@ -24,7 +24,7 @@ public class IsWalled : Destructible
                     {
                         if (transform.parent.GetComponentInParent<PlayerController>().GetMovementState[BooleenStruct.ISDASHING])// FIX dan 26fevrier
                             transform.parent.GetComponentInParent<PlayerController>().ResetDash();// FIX dan 26fevrier
-                        transform.parent.GetComponentInParent<PlayerController>().IsWalled(true, col.transform.position.y > transform.parent.parent.position.y);
+                        transform.parent.GetComponentInParent<PlayerController>().IsWalled(true);
                     }
                 }
                 else if (gameObject.name == "WallCollider")

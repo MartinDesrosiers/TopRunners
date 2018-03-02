@@ -737,10 +737,10 @@ public class PlayerController : CharacterMotor
         playerUI.ShowKeys(_key);
     }
 
-    public void IsWalled(bool iswalled, bool b = false) {
+    public void IsWalled(bool iswalled) {
         _isWalled = iswalled;
         _speed = 1f; // FIX
-        if (!_isGrounded && !movementState[BooleenStruct.ISROLLING] && b) {
+        if (!_isGrounded && !movementState[BooleenStruct.ISROLLING]) {
             Animation("wallIdle", _isWalled);
             movementState[BooleenStruct.WALLED] = _isWalled;
         }
