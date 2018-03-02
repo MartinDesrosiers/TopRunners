@@ -93,12 +93,13 @@ public class InputScript
             }
             return axisXY;
 #elif UNITY_EDITOR || UNITY_STANDALONE
-            /*if (aPressed || dPressed || wPressed || sPressed && reference == 0)
-            {
-                RuntimeUI.GetStartTimer = true;
-                SetReference();
-            }*/
-            //Move forward or backward
+        /*if (aPressed || dPressed || wPressed || sPressed && reference == 0)
+        {
+            RuntimeUI.GetStartTimer = true;
+            SetReference();
+        }*/
+        //Move forward or backward
+       
             if (Input.GetKey("a") && !Input.GetKey("d"))
             {
                 if (Time.time - pressedTimerA < delay)

@@ -27,14 +27,17 @@ public class MovingPlatform : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
-        platform.Translate(new Vector3(0f, direction * speed * Time.fixedDeltaTime, 0f));
-        if (platform.localPosition.y + (platform.localScale.y / 2) > railHeight / 2 || 
-            platform.localPosition.y - (platform.localScale.y / 2) < -railHeight / 2)
-            direction *= -1;
-        for(int i = 0; i < wheels.Length; i++)
+        if (!LevelManager.Instance.isPaused)
         {
-            wheels[i].Rotate(new Vector3(0f, 0f, wheelRotation * direction * rotationSpeed * Time.deltaTime));
-            wheelRotation *= -1;
+            platform.Translate(new Vector3(0f, direction * speed * Time.fixedDeltaTime, 0f));
+            if (platform.localPosition.y + (platform.localScale.y / 2) > railHeight / 2 ||
+                platform.localPosition.y - (platform.localScale.y / 2) < -railHeight / 2)
+                direction *= -1;
+            for (int i = 0; i < wheels.Length; i++)
+            {
+                wheels[i].Rotate(new Vector3(0f, 0f, wheelRotation * direction * rotationSpeed * Time.deltaTime));
+                wheelRotation *= -1;
+            }
         }
 	}
 }
