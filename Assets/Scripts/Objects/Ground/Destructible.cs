@@ -7,10 +7,13 @@ public class Destructible : MonoBehaviour {
 
     protected void SetDestroyTimer(GameObject obj)
     {
-        if (!obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).IsName("destroy-breaking"))
+
+        if (!obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).IsName("destroy-breaking") ||
+            !obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).IsName("glass-anim"))
         {
             obj.gameObject.GetComponent<Animator>().SetBool("Destroy", true);
-            StartCoroutine(obj.GetComponent<SetObjActive>().SetObjectActive(obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).length + .1f));
+            Debug.Log(obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).length + .1f);
+            StartCoroutine(obj.GetComponent<SetObjActive>().SetObjectActive(obj.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(obj.gameObject.GetComponent<Animator>().GetLayerIndex("Base Layer")).length + 1.0f));
         }
     }
 }

@@ -55,6 +55,7 @@ public class LevelManager : Singleton<LevelManager> {
     private void Start()
     {
         checkPointFlag = Instantiate(Resources.Load("Flag", typeof(GameObject)) as GameObject);
+        checkPointFlag.transform.position = new Vector2(-10f, -10f);
     }
 
     public void InitializeLevel() {
