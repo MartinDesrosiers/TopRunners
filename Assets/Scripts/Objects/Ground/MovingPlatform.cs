@@ -38,6 +38,13 @@ public class MovingPlatform : MonoBehaviour {
                 wheels[i].Rotate(new Vector3(0f, 0f, wheelRotation * direction * rotationSpeed * Time.deltaTime));
                 wheelRotation *= -1;
             }
+            if (transform.GetComponent<BoxCollider2D>().enabled == true)
+                transform.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        else if(GameManager.Instance.currentState == GameManager.GameState.LevelEditor)
+        {
+            platform.transform.localPosition = Vector3.zero;
+            transform.GetComponent<BoxCollider2D>().enabled = true;
         }
 	}
 }

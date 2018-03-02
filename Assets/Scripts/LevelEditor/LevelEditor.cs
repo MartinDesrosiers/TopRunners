@@ -130,7 +130,6 @@ public class LevelEditor : MonoBehaviour {
                     //Check if touch an object no matter where you press on it;
                      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                      RaycastHit2D[] hit = Physics2D.GetRayIntersectionAll(ray, 10f);
-                     Debug.Log(hit.Length);
                      foreach (RaycastHit2D o in hit)
                      {
                         transObj = o.transform;
@@ -158,15 +157,15 @@ public class LevelEditor : MonoBehaviour {
 						if(eraser)
 							AddDeleteTile(objColRow, objPos, false);
 						else if(!cursor) {
-							if(glitchUI.isActive)
-								glitchUI.AddTeleport(objPos);
-							else if(objPos[0] > 0 && objPos[0] < LevelManager.Instance.mapSize.x && objPos[1] > 0 && objPos[1] < LevelManager.Instance.mapSize.y)
+                            if (glitchUI.isActive)
+                                glitchUI.AddTeleport(objPos);
+                            else if(objPos[0] > 0 && objPos[0] < LevelManager.Instance.mapSize.x && objPos[1] > 0 && objPos[1] < LevelManager.Instance.mapSize.y) ;
 								AddDeleteTile(objColRow, objPos, true);
 						}
 					}
 				}
 				GlobalInputs.ClearInputs();
-			}
+            }
 		}
 	}
 
