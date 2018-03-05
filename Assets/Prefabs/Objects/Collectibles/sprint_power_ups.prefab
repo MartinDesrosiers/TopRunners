@@ -37,11 +37,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4939639980075418}
   - component: {fileID: 61724587191293172}
-  - component: {fileID: 114123737004180564}
   - component: {fileID: 114482483255345764}
+  - component: {fileID: 114298085888607114}
   m_Layer: 0
   m_Name: sprint_power_ups
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114123737004180564
+--- !u!114 &114298085888607114
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537695996591414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
+  m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114482483255345764

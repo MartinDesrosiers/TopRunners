@@ -17,6 +17,7 @@ public class PlayerController : CharacterMotor
     GameObject colliders;
     GameObject body;
     GameObject ennemyObj;
+    EdgeCollider2D edgeCollider;
     public GameObject jumpButton;
     InputScript inputScript;
     public Sprite[] jumpDash;
@@ -38,12 +39,15 @@ public class PlayerController : CharacterMotor
     private Vector3 _ennemyPos;
     private Vector2[] standWallCollider = { new Vector2(.33f, .7f), new Vector2(.33f, -1f) };
     private Vector2[] rollWallCollider = { new Vector2(.45f, -.6f), new Vector2(.45f, -1f) };
+    Vector2[] normalCollidersPoints;
+    Vector2[] jumpingCollidersPoints;
 
     private short _key;
     bool[] movementState;
     bool jump, cantJump, roll, isSprintRefilling, isInvincible, playerControl;
     //Player statistics.
     float[] axisXY;
+    float inAirSpeed; // FIX
     float _maxWallJumpDist;
     float originalXPos;
     float decelerationSpeed;
@@ -81,11 +85,24 @@ public class PlayerController : CharacterMotor
 
     public void Initialize(bool t_playerControl) {
         //GameManager.Instance.LoadStats();
+        //Initialize edges points collider;
+        edgeCollider = transform.GetChild(0).GetChild(0).GetComponent<EdgeCollider2D>();
+        normalCollidersPoints = new Vector2[4];
+        jumpingCollidersPoints = new Vector2[4];
+        //Debug.Log();
+        for (int i = 0; i < edgeCollider.pointCount; i++)
+        {
+            normalCollidersPoints[i] = edgeCollider.points[i];
+            jumpingCollidersPoints[i] = normalCollidersPoints[i];
+        }
+        jumpingCollidersPoints[1] = new Vector2(0.3f,-0.45f);
+        jumpingCollidersPoints[2] = new Vector2(-0.55f,-0.98f);
         playerControl = t_playerControl;
         colliders = transform.GetChild(0).gameObject;
         inputScript = new InputScript();
         axisXY = new float[2];
         movementState = new bool[10];
+        inAirSpeed = 0.5f;  // FIX
         if (t_playerControl)
         {
             playerColor = new List<SpriteRenderer>();
@@ -181,7 +198,11 @@ public class PlayerController : CharacterMotor
                         ChangeJumpButtonSprite(0);
                     }
                     if ((axisXY[X] < 0 && transform.localScale.x > 0) || (axisXY[X] > 0 && transform.localScale.x < 0))
+                    {
                         Flip();
+                        if (movementState[BooleenStruct.ISJUMPING]) // FIX
+                            _speed = inAirSpeed; // FIX
+                    }
                     if (!_isWalled)
                     {
                         if (!inputScript.GetSprint)
@@ -201,6 +222,8 @@ public class PlayerController : CharacterMotor
                         SetToIdle();
                         ChangeJumpButtonSprite(0);
                     }
+                    else if (movementState[BooleenStruct.ISJUMPING]) // FIX
+                        _speed = inAirSpeed; // FIX
                     Movement(rg.velocity.x - (rg.velocity.x * Time.deltaTime), rg.velocity.y);
                 }
             }
@@ -221,18 +244,13 @@ public class PlayerController : CharacterMotor
                     ToggleColliders(false);
                 if (_isGrounded && !movementState[BooleenStruct.ISJUMPING] && !movementState[BooleenStruct.WALLJUMPING] && !jump)
                 {
-                    ResetBool(true, BooleenStruct.ISJUMPING);
-                    Animation("jump", movementState[BooleenStruct.ISJUMPING]);
-                    _playerHeight = transform.position.y;
-                    jump = true;
+                    SetJump("jump", BooleenStruct.ISJUMPING, true, transform.position.y);
                     if (inEnemiesRange)
                         ChangeJumpButtonSprite(1);
                 }
                 else if (_isWalled && !jump && !movementState[BooleenStruct.ISROLLING])
                 {
-                    _playerHeight = transform.position.y;
-                    movementState[BooleenStruct.WALLJUMPING] = true;
-                    Animation("wallJump", movementState[BooleenStruct.WALLJUMPING]);
+                    SetJump("wallJump", BooleenStruct.WALLJUMPING, true, transform.position.y);
                     Movement(rg.velocity.x, Jump());
                     if (animator.GetCurrentAnimatorStateInfo(animator.GetLayerIndex("Base Layer")).IsName("wall_jump"))
                         animator.Play("wall_jump", 0, 0);
@@ -245,9 +263,7 @@ public class PlayerController : CharacterMotor
                     _ennemyPos = ennemyObj.transform.position;
                     if (!DashAttemp(ennemyObj, out hit))
                         return;
-                    _playerHeight = transform.position.y;
-                    jump = true;
-                    ResetBool(true, BooleenStruct.ISDASHING);
+                    SetJump("jumpAttack", BooleenStruct.ISDASHING, true, transform.position.y);
                     Normalized();
                     GetAngle();
                     if (_dashTarget.x < 0)
@@ -293,6 +309,7 @@ public class PlayerController : CharacterMotor
             else if (rg.velocity.y < 0 && !_isWalled && !movementState[BooleenStruct.ISIDLEAIR] && !movementState[BooleenStruct.ISROLLING] && !movementState[BooleenStruct.ISDASHING]) {
                 ResetBool(true, BooleenStruct.ISIDLEAIR);
                 Animation("idleAir", movementState[BooleenStruct.ISIDLEAIR]);
+                edgeCollider.points = normalCollidersPoints;
             }
 
             if (inputScript.GetSprint) {
@@ -323,6 +340,15 @@ public class PlayerController : CharacterMotor
                     _gettingHurt = false;
             }
 		}
+    }
+    //Set the jump variable. Avoid repetitive line
+    void SetJump(string AnimName, int moveState, bool tJump, float height)
+    {
+        ResetBool(tJump, moveState);
+        Animation(AnimName, movementState[moveState]);
+        _playerHeight = height;
+        jump = tJump;
+        edgeCollider.points = jumpingCollidersPoints;
     }
 
     void SetToIdle() {
@@ -410,7 +436,6 @@ public class PlayerController : CharacterMotor
                 if (cantJump)
                     cantJump = false;
             }
-            Debug.Log(elapsedTime);
             elapsedTime += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
@@ -685,7 +710,10 @@ public class PlayerController : CharacterMotor
     }
 
     //use after dash to make the player jump after hit
-    public void CheckPropulsion(float boost = 1f) {
+    public void CheckPropulsion(float boost = 1f)
+    {
+        SetBoolState(BooleenStruct.ISJUMPING, true);  //FIX Dan 26 fevrier
+        Animation("jump", movementState[BooleenStruct.ISJUMPING]);  //FIX Dan 26 fevrier
         jump = true;
         Movement(rg.velocity.x, Jump(boost));
         transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
@@ -711,14 +739,15 @@ public class PlayerController : CharacterMotor
 
     public void IsWalled(bool iswalled) {
         _isWalled = iswalled;
-        if (!_isGrounded && !movementState[BooleenStruct.WALLJUMPING] && !movementState[BooleenStruct.ISROLLING]) {
+        _speed = 1f; // FIX
+        if (!_isGrounded && !movementState[BooleenStruct.ISROLLING]) {
             Animation("wallIdle", _isWalled);
             movementState[BooleenStruct.WALLED] = _isWalled;
         }
     }
 
 	public void IsGrounded(bool tof) {
-        //Debug.Log("salut");
+        _speed = 1f; // FIX
         _isGrounded = tof;
         jump = !_isGrounded;
         if (_isGrounded && !movementState[BooleenStruct.ISROLLING])

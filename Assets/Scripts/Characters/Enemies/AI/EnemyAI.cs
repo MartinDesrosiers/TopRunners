@@ -12,7 +12,6 @@ public class EnemyAI : CharacterMotor
     SpriteRenderer enemiesRender;
     public DashState dashState = DashState.passive;
     public Animator enemyAnimator;
-    Vector2 startPos;
     float maxDistance;
 
     public bool lookAtHero = false;
@@ -52,11 +51,14 @@ public class EnemyAI : CharacterMotor
 
     #region GETSET
     public float SetEscapeModifier { set { escapeVelModifier = value; } }
-    public Vector2 GetOrigin { get { return origin; } }
     #endregion
+
     public void OnEnable()
     {
-        Initialize();
+        if (origin == Vector2.zero)//pour prevenir au cas ou OnEnable is called first;
+            return;
+        transform.position = origin;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
 	public void TakeDamage() {
@@ -71,13 +73,13 @@ public class EnemyAI : CharacterMotor
     {
         gameObject.SetActive(false);
     }
-    public void Initialize() {
-        startPos = transform.position;
+    void Start()
+    {
+        origin = transform.position;
 		enemiesRender = transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         rg = transform.GetComponent<Rigidbody2D>();
         _objPlayer = GameObject.Find("PlayerTest").gameObject;
         _player = _objPlayer.GetComponent<PlayerController>();
-        origin = transform.position;
         movementSpeed = 50.0f;
         maxDistance = 6f;
 
@@ -192,7 +194,7 @@ public class EnemyAI : CharacterMotor
 
 						if(basicBehavior == BasicBehavior.LeftRight || basicBehavior == BasicBehavior.WaveLR) {
 							if(isFlying) {
-								if(_isWalled && !ignoreWalls || transform.position.x - startPos.x > maxDistance || transform.position.x < startPos.x) {
+								if(_isWalled && !ignoreWalls || transform.position.x - origin.x > maxDistance || transform.position.x < origin.x) {
 									if(!stickToWalls) {
 										SwitchDirection();
 										Flip();

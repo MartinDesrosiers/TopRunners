@@ -17,7 +17,7 @@ public class IsGround : Destructible {
                 {
                     if(transform.parent.GetComponentInParent<Rigidbody2D>().velocity.y < .5f)
                         transform.parent.GetComponentInParent<PlayerController>().IsGrounded(true);
-                    if (col.gameObject.name == "platform") {
+                    if (col.gameObject.name.Contains("platform")) {
                         transform.parent.parent.gameObject.transform.SetParent(col.gameObject.transform);
                     }
                 }

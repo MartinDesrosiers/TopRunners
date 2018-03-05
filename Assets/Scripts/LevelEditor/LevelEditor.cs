@@ -8,7 +8,8 @@ using System.Collections.Generic;
 public class LevelEditor : MonoBehaviour {
 
 	public InputField newLevelName;
-	public ushort objType;
+    Transform transObj;
+    public ushort objType;
 	public ushort objId;
     public bool cursor, eraser;
 	public GlitchUI glitchUI;
@@ -91,7 +92,8 @@ public class LevelEditor : MonoBehaviour {
 			Debug.Log("WORKING");
 			int[] objColRow = new int[2];   //0 = column, 1 = row
 			float[] objPos = new float[2];  //0 = x, 1 = y
-			GetObjPosition(ref objColRow, ref objPos);
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GetObjPosition(ref objColRow, ref objPos, mousePosition);
 
 			ushort tObjID = objId;
 			objId = tId;
@@ -123,13 +125,17 @@ public class LevelEditor : MonoBehaviour {
 
 #if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
 				tPointerOverUI = EventSystem.current.IsPointerOverGameObject();
-                if (Input.GetMouseButtonDown(0))
-                {
-                    RaycastHit raycast;
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out raycast))
-                        Debug.Log(raycast.transform.name + " = raycast transform name");
-                }
+                 if (Input.GetMouseButtonDown(0))
+                 {
+                    //Check if touch an object no matter where you press on it;
+                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                     RaycastHit2D[] hit = Physics2D.GetRayIntersectionAll(ray, 10f);
+                     foreach (RaycastHit2D o in hit)
+                     {
+                        transObj = o.transform;
+                        break;
+                     }
+                 }
 #else
 				tPointerOverUI = IsPointerOverUIObject();
 #endif
@@ -137,21 +143,29 @@ public class LevelEditor : MonoBehaviour {
                 if (!tPointerOverUI) {
                     int[] objColRow = new int[2];   //0 = column, 1 = row
 					float[] objPos = new float[2];  //0 = x, 1 = y
-					GetObjPosition(ref objColRow, ref objPos);
-
-					if(LevelEditorInputs.GetBrush()) {
+                    if (transObj != null)
+                    {
+                        GetObjPosition(ref objColRow, ref objPos, transObj.position);
+                        transObj = null;
+                    }
+                    else
+                    {
+                        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        GetObjPosition(ref objColRow, ref objPos, mousePosition);
+                    }
+                    if (LevelEditorInputs.GetBrush()) {
 						if(eraser)
 							AddDeleteTile(objColRow, objPos, false);
 						else if(!cursor) {
-							if(glitchUI.isActive)
-								glitchUI.AddTeleport(objPos);
-							else if(objPos[0] > 0 && objPos[0] < LevelManager.Instance.mapSize.x && objPos[1] > 0 && objPos[1] < LevelManager.Instance.mapSize.y)
+                            if (glitchUI.isActive)
+                                glitchUI.AddTeleport(objPos);
+                            else if(objPos[0] > 0 && objPos[0] < LevelManager.Instance.mapSize.x && objPos[1] > 0 && objPos[1] < LevelManager.Instance.mapSize.y) ;
 								AddDeleteTile(objColRow, objPos, true);
 						}
 					}
 				}
 				GlobalInputs.ClearInputs();
-			}
+            }
 		}
 	}
 
@@ -165,7 +179,6 @@ public class LevelEditor : MonoBehaviour {
 
 		//Container for raycast results.
 		List<RaycastResult> results = new List<RaycastResult>();
-
 		//Detect all UI objects below the player's finger(s).
 		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
 		
@@ -173,10 +186,9 @@ public class LevelEditor : MonoBehaviour {
 	}
 
 
-	private void GetObjPosition(ref int[] tColRow, ref float[] tPos) {
-		Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		tColRow[0] = (int)mousePosition.x;
-		tColRow[1] = (int)mousePosition.y;
+	private void GetObjPosition(ref int[] tColRow, ref float[] tPos, Vector2 trans) {
+		tColRow[0] = (int)trans.x;
+		tColRow[1] = (int)trans.y;
 		tPos[0] = tColRow[0] + 0.5f;
 		tPos[1] = tColRow[1] + 0.5f;
 		tColRow[0] /= 10;

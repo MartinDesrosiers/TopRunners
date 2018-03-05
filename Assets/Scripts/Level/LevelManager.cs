@@ -14,6 +14,7 @@ public class LevelManager : Singleton<LevelManager> {
     public List<GameObject> monsterList;
     public List<GameObject> destructibleList;
     public List<GameObject> doorList;
+    public List<GameObject> collectableList;
     /*public List<GameObject> ghostObjects;
     public GameObject ghostPlayer;
     public GhostReplay ghostReplay;
@@ -54,6 +55,7 @@ public class LevelManager : Singleton<LevelManager> {
     private void Start()
     {
         checkPointFlag = Instantiate(Resources.Load("Flag", typeof(GameObject)) as GameObject);
+        checkPointFlag.transform.position = new Vector2(-10f, -10f);
     }
 
     public void InitializeLevel() {
@@ -86,21 +88,13 @@ public class LevelManager : Singleton<LevelManager> {
 
 	public void ReloadLevel()
     {
-        foreach (GameObject o in monsterList)
-        {
-            o.gameObject.SetActive(true);
-            o.transform.position = o.GetComponent<EnemyAI>().GetOrigin;
-            o.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-        foreach (GameObject o in doorList)
-        {
-            o.gameObject.SetActive(true);
-        }
-        foreach (GameObject o in destructibleList)
-        {
-            o.gameObject.SetActive(true);
-        }
+        isPaused = true;
+        SetActiveFunction(monsterList);
+        SetActiveFunction(doorList);
+        SetActiveFunction(destructibleList);
+        SetActiveFunction(collectableList);
         isReloading = true;
+        SetParallax();
         /*finalGhostObjects = ghostObjects;
         for (int i = 0; i < ghostObjects.Count; i++)
             Destroy(ghostObjects[i].gameObject);
@@ -117,6 +111,15 @@ public class LevelManager : Singleton<LevelManager> {
         SetEnemiesDynamique(RigidbodyType2D.Dynamic);
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
+        isPaused = false;
+    }
+    //set all GameObject from a List to true;
+    void SetActiveFunction(List<GameObject> list)
+    {
+        foreach (GameObject o in list)
+        {
+            o.gameObject.SetActive(true);
+        }
     }
     void CreateMapContainer()
     {
@@ -129,6 +132,14 @@ public class LevelManager : Singleton<LevelManager> {
 		isPaused = true;
 		player = null;
         levelData.objectList.Clear();
+        monsterList.Clear();
+        destructibleList.Clear();
+        doorList.Clear();
+        collectableList.Clear();
+        monsterList = null;
+        destructibleList = null;
+        collectableList = null;
+        doorList = null;
         levelData = null;
         serializedData.objectList.Clear();
 		serializedData = null;
@@ -138,7 +149,7 @@ public class LevelManager : Singleton<LevelManager> {
 
 	//Fill the serialized level data.
 	public bool LoadSerializedData() {
-		//If there's no level selected, change selected level to the template.
+        //If there's no level selected, change selected level to the template.
 		if(GameManager.Instance.currentLevel == "") {
 			//Debug.Log("No level selected, loading template level.");
 			GameManager.Instance.currentLevel = "Tutorial2.sld";
@@ -151,9 +162,9 @@ public class LevelManager : Singleton<LevelManager> {
 		}
 		else
 			Debug.Log("Loading selected level.");
-
-		//Load the data inside the specified .sld file.
-		if(!FileManager.LoadLevel(GameManager.Instance.currentLevel, out serializedData)) {
+        
+        //Load the data inside the specified .sld file.
+        if (!FileManager.LoadLevel(GameManager.Instance.currentLevel, out serializedData)) {
 			Debug.Log("Error loading level.");
 			serializedData = new SerializedLevelData();
 			return false;
@@ -180,6 +191,7 @@ public class LevelManager : Singleton<LevelManager> {
         monsterList = new List<GameObject>();
         doorList = new List<GameObject>();
         destructibleList = new List<GameObject>();
+        collectableList = new List<GameObject>();
         if (mapContainer == null)
             CreateMapContainer();
 
@@ -231,12 +243,21 @@ public class LevelManager : Singleton<LevelManager> {
                         doorList.Add(tPrefab.gameObject);
 
                     if (tPrefab.tag != "Untagged") {
-                        if (tPrefab.tag == "Enemies")
-                            monsterList.Add(tPrefab.gameObject);
-                        else if (tPrefab.tag == "Connectable")
-                            _tileConnector.SetSprite(ref tPrefab);
-                        else if (tPrefab.tag == "Destructible")
-                            destructibleList.Add(tPrefab.gameObject);
+                        switch (tPrefab.tag)
+                        {
+                            case "Enemies":
+                                monsterList.Add(tPrefab.gameObject);
+                                break;
+                            case "Connectable":
+                                _tileConnector.SetSprite(ref tPrefab);
+                                break;
+                            case "Destructible":
+                                destructibleList.Add(tPrefab.gameObject);
+                                break;
+                            case "Collectable":
+                                collectableList.Add(tPrefab.gameObject);
+                                break;
+                        }
                     }
 
 					//Instantiate the prefab with the serialized object's position and links it to the map container.
@@ -412,16 +433,24 @@ public class LevelManager : Singleton<LevelManager> {
 		GameObject tObj;
 		//Return the object's tile script ( which contains serialized information ) and the selected gameobject prefab.
 		Tile tTile = tileManager.GetTile(type, id, out tObj, new Vector3(tPos[0], tPos[1], 0.0f));
-        
-        if (tObj.tag == "Enemies")
-            monsterList.Add(tObj.gameObject);
-        if (tObj.gameObject.name.Contains("Door"))
-            doorList.Add(tObj.gameObject);
-        if (tObj.gameObject.name.Contains("Destructible"))
-            destructibleList.Add(tObj.gameObject);
 
-        //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
-        if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
+        if (tObj.tag != "Untagged")
+        {
+            switch (tObj.tag)
+            {
+                case "Enemies":
+                    monsterList.Add(tObj.gameObject);
+                    break;
+                case "Destructible":
+                    destructibleList.Add(tObj.gameObject);
+                    break;
+                case "Collectable":
+                    collectableList.Add(tObj.gameObject);
+                    break;
+            }
+        }
+            //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
+            if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
 			if(tObj.tag == "Connectable")
 				_tileConnector.SetSprite(ref tObj);
 
@@ -472,6 +501,12 @@ public class LevelManager : Singleton<LevelManager> {
                 {
                     if (destructibleList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
                         destructibleList.RemoveAt(i);
+                }
+            else if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Collectable")
+                for (int i = 0; i < collectableList.Count; i++)
+                {
+                    if (collectableList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
+                        collectableList.RemoveAt(i);
                 }
             //Destroy the gameobject.
             Destroy(levelData.objectList[tColRow[0]][tColRow[1]][index]);
