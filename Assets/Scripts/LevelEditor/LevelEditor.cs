@@ -97,12 +97,10 @@ public class LevelEditor : MonoBehaviour {
 
 			ushort tObjID = objId;
 			objId = tId;
-            AddDeleteTile(objColRow, objPos, true);
-            
-            objId = tObjID;
+			AddDeleteTile(objColRow, objPos, true);
+			objId = tObjID;
 		}
-        
-    }
+	}
 
 
 	private void Awake() {
@@ -213,9 +211,10 @@ public class LevelEditor : MonoBehaviour {
 	/// </param>
 	/// <param name="tPos">Position of the object to add / delete.</param>
 	/// <param name="isAdd">Is the player trying to add a block or delete one.</param>
-	public void AddDeleteTile(int[] tColRow, float[] tPos, bool isAdd) {
+	private void AddDeleteTile(int[] tColRow, float[] tPos, bool isAdd) {
 		Vector3 rotation = Vector3.zero;
-        for (int i = 0; i < LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
+
+		for(int i = 0; i < LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
 			if(LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.position == new Vector3(tPos[0], tPos[1], 0.0f)) {
 				if(isAdd) {
 					isAdd = false;
@@ -253,7 +252,8 @@ public class LevelEditor : MonoBehaviour {
 					LevelManager.Instance.DeleteObject(tColRow, i);
 			}
 		}
-        if (isAdd) {
+
+		if(isAdd) {
 			if(objType == 3 && objId == 9) {
 				SetCursor(true);
 				glitchUI.TeleportUI(tPos);
@@ -261,7 +261,7 @@ public class LevelEditor : MonoBehaviour {
 			else if(objType != 3 || objId != 7)
 				LevelManager.Instance.AddObject(tPos, tColRow, objType, objId);
 		}
-    }
+	}
 
 
 	private IEnumerator PassableEndFrame(float[] tPos, int[] tColRow, ushort fakeType, ushort fakeId) {
