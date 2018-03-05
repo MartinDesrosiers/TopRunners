@@ -14,8 +14,10 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 	public Image tempImg;
 
 	private LevelEditorUI _editorUI;
+    private LevelEditor levelEditor;
 	private ScrollRect _scrollRect;
 	private Toggle _currentToggle;
+    GameObject content;
 	//System event starting position.
 	private Vector2 _startPos;
 	//Is the player dragging an object.
@@ -23,26 +25,24 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 
 
 	public void OnBeginDrag(PointerEventData data) {
-		//Detect and save the toggle below the initial finger position.
-		if(data.pointerPressRaycast.gameObject.name == "Image")
+        //Detect and save the toggle below the initial finger position.
+        if (data.pointerPressRaycast.gameObject.name == "Image")
 			_currentToggle = data.pointerPressRaycast.gameObject.transform.parent.GetComponent<Toggle>();
 		else if(data.pointerPressRaycast.gameObject.name == "Highlight")
 			_currentToggle = data.pointerPressRaycast.gameObject.transform.parent.transform.parent.GetComponent<Toggle>();
-
 		//Lock the level editor to prevent objects being added when the player is dragging the menu.
 		_editorUI.levelEditor.isLocked = true;
 		//Lock the menu's scrolling.
 		_scrollRect.horizontal = false;
-
 		//Set the starting position of the finger drag.
 		_startPos = data.position;
-	}
-
-	
+        tempImg.sprite = GetTempImage();
+    }
+    	
 	public void OnDrag(PointerEventData data) {
 		_editorUI.UpdateObjType();
-		//Calculate the distance between the current finger position and the starting position of the drag event.
-		float distance = Vector2.Distance(_startPos, data.position);
+        //Calculate the distance between the current finger position and the starting position of the drag event.
+        float distance = Vector2.Distance(_startPos, data.position);
 
 		//Unlock the scrollview if the distance is big enough.
 		if(distance > 40f) {
@@ -66,8 +66,7 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 			}
 		}
 	}
-
-	
+    
 	public void OnEndDrag(PointerEventData data) {
 		//Unlock the level editor.
 		_editorUI.levelEditor.isLocked = false;
@@ -79,21 +78,35 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 			//Get the toggle's id by parsing its name ( the toggles are named in a increasing numerical order ).
 			ushort tId;
 			ushort.TryParse(_currentToggle.gameObject.name, out tId);
+            Debug.Log(tId + " : tId");
 			_editorUI.levelEditor.DragObject(tId);
 		}
 		//If the player never dragged far enough to unlock the scrollview.
-		else if(!_scrollRect.horizontal) {
-			//Manually call the toggle's OnClick event.
-			_currentToggle.OnPointerClick(data);
+		else if(!_scrollRect.horizontal)
+        {
+            Debug.Log(" : tId false");
+            //Manually call the toggle's OnClick event.
+            _currentToggle.OnPointerClick(data);
 			//Unlock the scrollview.
 			_scrollRect.horizontal = true;
 		}
 	}
+    
+    Sprite GetTempImage()
+    {
+        int i;
+        if (int.TryParse(_currentToggle.gameObject.name, out i))
+        {
+            return content.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite;
+        }
+        return content.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite;
+    }
 
-
-	private void Start() {
+    private void Start() {
 		_editorUI = transform.parent.transform.parent.GetComponent<LevelEditorUI>();
-		_scrollRect = gameObject.GetComponent<ScrollRect>();
-		_scrollRect.horizontal = false;
+        levelEditor = transform.parent.transform.parent.GetComponent<LevelEditor>();
+        _scrollRect = gameObject.GetComponent<ScrollRect>();
+        content = GameObject.Find("Content");
+        _scrollRect.horizontal = false;
 	}
 }

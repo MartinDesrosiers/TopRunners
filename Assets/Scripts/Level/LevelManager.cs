@@ -453,9 +453,9 @@ public class LevelManager : Singleton<LevelManager> {
             if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
 			if(tObj.tag == "Connectable")
 				_tileConnector.SetSprite(ref tObj);
-
-			//Update the tile script with the object's type, id and position ( used when loading the level ).
-			tTile.type = type;
+            
+            //Update the tile script with the object's type, id and position ( used when loading the level ).
+            tTile.type = type;
 			tTile.id = id;
 			tTile.SetPosition(new Vector2(tPos[0], tPos[1]));
 			//Add the tile to the serialized level data list.
