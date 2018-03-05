@@ -85,7 +85,6 @@ public class LevelEditorUI : MonoBehaviour {
 	public void SetTheme(int themeNumber) {
 		LevelManager.Instance.theme = themeNumber;
 		LevelManager.Instance.serializedData.theme = themeNumber;
-        Debug.Log("SetTheme");
 		LevelManager.Instance.ReloadLevel();
 	}
 
