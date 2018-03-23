@@ -79,7 +79,7 @@ public class LevelEditor : MonoBehaviour {
 	}
 
 
-	public void DragObject(ushort tId) {
+	public void DragObject() {
 		//If cursor isn't over UI;
 		bool tPointerOverUI;
 #if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
@@ -94,11 +94,7 @@ public class LevelEditor : MonoBehaviour {
 			float[] objPos = new float[2];  //0 = x, 1 = y
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             GetObjPosition(ref objColRow, ref objPos, mousePosition);
-
-			ushort tObjID = objId;
-			objId = tId;
-			AddDeleteTile(objColRow, objPos, true);
-			objId = tObjID;
+            AddDeleteTile(objColRow, objPos, true);
 		}
 	}
 
@@ -125,21 +121,20 @@ public class LevelEditor : MonoBehaviour {
 
 #if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
 				tPointerOverUI = EventSystem.current.IsPointerOverGameObject();
-                 if (Input.GetMouseButtonDown(0))
-                 {
+                if (Input.GetMouseButtonDown(0))
+                {
                     //Check if touch an object no matter where you press on it;
-                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                     RaycastHit2D[] hit = Physics2D.GetRayIntersectionAll(ray, 10f);
-                     foreach (RaycastHit2D o in hit)
-                     {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit2D[] hit = Physics2D.GetRayIntersectionAll(ray, 10f);
+                    foreach (RaycastHit2D o in hit)
+                    {
                         transObj = o.transform;
                         break;
-                     }
-                 }
+                    }
+                }            
 #else
 				tPointerOverUI = IsPointerOverUIObject();
 #endif
-
                 if (!tPointerOverUI) {
                     int[] objColRow = new int[2];   //0 = column, 1 = row
 					float[] objPos = new float[2];  //0 = x, 1 = y
@@ -159,7 +154,7 @@ public class LevelEditor : MonoBehaviour {
 						else if(!cursor) {
                             if (glitchUI.isActive)
                                 glitchUI.AddTeleport(objPos);
-                            else if(objPos[0] > 0 && objPos[0] < LevelManager.Instance.mapSize.x && objPos[1] > 0 && objPos[1] < LevelManager.Instance.mapSize.y) ;
+                            else if(objPos[0] > 0 && objPos[0] < LevelManager.Instance.mapSize.x && objPos[1] > 0 && objPos[1] < LevelManager.Instance.mapSize.y)
 								AddDeleteTile(objColRow, objPos, true);
 						}
 					}
@@ -213,16 +208,14 @@ public class LevelEditor : MonoBehaviour {
 	/// <param name="isAdd">Is the player trying to add a block or delete one.</param>
 	private void AddDeleteTile(int[] tColRow, float[] tPos, bool isAdd) {
 		Vector3 rotation = Vector3.zero;
-
-		for(int i = 0; i < LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
+        for (int i = 0; i < LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
 			if(LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.position == new Vector3(tPos[0], tPos[1], 0.0f)) {
 				if(isAdd) {
 					isAdd = false;
 					if(objType == 3 && objId == 7) {
 						Tile tTile = LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i];
-
 						if(tTile.type != 3 && tTile.type != 0) {
-							LevelManager.Instance.DeleteObject(tColRow, i);
+                            LevelManager.Instance.DeleteObject(tColRow, i);
 							StartCoroutine(PassableEndFrame(tPos, tColRow, tTile.type, tTile.id));
 						}
 					}
@@ -252,14 +245,16 @@ public class LevelEditor : MonoBehaviour {
 					LevelManager.Instance.DeleteObject(tColRow, i);
 			}
 		}
-
-		if(isAdd) {
-			if(objType == 3 && objId == 9) {
-				SetCursor(true);
-				glitchUI.TeleportUI(tPos);
-			}
-			else if(objType != 3 || objId != 7)
-				LevelManager.Instance.AddObject(tPos, tColRow, objType, objId);
+        if (isAdd) {
+            if (objType == 3 && objId == 9)
+            {
+                SetCursor(true);
+                glitchUI.TeleportUI(tPos);
+            }
+            else if (objType != 3 || objId != 7)
+            {
+                LevelManager.Instance.AddObject(tPos, tColRow, objType, objId);
+            }
 		}
 	}
 

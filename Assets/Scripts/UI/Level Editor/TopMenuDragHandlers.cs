@@ -12,8 +12,9 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 
 	//Image used as a visual aid when dragging an object from the toggle menu down into the gameview.
 	public Image tempImg;
-
-	private LevelEditorUI _editorUI;
+    private GameObject content;
+    private LevelEditorUI _editorUI;
+    private LevelEditor levelEditor;
 	private ScrollRect _scrollRect;
 	private Toggle _currentToggle;
 	//System event starting position.
@@ -36,13 +37,18 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 
 		//Set the starting position of the finger drag.
 		_startPos = data.position;
-	}
+        tempImg.sprite = GetTempImage();
+        _editorUI.UpdateObjType();
+        int i;
+        int.TryParse(_currentToggle.gameObject.name, out i);
+        _editorUI.ChangeObjId(i);
+    }
 
 	
 	public void OnDrag(PointerEventData data) {
-		_editorUI.UpdateObjType();
-		//Calculate the distance between the current finger position and the starting position of the drag event.
-		float distance = Vector2.Distance(_startPos, data.position);
+
+        //Calculate the distance between the current finger position and the starting position of the drag event.
+        float distance = Vector2.Distance(_startPos, data.position);
 
 		//Unlock the scrollview if the distance is big enough.
 		if(distance > 40f) {
@@ -79,7 +85,8 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 			//Get the toggle's id by parsing its name ( the toggles are named in a increasing numerical order ).
 			ushort tId;
 			ushort.TryParse(_currentToggle.gameObject.name, out tId);
-			_editorUI.levelEditor.DragObject(tId);
+            _editorUI.ChangeObjId(tId);
+            _editorUI.levelEditor.DragObject();
 		}
 		//If the player never dragged far enough to unlock the scrollview.
 		else if(!_scrollRect.horizontal) {
@@ -90,10 +97,21 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 		}
 	}
 
+    Sprite GetTempImage()
+    {
+        int i;
+        if (int.TryParse(_currentToggle.gameObject.name, out i))
+        {
+            return content.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite;
+        }
+        return content.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite;
+    }
 
-	private void Start() {
+    private void Start() {
 		_editorUI = transform.parent.transform.parent.GetComponent<LevelEditorUI>();
-		_scrollRect = gameObject.GetComponent<ScrollRect>();
+        levelEditor = _editorUI.GetLevelEditor;
+        _scrollRect = gameObject.GetComponent<ScrollRect>();
 		_scrollRect.horizontal = false;
-	}
+        content = GameObject.Find("Content");
+    }
 }

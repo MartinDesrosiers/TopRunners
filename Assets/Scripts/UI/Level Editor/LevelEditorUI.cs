@@ -73,6 +73,7 @@ public class LevelEditorUI : MonoBehaviour {
     public GameObject themeOptionsCanvas;
 	public int currentObjType;
     bool cr_Running;
+    public LevelEditor GetLevelEditor { get { return levelEditor; } }
 
 	private void Start() {
         //Safety update to make sure items show up on the top menu.
@@ -85,7 +86,6 @@ public class LevelEditorUI : MonoBehaviour {
 	public void SetTheme(int themeNumber) {
 		LevelManager.Instance.theme = themeNumber;
 		LevelManager.Instance.serializedData.theme = themeNumber;
-        Debug.Log("SetTheme");
 		LevelManager.Instance.ReloadLevel();
 	}
 
@@ -145,7 +145,6 @@ public class LevelEditorUI : MonoBehaviour {
 	//Changes the chosen object.
 	public void ChangeObjId(int tId) {
         string newName = "";
-
         switch (currentObjType) {
             case 0:
                 levelEditor.objId = customEnemiesOrder[tId];
