@@ -150,11 +150,12 @@ public class LevelManager : Singleton<LevelManager> {
 	//Fill the serialized level data.
 	public bool LoadSerializedData() {
         //If there's no level selected, change selected level to the template.
-		if(GameManager.Instance.currentLevel == "") {
-			//Debug.Log("No level selected, loading template level.");
-			GameManager.Instance.currentLevel = "Tutorial2.sld";
+		if(GameManager.Instance.currentLevel == "" || GameManager.Instance.currentLevel == "Template.sld") {
+			Debug.Log("No level selected, loading template level.");
+			GameManager.Instance.currentLevel = "Template.sld";
 
-			string filePath = Path.Combine(Application.streamingAssetsPath, "Tutorial2.sld");
+			//Checks if we're on android.
+			string filePath = Path.Combine(Application.streamingAssetsPath, "Template.sld");
 			if(filePath.Contains("://")) {
 				StartCoroutine(LoadAndroidFile(filePath));
 				return true;

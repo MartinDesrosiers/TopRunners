@@ -109,13 +109,10 @@ public class LevelEditorUI : MonoBehaviour {
 	//Turns all the objects in LevelData to serializable objects ( SerializedData ) and save the level using the FileManager script.
 	//Called when using the save button in the home menu.
 	public void SaveLevel() {
-		if(GameManager.Instance.currentLevel == "")
+		if(GameManager.Instance.currentLevel == "Template.sld")
 			GameManager.Instance.currentLevel = levelName.text + ".sld";
 
 		LevelManager.Instance.SerializeLevel();
-
-		//if(GameManager.Instance.currentLevel == "Template.sld")
-		//	GameManager.Instance.currentLevel = ((int)DateTime.Now.Ticks).ToString() + ".sld";
 
 		FileManager.SaveLevel(GameManager.Instance.currentLevel, LevelManager.Instance.serializedData);
 	}
