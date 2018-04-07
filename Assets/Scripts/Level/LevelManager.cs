@@ -59,9 +59,6 @@ public class LevelManager : Singleton<LevelManager> {
     }
 
     public void InitializeLevel() {
-        //Security clean up.
-        Destroy(mapContainer);
-        CreateMapContainer();
         isPaused = true;
         player = GameObject.Find("PlayerTest");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
@@ -86,9 +83,9 @@ public class LevelManager : Singleton<LevelManager> {
     }*/
 
 
-	public void ReloadLevel()
-    {
+	public void ReloadLevel() {
         isPaused = true;
+		DeserializeLevelData();
         SetActiveFunction(monsterList);
         SetActiveFunction(doorList);
         SetActiveFunction(destructibleList);
@@ -113,18 +110,16 @@ public class LevelManager : Singleton<LevelManager> {
         System.GC.WaitForPendingFinalizers();
         isPaused = false;
     }
-    //set all GameObject from a List to true;
-    void SetActiveFunction(List<GameObject> list)
-    {
+
+	//set all GameObject from a List to true;
+	private void SetActiveFunction(List<GameObject> list) {
         foreach (GameObject o in list)
-        {
             o.gameObject.SetActive(true);
-        }
     }
-    void CreateMapContainer()
-    {
-        mapContainer = new GameObject();
-        mapContainer.name = "Map Container";
+
+    private void CreateMapContainer() {
+		Destroy(mapContainer);
+		mapContainer = new GameObject() { name = "Map Container " + Time.time.ToString() };
     }
 
 	//Reset all the level variables.
@@ -170,6 +165,7 @@ public class LevelManager : Singleton<LevelManager> {
 			serializedData = new SerializedLevelData();
 			return false;
 		}
+
 		DeserializeLevelData();
 
         return true;
@@ -188,13 +184,13 @@ public class LevelManager : Singleton<LevelManager> {
 
 	//Transform the serialized level data list into playable gameobjects ( fills the level data list ).
 	public void DeserializeLevelData() {
-        //Create a new GameObject to contain the level objects.
+		//Create a new GameObject to contain the level objects.
+		levelData = new LevelData();
         monsterList = new List<GameObject>();
         doorList = new List<GameObject>();
         destructibleList = new List<GameObject>();
         collectableList = new List<GameObject>();
-        if (mapContainer == null)
-            CreateMapContainer();
+        CreateMapContainer();
 
         GameObject tPrefab;
 
@@ -207,6 +203,7 @@ public class LevelManager : Singleton<LevelManager> {
 			levelData.colorScheme[i][0] = serializedData.colorScheme[i][0].GetColor();
 			levelData.colorScheme[i][1] = serializedData.colorScheme[i][1].GetColor();
 		}
+
         //Fill the object list.
 		for(int i = 0; i < serializedData.objectList.Count; i++) {
 			for(int j = 0; j < serializedData.objectList[i].Count; j++) {
@@ -263,12 +260,16 @@ public class LevelManager : Singleton<LevelManager> {
 
 					//Instantiate the prefab with the serialized object's position and links it to the map container.
 					levelData.objectList[i][j].Add(tPrefab);
-                    levelData.objectList[i][j][k].transform.parent = mapContainer.transform;
-                    _tileConnector.RefreshZone(tPrefab.transform.position);
+                    levelData.objectList[i][j][k].transform.SetParent(mapContainer.transform);
 				}
 			}
         }
-    }
+
+		for(int i = 0; i < serializedData.objectList.Count; i++)
+			for(int j = 0; j < serializedData.objectList[i].Count; j++)
+				for(int k = 0; k < serializedData.objectList[i][j].Count; k++)
+					_tileConnector.RefreshZone(levelData.objectList[i][j][k].transform.position);
+	}
 
 
 	//Fill the serialize level data list with the level data list's information.
@@ -276,15 +277,11 @@ public class LevelManager : Singleton<LevelManager> {
 		serializedData.theme = theme;
 		serializedData.scrollerSpeed = Camera.main.GetComponent<CameraController>().scrollerSpeed;
 
-		for(int i = 0; i < serializedData.objectList.Count; i++) {
-			for(int j = 0; j < serializedData.objectList[i].Count; j++) {
-				for(int k = 0; k < serializedData.objectList[i][j].Count; k++) {
-					if(serializedData.objectList[i][j][k].isExtended) {
+		for(int i = 0; i < serializedData.objectList.Count; i++)
+			for(int j = 0; j < serializedData.objectList[i].Count; j++)
+				for(int k = 0; k < serializedData.objectList[i][j].Count; k++)
+					if(serializedData.objectList[i][j][k].isExtended)
 						serializedData.objectList[i][j][k].Serialize(levelData.objectList[i][j][k]);
-					}
-				}
-			}
-		}
 	}
 
 	public void SaveLevelToDb (string p_levelName, int p_uid, SerializedLevelData p_serializedData, System.Action<LevelInfo> levelInfo) {

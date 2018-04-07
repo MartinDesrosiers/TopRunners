@@ -674,16 +674,15 @@ public class PlayerController : CharacterMotor
 		StartCoroutine(Die());
     }
 
-    public void Restart()
-    {
+    public void Restart() {
         RuntimeUI.GetStartTimer = false;
         //LevelManager.Instance.isGhostReplayActive = true;
         //Stop all glitch coroutines and clear the coroutine list.
-        for (int i = 0; i < glitches.Count; i++)
-        {
+        for (int i = 0; i < glitches.Count; i++) {
             if (glitches[i] != null)
                 StopCoroutine(glitches[i]);
         }
+
         glitches.Clear();
         _health = 3;
         _key = 0;
@@ -691,7 +690,6 @@ public class PlayerController : CharacterMotor
         playerUI.ShowKeys(_key);
         playerUI.CheckHealth(_health);
         transform.position = LevelManager.Instance.spawnPoint;
-        LevelManager.Instance.ReloadLevel();
         ReInitialize(GameManager.Instance.myList);
         RuntimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
         LevelManager.Instance.finishLoading = true;
