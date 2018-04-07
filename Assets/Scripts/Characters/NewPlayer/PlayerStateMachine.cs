@@ -8,6 +8,7 @@ public class PlayerStateMachine : StateMachine {
 	private NewPlayerController _controller;
 	private NewPlayerInputs _inputs;
 	private bool IsDirectionLocked { get { return lastState.CompareTo(PlayerStates.Walled) == 0 && Time.time - timeEnteredState < _controller.wallJumpDelay; } }
+	private bool _wasWalled = false;
 
 	private void Start() {
 		_controller = GetComponent<NewPlayerController>();
@@ -166,6 +167,10 @@ public class PlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Walled;
 			return;
 		}
+		else if(_inputs.Slide) {
+			CurrentState = PlayerStates.Slide;
+			return;
+		}
 
 		if(_controller.Velocity.y <= 0)
 			CurrentState = PlayerStates.Fall;
@@ -196,6 +201,10 @@ public class PlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Walled;
 			return;
 		}
+		else if(_inputs.Slide) {
+			CurrentState = PlayerStates.Slide;
+			return;
+		}
 
 		_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.runningSpeed : _controller.walkingSpeed), _controller.Velocity.y));
 	}
@@ -210,7 +219,21 @@ public class PlayerStateMachine : StateMachine {
 	}
 
 	private void Slide_CustomUpdate() {
-		if(Time.time - timeEnteredState > _controller.slideDelay)
+		//if(_controller.GetWall()) {
+		//	if(_wasWalled) {
+		//		CurrentState = PlayerStates.Walled;
+		//		_wasWalled = false;
+		//		return;
+		//	}
+		//	else
+		//		_wasWalled = true;
+		//}
+		//else
+		//	_wasWalled = false;
+
+		RaycastHit2D hit;
+		hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), Vector2.up, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
+		if(Time.time - timeEnteredState > _controller.slideDelay && hit.collider == null)
 			ExitCurrentState();
 
 		_controller.Move(new Vector2(_controller.Direction * _controller.runningSpeed, _controller.Velocity.y));
