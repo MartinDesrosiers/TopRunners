@@ -120,6 +120,11 @@ public static class EnemyList {
 		}
 	}
 
+	public static void SetBodyType(RigidbodyType2D bodyType) {
+		foreach(EnemyRadius enemy in enemyList)
+			enemy.transform.parent.parent.GetComponent<Rigidbody2D>().bodyType = bodyType;
+	}
+
 	//Returns the distance between an enemy and the hero.
 	private static float GetDistanceFromEnemy(EnemyRadius enemy, Vector2 heroPosition) {
 		return new Vector2(enemy.transform.position.x - heroPosition.x, enemy.transform.position.y - heroPosition.y).magnitude;

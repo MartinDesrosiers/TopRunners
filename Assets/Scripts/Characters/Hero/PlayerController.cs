@@ -183,7 +183,7 @@ public class PlayerController : CharacterMotor
     private void Update()
     {
         //TODO capter les controls dans l'update et appliquer leurs behaviors dans le fixed update
-        if (!LevelManager.Instance.isPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
+        if (!LevelManager.Instance.IsPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
         {
             EnemyList.UpdateAreaAlpha(transform.position);
             axisXY = inputScript.PlayerInput(true);
@@ -298,7 +298,7 @@ public class PlayerController : CharacterMotor
     }
 
     private void FixedUpdate() {
-        if(!LevelManager.Instance.isPaused) {
+        if(!LevelManager.Instance.IsPaused) {
             //Debug.Log(animator.GetCurrentAnimatorClipInfo(animator.GetLayerIndex("Base Layer")).Length);
             animator.speed = _speed;
             animator.SetFloat("VelY", rg.velocity.y);

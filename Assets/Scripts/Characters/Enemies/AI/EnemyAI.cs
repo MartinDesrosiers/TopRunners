@@ -142,7 +142,7 @@ public class EnemyAI : CharacterMotor
 
 	private void FixedUpdate() {
         //Movement(horiAxes, movementSpeed);
-        if (!LevelManager.Instance.isPaused && !LevelManager.Instance.isReloading) {
+        if (!LevelManager.Instance.IsPaused && !LevelManager.Instance.isReloading) {
 			if(!isInit) {
 				if(enemiesRender.isVisible) {
 					Vector3 scale = transform.localScale;

@@ -59,7 +59,7 @@ public class IsWalled : Destructible
     }
 
     private void Update(){
-        if (!LevelManager.Instance.isPaused && others.Count > 0)
+        if (!LevelManager.Instance.IsPaused && others.Count > 0)
         {
             for (int i = 0; i < others.Count; i++)
             {

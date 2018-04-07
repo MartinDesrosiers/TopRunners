@@ -9,12 +9,16 @@ public class LevelManager : Singleton<LevelManager> {
 	//Needed to prevent non singleton constructor calls.
 	protected LevelManager() { }
 
-    public bool isPaused;
+    private bool _isPaused;
+	public bool IsPaused {
+		get { return _isPaused; }
+		set {
+			_isPaused = value;
+			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+		}
+	}
     //bool hasBeenInit = false;
-    public List<GameObject> monsterList;
-    public List<GameObject> destructibleList;
     public List<GameObject> doorList;
-    public List<GameObject> collectableList;
     /*public List<GameObject> ghostObjects;
     public GameObject ghostPlayer;
     public GhostReplay ghostReplay;
@@ -59,7 +63,7 @@ public class LevelManager : Singleton<LevelManager> {
     }
 
     public void InitializeLevel() {
-        isPaused = true;
+		IsPaused = true;
         player = GameObject.Find("PlayerTest");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
 		_tileConnector = GameObject.Find("TileConnector").GetComponent<TileConnector>();
@@ -84,12 +88,9 @@ public class LevelManager : Singleton<LevelManager> {
 
 
 	public void ReloadLevel() {
-        isPaused = true;
+		IsPaused = true;
 		DeserializeLevelData();
-        SetActiveFunction(monsterList);
         SetActiveFunction(doorList);
-        SetActiveFunction(destructibleList);
-        SetActiveFunction(collectableList);
         isReloading = true;
         SetParallax();
         /*finalGhostObjects = ghostObjects;
@@ -105,10 +106,9 @@ public class LevelManager : Singleton<LevelManager> {
                 //player.GetComponent<PlayerController>().inputScript.Reset();
             }
         }*/
-        SetEnemiesDynamique(RigidbodyType2D.Dynamic);
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
-        isPaused = false;
+		IsPaused = false;
     }
 
 	//set all GameObject from a List to true;
@@ -124,16 +124,10 @@ public class LevelManager : Singleton<LevelManager> {
 
 	//Reset all the level variables.
 	public void ClearLevel() {
-		isPaused = true;
+		IsPaused = true;
 		player = null;
         levelData.objectList.Clear();
-        monsterList.Clear();
-        destructibleList.Clear();
         doorList.Clear();
-        collectableList.Clear();
-        monsterList = null;
-        destructibleList = null;
-        collectableList = null;
         doorList = null;
         levelData = null;
         serializedData.objectList.Clear();
@@ -186,10 +180,7 @@ public class LevelManager : Singleton<LevelManager> {
 	public void DeserializeLevelData() {
 		//Create a new GameObject to contain the level objects.
 		levelData = new LevelData();
-        monsterList = new List<GameObject>();
         doorList = new List<GameObject>();
-        destructibleList = new List<GameObject>();
-        collectableList = new List<GameObject>();
         CreateMapContainer();
 
         GameObject tPrefab;
@@ -241,19 +232,9 @@ public class LevelManager : Singleton<LevelManager> {
                         doorList.Add(tPrefab.gameObject);
 
                     if (tPrefab.tag != "Untagged") {
-                        switch (tPrefab.tag)
-                        {
-                            case "Enemies":
-                                monsterList.Add(tPrefab.gameObject);
-                                break;
+                        switch (tPrefab.tag) {
                             case "Connectable":
                                 _tileConnector.SetSprite(ref tPrefab);
-                                break;
-                            case "Destructible":
-                                destructibleList.Add(tPrefab.gameObject);
-                                break;
-                            case "Collectable":
-                                collectableList.Add(tPrefab.gameObject);
                                 break;
                         }
                     }
@@ -431,22 +412,6 @@ public class LevelManager : Singleton<LevelManager> {
 		GameObject tObj;
 		//Return the object's tile script ( which contains serialized information ) and the selected gameobject prefab.
 		Tile tTile = tileManager.GetTile(type, id, out tObj, new Vector3(tPos[0], tPos[1], 0.0f));
-
-        if (tObj.tag != "Untagged")
-        {
-            switch (tObj.tag)
-            {
-                case "Enemies":
-                    monsterList.Add(tObj.gameObject);
-                    break;
-                case "Destructible":
-                    destructibleList.Add(tObj.gameObject);
-                    break;
-                case "Collectable":
-                    collectableList.Add(tObj.gameObject);
-                    break;
-            }
-        }
             //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
             if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
 			if(tObj.tag == "Connectable")
@@ -481,31 +446,12 @@ public class LevelManager : Singleton<LevelManager> {
 
 			//Update the unique objects list.
 			_uniqueObjects.CheckUniqueObject(tColRow, levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject, UniqueObjects.Mode.Delete, newCheckPointSet);
-            //remove form the monster List
-            if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Enemies")
-                for (int i = 0; i < monsterList.Count; i++)
-                {
-                    if (monsterList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
-                        monsterList.RemoveAt(i);
-                }
-            else if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Door")
-                for (int i = 0; i < doorList.Count; i++)
-                {
-                    if (doorList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
-                        doorList.RemoveAt(i);
-                }
-            else if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Destructible")
-                for (int i = 0; i < destructibleList.Count; i++)
-                {
-                    if (destructibleList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
-                        destructibleList.RemoveAt(i);
-                }
-            else if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Collectable")
-                for (int i = 0; i < collectableList.Count; i++)
-                {
-                    if (collectableList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
-                        collectableList.RemoveAt(i);
-                }
+            if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Door") {
+				for(int i = 0; i < doorList.Count; i++) {
+					if(doorList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
+						doorList.RemoveAt(i);
+				}
+			}
             //Destroy the gameobject.
             Destroy(levelData.objectList[tColRow[0]][tColRow[1]][index]);
 			//Remove the object from the level data list.
@@ -578,14 +524,6 @@ public class LevelManager : Singleton<LevelManager> {
 		tObj.transform.parent = mapContainer.transform;
 		levelData.objectList[tColRow[0]][tColRow[1]].Add(tObj);
 	}
-
-    public void SetEnemiesDynamique(RigidbodyType2D bodyType)
-    {
-        for (int i = 0; i < monsterList.Count; i++)
-        {
-            monsterList[i].transform.GetComponent<Rigidbody2D>().bodyType = bodyType;
-        }
-    }
 
     public void CheckPoint()
     {
