@@ -89,6 +89,7 @@ public class LevelManager : Singleton<LevelManager> {
 
 	public void ReloadLevel() {
 		IsPaused = true;
+		EnemyList.Clear();
 		DeserializeLevelData();
         SetActiveFunction(doorList);
         isReloading = true;
