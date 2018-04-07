@@ -12,8 +12,10 @@ public class NewPlayerController : NewPlayerMotor {
 	public float walkingSpeed, runningSpeed, wallJumpDelay, slideDelay;
 
 	private GameObject _colliders;
-	private EdgeCollider2D _edgeCollider;
-	private Vector2[] _normalCollidersPoints, _jumpingCollidersPoints;
+	private GameObject _rollColliders;
+	private EdgeCollider2D _mainEdgeCollider;
+	private EdgeCollider2D _wallEdgeCollider;
+	private Vector2[] _normalCollidersPoints, _jumpingCollidersPoints, _standingCollider, _slidingCollider;
 	private ushort _health, _strength, _range, _key;
 	private float _jumpForce, _jumpBoost;
 	private bool _isInvincible;
@@ -23,19 +25,22 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	protected override void CustomStart() {
-		_edgeCollider = transform.GetChild(0).GetChild(0).GetComponent<EdgeCollider2D>();
+		_colliders = transform.GetChild(0).GetChild(0).gameObject;
+		_rollColliders = transform.GetChild(0).GetChild(1).gameObject;
+		_mainEdgeCollider = transform.GetChild(0).GetChild(0).GetComponent<EdgeCollider2D>();
+		_wallEdgeCollider = transform.GetChild(0).GetChild(2).GetComponent<EdgeCollider2D>();
 		_normalCollidersPoints = new Vector2[4];
 		_jumpingCollidersPoints = new Vector2[4];
 
-		for(int i = 0; i < _edgeCollider.pointCount; i++) {
-			_normalCollidersPoints[i] = _edgeCollider.points[i];
+		for(int i = 0; i < _mainEdgeCollider.pointCount; i++) {
+			_normalCollidersPoints[i] = _mainEdgeCollider.points[i];
 			_jumpingCollidersPoints[i] = _normalCollidersPoints[i];
 		}
-
+		
 		_jumpingCollidersPoints[1] = new Vector2(0.3f, -0.45f);
 		_jumpingCollidersPoints[2] = new Vector2(-0.55f, -0.98f);
-
-		_colliders = transform.GetChild(0).gameObject;
+		_standingCollider = new Vector2[] { new Vector2(.33f, .7f), new Vector2(.33f, -1f) };
+		_slidingCollider = new Vector2[] { new Vector2(.45f, -.6f), new Vector2(.45f, -1f) };
 
 		base.CustomStart();
 	}
@@ -69,6 +74,16 @@ public class NewPlayerController : NewPlayerMotor {
 		LevelManager.Instance.finishLoading = true;
 
 		SetToDefault();
+	}
+
+	public void ToggleJumpingColliders(bool enable) {
+		_mainEdgeCollider.points = enable ? _jumpingCollidersPoints : _normalCollidersPoints;
+	}
+
+	public void ToggleSlidingColliders(bool enable) {
+		_wallEdgeCollider.points = enable ? _slidingCollider : _standingCollider;
+		_rollColliders.SetActive(enable);
+		_colliders.SetActive(!enable);
 	}
 
 	public void ResetDash() {

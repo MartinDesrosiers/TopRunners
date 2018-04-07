@@ -149,6 +149,8 @@ public class PlayerStateMachine : StateMachine {
 	//Player character is jumping ( only while going upwards before reaching the jump's peak height ).
 	#region Jump
 	private void Jump_EnterState() {
+		_controller.ToggleJumpingColliders(true);
+
 		float movementSpeed = _controller.Velocity.x;
 		if(lastState.CompareTo(PlayerStates.Walled) == 0) {
 			_controller.FlipHorizontal();
@@ -172,6 +174,10 @@ public class PlayerStateMachine : StateMachine {
 			_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.runningSpeed : _controller.walkingSpeed), _controller.Velocity.y));
 		else
 			_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.runningSpeed : _controller.walkingSpeed), _controller.Velocity.y));
+	}
+
+	private void Jump_ExitState() {
+		_controller.ToggleJumpingColliders(false);
 	}
 	#endregion
 
@@ -198,6 +204,8 @@ public class PlayerStateMachine : StateMachine {
 	//Player character is sliding.
 	#region Slide
 	private void Slide_EnterState() {
+		_controller.ToggleSlidingColliders(true);
+
 		_controller.animator.Play("slide");
 	}
 
@@ -206,6 +214,10 @@ public class PlayerStateMachine : StateMachine {
 			ExitCurrentState();
 
 		_controller.Move(new Vector2(_controller.Direction * _controller.runningSpeed, _controller.Velocity.y));
+	}
+
+	private void Slide_ExitState() {
+		_controller.ToggleSlidingColliders(false);
 	}
 	#endregion
 
