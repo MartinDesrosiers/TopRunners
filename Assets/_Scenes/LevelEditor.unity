@@ -1771,10 +1771,10 @@ RectTransform:
   m_Father: {fileID: 1009801883}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.19500001, y: 0}
-  m_AnchorMax: {x: 0.8605352, y: 1}
-  m_AnchoredPosition: {x: 2.9799805, y: 62}
-  m_SizeDelta: {x: -106.17998, y: 62}
+  m_AnchorMin: {x: 0.19500001, y: 0.2875}
+  m_AnchorMax: {x: 0.80700004, y: 0.64750004}
+  m_AnchoredPosition: {x: 2.9799805, y: 92.2}
+  m_SizeDelta: {x: 0.8, y: 92.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &149078019
 MonoBehaviour:
@@ -7812,12 +7812,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1590922886}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ToggleUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1590922886}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11637,12 +11637,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1590922886}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ToggleUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1590922886}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15786,6 +15786,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ExitEditor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 860324053}
         m_MethodName: LoadScene
         m_Mode: 3
@@ -19976,6 +19987,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ExitEditor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 860324053}
         m_MethodName: LoadScene
         m_Mode: 3

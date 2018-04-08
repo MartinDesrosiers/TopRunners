@@ -83,6 +83,10 @@ public class LevelEditorUI : MonoBehaviour {
         UpdateIDRow();
     }
 
+	public void ExitEditor() {
+		LevelManager.Instance.ClearLevel();
+	}
+
 	public void SetTheme(int themeNumber) {
 		LevelManager.Instance.theme = themeNumber;
 		LevelManager.Instance.serializedData.theme = themeNumber;
@@ -314,11 +318,11 @@ public class LevelEditorUI : MonoBehaviour {
     }
 
 	public void ToggleUI(GameObject tObj) {
-		tObj.SetActive(tObj.activeSelf ? false : true);
-        idContainer.SetActive(idContainer.activeSelf ? false : true);
-        leftArrow.SetActive(leftArrow.activeSelf ? false : true);
-        rightArrow.SetActive(rightArrow.activeSelf ? false : true);
-        activeLevelCategory = activeLevelCategory ? false : true;
+		tObj.SetActive(!tObj.activeSelf);
+        idContainer.SetActive(!idContainer.activeSelf);
+        leftArrow.SetActive(!leftArrow.activeSelf);
+        rightArrow.SetActive(!rightArrow.activeSelf);
+        activeLevelCategory = !activeLevelCategory;
         UpdateIDRow();
     }
 

@@ -127,13 +127,14 @@ public class LevelManager : Singleton<LevelManager> {
 	public void ClearLevel() {
 		IsPaused = true;
 		player = null;
-        levelData.objectList.Clear();
-        doorList.Clear();
-        doorList = null;
-        levelData = null;
-        serializedData.objectList.Clear();
+		doorList.Clear();
+		doorList = null;
+		serializedData.objectList.Clear();
 		serializedData = null;
 		_uniqueObjects = null;
+		levelData.objectList.Clear();
+		levelData = null;
+		EnemyList.Clear();
 	}
 
 
