@@ -105,7 +105,7 @@ public class CameraController : MonoBehaviour {
 
 
     private void LateUpdate() {
-        if (!LevelManager.Instance.isPaused) {
+        if (!LevelManager.Instance.IsPaused) {
             switch (cameraType) {
                 case CameraType.Follow:
                     //Sets the camera's position to the player's position.

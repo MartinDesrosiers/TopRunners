@@ -296,18 +296,17 @@ public class LevelEditorUI : MonoBehaviour {
 
     //Called when using the play button in editor mode.
     public void PlayButton() {
-        if (!LevelManager.Instance.GetUniqueObject.EndPoint.isUsed)
-        {
+        if (!LevelManager.Instance.GetUniqueObject.EndPoint.isUsed) {
             if (!cr_Running)
                 StartCoroutine(NoExit());
             return;
         }
+
 		GameManager.Instance.currentState = GameManager.GameState.RunTime;
-        LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Dynamic);
         LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         /*if (LevelManager.Instance.isGhostReplayActive)
             LevelManager.Instance.ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;*/
-        LevelManager.Instance.isPaused = false;
+        LevelManager.Instance.IsPaused = false;
 		runtimeEditorUI.SetActive(true);
 		gameObject.SetActive(false);
         if(LevelManager.Instance.player.GetComponent<PlayerController>().GetPlayerUI == null)

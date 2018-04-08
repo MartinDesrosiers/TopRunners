@@ -183,7 +183,7 @@ public class PlayerController : CharacterMotor
     private void Update()
     {
         //TODO capter les controls dans l'update et appliquer leurs behaviors dans le fixed update
-        if (!LevelManager.Instance.isPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
+        if (!LevelManager.Instance.IsPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
         {
             EnemyList.UpdateAreaAlpha(transform.position);
             axisXY = inputScript.PlayerInput(true);
@@ -298,7 +298,7 @@ public class PlayerController : CharacterMotor
     }
 
     private void FixedUpdate() {
-        if(!LevelManager.Instance.isPaused) {
+        if(!LevelManager.Instance.IsPaused) {
             //Debug.Log(animator.GetCurrentAnimatorClipInfo(animator.GetLayerIndex("Base Layer")).Length);
             animator.speed = _speed;
             animator.SetFloat("VelY", rg.velocity.y);
@@ -674,16 +674,15 @@ public class PlayerController : CharacterMotor
 		StartCoroutine(Die());
     }
 
-    public void Restart()
-    {
+    public void Restart() {
         RuntimeUI.GetStartTimer = false;
         //LevelManager.Instance.isGhostReplayActive = true;
         //Stop all glitch coroutines and clear the coroutine list.
-        for (int i = 0; i < glitches.Count; i++)
-        {
+        for (int i = 0; i < glitches.Count; i++) {
             if (glitches[i] != null)
                 StopCoroutine(glitches[i]);
         }
+
         glitches.Clear();
         _health = 3;
         _key = 0;
@@ -691,7 +690,6 @@ public class PlayerController : CharacterMotor
         playerUI.ShowKeys(_key);
         playerUI.CheckHealth(_health);
         transform.position = LevelManager.Instance.spawnPoint;
-        LevelManager.Instance.ReloadLevel();
         ReInitialize(GameManager.Instance.myList);
         RuntimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
         LevelManager.Instance.finishLoading = true;
