@@ -89,10 +89,10 @@ public class LevelManager : Singleton<LevelManager> {
 
 	public void ReloadLevel() {
 		IsPaused = true;
+		isReloading = true;
 		EnemyList.Clear();
 		DeserializeLevelData();
         SetActiveFunction(doorList);
-        isReloading = true;
         SetParallax();
         /*finalGhostObjects = ghostObjects;
         for (int i = 0; i < ghostObjects.Count; i++)

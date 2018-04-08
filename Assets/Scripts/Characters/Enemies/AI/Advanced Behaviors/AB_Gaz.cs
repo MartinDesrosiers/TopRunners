@@ -20,12 +20,10 @@ public class AB_Gaz : AB_Interface {
 		if(_isAbilityActive) {
 			_abilityTimer += Time.fixedDeltaTime;
 			if(_abilityTimer >= _abilityDuration) {
-				Debug.Log("test2");
 				_parentAI.transform.GetChild(0).GetChild(0).GetComponent<CircleCollider2D>().enabled = false;
 			}
 
 			if(_abilityTimer >= _abilityDuration + _abilityCooldown) {
-				Debug.Log("test3");
 				_isAbilityActive = false;
 				_abilityTimer = 0;
 			}
@@ -35,7 +33,6 @@ public class AB_Gaz : AB_Interface {
 			_parentAI.overrideMove = true;
 
 			if(!_isAbilityActive) {
-				Debug.Log("test1");
 				_isAbilityActive = true;
 				_parentAI.transform.GetChild(0).GetChild(0).GetComponent<CircleCollider2D>().enabled = true;
 				_anim.SetTrigger("Attack");
