@@ -572,7 +572,7 @@ public class PlayerController : CharacterMotor
 						return false;
 
 					_timedGlitches[1] = false;
-					GetComponent<Rigidbody2D>().gravityScale = 1f;
+					GetComponent<Rigidbody2D>().gravityScale = 1.5f;
 				}
 			}
 			break;
@@ -703,6 +703,7 @@ public class PlayerController : CharacterMotor
             timer += 2f * Time.timeScale * Time.deltaTime;
         }
         StartCoroutine(LevelManager.Instance.LoadingScreen());
+		LevelManager.Instance.ReloadLevel();
         rg.velocity = Vector2.zero;
         Restart();
     }
