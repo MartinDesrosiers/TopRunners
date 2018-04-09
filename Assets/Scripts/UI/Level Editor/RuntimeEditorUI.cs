@@ -32,7 +32,7 @@ public class RuntimeEditorUI : MonoBehaviour {
 		LevelManager.Instance.IsPaused = true;
 
 		LevelManager.Instance.player.transform.position = LevelManager.Instance.spawnPoint;
-        LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Kinematic);
+        //LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Kinematic);
         LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		//Centers camera on player position.
 		Vector3 cameraPosition = LevelManager.Instance.player.transform.position;

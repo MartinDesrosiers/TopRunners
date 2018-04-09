@@ -9,7 +9,7 @@ public class HealthPowerUp : MonoBehaviour {
 		if(_isOn) {
 			if(col.tag == "Player") {
 				_isOn = false;
-				col.transform.parent.gameObject.GetComponentInParent<PlayerController>().AddHealth();
+				col.transform.parent.gameObject.GetComponentInParent<NewPlayerController>().AddHealth();
 			}
 		}
 	}

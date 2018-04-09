@@ -66,7 +66,7 @@ public class LevelManager : Singleton<LevelManager> {
         //Security clean up.
         Destroy(mapContainer);
         CreateMapContainer();
-        isPaused = true;
+        IsPaused = true;
         player = GameObject.Find("NewPlayer");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
 		_tileConnector = GameObject.Find("TileConnector").GetComponent<TileConnector>();

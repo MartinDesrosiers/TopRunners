@@ -94,6 +94,13 @@ public class NewPlayerController : NewPlayerMotor {
 		//ChangeJumpButtonSprite(0);
 	}
 
+	public void AddHealth(ushort hp = 1) {
+		_health += hp;
+		if(_health > 3)
+			_health = 3;
+		playerUI.CheckHealth(_health);
+	}
+
 	public void Kill() {
 		_stateMachine.CurrentState = PlayerStates.Dead;
 	}
