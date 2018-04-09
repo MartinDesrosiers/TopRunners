@@ -29,7 +29,7 @@ public class RuntimeEditorUI : MonoBehaviour {
 		//Reload the level to replace all the npcs and dynamic objects.
 		LevelManager.Instance.ReloadLevel();
 		//Makes sure the game is set to pause to prevent AIs and dynamic objects from moving when editing the level.
-		LevelManager.Instance.isPaused = true;
+		LevelManager.Instance.IsPaused = true;
 
 		LevelManager.Instance.player.transform.position = LevelManager.Instance.spawnPoint;
         LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Kinematic);

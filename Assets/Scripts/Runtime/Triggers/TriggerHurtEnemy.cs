@@ -10,8 +10,10 @@ public class TriggerHurtEnemy : MonoBehaviour {
 
 			if(controller.CurrentState.CompareTo(PlayerStates.Dash) != 0 && !controller.IsRecovering || transform.tag == "Trap" || overrideDash) {
 				bool b;
-				if (transform.parent.GetComponentInParent<EnemyAI>() != null)
-				    transform.parent.GetComponentInParent<EnemyAI>().SetDashState();
+				
+				if(transform.tag != "Trap")
+					if (transform.parent.GetComponentInParent<EnemyAI>() != null)
+						transform.parent.GetComponentInParent<EnemyAI>().SetDashState();
 
 				if(transform.position.x < col.gameObject.transform.position.x)
 					b = true;

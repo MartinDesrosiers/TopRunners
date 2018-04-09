@@ -24,7 +24,7 @@ public class RuntimeUI : MonoBehaviour {
     public static bool GetStartTimer { get { return startTimer; } set { startTimer = value; } }
 	//Pause or unpause the game ( Toggle ).
     public void PauseButton() {
-        if (LevelManager.Instance.isPaused = LevelManager.Instance.isPaused ? false : true) {
+        if (LevelManager.Instance.IsPaused = LevelManager.Instance.IsPaused ? false : true) {
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
         }
@@ -77,7 +77,7 @@ public class RuntimeUI : MonoBehaviour {
 
 
 	private void Update() {
-        if (!LevelManager.Instance.isPaused && startTimer)
+        if (!LevelManager.Instance.IsPaused && startTimer)
         {
             UpdateTime();
         }

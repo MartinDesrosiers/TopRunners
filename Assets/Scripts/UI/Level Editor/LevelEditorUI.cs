@@ -83,6 +83,10 @@ public class LevelEditorUI : MonoBehaviour {
         UpdateIDRow();
     }
 
+	public void ExitEditor() {
+		LevelManager.Instance.ClearLevel();
+	}
+
 	public void SetTheme(int themeNumber) {
 		LevelManager.Instance.theme = themeNumber;
 		LevelManager.Instance.serializedData.theme = themeNumber;
@@ -109,13 +113,10 @@ public class LevelEditorUI : MonoBehaviour {
 	//Turns all the objects in LevelData to serializable objects ( SerializedData ) and save the level using the FileManager script.
 	//Called when using the save button in the home menu.
 	public void SaveLevel() {
-		if(GameManager.Instance.currentLevel == "")
+		if(GameManager.Instance.currentLevel == "Template.sld")
 			GameManager.Instance.currentLevel = levelName.text + ".sld";
 
 		LevelManager.Instance.SerializeLevel();
-
-		//if(GameManager.Instance.currentLevel == "Template.sld")
-		//	GameManager.Instance.currentLevel = ((int)DateTime.Now.Ticks).ToString() + ".sld";
 
 		FileManager.SaveLevel(GameManager.Instance.currentLevel, LevelManager.Instance.serializedData);
 	}
@@ -299,18 +300,17 @@ public class LevelEditorUI : MonoBehaviour {
 
     //Called when using the play button in editor mode.
     public void PlayButton() {
-        if (!LevelManager.Instance.GetUniqueObject.EndPoint.isUsed)
-        {
+        if (!LevelManager.Instance.GetUniqueObject.EndPoint.isUsed) {
             if (!cr_Running)
                 StartCoroutine(NoExit());
             return;
         }
+
 		GameManager.Instance.currentState = GameManager.GameState.RunTime;
-        LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Dynamic);
         LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         /*if (LevelManager.Instance.isGhostReplayActive)
             LevelManager.Instance.ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;*/
-        LevelManager.Instance.isPaused = false;
+        LevelManager.Instance.IsPaused = false;
 		runtimeEditorUI.SetActive(true);
 		gameObject.SetActive(false);
 		//if(LevelManager.Instance.player.GetComponent<NewPlayerController>().PlayerUI == null)
@@ -318,11 +318,11 @@ public class LevelEditorUI : MonoBehaviour {
     }
 
 	public void ToggleUI(GameObject tObj) {
-		tObj.SetActive(tObj.activeSelf ? false : true);
-        idContainer.SetActive(idContainer.activeSelf ? false : true);
-        leftArrow.SetActive(leftArrow.activeSelf ? false : true);
-        rightArrow.SetActive(rightArrow.activeSelf ? false : true);
-        activeLevelCategory = activeLevelCategory ? false : true;
+		tObj.SetActive(!tObj.activeSelf);
+        idContainer.SetActive(!idContainer.activeSelf);
+        leftArrow.SetActive(!leftArrow.activeSelf);
+        rightArrow.SetActive(!rightArrow.activeSelf);
+        activeLevelCategory = !activeLevelCategory;
         UpdateIDRow();
     }
 

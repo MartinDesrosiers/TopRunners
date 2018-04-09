@@ -100,10 +100,10 @@ public class TileConnector : MonoBehaviour {
 		//--------------------------------------------------------
 
 		//Reset corner shadows.
-		tObj.transform.GetChild(2).gameObject.SetActive(false);
-		tObj.transform.GetChild(3).gameObject.SetActive(false);
-		tObj.transform.GetChild(4).gameObject.SetActive(false);
-		tObj.transform.GetChild(5).gameObject.SetActive(false);
+		//tObj.transform.GetChild(2).gameObject.SetActive(false);
+		//tObj.transform.GetChild(3).gameObject.SetActive(false);
+		//tObj.transform.GetChild(4).gameObject.SetActive(false);
+		//tObj.transform.GetChild(5).gameObject.SetActive(false);
 
         //Add grass ( if there's no bloc above the current one ).
         if (!_top){
@@ -112,64 +112,64 @@ public class TileConnector : MonoBehaviour {
         else{
             //Remove grass if there is.
             tObj.transform.GetChild(1).gameObject.SetActive(false);
-
-            //Add corner shadows depending on which sprite is used and nearby blocs.
-            //Top corners.
-            if (spriteIndex == 1)
-            {
-                if (!_tleft)
-                    tObj.transform.GetChild(2).gameObject.SetActive(true);
-            }
-            else if (spriteIndex == 2)
-            {
-                if (!_tright)
-                    tObj.transform.GetChild(5).gameObject.SetActive(true);
-            }
-            else if (spriteIndex == 3)
-            {
-                if (!_tleft)
-                    tObj.transform.GetChild(2).gameObject.SetActive(true);
-
-                if (!_tright)
-                    tObj.transform.GetChild(5).gameObject.SetActive(true);
-            }
-            else if (spriteIndex == 5)
-            {
-                if (!_tleft)
-                    tObj.transform.GetChild(2).gameObject.SetActive(true);
-            }
-            else if (spriteIndex == 6)
-            {
-                if (!_tright)
-                    tObj.transform.GetChild(5).gameObject.SetActive(true);
-            }
-            else if (spriteIndex == 7)
-            {
-                if (!_tleft)
-                    tObj.transform.GetChild(2).gameObject.SetActive(true);
-
-                if (!_tright)
-                    tObj.transform.GetChild(5).gameObject.SetActive(true);
-            }
+			
+            ////Add corner shadows depending on which sprite is used and nearby blocs.
+            ////Top corners.
+            //if (spriteIndex == 1)
+            //{
+            //    if (!_tleft)
+            //        tObj.transform.GetChild(2).gameObject.SetActive(true);
+            //}
+            //else if (spriteIndex == 2)
+            //{
+            //    if (!_tright)
+            //        tObj.transform.GetChild(5).gameObject.SetActive(true);
+            //}
+            //else if (spriteIndex == 3)
+            //{
+            //    if (!_tleft)
+            //        tObj.transform.GetChild(2).gameObject.SetActive(true);
+			//
+            //    if (!_tright)
+            //        tObj.transform.GetChild(5).gameObject.SetActive(true);
+            //}
+            //else if (spriteIndex == 5)
+            //{
+            //    if (!_tleft)
+            //        tObj.transform.GetChild(2).gameObject.SetActive(true);
+            //}
+            //else if (spriteIndex == 6)
+            //{
+            //    if (!_tright)
+            //        tObj.transform.GetChild(5).gameObject.SetActive(true);
+            //}
+            //else if (spriteIndex == 7)
+            //{
+            //    if (!_tleft)
+            //        tObj.transform.GetChild(2).gameObject.SetActive(true);
+			//
+            //    if (!_tright)
+            //        tObj.transform.GetChild(5).gameObject.SetActive(true);
+            //}
         }
 
 		//Add corner shadows depending on which sprite is used and nearby blocs.
 		//Bottom corners.
-		if(spriteIndex == 5) {
-			if(!_dleft)
-				tObj.transform.GetChild(3).gameObject.SetActive(true);
-		}
-		else if(spriteIndex == 6) {
-			if(!_dright)
-				tObj.transform.GetChild(4).gameObject.SetActive(true);
-		}
-		else if(spriteIndex == 7) {
-			if(!_dleft)
-				tObj.transform.GetChild(3).gameObject.SetActive(true);
-
-			if(!_dright)
-				tObj.transform.GetChild(4).gameObject.SetActive(true);
-		}
+		//if(spriteIndex == 5) {
+		//	if(!_dleft)
+		//		tObj.transform.GetChild(3).gameObject.SetActive(true);
+		//}
+		//else if(spriteIndex == 6) {
+		//	if(!_dright)
+		//		tObj.transform.GetChild(4).gameObject.SetActive(true);
+		//}
+		//else if(spriteIndex == 7) {
+		//	if(!_dleft)
+		//		tObj.transform.GetChild(3).gameObject.SetActive(true);
+		//
+		//	if(!_dright)
+		//		tObj.transform.GetChild(4).gameObject.SetActive(true);
+		//}
 		
 		if(obj.name.Contains("Passable")) {
 			for(int i = 0; i < obj.transform.childCount; i++)

@@ -12,14 +12,21 @@ using System.IO;
 ///		- Load the level editor scene.
 /// </summary>
 public class LevelSelection : MonoBehaviour {
-
 	public GameObject localContent;		    //Level list scrollField.
 	public GameObject publishedContent;		   	
 	public GameObject modelButton;                  //Prefab of the load level button.
 	public LevelSelectionUI levelSelectionUI;
 
-
 	private void Start() {
+		RefreshLevelList();
+	}
+
+	public void RefreshLevelList() {
+		if(localContent.transform.childCount > 0) {
+			for(int j = 0; j < localContent.transform.childCount; j++)
+				Destroy(localContent.transform.GetChild(j).gameObject);
+		}
+
 		//Check if the "Levels" folder exist, if not create it to avoid errors.
 		if(!Directory.Exists(Application.persistentDataPath + "/Levels"))
 			Directory.CreateDirectory(Application.persistentDataPath + "/Levels");
@@ -34,6 +41,8 @@ public class LevelSelection : MonoBehaviour {
 			//If the file is a level.
 			if(k.Extension == ".sld") {
 				string levelName = k.Name.Replace(".sld", "");
+				if(levelName == "Template")
+					continue;
 
 				//Create a new load level button.
 				GameObject tObj = Instantiate(modelButton, Vector3.zero, Quaternion.identity, localContent.transform);
@@ -48,25 +57,24 @@ public class LevelSelection : MonoBehaviour {
 				tObj.transform.GetChild(1).GetComponent<Text>().text = tString.Substring(0, tIndex);
 
 				//Add an onClick event to load the specified level.
-				tObj.GetComponent<Button>().onClick.AddListener(() => { levelSelectionUI.SelectLevel(0); GameManager.Instance.currentLevel = k.Name; });
+				tObj.GetComponent<Button>().onClick.AddListener(() => { levelSelectionUI.SelectLevel(); GameManager.Instance.currentLevel = k.Name; });
 
-                //Attach the button to the container.
-                //tObj.transform.SetParent(container.transform, false);
-                //Set the button's position according to the number of buttons before it.
+				//Attach the button to the container.
+				//tObj.transform.SetParent(container.transform, false);
+				//Set the button's position according to the number of buttons before it.
 				tObj.GetComponent<RectTransform>().localPosition = new Vector2(92, -i * 40 - 8);
 
-                i++;    //Increments the number of files.
+				i++;    //Increments the number of files.
 
-                //Resize the container according to the amount of levels.
+				//Resize the container according to the amount of levels.
 				localContent.GetComponent<RectTransform>().sizeDelta = new Vector2(localContent.GetComponent<RectTransform>().sizeDelta.x, i * 40 + 16);
-            }
+			}
 		}
 
-		PopulateRemoteLevels ();
+		PopulateRemoteLevels();
 	}
 
 	private void PopulateRemoteLevels () {
-		Debug.Log (LevelManager.Instance);
 		LevelManager.Instance.FetchLevels (LevelManager.SortOption.Uid, levelInfos => {
 			for (int i = 0; i < levelInfos.Length; i++) {
 				//Create a new load level button.
@@ -80,7 +88,7 @@ public class LevelSelection : MonoBehaviour {
 
 				string uniqueId = levelInfos[i].uniqueId;
 				tObj.GetComponent<Button>().onClick.AddListener(() => {
-					levelSelectionUI.SelectLevel(0);
+					levelSelectionUI.SelectLevel();
 					GameManager.Instance.currentLevelUniqueId = uniqueId;
 				});
 

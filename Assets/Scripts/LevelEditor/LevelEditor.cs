@@ -89,7 +89,6 @@ public class LevelEditor : MonoBehaviour {
 #endif
 
 		if(!tPointerOverUI) {
-			Debug.Log("WORKING");
 			int[] objColRow = new int[2];   //0 = column, 1 = row
 			float[] objPos = new float[2];  //0 = x, 1 = y
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -5,6 +5,11 @@ public static class EnemyList {
 
 	public static List<EnemyRadius> enemyList = new List<EnemyRadius>();
 
+	public static void Clear() {
+		enemyList.Clear();
+		enemyList = new List<EnemyRadius>();
+	}
+
 	public static Vector2 GetEnemyPosition(Vector2 position) {
 		List<EnemyRadius> enemiesInRadius = new List<EnemyRadius>();
 
@@ -117,6 +122,13 @@ public static class EnemyList {
 			}
 			else
 				enemyList[i].SetAlpha(0f);
+		}
+	}
+
+	public static void SetBodyType(RigidbodyType2D bodyType) {
+		if(enemyList != null) {
+			foreach(EnemyRadius enemy in enemyList)
+				enemy.transform.parent.parent.GetComponent<Rigidbody2D>().bodyType = bodyType;
 		}
 	}
 

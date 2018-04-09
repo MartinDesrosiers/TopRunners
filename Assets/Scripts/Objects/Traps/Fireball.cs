@@ -5,7 +5,7 @@ public class Fireball : MonoBehaviour {
 	private bool _isOn = false;
 	
 	private void FixedUpdate() {
-		if(!LevelManager.Instance.isPaused) {
+		if(!LevelManager.Instance.IsPaused) {
 			if(LevelManager.Instance.isReloading)
 				DestroyImmediate(gameObject);
 			else {

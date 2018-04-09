@@ -58,7 +58,7 @@ public class IsGround : Destructible {
     }
 
     private void FixedUpdate() {
-		if(!LevelManager.Instance.isPaused && others.Count > 0) {
+		if(!LevelManager.Instance.IsPaused && others.Count > 0) {
             for (int i = 0; i < others.Count; i++)
             {
                 if (!others[i].gameObject.activeInHierarchy)

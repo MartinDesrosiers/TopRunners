@@ -22,4 +22,9 @@ public class EnemyRadius : MonoBehaviour {
 	public void SetAlpha(float alpha) {
 		area.color = new Color(1f, 1f, 1f, alpha);
 	}
+
+	public void OnDestroy() {
+		if(!LevelManager.Instance.isReloading)
+			EnemyList.DestroyEnemy(this);
+	}
 }
