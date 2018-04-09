@@ -313,8 +313,8 @@ public class LevelEditorUI : MonoBehaviour {
         LevelManager.Instance.IsPaused = false;
 		runtimeEditorUI.SetActive(true);
 		gameObject.SetActive(false);
-        if(LevelManager.Instance.player.GetComponent<PlayerController>().GetPlayerUI == null)
-            LevelManager.Instance.player.GetComponent<PlayerController>().PlayerUIInit();
+		//if(LevelManager.Instance.player.GetComponent<NewPlayerController>().PlayerUI == null)
+		//	LevelManager.Instance.player.GetComponent<NewPlayerController>().PlayerUIInit();
     }
 
 	public void ToggleUI(GameObject tObj) {

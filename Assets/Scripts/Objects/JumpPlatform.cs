@@ -8,7 +8,7 @@ public class JumpPlatform : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D col) {
 		if(col.gameObject.name == "NormalColliders" || col.gameObject.name == "RollCollider" && _isOn) {
 			_isOn = false;
-			col.transform.parent.GetComponentInParent<PlayerController>().CheckPropulsion(3f);
+			col.transform.parent.GetComponentInParent<NewPlayerController>().ForceJump(3f);
 
 			StartCoroutine(JumpTimer());
 		}

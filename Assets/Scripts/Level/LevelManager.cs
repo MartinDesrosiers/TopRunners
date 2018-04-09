@@ -63,8 +63,11 @@ public class LevelManager : Singleton<LevelManager> {
     }
 
     public void InitializeLevel() {
-		IsPaused = true;
-        player = GameObject.Find("PlayerTest");
+        //Security clean up.
+        Destroy(mapContainer);
+        CreateMapContainer();
+        isPaused = true;
+        player = GameObject.Find("NewPlayer");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
 		_tileConnector = GameObject.Find("TileConnector").GetComponent<TileConnector>();
         //Initialize the level data, serialized level data and unique objects list to prevent nullreferences.
