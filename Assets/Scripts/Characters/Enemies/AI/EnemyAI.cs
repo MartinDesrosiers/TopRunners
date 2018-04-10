@@ -16,6 +16,7 @@ public class EnemyAI : CharacterMotor
 
     public bool lookAtHero = false;
 	public bool isFlying = false;
+	public bool IsInvincible = false;
 
 	public bool stickToWalls = false;
 
@@ -62,12 +63,13 @@ public class EnemyAI : CharacterMotor
     }
 
 	public void TakeDamage() {
-		health--;
-        if (health < 1)
-        {
-            Kill();
-            _player.ResetDash();
-        }
+		if(!IsInvincible) {
+			health--;
+			if(health < 1) {
+				Kill();
+				_player.ResetDash();
+			}
+		}
 	}
     public void Kill()
     {
