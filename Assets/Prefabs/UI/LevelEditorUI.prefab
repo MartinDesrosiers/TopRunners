@@ -694,7 +694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1209564269175300
 GameObject:
   m_ObjectHideFlags: 1
@@ -919,7 +919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1268602205748076
 GameObject:
   m_ObjectHideFlags: 1
@@ -935,7 +935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1269049791455404
 GameObject:
   m_ObjectHideFlags: 1
@@ -1342,7 +1342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1377291116390948
 GameObject:
   m_ObjectHideFlags: 1
@@ -1593,7 +1593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1469024156467726
 GameObject:
   m_ObjectHideFlags: 1
@@ -1797,7 +1797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1527063723658212
 GameObject:
   m_ObjectHideFlags: 1
@@ -2188,7 +2188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1648965022133174
 GameObject:
   m_ObjectHideFlags: 1
@@ -3162,7 +3162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1941209858483486
 GameObject:
   m_ObjectHideFlags: 1
@@ -7883,7 +7883,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b5adc953ed77a6e41bdc6ee83b9702bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 165303b99340d8f46858ae0b1dad7340, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8299,9 +8299,9 @@ MonoBehaviour:
   scrollerSpeed: {fileID: 0}
   leftArrow: {fileID: 1521801824482156}
   rightArrow: {fileID: 1940002727593564}
-  activeLevelCategory: 0
+  activeLevelCategory: 1
   themeOptionsCanvas: {fileID: 1205124139981848}
-  currentObjType: 2
+  currentObjType: 4
 --- !u!114 &114583730230852374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8732,7 +8732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Blocks
+  m_Text: Level
 --- !u!114 &114618428599762448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10898,7 +10898,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &114820752569639128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11019,7 +11019,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!114 &114823668091127550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11469,9 +11469,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: ef2eee2d745ace44281b6843aa9969a8,
+    m_HighlightedSprite: {fileID: 21300000, guid: a57e866dd7468cb4fb3b05a901121315,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 483c676f78f3fba41b24872cfc8692ce, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c54b80c5fae3199419a4554c53e2ecb3, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 03813f6a77e64a44daf1a1e71f83ea43, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -12296,7 +12296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7019608, g: 1, b: 0.043137256, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15042,7 +15042,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 129}
-  m_SizeDelta: {x: 2240, y: 196}
+  m_SizeDelta: {x: 1760, y: 196}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224427347970077156
 RectTransform:
@@ -16293,7 +16293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 941.6326, y: -160.53052}
+  m_AnchoredPosition: {x: 750, y: -90}
   m_SizeDelta: {x: 165, y: 162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224787507304579630
