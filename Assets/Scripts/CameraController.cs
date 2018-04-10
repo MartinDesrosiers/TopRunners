@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour {
 
     //Material applied to the level editor grid.
     public Material gridMaterial;
+	public Color gridColor;
 
     private Vector2 _mapBoundaries;
 
@@ -24,9 +25,9 @@ public class CameraController : MonoBehaviour {
     private float _editorUIDeadzone = 2f;
     //Camera's movement speed in the level editor.
     private float _translationSpeed = 20f;
-    private float _zoomSensitivity = 4f;
+    private float _zoomSensitivity = 6f;
 
-    private Grid _grid;
+	private Grid _grid;
 
 
     private void Awake() {
@@ -40,7 +41,8 @@ public class CameraController : MonoBehaviour {
         //Initialize the grid.
         if (GameManager.Instance.currentState == GameManager.GameState.LevelEditor) {
             _grid = gameObject.AddComponent<Grid>();
-            _grid.Initialize(gridMaterial, Camera.main.orthographicSize % 1);
+			gridMaterial.color = gridColor;
+			_grid.Initialize(gridMaterial, Camera.main.orthographicSize % 1);
             UpdateGrid();
         }
 
@@ -53,26 +55,14 @@ public class CameraController : MonoBehaviour {
     }
 
 
-    private void Update() {
+	private void Update() {
         if (GameManager.Instance.currentState == GameManager.GameState.LevelEditor) {
-
-            //Debug.Log("Control Is Active");
-            if (isControlActive) {
-                if (LevelEditorInputs.GetCameraUp())
-                    Camera.main.transform.Translate(Vector2.up * _translationSpeed * Time.deltaTime);
-                else if (LevelEditorInputs.GetCameraLeft())
-                    Camera.main.transform.Translate(Vector2.left * _translationSpeed * Time.deltaTime);
-                else if (LevelEditorInputs.GetCameraDown())
-                    Camera.main.transform.Translate(Vector2.down * _translationSpeed * Time.deltaTime);
-                else if (LevelEditorInputs.GetCameraRight())
-                    Camera.main.transform.Translate(Vector2.right * _translationSpeed * Time.deltaTime);
-
-                //Zoom in/out.
-                if (LevelEditorInputs.GetZoomIn())
-                    Camera.main.orthographicSize -= _zoomSensitivity * Time.deltaTime;
-                else if (LevelEditorInputs.GetZoomOut())
-                    Camera.main.orthographicSize += _zoomSensitivity * Time.deltaTime;
-            }
+			#if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
+				GetCameraInputs();
+			#else
+				if(isControlActive)
+					GetCameraInputs();
+			#endif
 
             //Screen base size
             float baseSize = _gameviewSize / 2f * Screen.height / Screen.width;
@@ -137,10 +127,25 @@ public class CameraController : MonoBehaviour {
             _editorUIDeadzone = 0f;
 
         CheckBoundaries();
-    }
+	}
 
-    //Only change the camera's position on the X axis.
-    private void SetPositionX(float newPosition) {
+	private void GetCameraInputs() {
+		if(LevelEditorInputs.GetCameraUp())
+			Camera.main.transform.Translate(Vector2.up * _translationSpeed * Time.deltaTime);
+		else if(LevelEditorInputs.GetCameraLeft())
+			Camera.main.transform.Translate(Vector2.left * _translationSpeed * Time.deltaTime);
+		else if(LevelEditorInputs.GetCameraDown())
+			Camera.main.transform.Translate(Vector2.down * _translationSpeed * Time.deltaTime);
+		else if(LevelEditorInputs.GetCameraRight())
+			Camera.main.transform.Translate(Vector2.right * _translationSpeed * Time.deltaTime);
+
+		//Zoom in/out.
+		Camera.main.orthographicSize -= LevelEditorInputs.GetZoomIn() * _zoomSensitivity * Time.deltaTime;
+		Camera.main.orthographicSize += LevelEditorInputs.GetZoomOut() * _zoomSensitivity * Time.deltaTime;
+	}
+
+	//Only change the camera's position on the X axis.
+	private void SetPositionX(float newPosition) {
         transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);
     }
     //Only change the camera's position on the Y axis.
@@ -182,7 +187,7 @@ public class CameraController : MonoBehaviour {
 
     //Render the grid when the camera is done rendering everything else.
     private void OnPostRender() {
-        if (GameManager.Instance.currentState == GameManager.GameState.LevelEditor)
+        if(GameManager.Instance.currentState == GameManager.GameState.LevelEditor)
             _grid.ShowGrid();
     }
 }
