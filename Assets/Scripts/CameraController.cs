@@ -14,8 +14,10 @@ public class CameraController : MonoBehaviour {
     //Material applied to the level editor grid.
     public Material gridMaterial;
 	public Color gridColor;
+	[HideInInspector]
+	public bool isDraging;
 
-    private Vector2 _mapBoundaries;
+	private Vector2 _mapBoundaries;
 
     private float _gameviewSize = 20f;
 	private float _baseSize;
@@ -26,7 +28,7 @@ public class CameraController : MonoBehaviour {
     private float _editorUIDeadzone = 2f;
     //Camera's movement speed in the level editor.
     private float _translationSpeed = 20f;
-    private float _zoomSensitivity = 6f;
+    private float _zoomSensitivity = 8f;
 
 	private Grid _grid;
 
@@ -78,7 +80,6 @@ public class CameraController : MonoBehaviour {
 
         //Maps interfaces can't zoom. only level editor
         else if (GameManager.Instance.currentState == GameManager.GameState.Map) {
-
             //Camera movement.
             if (LevelEditorInputs.GetCameraLeft())
                 transform.Translate(Vector2.left * _translationSpeed * Time.deltaTime);
@@ -130,13 +131,13 @@ public class CameraController : MonoBehaviour {
 	}
 
 	private void GetCameraInputs() {
-		if(LevelEditorInputs.GetCameraUp())
+		if(LevelEditorInputs.GetCameraUp(isDraging))
 			Camera.main.transform.Translate(Vector2.up * _translationSpeed * Time.deltaTime);
-		else if(LevelEditorInputs.GetCameraLeft())
+		if(LevelEditorInputs.GetCameraLeft(isDraging))
 			Camera.main.transform.Translate(Vector2.left * _translationSpeed * Time.deltaTime);
-		else if(LevelEditorInputs.GetCameraDown())
+		if(LevelEditorInputs.GetCameraDown(isDraging))
 			Camera.main.transform.Translate(Vector2.down * _translationSpeed * Time.deltaTime);
-		else if(LevelEditorInputs.GetCameraRight())
+		if(LevelEditorInputs.GetCameraRight(isDraging))
 			Camera.main.transform.Translate(Vector2.right * _translationSpeed * Time.deltaTime);
 
 		//Zoom in/out.

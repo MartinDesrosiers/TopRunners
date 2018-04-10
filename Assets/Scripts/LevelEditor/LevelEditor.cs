@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LevelEditor : MonoBehaviour {
-
 	public InputField newLevelName;
     Transform transObj;
     public ushort objType;
