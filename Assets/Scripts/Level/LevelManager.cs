@@ -17,6 +17,7 @@ public class LevelManager : Singleton<LevelManager> {
 			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
 		}
 	}
+
     //bool hasBeenInit = false;
     public List<GameObject> doorList;
     /*public List<GameObject> ghostObjects;
@@ -109,7 +110,6 @@ public class LevelManager : Singleton<LevelManager> {
         }*/
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
-		IsPaused = false;
     }
 
 	//set all GameObject from a List to true;

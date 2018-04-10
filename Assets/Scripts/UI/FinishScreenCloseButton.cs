@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class FinishScreenCloseButton : MonoBehaviour {
 
-	public void CloseWindow()
-    {
+	public void CloseWindow() {
         LevelManager.Instance.IsPaused = false; //FIX
     }
 }
