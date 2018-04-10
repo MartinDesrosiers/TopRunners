@@ -24,6 +24,8 @@ public class LevelEditorUI : MonoBehaviour {
     public Sprite[] objectsSprites;
     public Sprite lockedSprite;
 
+	public GameObject[] pcUIExceptions;
+
     // This is where we order the level editor items according to the Level Editor custom order, not the Level Manager ID Order
     // It remaps every ID
     // Note: We also need to reorder the sprites on the Level Editor UI in Unity Inspector
@@ -76,9 +78,13 @@ public class LevelEditorUI : MonoBehaviour {
     public LevelEditor GetLevelEditor { get { return levelEditor; } }
 
 	private void Start() {
-        //Safety update to make sure items show up on the top menu.
+		#if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
+		foreach(GameObject go in pcUIExceptions)
+			go.SetActive(false);
+		#endif
 
-        cr_Running = false;
+		//Safety update to make sure items show up on the top menu.
+		cr_Running = false;
         currentObjType = levelEditor.objType;
         UpdateIDRow();
     }

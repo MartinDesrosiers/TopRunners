@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour {
     private Vector2 _mapBoundaries;
 
     private float _gameviewSize = 20f;
+	private float _baseSize;
 
     //Thickness of the zone ( in units ) outside the map boundaries.
     //Used to modify the level editor camera boundaries and allow the player to place and remove blocks
@@ -32,7 +33,9 @@ public class CameraController : MonoBehaviour {
 
     private void Awake() {
         Camera.main.orthographicSize = _gameviewSize / 2f * Screen.height / Screen.width;
-    }
+		_baseSize = _gameviewSize / 2f * Screen.height / Screen.width;
+
+	}
 
 
     private void Start() {
@@ -64,11 +67,8 @@ public class CameraController : MonoBehaviour {
 					GetCameraInputs();
 			#endif
 
-            //Screen base size
-            float baseSize = _gameviewSize / 2f * Screen.height / Screen.width;
-
             //Makes sure you can't zoome in / out too much.
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, baseSize, baseSize * 3);
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, _baseSize, _baseSize * 3);
 
             //After moving the camera, checks if it's still inside the gameview.
             CheckBoundaries();
@@ -180,8 +180,9 @@ public class CameraController : MonoBehaviour {
 
     //Update the grid size and position according to the camera's current orthographic size, position and the screen resolution.
     private void UpdateGrid() {
-        _grid.ResizeGrid(new Vector2(Camera.main.orthographicSize * 2f / ((float)Screen.height / Screen.width), Camera.main.orthographicSize * 2));
-        _grid.MoveGrid(new Vector2(transform.position.x % 1, transform.position.y % 1));
+		float verticalSize = Camera.main.orthographicSize / ((float)Screen.height / Screen.width);
+		_grid.ResizeGrid(new Vector2(Camera.main.orthographicSize * 2f / ((float)Screen.height / Screen.width), Camera.main.orthographicSize * 2));
+        _grid.MoveGrid(new Vector2(transform.position.x % 1 - (verticalSize - _gameviewSize) % 1, transform.position.y % 1 - (Camera.main.orthographicSize - _baseSize) % 1));
     }
 
 
