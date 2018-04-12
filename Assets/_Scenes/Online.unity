@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 179840535}
   - component: {fileID: 179840534}
   - component: {fileID: 179840533}
+  - component: {fileID: 179840537}
   m_Layer: 5
   m_Name: officialTXT
   m_TagString: Untagged
@@ -405,6 +406,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 179840531}
+--- !u!114 &179840537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 179840531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: OFFICIAL
+  frenchText: OFFICIEL
 --- !u!1 &247951695
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +807,7 @@ GameObject:
   - component: {fileID: 370200290}
   - component: {fileID: 370200289}
   - component: {fileID: 370200288}
+  - component: {fileID: 370200292}
   m_Layer: 5
   m_Name: latestTXT
   m_TagString: Untagged
@@ -885,6 +900,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 370200286}
+--- !u!114 &370200292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 370200286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LATEST
+  frenchText: DERNIERS
 --- !u!1 &401551110
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +926,7 @@ GameObject:
   - component: {fileID: 401551114}
   - component: {fileID: 401551113}
   - component: {fileID: 401551112}
+  - component: {fileID: 401551116}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -995,6 +1024,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 401551110}
+--- !u!114 &401551116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 401551110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: A NICE LEVEL NAME
+  frenchText: UN JOLI NOM DE NIVEAU
 --- !u!1 &450771408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1533,186 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 581e744ef04b54a4daf302304d04f08e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &524898528 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1729979616981724, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898529 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1603505720555136, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898530 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1406518148928010, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898531 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1626334080747772, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898532 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1132126127704980, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898533 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1754292895509336, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!114 &524898534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Optional email
+  frenchText: Courriel optionnel
+--- !u!114 &524898535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Confirm password
+  frenchText: Confirmez le mot de passe
+--- !u!114 &524898536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Password
+  frenchText: Mot de passe
+--- !u!114 &524898537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Username
+  frenchText: Nom d'utilisateur
+--- !u!114 &524898538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Password
+  frenchText: Mot de passe
+--- !u!114 &524898539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Username
+  frenchText: Nom d'utilisateur
+--- !u!1 &524898540 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1854108981626316, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898541 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1939659357191084, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898542 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1172703364138162, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!1 &524898543 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1684314186412352, guid: 581e744ef04b54a4daf302304d04f08e,
+    type: 2}
+  m_PrefabInternal: {fileID: 524898527}
+--- !u!114 &524898544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Already have an account? Login
+  frenchText: "Vous avez d\xE9j\xE0 un compte? Entrez"
+--- !u!114 &524898545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Create account
+  frenchText: "Cr\xE9er un compte"
+--- !u!114 &524898546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Create account
+  frenchText: "Cr\xE9er un compte"
+--- !u!114 &524898547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524898543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Login
+  frenchText: Connexion
 --- !u!1 &531631275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,6 +2604,7 @@ GameObject:
   - component: {fileID: 910330637}
   - component: {fileID: 910330636}
   - component: {fileID: 910330635}
+  - component: {fileID: 910330639}
   m_Layer: 5
   m_Name: namesTXT
   m_TagString: Untagged
@@ -2474,6 +2697,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910330633}
+--- !u!114 &910330639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910330633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: NAMES
+  frenchText: NOMS
 --- !u!1 &911033267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,6 +2791,7 @@ GameObject:
   - component: {fileID: 951449971}
   - component: {fileID: 951449973}
   - component: {fileID: 951449972}
+  - component: {fileID: 951449974}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2619,6 +2856,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 951449970}
+--- !u!114 &951449974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951449970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Search
+  frenchText: Recherche
 --- !u!1 &971325524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +3053,7 @@ GameObject:
   - component: {fileID: 1026224024}
   - component: {fileID: 1026224023}
   - component: {fileID: 1026224022}
+  - component: {fileID: 1026224026}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -2900,6 +3151,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1026224020}
+--- !u!114 &1026224026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026224020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: A NICE LEVEL NAME
+  frenchText: UN JOLI NOM DE NIVEAU
 --- !u!1 &1104117943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,6 +3340,26 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4f45ccc9fb3d6a4981b70486d5116be, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1278536821 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1252092874512650, guid: a4f45ccc9fb3d6a4981b70486d5116be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1278536820}
+--- !u!114 &1278536822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1278536821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: An error occured while establishing a connexion to the database.<br>Please
+    try again later.
+  frenchText: "Une erreur s'est produite lors de la connexion.<br>Veuillez r\xE9essayer
+    plus tard."
 --- !u!1 &1360536549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3585,24 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224831868922109156, guid: ae04888b5adb4cb4ba0ad72088171d1c,
     type: 2}
   m_PrefabInternal: {fileID: 1394026604}
+--- !u!1 &1394026606 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1635693769121404, guid: ae04888b5adb4cb4ba0ad72088171d1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1394026604}
+--- !u!114 &1394026607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1394026606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &1397973032
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,6 +3870,7 @@ GameObject:
   - component: {fileID: 1425222132}
   - component: {fileID: 1425222131}
   - component: {fileID: 1425222130}
+  - component: {fileID: 1425222134}
   m_Layer: 5
   m_Name: creatorsTXT
   m_TagString: Untagged
@@ -3660,6 +3963,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425222128}
+--- !u!114 &1425222134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1425222128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CREATORS
+  frenchText: "CR\xC9ATEURS"
 --- !u!1 &1762413852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3792,6 +4108,7 @@ GameObject:
   - component: {fileID: 1820100576}
   - component: {fileID: 1820100578}
   - component: {fileID: 1820100577}
+  - component: {fileID: 1820100579}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -3856,6 +4173,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1820100575}
+--- !u!114 &1820100579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1820100575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Enter search term
+  frenchText: Entrez le terme de recherche
 --- !u!1 &1841039269
 GameObject:
   m_ObjectHideFlags: 0
@@ -4086,6 +4416,7 @@ GameObject:
   - component: {fileID: 1992737343}
   - component: {fileID: 1992737342}
   - component: {fileID: 1992737341}
+  - component: {fileID: 1992737345}
   m_Layer: 5
   m_Name: findByIdTXT
   m_TagString: Untagged
@@ -4178,6 +4509,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1992737339}
+--- !u!114 &1992737345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992737339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: FIND BY ID
+  frenchText: TROUVER PAR ID
 --- !u!1 &2072660512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4531,6 +4875,24 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224749507667297322, guid: cc263778e8f89c94ba74d9fe5316a81f,
     type: 2}
   m_PrefabInternal: {fileID: 2125030699}
+--- !u!1 &2125030701 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1541194691072526, guid: cc263778e8f89c94ba74d9fe5316a81f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2125030699}
+--- !u!114 &2125030702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2125030701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ONLINE MAP
+  frenchText: CARTE EN LIGNE
 --- !u!224 &2137164953 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224578102342020264, guid: 581e744ef04b54a4daf302304d04f08e,

@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 755174132}
   - component: {fileID: 755174134}
   - component: {fileID: 755174133}
+  - component: {fileID: 755174135}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -365,6 +366,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 755174131}
+--- !u!114 &755174135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755174131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Tap to Test
+  frenchText: Appuyez pour tester
 --- !u!1 &830969289
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,5 +647,4 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 065491184b2ed49d0bce70af7e92130b, type: 2}
-  m_RootGameObject: {fileID: 830969289}
   m_IsPrefabParent: 0
