@@ -1040,24 +1040,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81775201f6683954a89bf1929ce6539a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &373481751 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1148469691816484, guid: 81775201f6683954a89bf1929ce6539a,
-    type: 2}
-  m_PrefabInternal: {fileID: 373481750}
---- !u!114 &373481752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 373481751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Store
-  frenchText: Magasin
 --- !u!1 &403763810 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1729480974387738, guid: 86fed15575c6b2c418c41fac1c449dcc,
@@ -1163,7 +1145,6 @@ GameObject:
   - component: {fileID: 469311863}
   - component: {fileID: 469311862}
   - component: {fileID: 469311861}
-  - component: {fileID: 469311865}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1256,19 +1237,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 469311859}
---- !u!114 &469311865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 469311859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Buy
-  frenchText: Acheter
 --- !u!1 &480350270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1786,6 @@ GameObject:
   - component: {fileID: 666978943}
   - component: {fileID: 666978945}
   - component: {fileID: 666978944}
-  - component: {fileID: 666978946}
   m_Layer: 5
   m_Name: elementTXT
   m_TagString: Untagged
@@ -1886,19 +1853,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666978942}
---- !u!114 &666978946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 666978942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: FIRE
-  frenchText: FEU
 --- !u!1 &669621700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,140 +2777,9 @@ Prefab:
       propertyPath: m_Text
       value: Azura
       objectReference: {fileID: 0}
-    - target: {fileID: 114266740576511298, guid: e97d1c1e4fccb944caa478f10834ec66,
-        type: 2}
-      propertyPath: m_Text
-      value: Stamina
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e97d1c1e4fccb944caa478f10834ec66, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &816187183 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1123549997652466, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!1 &816187184 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1267145073900020, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!1 &816187185 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1688850331392772, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!1 &816187186 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1046501517685750, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!1 &816187187 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1972139646751194, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!1 &816187188 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1520976804207482, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!1 &816187189 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1355333590200868, guid: e97d1c1e4fccb944caa478f10834ec66,
-    type: 2}
-  m_PrefabInternal: {fileID: 816187182}
---- !u!114 &816187190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Jump
-  frenchText: Saut
---- !u!114 &816187191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Acceleration
-  frenchText: "Acc\xE9l\xE9ration"
---- !u!114 &816187192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Strenght
-  frenchText: Force
---- !u!114 &816187193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Stamina
-  frenchText: Endurance
---- !u!114 &816187194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Max Speed
-  frenchText: Vitesse Maximale
---- !u!114 &816187195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Health
-  frenchText: "Vitalit\xE9"
---- !u!114 &816187196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816187189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: LEVEL 17
-  frenchText: NIVEAU 17
 --- !u!1001 &865027341
 Prefab:
   m_ObjectHideFlags: 0
@@ -3132,42 +2955,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86fed15575c6b2c418c41fac1c449dcc, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &865027342 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1888837094823906, guid: 86fed15575c6b2c418c41fac1c449dcc,
-    type: 2}
-  m_PrefabInternal: {fileID: 865027341}
---- !u!114 &865027343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 865027342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Back
-  frenchText: Retour
---- !u!1 &865027344 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1610871438084046, guid: 86fed15575c6b2c418c41fac1c449dcc,
-    type: 2}
-  m_PrefabInternal: {fileID: 865027341}
---- !u!114 &865027345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 865027344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Weapons
-  frenchText: Armes
 --- !u!1 &873512806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,7 +2968,6 @@ GameObject:
   - component: {fileID: 873512808}
   - component: {fileID: 873512811}
   - component: {fileID: 873512810}
-  - component: {fileID: 873512812}
   m_Layer: 5
   m_Name: equipmentTXT
   m_TagString: Untagged
@@ -3277,19 +3063,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &873512812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 873512806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: SPORT SHIRT
-  frenchText: CHANDAIL DE SPORT
 --- !u!1001 &876657118
 Prefab:
   m_ObjectHideFlags: 0
@@ -3952,7 +3725,6 @@ GameObject:
   - component: {fileID: 1253092014}
   - component: {fileID: 1253092013}
   - component: {fileID: 1253092012}
-  - component: {fileID: 1253092016}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -4045,19 +3817,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1253092010}
---- !u!114 &1253092016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1253092010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Get rubis now
-  frenchText: Obtenir des rubis
 --- !u!1 &1290191071
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,7 +3957,6 @@ GameObject:
   - component: {fileID: 1294568096}
   - component: {fileID: 1294568095}
   - component: {fileID: 1294568098}
-  - component: {fileID: 1294568099}
   m_Layer: 5
   m_Name: moneyTXT
   m_TagString: Untagged
@@ -4295,19 +4053,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &1294568099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1294568093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: You have
-  frenchText: Vous avez
 --- !u!1 &1320298252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5665,7 +5410,6 @@ GameObject:
   - component: {fileID: 1772588699}
   - component: {fileID: 1772588702}
   - component: {fileID: 1772588701}
-  - component: {fileID: 1772588703}
   m_Layer: 5
   m_Name: equipAbility1
   m_TagString: Untagged
@@ -5761,19 +5505,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
---- !u!114 &1772588703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1772588697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: STAMINA ++
-  frenchText: ENDURANCE ++
 --- !u!1 &1776241948
 GameObject:
   m_ObjectHideFlags: 0
