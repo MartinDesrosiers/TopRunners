@@ -233,14 +233,6 @@ public class LevelManager : Singleton<LevelManager> {
                     if (tPrefab.gameObject.name.Contains("Door"))
                         doorList.Add(tPrefab.gameObject);
 
-                    if (tPrefab.tag != "Untagged") {
-                        switch (tPrefab.tag) {
-                            case "Connectable":
-                                _tileConnector.SetSprite(ref tPrefab);
-                                break;
-                        }
-                    }
-
 					//Instantiate the prefab with the serialized object's position and links it to the map container.
 					levelData.objectList[i][j].Add(tPrefab);
                     levelData.objectList[i][j][k].transform.SetParent(mapContainer.transform);
@@ -248,10 +240,17 @@ public class LevelManager : Singleton<LevelManager> {
 			}
         }
 
-		for(int i = 0; i < serializedData.objectList.Count; i++)
-			for(int j = 0; j < serializedData.objectList[i].Count; j++)
-				for(int k = 0; k < serializedData.objectList[i][j].Count; k++)
-					_tileConnector.RefreshZone(levelData.objectList[i][j][k].transform.position);
+		for(int i = 0; i < serializedData.objectList.Count; i++) {
+			for(int j = 0; j < serializedData.objectList[i].Count; j++) {
+				for(int k = 0; k < serializedData.objectList[i][j].Count; k++) {
+					if(levelData.objectList[i][j][k].tag == "Connectable") {
+						GameObject go = levelData.objectList[i][j][k];
+						_tileConnector.SetSprite(ref go);
+						levelData.objectList[i][j][k] = go;
+					}
+				}
+			}
+		}
 	}
 
 
