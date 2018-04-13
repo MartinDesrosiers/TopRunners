@@ -1496,10 +1496,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 81323986056717526, guid: 99ff4a7ad197f73469286f535b7bdf20,
+    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
         type: 2}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: gridColor.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
+        type: 2}
+      propertyPath: gridColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
+        type: 2}
+      propertyPath: gridColor.b
+      value: 0.8627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
+        type: 2}
+      propertyPath: gridColor.a
+      value: 0.78431374
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99ff4a7ad197f73469286f535b7bdf20, type: 2}
@@ -1771,10 +1786,10 @@ RectTransform:
   m_Father: {fileID: 1009801883}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.19500001, y: 0}
-  m_AnchorMax: {x: 0.8605352, y: 1}
-  m_AnchoredPosition: {x: 2.9799805, y: 62}
-  m_SizeDelta: {x: -106.17998, y: 62}
+  m_AnchorMin: {x: 0.19500001, y: 0.2875}
+  m_AnchorMax: {x: 0.80700004, y: 0.64750004}
+  m_AnchoredPosition: {x: 2.9799805, y: 92.2}
+  m_SizeDelta: {x: 0.8, y: 92.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &149078019
 MonoBehaviour:
@@ -7812,12 +7827,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1590922886}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ToggleUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1590922886}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8487,6 +8502,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 62aa5ac0020edb443aa00bea184c2596, type: 3}
   - {fileID: 21300000, guid: 5767f54f309fe9a43b7e1e803a7a67fc, type: 3}
   lockedSprite: {fileID: 21300000, guid: f8ef831cbf273e541a6662ad2a4b70fe, type: 3}
+  pcUIExceptions:
+  - {fileID: 208980503}
+  - {fileID: 1274854136}
   customEnemiesOrder: 000004000500010003000200
   customCollectOrder: 0000030006000800050007000100
   customGroundsOrder: 000001000200030004000c000a000b0007000600090008000d000e00
@@ -10776,9 +10794,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1590922886}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 860324053}
+        m_MethodName: SaveLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10788,11 +10806,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 860324053}
-        m_MethodName: SaveLevel
-        m_Mode: 1
+        m_MethodName: ToggleUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1590922886}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11636,17 +11654,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1590922886}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -13999,9 +14006,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1590922886}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 860324053}
+        m_MethodName: SaveLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14011,11 +14018,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 860324053}
-        m_MethodName: SaveLevel
-        m_Mode: 1
+        m_MethodName: ToggleUI
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1590922886}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15786,6 +15793,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ExitEditor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 860324053}
         m_MethodName: LoadScene
         m_Mode: 3
@@ -19976,6 +19994,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 860324053}
+        m_MethodName: ExitEditor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 860324053}
         m_MethodName: LoadScene
         m_Mode: 3

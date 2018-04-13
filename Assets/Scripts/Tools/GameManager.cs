@@ -57,9 +57,9 @@ public class GameManager : Singleton<GameManager>
         if (currentState == GameState.RunTime || currentState == GameState.LevelEditor)
         {
             if (currentState == GameState.RunTime)
-                LevelManager.Instance.isPaused = false;
+                LevelManager.Instance.IsPaused = false;
             else
-                LevelManager.Instance.isPaused = true;
+                LevelManager.Instance.IsPaused = true;
         }
     }
 

@@ -8,7 +8,7 @@ public class LevelPublisher : MonoBehaviour {
 	private LevelEditorUI levelEditorUI = null;
 
     public void PublishLevel () {
-		if (GameManager.Instance.currentLevel == "Tutorial2.sld") {
+		if (GameManager.Instance.currentLevel == "Template.sld") {
 			Debug.LogError ("Cannot publish tutorial level.");
 			return;
 		}
