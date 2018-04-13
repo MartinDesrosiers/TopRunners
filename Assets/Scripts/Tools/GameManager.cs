@@ -75,8 +75,7 @@ public class GameManager : Singleton<GameManager>
             currentState = GameState.Menu;
     }
 
-    private void OnApplicationQuit()
-    {
+    private void OnApplicationQuit() {
         LevelManager.Instance.ClearLevel();
         Destroy(LevelManager.Instance.gameObject);
         Destroy(this.gameObject);

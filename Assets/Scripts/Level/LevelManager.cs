@@ -56,17 +56,16 @@ public class LevelManager : Singleton<LevelManager> {
 		Uid
 	}
 
-    private void Start()
-    {
+    private void Start() {
         checkPointFlag = Instantiate(Resources.Load("Flag", typeof(GameObject)) as GameObject);
         checkPointFlag.transform.position = new Vector2(-10f, -10f);
     }
 
     public void InitializeLevel() {
-        //Security clean up.
-        Destroy(mapContainer);
+		IsPaused = true;
+		//Security clean up.
+		Destroy(mapContainer);
         CreateMapContainer();
-        IsPaused = true;
         player = GameObject.Find("NewPlayer");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
 		_tileConnector = GameObject.Find("TileConnector").GetComponent<TileConnector>();
@@ -78,25 +77,15 @@ public class LevelManager : Singleton<LevelManager> {
         //ghostObjects = new List<GameObject>();
     }
 
-    /*void InitialzeGhostPlayer()
-    {
-        ghostPlayer = Instantiate(Resources.Load("GhostPlayer", typeof(GameObject)) as GameObject);
-        ghostPlayer.GetComponent<PlayerController>().Initialize();
-        ghostPlayer.transform.position = player.transform.position;
-        ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        ghostReplay = new GhostReplay();
-        ghostReplay.InitGhostList();
-        //ghostReplay.SetGhostList();
-    }*/
-
 
 	public void ReloadLevel() {
 		IsPaused = true;
-		isReloading = true;
+		//isReloading = true;
 		EnemyList.Clear();
 		DeserializeLevelData();
-        SetActiveFunction(doorList);
-        SetParallax();
+		foreach(GameObject o in doorList)
+			o.gameObject.SetActive(true);
+		SetParallax();
         /*finalGhostObjects = ghostObjects;
         for (int i = 0; i < ghostObjects.Count; i++)
             Destroy(ghostObjects[i].gameObject);
@@ -113,18 +102,7 @@ public class LevelManager : Singleton<LevelManager> {
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
 		IsPaused = false;
-    }
-
-	//set all GameObject from a List to true;
-	private void SetActiveFunction(List<GameObject> list) {
-        foreach (GameObject o in list)
-            o.gameObject.SetActive(true);
-    }
-
-    private void CreateMapContainer() {
-		Destroy(mapContainer);
-		mapContainer = new GameObject() { name = "Map Container " + Time.time.ToString() };
-    }
+	}
 
 	//Reset all the level variables.
 	public void ClearLevel() {
@@ -140,6 +118,21 @@ public class LevelManager : Singleton<LevelManager> {
 		EnemyList.Clear();
 	}
 
+	/*void InitialzeGhostPlayer()
+    {
+        ghostPlayer = Instantiate(Resources.Load("GhostPlayer", typeof(GameObject)) as GameObject);
+        ghostPlayer.GetComponent<PlayerController>().Initialize();
+        ghostPlayer.transform.position = player.transform.position;
+        ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        ghostReplay = new GhostReplay();
+        ghostReplay.InitGhostList();
+        //ghostReplay.SetGhostList();
+    }*/
+
+    private void CreateMapContainer() {
+		Destroy(mapContainer);
+		mapContainer = new GameObject() { name = "Map Container" };
+    }
 
 	//Fill the serialized level data.
 	public bool LoadSerializedData() {

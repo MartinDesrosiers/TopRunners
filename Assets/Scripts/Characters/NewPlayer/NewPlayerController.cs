@@ -101,6 +101,16 @@ public class NewPlayerController : NewPlayerMotor {
 		playerUI.CheckHealth(_health);
 	}
 
+	public void AddKey() {
+		_key++;
+		playerUI.ShowKeys(_key);
+	}
+
+	public void RemoveKey() {
+		_key--;
+		playerUI.ShowKeys(_key);
+	}
+
 	public void Kill() {
 		_stateMachine.CurrentState = PlayerStates.Dead;
 	}

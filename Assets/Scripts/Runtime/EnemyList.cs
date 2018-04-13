@@ -2,25 +2,34 @@
 using System.Collections.Generic;
 
 public static class EnemyList {
-
-	public static List<EnemyRadius> enemyList = new List<EnemyRadius>();
+	private static List<EnemyRadius> _enemyList = null;
+	public static List<EnemyRadius> Enemies {
+		get {
+			if(_enemyList == null)
+				_enemyList = new List<EnemyRadius>();
+			return _enemyList;
+		}
+		set {
+			_enemyList = value;
+		}
+	}
 
 	public static void Clear() {
-		enemyList.Clear();
-		enemyList = new List<EnemyRadius>();
+		Enemies.Clear();
+		Enemies = null;
 	}
 
 	public static Vector2 GetEnemyPosition(Vector2 position) {
 		List<EnemyRadius> enemiesInRadius = new List<EnemyRadius>();
 
-		for(int i = 0; i < enemyList.Count; i++) {
-			if(Mathf.Abs(GetDistanceFromEnemy(enemyList[i], position)) < enemyList[i].radius) {
+		for(int i = 0; i < Enemies.Count; i++) {
+			if(Mathf.Abs(GetDistanceFromEnemy(Enemies[i], position)) < Enemies[i].radius) {
 				//Casts a ray from the hero to the enemy.
-				RaycastHit2D tHit = Physics2D.Linecast(position, enemyList[i].transform.position, 1 << LayerMask.NameToLayer("Ground"));
+				RaycastHit2D tHit = Physics2D.Linecast(position, Enemies[i].transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
 				//If the ray doesn't hit anything, starts the dash ( Prevents the hero from clipping through blocks ).
 				if(tHit.collider == null)
-					enemiesInRadius.Add(enemyList[i]);
+					enemiesInRadius.Add(Enemies[i]);
 			}
 		}
 
@@ -51,16 +60,16 @@ public static class EnemyList {
 	public static Vector2 GetDash(Vector2 position) {
 		List<EnemyRadius> enemiesInRadius = new List<EnemyRadius>();
 
-		for(int i = 0; i < enemyList.Count; i++) {
-			if(Mathf.Abs(GetDistanceFromEnemy(enemyList[i], position)) < enemyList[i].radius) {
+		for(int i = 0; i < Enemies.Count; i++) {
+			if(Mathf.Abs(GetDistanceFromEnemy(Enemies[i], position)) < Enemies[i].radius) {
 				float direction = LevelManager.Instance.player.GetComponent<Rigidbody2D>().velocity.x;
-				if(enemyList[i].transform.position.x - position.x < 0 && direction < 0 || enemyList[i].transform.position.x - position.x > 0 && direction > 0) {
+				if(Enemies[i].transform.position.x - position.x < 0 && direction < 0 || Enemies[i].transform.position.x - position.x > 0 && direction > 0) {
 					//Casts a ray from the hero to the enemy.
-					RaycastHit2D tHit = Physics2D.Linecast(position, enemyList[i].transform.position, 1 << LayerMask.NameToLayer("Ground"));
+					RaycastHit2D tHit = Physics2D.Linecast(position, Enemies[i].transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
 					//If the ray doesn't hit anything, starts the dash ( Prevents the hero from clipping through blocks ).
 					if(tHit.collider == null)
-						enemiesInRadius.Add(enemyList[i]);
+						enemiesInRadius.Add(Enemies[i]);
 				}
 			}
 		}
@@ -96,40 +105,38 @@ public static class EnemyList {
 	//Add an enemy (EnemyRadius) to the enemyList.
 	//Called from the Start function of all enemies.
 	public static void AddEnemy(EnemyRadius enemy) {
-		enemyList.Add(enemy);
+		Enemies.Add(enemy);
 	}
 
 	//Remove an enemy (EnemyRadius) from the enemyList.
 	//Called from the OnDestroy function when an enemy is destroyed.
 	public static void DestroyEnemy(EnemyRadius enemy) {
-		for(int i = 0; i < enemyList.Count; i++) {
-			if(enemyList[i] == enemy) {
-				enemyList.RemoveAt(i);
+		for(int i = 0; i < Enemies.Count; i++) {
+			if(Enemies[i] == enemy) {
+				Enemies.RemoveAt(i);
 				break;
 			}
 		}
 	}
 
 	public static void UpdateAreaAlpha(Vector2 heroPosition) {
-		for(int i = 0; i < enemyList.Count; i++) {
-			float distanceFromArea = GetDistanceFromEnemy(enemyList[i], heroPosition) - enemyList[i].radius;
+		for(int i = 0; i < Enemies.Count; i++) {
+			float distanceFromArea = GetDistanceFromEnemy(Enemies[i], heroPosition) - Enemies[i].radius;
 
-			if(distanceFromArea < enemyList[i].radius * 2f) {
+			if(distanceFromArea < Enemies[i].radius * 2f) {
 				if(distanceFromArea > 0f)
-					enemyList[i].SetAlpha(1f - distanceFromArea / (enemyList[i].radius * 2f));
+					Enemies[i].SetAlpha(1f - distanceFromArea / (Enemies[i].radius * 2f));
 				else
-					enemyList[i].SetAlpha(1f);
+					Enemies[i].SetAlpha(1f);
 			}
 			else
-				enemyList[i].SetAlpha(0f);
+				Enemies[i].SetAlpha(0f);
 		}
 	}
 
 	public static void SetBodyType(RigidbodyType2D bodyType) {
-		if(enemyList != null) {
-			foreach(EnemyRadius enemy in enemyList)
-				enemy.transform.parent.parent.GetComponent<Rigidbody2D>().bodyType = bodyType;
-		}
+		foreach(EnemyRadius enemy in Enemies)
+			enemy.transform.parent.parent.GetComponent<Rigidbody2D>().bodyType = bodyType;
 	}
 
 	//Returns the distance between an enemy and the hero.
