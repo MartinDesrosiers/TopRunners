@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 286167928}
   - component: {fileID: 286167930}
   - component: {fileID: 286167929}
+  - component: {fileID: 286167931}
   m_Layer: 5
   m_Name: NameText
   m_TagString: Untagged
@@ -441,6 +442,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286167927}
+--- !u!114 &286167931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 286167927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Character Name
+  frenchText: Nom du personnage
 --- !u!1 &390390750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1661,7 @@ GameObject:
   - component: {fileID: 1105493467}
   - component: {fileID: 1105493466}
   - component: {fileID: 1105493465}
+  - component: {fileID: 1105493468}
   m_Layer: 5
   m_Name: StoryText
   m_TagString: Untagged
@@ -1735,6 +1750,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1105493463}
+--- !u!114 &1105493468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1105493463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Story text
+  frenchText: Texte de l'histjoire
 --- !u!1 &1145765400
 GameObject:
   m_ObjectHideFlags: 0

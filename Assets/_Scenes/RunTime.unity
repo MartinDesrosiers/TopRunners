@@ -361,6 +361,96 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f7a0147c0270594f81f6c4beaf60aea, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &940006364 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1285654618428140, guid: 5f7a0147c0270594f81f6c4beaf60aea,
+    type: 2}
+  m_PrefabInternal: {fileID: 940006363}
+--- !u!1 &940006365 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1057018734036022, guid: 5f7a0147c0270594f81f6c4beaf60aea,
+    type: 2}
+  m_PrefabInternal: {fileID: 940006363}
+--- !u!1 &940006366 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1089489901848494, guid: 5f7a0147c0270594f81f6c4beaf60aea,
+    type: 2}
+  m_PrefabInternal: {fileID: 940006363}
+--- !u!1 &940006367 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1597411060425280, guid: 5f7a0147c0270594f81f6c4beaf60aea,
+    type: 2}
+  m_PrefabInternal: {fileID: 940006363}
+--- !u!1 &940006368 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1967914842485732, guid: 5f7a0147c0270594f81f6c4beaf60aea,
+    type: 2}
+  m_PrefabInternal: {fileID: 940006363}
+--- !u!114 &940006369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940006364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Button
+  frenchText: Bouton
+--- !u!114 &940006370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940006365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Right
+  frenchText: Droite
+--- !u!114 &940006371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940006366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Left
+  frenchText: Gauche
+--- !u!114 &940006372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940006367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: GOLD
+  frenchText: OR
+--- !u!114 &940006373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 940006368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: DASH
+  frenchText: CHARGE
 --- !u!1001 &1120781757
 Prefab:
   m_ObjectHideFlags: 0

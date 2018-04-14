@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 2381881}
   - component: {fileID: 2381880}
   - component: {fileID: 2381879}
+  - component: {fileID: 2381883}
   m_Layer: 5
   m_Name: reward-text
   m_TagString: Untagged
@@ -218,6 +219,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2381877}
+--- !u!114 &2381883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2381877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ONLINE EXPERT MODE
+  frenchText: MODE EN-LIGNE EXPERT
 --- !u!1 &27673410
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +938,7 @@ GameObject:
   - component: {fileID: 95537242}
   - component: {fileID: 95537241}
   - component: {fileID: 95537240}
+  - component: {fileID: 95537244}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1021,6 +1036,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 95537238}
+--- !u!114 &95537244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95537238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: GET MORE ENERGY BARS!
+  frenchText: "OBTENEZ PLUS DE BARRES D'\xC9NERGIE"
 --- !u!1 &109217854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1409,7 @@ GameObject:
   - component: {fileID: 131705780}
   - component: {fileID: 131705782}
   - component: {fileID: 131705781}
+  - component: {fileID: 131705783}
   m_Layer: 5
   m_Name: levelTXT
   m_TagString: Untagged
@@ -1448,6 +1477,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 131705779}
+--- !u!114 &131705783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 131705779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 17
+  frenchText: NIVEAU 17
 --- !u!1 &138635190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1503,7 @@ GameObject:
   - component: {fileID: 138635194}
   - component: {fileID: 138635193}
   - component: {fileID: 138635192}
+  - component: {fileID: 138635196}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1558,6 +1601,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 138635190}
+--- !u!114 &138635196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138635190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: EAT AN ENERGY BAR
+  frenchText: "MANGER UNE BARRE D'\xC9NERGIE"
 --- !u!1 &150888663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,6 +1625,7 @@ GameObject:
   - component: {fileID: 150888664}
   - component: {fileID: 150888666}
   - component: {fileID: 150888665}
+  - component: {fileID: 150888667}
   m_Layer: 5
   m_Name: health-text
   m_TagString: Untagged
@@ -1636,6 +1693,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 150888663}
+--- !u!114 &150888667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 150888663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Health
+  frenchText: "Vitalit\xE9"
 --- !u!1 &175523436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,6 +2216,7 @@ GameObject:
   - component: {fileID: 241993399}
   - component: {fileID: 241993398}
   - component: {fileID: 241993397}
+  - component: {fileID: 241993401}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -2243,6 +2314,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 241993395}
+--- !u!114 &241993401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241993395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 15
+  frenchText: NIVEAU 15
 --- !u!1 &243530334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3372,6 +3456,7 @@ GameObject:
   - component: {fileID: 308085763}
   - component: {fileID: 308085762}
   - component: {fileID: 308085761}
+  - component: {fileID: 308085765}
   m_Layer: 5
   m_Name: acceleration-text
   m_TagString: Untagged
@@ -3469,6 +3554,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 308085759}
+--- !u!114 &308085765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 308085759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ACCELERATION
+  frenchText: "ACC\xC9L\xC9RATION"
 --- !u!1 &339742870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,6 +3952,7 @@ GameObject:
   - component: {fileID: 359136324}
   - component: {fileID: 359136323}
   - component: {fileID: 359136322}
+  - component: {fileID: 359136326}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -3951,6 +4050,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359136320}
+--- !u!114 &359136326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359136320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 1
+  frenchText: NIVEAU 1
 --- !u!1 &369761818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4108,6 +4220,7 @@ GameObject:
   - component: {fileID: 411224222}
   - component: {fileID: 411224221}
   - component: {fileID: 411224220}
+  - component: {fileID: 411224224}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -4205,6 +4318,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 411224218}
+--- !u!114 &411224224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411224218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 20
+  frenchText: NIVEAU 20
 --- !u!1 &434835833
 GameObject:
   m_ObjectHideFlags: 0
@@ -4218,6 +4344,7 @@ GameObject:
   - component: {fileID: 434835837}
   - component: {fileID: 434835836}
   - component: {fileID: 434835835}
+  - component: {fileID: 434835839}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -4315,6 +4442,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 434835833}
+--- !u!114 &434835839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434835833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 30
+  frenchText: NIVEAU 30
 --- !u!1 &442376519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4908,6 +5048,7 @@ GameObject:
   - component: {fileID: 490068300}
   - component: {fileID: 490068299}
   - component: {fileID: 490068298}
+  - component: {fileID: 490068302}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -5005,6 +5146,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490068296}
+--- !u!114 &490068302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 490068296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 70
+  frenchText: NIVEAU 70
 --- !u!1 &491333114
 GameObject:
   m_ObjectHideFlags: 0
@@ -5086,6 +5240,7 @@ GameObject:
   - component: {fileID: 500645275}
   - component: {fileID: 500645274}
   - component: {fileID: 500645273}
+  - component: {fileID: 500645277}
   m_Layer: 5
   m_Name: cost-text
   m_TagString: Untagged
@@ -5183,6 +5338,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 500645271}
+--- !u!114 &500645277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500645271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 'COST: 1 TRAINING POINT'
+  frenchText: 'PRIX: 1 POINT D''ENTRAINEMENT'
 --- !u!1 &516534281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5277,6 +5445,7 @@ GameObject:
   - component: {fileID: 517783377}
   - component: {fileID: 517783379}
   - component: {fileID: 517783378}
+  - component: {fileID: 517783380}
   m_Layer: 5
   m_Name: strength-text
   m_TagString: Untagged
@@ -5344,6 +5513,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 517783376}
+--- !u!114 &517783380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 517783376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Strength
+  frenchText: Force
 --- !u!1 &519291846
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,6 +5539,7 @@ GameObject:
   - component: {fileID: 519291850}
   - component: {fileID: 519291849}
   - component: {fileID: 519291848}
+  - component: {fileID: 519291852}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -5454,6 +5637,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519291846}
+--- !u!114 &519291852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519291846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 100
+  frenchText: NIVEAU 100
 --- !u!1 &522819729
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,6 +5660,7 @@ GameObject:
   - component: {fileID: 522819730}
   - component: {fileID: 522819732}
   - component: {fileID: 522819731}
+  - component: {fileID: 522819733}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5528,6 +5725,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522819729}
+--- !u!114 &522819733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522819729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Button
+  frenchText: Bouton
 --- !u!1001 &534748367
 Prefab:
   m_ObjectHideFlags: 0
@@ -5643,6 +5853,24 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224831868922109156, guid: ae04888b5adb4cb4ba0ad72088171d1c,
     type: 2}
   m_PrefabInternal: {fileID: 534748367}
+--- !u!1 &534748369 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1635693769121404, guid: ae04888b5adb4cb4ba0ad72088171d1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 534748367}
+--- !u!114 &534748370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534748369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &543749680
 GameObject:
   m_ObjectHideFlags: 0
@@ -5846,6 +6074,7 @@ GameObject:
   - component: {fileID: 563598683}
   - component: {fileID: 563598682}
   - component: {fileID: 563598681}
+  - component: {fileID: 563598685}
   m_Layer: 5
   m_Name: description-text
   m_TagString: Untagged
@@ -5943,6 +6172,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 563598679}
+--- !u!114 &563598685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563598679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: IMPROVES YOUR MAX SPEED
+  frenchText: AUGMENTE VOTRE VITESSE MAXIMALE
 --- !u!1 &567429271
 GameObject:
   m_ObjectHideFlags: 0
@@ -7172,6 +7414,7 @@ GameObject:
   - component: {fileID: 682131295}
   - component: {fileID: 682131294}
   - component: {fileID: 682131293}
+  - component: {fileID: 682131297}
   m_Layer: 5
   m_Name: energy-bar-quantity
   m_TagString: Untagged
@@ -7269,6 +7512,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 682131291}
+--- !u!114 &682131297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 682131291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: YOU HAVE 1
+  frenchText: VOUS AVEZ 1
 --- !u!1 &688705973
 GameObject:
   m_ObjectHideFlags: 0
@@ -8445,6 +8701,7 @@ GameObject:
   - component: {fileID: 780266196}
   - component: {fileID: 780266195}
   - component: {fileID: 780266194}
+  - component: {fileID: 780266198}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -8542,6 +8799,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 780266192}
+--- !u!114 &780266198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 780266192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &786325879
 GameObject:
   m_ObjectHideFlags: 0
@@ -9009,6 +9279,7 @@ GameObject:
   - component: {fileID: 837053285}
   - component: {fileID: 837053284}
   - component: {fileID: 837053283}
+  - component: {fileID: 837053287}
   m_Layer: 5
   m_Name: description-text
   m_TagString: Untagged
@@ -9106,6 +9377,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 837053281}
+--- !u!114 &837053287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 837053281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: TO UNLOCK ITZEL, YOU MUST COMPLETE THE RUN MODE.
+  frenchText: "POUR D\xC9VERROUILLER ITZEL, VOUS DEVEZ COMPL\xC9TER LE MODE COURSE."
 --- !u!1 &848064603
 GameObject:
   m_ObjectHideFlags: 0
@@ -9119,6 +9403,7 @@ GameObject:
   - component: {fileID: 848064607}
   - component: {fileID: 848064606}
   - component: {fileID: 848064605}
+  - component: {fileID: 848064609}
   m_Layer: 5
   m_Name: dash-text
   m_TagString: Untagged
@@ -9216,6 +9501,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 848064603}
+--- !u!114 &848064609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848064603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: DASH
+  frenchText: CHARGE
 --- !u!1 &849182670
 GameObject:
   m_ObjectHideFlags: 0
@@ -9386,6 +9684,7 @@ GameObject:
   - component: {fileID: 851390044}
   - component: {fileID: 851390043}
   - component: {fileID: 851390042}
+  - component: {fileID: 851390046}
   m_Layer: 5
   m_Name: max-speed-text
   m_TagString: Untagged
@@ -9483,6 +9782,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 851390040}
+--- !u!114 &851390046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851390040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: MAX SPEED
+  frenchText: VITESSE MAXIMALE
 --- !u!1 &861177186
 GameObject:
   m_ObjectHideFlags: 0
@@ -9496,6 +9808,7 @@ GameObject:
   - component: {fileID: 861177190}
   - component: {fileID: 861177189}
   - component: {fileID: 861177188}
+  - component: {fileID: 861177192}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -9593,6 +9906,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 861177186}
+--- !u!114 &861177192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 861177186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 40
+  frenchText: NIVEAU 40
 --- !u!1 &864217662
 GameObject:
   m_ObjectHideFlags: 0
@@ -9606,6 +9932,7 @@ GameObject:
   - component: {fileID: 864217666}
   - component: {fileID: 864217665}
   - component: {fileID: 864217664}
+  - component: {fileID: 864217668}
   m_Layer: 5
   m_Name: next-training-text
   m_TagString: Untagged
@@ -9703,6 +10030,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 864217662}
+--- !u!114 &864217668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864217662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 'NEXT TRAINING POINT: 4:00:00'
+  frenchText: 'PROCHAIN POINT D''ENTRAINEMENT: 4:00:00'
 --- !u!1 &868597760
 GameObject:
   m_ObjectHideFlags: 0
@@ -10069,6 +10409,7 @@ GameObject:
   - component: {fileID: 930869709}
   - component: {fileID: 930869708}
   - component: {fileID: 930869707}
+  - component: {fileID: 930869711}
   m_Layer: 5
   m_Name: title-text
   m_TagString: Untagged
@@ -10166,6 +10507,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930869705}
+--- !u!114 &930869711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930869705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: AZURA LEVEL UP REWARDS
+  frenchText: "R\xC9COMPENSES D'ATTEINTE DE NIVEAU POUR AZURA"
 --- !u!1 &944960760
 GameObject:
   m_ObjectHideFlags: 0
@@ -10179,6 +10533,7 @@ GameObject:
   - component: {fileID: 944960764}
   - component: {fileID: 944960763}
   - component: {fileID: 944960762}
+  - component: {fileID: 944960766}
   m_Layer: 5
   m_Name: train-quantity-text
   m_TagString: Untagged
@@ -10276,6 +10631,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 944960760}
+--- !u!114 &944960766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 944960760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: YOU HAVE 0 TRAINING POINTS
+  frenchText: VOUS AVEZ 0 POINTS D'ENTRAINEMENT
 --- !u!1 &953844646
 GameObject:
   m_ObjectHideFlags: 0
@@ -10467,6 +10835,7 @@ GameObject:
   - component: {fileID: 958784740}
   - component: {fileID: 958784739}
   - component: {fileID: 958784738}
+  - component: {fileID: 958784742}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -10564,6 +10933,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958784736}
+--- !u!114 &958784742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958784736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 5
+  frenchText: NIVEAU 5
 --- !u!1 &986865665
 GameObject:
   m_ObjectHideFlags: 0
@@ -12274,6 +12656,7 @@ GameObject:
   - component: {fileID: 1173764645}
   - component: {fileID: 1173764644}
   - component: {fileID: 1173764643}
+  - component: {fileID: 1173764647}
   m_Layer: 5
   m_Name: title-text
   m_TagString: Untagged
@@ -12371,6 +12754,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1173764641}
+--- !u!114 &1173764647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173764641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ENERGY BARS
+  frenchText: "BARRES D'\xC9NERGIE"
 --- !u!1 &1186138152
 GameObject:
   m_ObjectHideFlags: 0
@@ -12944,6 +13340,7 @@ GameObject:
   - component: {fileID: 1251121869}
   - component: {fileID: 1251121868}
   - component: {fileID: 1251121867}
+  - component: {fileID: 1251121871}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -13041,6 +13438,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1251121865}
+--- !u!114 &1251121871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251121865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 25
+  frenchText: NIVEAU 25
 --- !u!1 &1259954915
 GameObject:
   m_ObjectHideFlags: 0
@@ -13122,6 +13532,7 @@ GameObject:
   - component: {fileID: 1271481701}
   - component: {fileID: 1271481700}
   - component: {fileID: 1271481699}
+  - component: {fileID: 1271481703}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -13219,6 +13630,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271481697}
+--- !u!114 &1271481703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1271481697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 60
+  frenchText: NIVEAU 60
 --- !u!1 &1271754028
 GameObject:
   m_ObjectHideFlags: 0
@@ -13300,6 +13724,7 @@ GameObject:
   - component: {fileID: 1281739544}
   - component: {fileID: 1281739543}
   - component: {fileID: 1281739542}
+  - component: {fileID: 1281739546}
   m_Layer: 5
   m_Name: current-points-text
   m_TagString: Untagged
@@ -13397,6 +13822,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281739540}
+--- !u!114 &1281739546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281739540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 'YOUR TRAINING POINTS : 0'
+  frenchText: 'VOS POINTS D''ENTRAINEMENT: 0'
 --- !u!1 &1291718201
 GameObject:
   m_ObjectHideFlags: 0
@@ -13567,6 +14005,7 @@ GameObject:
   - component: {fileID: 1317837476}
   - component: {fileID: 1317837475}
   - component: {fileID: 1317837474}
+  - component: {fileID: 1317837478}
   m_Layer: 5
   m_Name: description-text
   m_TagString: Untagged
@@ -13664,6 +14103,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317837472}
+--- !u!114 &1317837478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317837472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: YOU UNLOCKED
+  frenchText: "VOUS AVEZ D\xC9VERROUILL\xC9"
 --- !u!1 &1326296615
 GameObject:
   m_ObjectHideFlags: 0
@@ -15050,6 +15502,7 @@ GameObject:
   - component: {fileID: 1505787434}
   - component: {fileID: 1505787436}
   - component: {fileID: 1505787435}
+  - component: {fileID: 1505787437}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -15114,6 +15567,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1505787433}
+--- !u!114 &1505787437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505787433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: SAVE FOR LATER
+  frenchText: GARDER POUR PLUS TARD
 --- !u!1 &1506320596
 GameObject:
   m_ObjectHideFlags: 0
@@ -15127,6 +15593,7 @@ GameObject:
   - component: {fileID: 1506320600}
   - component: {fileID: 1506320599}
   - component: {fileID: 1506320598}
+  - component: {fileID: 1506320602}
   m_Layer: 5
   m_Name: title-text
   m_TagString: Untagged
@@ -15224,6 +15691,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1506320596}
+--- !u!114 &1506320602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506320596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CONGRATS ON REACHING LEVEL 5!
+  frenchText: "F\xC9LICITATIONS! VOUS AVEZ ATTEINT LE NIVEAU 5!"
 --- !u!1 &1513526097
 GameObject:
   m_ObjectHideFlags: 0
@@ -15347,6 +15827,7 @@ GameObject:
   - component: {fileID: 1514563051}
   - component: {fileID: 1514563050}
   - component: {fileID: 1514563049}
+  - component: {fileID: 1514563053}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -15444,6 +15925,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1514563047}
+--- !u!114 &1514563053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514563047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 10
+  frenchText: NIVEAU 10
 --- !u!1 &1515327999
 GameObject:
   m_ObjectHideFlags: 0
@@ -16757,6 +17251,7 @@ GameObject:
   - component: {fileID: 1707687533}
   - component: {fileID: 1707687532}
   - component: {fileID: 1707687531}
+  - component: {fileID: 1707687535}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -16854,6 +17349,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1707687529}
+--- !u!114 &1707687535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707687529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &1716252173
 GameObject:
   m_ObjectHideFlags: 0
@@ -17113,6 +17621,7 @@ GameObject:
   - component: {fileID: 1736797080}
   - component: {fileID: 1736797079}
   - component: {fileID: 1736797078}
+  - component: {fileID: 1736797082}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -17210,6 +17719,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1736797076}
+--- !u!114 &1736797082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736797076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: EAT!
+  frenchText: MANGEZ!
 --- !u!1 &1749316297
 GameObject:
   m_ObjectHideFlags: 0
@@ -17635,6 +18157,7 @@ GameObject:
   - component: {fileID: 1777887629}
   - component: {fileID: 1777887628}
   - component: {fileID: 1777887627}
+  - component: {fileID: 1777887631}
   m_Layer: 5
   m_Name: training-points
   m_TagString: Untagged
@@ -17732,6 +18255,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1777887625}
+--- !u!114 &1777887631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777887625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: 'TRAINING POINTS: 1'
+  frenchText: 'POINTS D''ENTRAINEMENT: 1'
 --- !u!1 &1780558131
 GameObject:
   m_ObjectHideFlags: 0
@@ -17881,6 +18417,7 @@ GameObject:
   - component: {fileID: 1801639440}
   - component: {fileID: 1801639439}
   - component: {fileID: 1801639438}
+  - component: {fileID: 1801639442}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -17978,6 +18515,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801639436}
+--- !u!114 &1801639442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801639436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &1818389243
 GameObject:
   m_ObjectHideFlags: 0
@@ -18534,6 +19084,7 @@ GameObject:
   - component: {fileID: 1850452921}
   - component: {fileID: 1850452920}
   - component: {fileID: 1850452919}
+  - component: {fileID: 1850452923}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -18631,6 +19182,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1850452917}
+--- !u!114 &1850452923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850452917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CLOTHES
+  frenchText: "V\xCATEMENTS"
 --- !u!1 &1855154709
 GameObject:
   m_ObjectHideFlags: 0
@@ -18644,6 +19208,7 @@ GameObject:
   - component: {fileID: 1855154713}
   - component: {fileID: 1855154712}
   - component: {fileID: 1855154711}
+  - component: {fileID: 1855154715}
   m_Layer: 5
   m_Name: description-text
   m_TagString: Untagged
@@ -18741,6 +19306,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855154709}
+--- !u!114 &1855154715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855154709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: EAT AN ENERGY BAR TO GET 3 TRAINING POINTS.
+  frenchText: "MANGEZ UNE BARRE D'\xC9NERGIE POUR OBTENIR 3 POINTS D'ENTRAINEMENT."
 --- !u!1 &1866988064
 GameObject:
   m_ObjectHideFlags: 0
@@ -18829,6 +19407,7 @@ GameObject:
   - component: {fileID: 1868306606}
   - component: {fileID: 1868306605}
   - component: {fileID: 1868306604}
+  - component: {fileID: 1868306608}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -18926,6 +19505,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1868306602}
+--- !u!114 &1868306608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868306602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 50
+  frenchText: NIVEAU 50
 --- !u!1 &1870844953
 GameObject:
   m_ObjectHideFlags: 0
@@ -19435,6 +20027,7 @@ GameObject:
   - component: {fileID: 1936356629}
   - component: {fileID: 1936356628}
   - component: {fileID: 1936356627}
+  - component: {fileID: 1936356631}
   m_Layer: 5
   m_Name: defense-text
   m_TagString: Untagged
@@ -19532,6 +20125,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1936356625}
+--- !u!114 &1936356631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1936356625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: DEFENSE
+  frenchText: "D\xC9FENSE"
 --- !u!1 &1936413424
 GameObject:
   m_ObjectHideFlags: 0
@@ -20125,6 +20731,7 @@ GameObject:
   - component: {fileID: 1953595629}
   - component: {fileID: 1953595628}
   - component: {fileID: 1953595627}
+  - component: {fileID: 1953595631}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -20222,6 +20829,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1953595625}
+--- !u!114 &1953595631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1953595625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &1991303488
 GameObject:
   m_ObjectHideFlags: 0
@@ -20386,6 +21006,7 @@ GameObject:
   - component: {fileID: 2013609140}
   - component: {fileID: 2013609139}
   - component: {fileID: 2013609138}
+  - component: {fileID: 2013609142}
   m_Layer: 5
   m_Name: reward-text
   m_TagString: Untagged
@@ -20483,6 +21104,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2013609136}
+--- !u!114 &2013609142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013609136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ONLINE HARDCORE MODE
+  frenchText: "MODE EN-LIGNE EXTR\xCAME"
 --- !u!1 &2023649571
 GameObject:
   m_ObjectHideFlags: 0
@@ -20620,6 +21254,7 @@ GameObject:
   - component: {fileID: 2056885924}
   - component: {fileID: 2056885926}
   - component: {fileID: 2056885925}
+  - component: {fileID: 2056885927}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -20684,6 +21319,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2056885923}
+--- !u!114 &2056885927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056885923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CLAIM IN STORE
+  frenchText: "R\xC9CLAMER EN MAGASIN"
 --- !u!1 &2076110565
 GameObject:
   m_ObjectHideFlags: 0
@@ -21079,6 +21727,7 @@ GameObject:
   - component: {fileID: 2116077605}
   - component: {fileID: 2116077604}
   - component: {fileID: 2116077603}
+  - component: {fileID: 2116077607}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -21176,3 +21825,16 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2116077601}
+--- !u!114 &2116077607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116077601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: TRAIN
+  frenchText: ENTRAINEMENT
