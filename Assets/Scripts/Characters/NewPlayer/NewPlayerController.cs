@@ -9,7 +9,7 @@ public class NewPlayerController : NewPlayerMotor {
 	public RuntimeEditorUI runtimeEditorUI;
 	public Animator animator;
 	public PlayerUI playerUI;
-	public float walkingSpeed, runningSpeed, wallJumpDelay, slideDelay;
+	public float walkingSpeed, runningSpeed, sprintingSpeed, wallJumpDelay, slideDelay;
 
 	private GameObject _colliders;
 	private GameObject _rollColliders;
@@ -48,6 +48,7 @@ public class NewPlayerController : NewPlayerMotor {
 	public void SetToDefault() {
 		walkingSpeed = 2f;
 		runningSpeed = 10f;
+		sprintingSpeed = 15f;
 		wallJumpDelay = 0.2f;
 		slideDelay = 0.6f;
 

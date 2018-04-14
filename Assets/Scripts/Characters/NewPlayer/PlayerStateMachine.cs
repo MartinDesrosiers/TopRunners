@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum PlayerStates { Idle, Walk, Run, Jump, Fall, Slide, Dash, Walled, Dead }
+public enum PlayerStates { Idle, Walk, Run, Sprint, Jump, Fall, Slide, Dash, Walled, Dead }
 
 [RequireComponent(typeof(NewPlayerController))]
 [RequireComponent(typeof(NewPlayerInputs))]
@@ -23,19 +23,25 @@ public class PlayerStateMachine : StateMachine {
 		else
 			CurrentState = PlayerStates.Idle;
 	}
-
-	/// <summary>
-	/// Resets all NewPlayerController variables to default value.
-	/// </summary>
+	
+	//Update loop called before the sate machine's main update loop.
+	protected override void EarlyCustomUpdate() {
+		if(_inputs.Direction != 0 && CheckDirection() && !IsDirectionLocked)
+			_controller.FlipHorizontal();
+	}
+	
+	//Update loop called after the sate machine's main update loop.
+	protected override void LateCustomUpdate() {
+		base.LateCustomUpdate();
+	}
+	
+	//Resets all NewPlayerController variables to default value.
 	private void SetToDefault() {
 		CurrentState = PlayerStates.Idle;
 		_controller.SetToDefault();
 	}
 	
-	/// <summary>
-	/// Returns true if the player model is facing opposite way of it's direction.
-	/// </summary>
-	/// <returns></returns>
+	//Returns true if the player model is facing opposite way of it's direction.
 	private bool CheckDirection() {
 		if(_inputs.Direction < 0 && _controller.transform.localScale.x > 0)
 			return true;
@@ -50,9 +56,9 @@ public class PlayerStateMachine : StateMachine {
 		if(_controller.GetGround()) {
 			if(_inputs.Direction != 0) {
 				if(!_inputs.Sprint)
-					CurrentState = PlayerStates.Walk;
-				else
 					CurrentState = PlayerStates.Run;
+				else
+					CurrentState = PlayerStates.Sprint;
 			}
 			else
 				CurrentState = PlayerStates.Idle;
@@ -67,19 +73,21 @@ public class PlayerStateMachine : StateMachine {
 		}
 	}
 
-	/// <summary>
-	/// Update loop called before the sate machine's main update loop.
-	/// </summary>
-	protected override void EarlyCustomUpdate() {
-		if(_inputs.Direction != 0 && CheckDirection() && !IsDirectionLocked)
-			_controller.FlipHorizontal();
-	}
-
-	/// <summary>
-	/// Update loop called after the sate machine's main update loop.
-	/// </summary>
-	protected override void LateCustomUpdate() {
-		base.LateCustomUpdate();
+	private void RunUpdate() {
+		if(!_controller.GetGround())
+			CurrentState = PlayerStates.Fall;
+		else if(_inputs.Jump)
+			CurrentState = PlayerStates.Jump;
+		else if(_inputs.Slide)
+			CurrentState = PlayerStates.Slide;
+		else if(_inputs.Direction == 0) {
+			//if(_controller.Velocity.x == 0)			Decceleration
+			CurrentState = PlayerStates.Idle;
+		}
+		else if(CurrentState.CompareTo(PlayerStates.Run) == 0 && _inputs.Sprint || CurrentState.CompareTo(PlayerStates.Sprint) == 0 && !_inputs.Sprint)
+			CurrentState = CurrentState.CompareTo(PlayerStates.Run) == 0 ? PlayerStates.Sprint : PlayerStates.Run;
+		else if(!_controller.GetWall())
+			_controller.Move(new Vector2(_inputs.Direction * (CurrentState.CompareTo(PlayerStates.Run) == 0 ? _controller.runningSpeed : _controller.sprintingSpeed), _controller.Velocity.y));
 	}
 
 	//All player states.
@@ -98,9 +106,9 @@ public class PlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Jump;
 		else if(_inputs.Direction != 0) {
 			if(!_inputs.Sprint)
-				CurrentState = PlayerStates.Walk;
-			else
 				CurrentState = PlayerStates.Run;
+			else
+				CurrentState = PlayerStates.Sprint;
 		}
 	}
 	#endregion
@@ -132,18 +140,23 @@ public class PlayerStateMachine : StateMachine {
 	}
 
 	private void Run_CustomUpdate() {
-		if(!_controller.GetGround())
-			CurrentState = PlayerStates.Fall;
-		else if(_inputs.Jump)
-			CurrentState = PlayerStates.Jump;
-		else if(_inputs.Slide)
-			CurrentState = PlayerStates.Slide;
-		else if(_inputs.Direction == 0) {
-			//if(_controller.Velocity.x == 0)			Decceleration
-			CurrentState = PlayerStates.Idle;
-		}
-		else if(!_controller.GetWall())
-			_controller.Move(new Vector2(_inputs.Direction * _controller.runningSpeed, _controller.Velocity.y));
+		RunUpdate();
+	}
+	#endregion
+
+	//Player character is sprinting.
+	#region Sprint
+	private void Sprint_EnterState() {
+		_controller.animator.Play("run");
+		_controller.animator.speed = 1.5f;
+	}
+
+	private void Sprint_CustomUpdate() {
+		RunUpdate();
+	}
+
+	private void Sprint_ExitState() {
+		_controller.animator.speed = 1f;
 	}
 	#endregion
 
@@ -176,9 +189,9 @@ public class PlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Fall;
 
 		if(IsDirectionLocked)
-			_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.runningSpeed : _controller.walkingSpeed), _controller.Velocity.y));
+			_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
 		else
-			_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.runningSpeed : _controller.walkingSpeed), _controller.Velocity.y));
+			_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
 	}
 
 	private void Jump_ExitState() {
@@ -206,7 +219,7 @@ public class PlayerStateMachine : StateMachine {
 			return;
 		}
 
-		_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.runningSpeed : _controller.walkingSpeed), _controller.Velocity.y));
+		_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
 	}
 	#endregion
 
@@ -236,7 +249,7 @@ public class PlayerStateMachine : StateMachine {
 		if(Time.time - timeEnteredState > _controller.slideDelay && hit.collider == null)
 			ExitCurrentState();
 
-		_controller.Move(new Vector2(_controller.Direction * _controller.runningSpeed, _controller.Velocity.y));
+		_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
 	}
 
 	private void Slide_ExitState() {
