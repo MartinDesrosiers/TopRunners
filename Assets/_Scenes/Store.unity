@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 669036517}
   - component: {fileID: 669036516}
   - component: {fileID: 669036515}
+  - component: {fileID: 669036519}
   m_Layer: 5
   m_Name: rubisTXT
   m_TagString: Untagged
@@ -402,6 +403,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 669036513}
+--- !u!114 &669036519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 669036513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: GET RUBIS
+  frenchText: OBTENER DES RUBIS
 --- !u!1001 &686954930
 Prefab:
   m_ObjectHideFlags: 0
@@ -586,6 +600,7 @@ GameObject:
   - component: {fileID: 992412658}
   - component: {fileID: 992412657}
   - component: {fileID: 992412656}
+  - component: {fileID: 992412660}
   m_Layer: 5
   m_Name: rubisTXT
   m_TagString: Untagged
@@ -680,6 +695,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 992412654}
+--- !u!114 &992412660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992412654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: PREMIUM<br>MEMBERSHIP
+  frenchText: ABONNEMENT<br>PREMIUM
 --- !u!1 &1107135355
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +987,7 @@ GameObject:
   - component: {fileID: 1427744623}
   - component: {fileID: 1427744622}
   - component: {fileID: 1427744621}
+  - component: {fileID: 1427744625}
   m_Layer: 5
   m_Name: packTXT
   m_TagString: Untagged
@@ -1051,6 +1080,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1427744619}
+--- !u!114 &1427744625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427744619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CONTENT PACKS
+  frenchText: ENSEMBLES DE CONTENU
 --- !u!1 &1445127730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1368,7 @@ GameObject:
   - component: {fileID: 1894416849}
   - component: {fileID: 1894416848}
   - component: {fileID: 1894416847}
+  - component: {fileID: 1894416851}
   m_Layer: 5
   m_Name: unitTXT
   m_TagString: Untagged
@@ -1422,6 +1465,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894416845}
+--- !u!114 &1894416851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1894416845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: EQUIPEMENTS<br>AND<br>OBJECTS
+  frenchText: "\xC9QUIPEMENTS<br>ET<br>OBJETS"
 --- !u!1 &1897365616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,3 +1706,21 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224831868922109156, guid: ae04888b5adb4cb4ba0ad72088171d1c,
     type: 2}
   m_PrefabInternal: {fileID: 1951465476}
+--- !u!1 &1951465478 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1635693769121404, guid: ae04888b5adb4cb4ba0ad72088171d1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1951465476}
+--- !u!114 &1951465479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1951465478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour

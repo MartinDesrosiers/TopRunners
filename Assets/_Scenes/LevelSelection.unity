@@ -931,7 +931,7 @@ Prefab:
     - target: {fileID: 224167743526174376, guid: dd97ac77620aa2b4989b63218642172d,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.000000059604645
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224167743526174376, guid: dd97ac77620aa2b4989b63218642172d,
         type: 2}
@@ -1315,6 +1315,798 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd97ac77620aa2b4989b63218642172d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1117395502 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1100612718050590, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395503 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1302345390626984, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395504 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1042469240896762, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395505 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1977729012806920, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395506 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1119696641865988, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395507 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1873493051999046, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395508 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1844393697318366, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395509 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1701878176726524, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395510 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1914191939762212, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395511 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1415509775457948, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395512 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1191821553958020, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395513 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1421642195541970, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395514 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1095993394430272, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395515 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1200492497961236, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395516 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1521258271711628, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395517 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008485916785858, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395518 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1892314973928092, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395519 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1853467856164222, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395520 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1729512240973708, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395521 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1939224042978252, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395522 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1688032783711054, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395523 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1119595212402022, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395524 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1811656622885590, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395525 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1386655339609884, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395526 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1818799420941158, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395527 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1401795309245162, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395528 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1128823190450620, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395529 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1368247308259958, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395530 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1851879787864208, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395531 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1695568740724804, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395532 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1940013490633018, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395533 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1877574498651584, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395534 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1398443402506750, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395535 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1236582502160730, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395536 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1656975108560788, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395537 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1788018664977556, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395538 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1026892954943440, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395539 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1952416392678584, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395540 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1735792638451250, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395541 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1800645496169752, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395542 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1120633300978392, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395543 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1748240213623608, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!1 &1117395544 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1456516610967840, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!114 &1117395545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CANCEL
+  frenchText: ANNULER
+--- !u!114 &1117395546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CONFIRM
+  frenchText: CONFIRMER
+--- !u!114 &1117395547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: GIVE IT A NICE NAME!
+  frenchText: DONNEZ-LUI UN NOM SYMPA!
+--- !u!114 &1117395548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Enter text...
+  frenchText: Entrez du texte...
+--- !u!114 &1117395549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: SCORES
+  frenchText: "R\xC9SULTATS"
+--- !u!114 &1117395550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: STATS
+  frenchText: STATISTIQUES
+--- !u!114 &1117395551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: PROMOTE
+  frenchText: PROMOUVOIR
+--- !u!114 &1117395552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: No
+  frenchText: Non
+--- !u!114 &1117395553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Yes
+  frenchText: Oui
+--- !u!114 &1117395554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Are you sure you<br>want to delete this level?
+  frenchText: "\xCAtes-vous bien certain<br>de vouloir d\xE9truire ce niveau?"
+--- !u!114 &1117395555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: RENAME
+  frenchText: RENOMMER
+--- !u!114 &1117395556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: RULES
+  frenchText: "R\xC8GLES"
+--- !u!114 &1117395557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: EDIT
+  frenchText: "\xC9DITER"
+--- !u!114 &1117395558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: RUN / PUBLISH
+  frenchText: "EX\xC9CUTER / PUBLIER"
+--- !u!114 &1117395559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: No
+  frenchText: Non
+--- !u!114 &1117395560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Yes
+  frenchText: Oui
+--- !u!114 &1117395561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Create a new level?
+  frenchText: "Cr\xE9er un nouveau niveau?"
+--- !u!114 &1117395562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: No
+  frenchText: Non
+--- !u!114 &1117395563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Yes
+  frenchText: Oui
+--- !u!114 &1117395564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Create a new level?
+  frenchText: "Cr\xE9er un nouveau niveau"
+--- !u!114 &1117395565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: No
+  frenchText: Non
+--- !u!114 &1117395566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Yes
+  frenchText: Oui
+--- !u!114 &1117395567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL STATS
+  frenchText: STATISTIQUES DU NIVEAU
+--- !u!114 &1117395568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: No
+  frenchText: Non
+--- !u!114 &1117395569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Yes
+  frenchText: Oui
+--- !u!114 &1117395570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: DO YOU REALLY WANT TO DELETE THIS LEVEL?
+  frenchText: "\xCATES-VOUS CERTAIN DE BIEN VOULOIR D\xC9TRUIRE CE NIVEAU?"
+--- !u!114 &1117395571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CANCEL
+  frenchText: ANNULER
+--- !u!114 &1117395572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: CONFIRM
+  frenchText: CONFIRMER
+--- !u!114 &1117395573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Enter text...
+  frenchText: Entrez du texte...
+--- !u!114 &1117395574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: GIVE IT A NICE NAME
+  frenchText: DONNEZ LUI UN NOM SYMPA
+--- !u!114 &1117395575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: NO DOMAGE
+  frenchText: "PAS DE D\xC9G\xC2T"
+--- !u!114 &1117395576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: HARD
+  frenchText: DIFFICILE
+--- !u!114 &1117395577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: EASY
+  frenchText: FACILE
+--- !u!114 &1117395578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: SEGMENT
+  frenchText: SEGMENT
+--- !u!114 &1117395579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: TAS
+  frenchText: TAS
+--- !u!114 &1117395580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ANY%
+  frenchText: TOUT%
+--- !u!114 &1117395581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Cancel
+  frenchText: Annuler
+--- !u!114 &1117395582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Confirm
+  frenchText: Confirmer
+--- !u!114 &1117395583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: MAKE YOUR OWN RULES
+  frenchText: "CR\xC9ER VOS PROPRES R\xC8GLES"
+--- !u!114 &1117395584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
+--- !u!114 &1117395585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: NEW LEVEL
+  frenchText: NOUVEAU NIVEAU
+--- !u!114 &1117395586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: PUBLISHED
+  frenchText: "PUBLI\xC9"
+--- !u!114 &1117395587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: YOUR LEVELS
+  frenchText: VOS NIVEAUX
+--- !u!1 &1117395588 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1838920442999874, guid: dd97ac77620aa2b4989b63218642172d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1117395501}
+--- !u!114 &1117395589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117395588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ' ... english ...'
+  frenchText: ' ... francais ...'
 --- !u!1 &1128780274
 GameObject:
   m_ObjectHideFlags: 0
