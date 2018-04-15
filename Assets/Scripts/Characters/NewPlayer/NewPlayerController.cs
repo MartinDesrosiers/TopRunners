@@ -1,23 +1,22 @@
 ﻿using UnityEngine;
 
 public class NewPlayerController : NewPlayerMotor {
-	private float _recoveryTimer;
-	private float _recoveryDelay = 0.4f;
 	public bool IsRecovering { get { return Time.time - _recoveryTimer < _recoveryDelay; } }
 	public bool IsInvisible { get; private set; }
+	public float WalkingSpeed { get { return _stats.walkingSpeed; } }
+	public float RunningSpeed { get { return _stats.runningSpeed; } }
+	public float SprintingSpeed { get { return _stats.sprintingSpeed; } }
 
 	public RuntimeEditorUI runtimeEditorUI;
 	public Animator animator;
 	public PlayerUI playerUI;
-	public float walkingSpeed, runningSpeed, sprintingSpeed, wallJumpDelay, slideDelay;
+	public float wallJumpDelay, slideDelay;
 
-	private GameObject _colliders;
-	private GameObject _rollColliders;
-	private EdgeCollider2D _mainEdgeCollider;
-	private EdgeCollider2D _wallEdgeCollider;
-	private Vector2[] _normalCollidersPoints, _jumpingCollidersPoints, _standingCollider, _slidingCollider;
-	private ushort _health, _strength, _range, _key;
-	private float _jumpForce, _jumpBoost;
+	private NewPlayerStatistics _stats;
+	private NewPlayercolliders _colliders;
+	private NewPlayerDash _dash;
+	private ushort _range, _key;
+	private float _jumpBoost, _recoveryTimer, _recoveryDelay;
 	private bool _isInvincible;
 
 	private void Awake() {
@@ -25,38 +24,20 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	protected override void CustomStart() {
-		_colliders = transform.GetChild(0).GetChild(0).gameObject;
-		_rollColliders = transform.GetChild(0).GetChild(1).gameObject;
-		_mainEdgeCollider = transform.GetChild(0).GetChild(0).GetComponent<EdgeCollider2D>();
-		_wallEdgeCollider = transform.GetChild(0).GetChild(2).GetComponent<EdgeCollider2D>();
-		_normalCollidersPoints = new Vector2[4];
-		_jumpingCollidersPoints = new Vector2[4];
-
-		for(int i = 0; i < _mainEdgeCollider.pointCount; i++) {
-			_normalCollidersPoints[i] = _mainEdgeCollider.points[i];
-			_jumpingCollidersPoints[i] = _normalCollidersPoints[i];
-		}
-		
-		_jumpingCollidersPoints[1] = new Vector2(0.3f, -0.45f);
-		_jumpingCollidersPoints[2] = new Vector2(-0.55f, -0.98f);
-		_standingCollider = new Vector2[] { new Vector2(.33f, .7f), new Vector2(.33f, -1f) };
-		_slidingCollider = new Vector2[] { new Vector2(.45f, -.6f), new Vector2(.45f, -1f) };
+		_colliders = new NewPlayercolliders(transform);
+		_recoveryDelay = 0.4f;
 
 		base.CustomStart();
 	}
 
 	public void SetToDefault() {
-		walkingSpeed = 2f;
-		runningSpeed = 10f;
-		sprintingSpeed = 15f;
+		_dash = null;
+		_stats = new NewPlayerStatistics();
 		wallJumpDelay = 0.2f;
 		slideDelay = 0.6f;
-
-		_health = 3;
-		_strength = 4;
+		
 		_range = 5;
 		_key = 0;
-		_jumpForce = 6f;
 		_jumpBoost = 1f;
 		_isInvincible = false;
 		_recoveryTimer = -_recoveryDelay;
@@ -67,7 +48,7 @@ public class NewPlayerController : NewPlayerMotor {
 
 		_rigidBody.velocity = Vector3.zero;
 		playerUI.ShowKeys(_key);
-		playerUI.CheckHealth(_health);
+		playerUI.CheckHealth(_stats.health);
 		transform.position = LevelManager.Instance.spawnPoint;
 
 		LevelManager.Instance.ReloadLevel();
@@ -78,13 +59,13 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void ToggleJumpingColliders(bool enable) {
-		_mainEdgeCollider.points = enable ? _jumpingCollidersPoints : _normalCollidersPoints;
+		_colliders.mainEdgeCollider.points = enable ? _colliders.jumpingCollidersPoints : _colliders.normalCollidersPoints;
 	}
 
 	public void ToggleSlidingColliders(bool enable) {
-		_wallEdgeCollider.points = enable ? _slidingCollider : _standingCollider;
-		_rollColliders.SetActive(enable);
-		_colliders.SetActive(!enable);
+		_colliders.wallEdgeCollider.points = enable ? _colliders.slidingCollider : _colliders.standingCollider;
+		_colliders.rollColliders.SetActive(enable);
+		_colliders.colliders.SetActive(!enable);
 	}
 
 	public void ResetDash() {
@@ -96,10 +77,10 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void AddHealth(ushort hp = 1) {
-		_health += hp;
-		if(_health > 3)
-			_health = 3;
-		playerUI.CheckHealth(_health);
+		_stats.health += hp;
+		if(_stats.health > 3)
+			_stats.health = 3;
+		playerUI.CheckHealth(_stats.health);
 	}
 
 	public void AddKey() {
@@ -117,7 +98,7 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public float Jump() {
-		float jumpForce = _jumpForce * _jumpBoost;
+		float jumpForce = _stats.jumpForce * _jumpBoost;
 		_jumpBoost = 1f;
 		return jumpForce;
 	}
@@ -129,9 +110,9 @@ public class NewPlayerController : NewPlayerMotor {
 
 	public void TakeDamage(ushort damage, bool overrideDash, bool hitOnLeftSide) {
 		if(!_isInvincible && !IsRecovering && (CurrentState.CompareTo(PlayerStates.Dash) != 0 || overrideDash)) {
-			if(damage >= _health) {
-				_health = 0;
-				playerUI.CheckHealth(_health);
+			if(damage >= _stats.health) {
+				_stats.health = 0;
+				playerUI.CheckHealth(_stats.health);
 				Kill();
 			}
 			else {
@@ -143,11 +124,15 @@ public class NewPlayerController : NewPlayerMotor {
 				//	afterHit = new Vector2(-10, 1);
 				//StartCoroutine(RecoverFromDamage());
 
-				_health -= damage;
-				playerUI.CheckHealth(_health);
+				_stats.health -= damage;
+				playerUI.CheckHealth(_stats.health);
 
 				_recoveryTimer = Time.time;
 			}
 		}
+	}
+
+	public void StartDash() {
+		_dash = new NewPlayerDash(transform.position, EnemyList.GetDash(transform.position, Direction));
 	}
 }

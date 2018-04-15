@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public enum PlayerStates { Idle, Walk, Run, Sprint, Jump, Fall, Slide, Dash, Walled, Dead }
 
@@ -87,7 +88,7 @@ public class PlayerStateMachine : StateMachine {
 		else if(CurrentState.CompareTo(PlayerStates.Run) == 0 && _inputs.Sprint || CurrentState.CompareTo(PlayerStates.Sprint) == 0 && !_inputs.Sprint)
 			CurrentState = CurrentState.CompareTo(PlayerStates.Run) == 0 ? PlayerStates.Sprint : PlayerStates.Run;
 		else if(!_controller.GetWall())
-			_controller.Move(new Vector2(_inputs.Direction * (CurrentState.CompareTo(PlayerStates.Run) == 0 ? _controller.runningSpeed : _controller.sprintingSpeed), _controller.Velocity.y));
+			_controller.Move(new Vector2(_inputs.Direction * (CurrentState.CompareTo(PlayerStates.Run) == 0 ? _controller.RunningSpeed : _controller.SprintingSpeed), _controller.Velocity.y));
 	}
 
 	//All player states.
@@ -129,7 +130,7 @@ public class PlayerStateMachine : StateMachine {
 		else if(_inputs.Sprint)
 			CurrentState = PlayerStates.Run;
 		else if(!_controller.GetWall())
-			_controller.Move(new Vector2(_inputs.Direction * _controller.walkingSpeed, _controller.Velocity.y));
+			_controller.Move(new Vector2(_inputs.Direction * _controller.WalkingSpeed, _controller.Velocity.y));
 	}
 	#endregion
 
@@ -168,7 +169,7 @@ public class PlayerStateMachine : StateMachine {
 		float movementSpeed = _controller.Velocity.x;
 		if(lastState.CompareTo(PlayerStates.Walled) == 0) {
 			_controller.FlipHorizontal();
-			movementSpeed = _controller.runningSpeed;
+			movementSpeed = _controller.RunningSpeed;
 		}
 
 		_controller.Move(new Vector2(_controller.Direction * movementSpeed, _controller.Jump()));
@@ -184,14 +185,18 @@ public class PlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Slide;
 			return;
 		}
+		else if(_inputs.Jump && EnemyList.IsDashValid(_controller.transform.position, _controller.Direction)) {
+			CurrentState = PlayerStates.Dash;
+			return;
+		}
 
 		if(_controller.Velocity.y <= 0)
 			CurrentState = PlayerStates.Fall;
 
 		if(IsDirectionLocked)
-			_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
+			_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.SprintingSpeed : _controller.RunningSpeed), _controller.Velocity.y));
 		else
-			_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
+			_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.SprintingSpeed : _controller.RunningSpeed), _controller.Velocity.y));
 	}
 
 	private void Jump_ExitState() {
@@ -218,8 +223,12 @@ public class PlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Slide;
 			return;
 		}
+		else if(_inputs.Jump && EnemyList.IsDashValid(_controller.transform.position, _controller.Direction)) {
+			CurrentState = PlayerStates.Dash;
+			return;
+		}
 
-		_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
+		_controller.Move(new Vector2(_inputs.Direction * (_inputs.Sprint ? _controller.SprintingSpeed : _controller.RunningSpeed), _controller.Velocity.y));
 	}
 	#endregion
 
@@ -249,7 +258,7 @@ public class PlayerStateMachine : StateMachine {
 		if(Time.time - timeEnteredState > _controller.slideDelay && hit.collider == null)
 			ExitCurrentState();
 
-		_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.sprintingSpeed : _controller.runningSpeed), _controller.Velocity.y));
+		_controller.Move(new Vector2(_controller.Direction * (_inputs.Sprint ? _controller.SprintingSpeed : _controller.RunningSpeed), _controller.Velocity.y));
 	}
 
 	private void Slide_ExitState() {
@@ -261,6 +270,11 @@ public class PlayerStateMachine : StateMachine {
 	#region Dash
 	private void Dash_EnterState() {
 		_controller.animator.Play("dash");
+		_controller.StartDash();
+	}
+
+	private void Dash_CustomUpdate() {
+
 	}
 	#endregion
 
