@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LevelEditor : MonoBehaviour {
-
 	public InputField newLevelName;
     Transform transObj;
     public ushort objType;
@@ -137,16 +136,15 @@ public class LevelEditor : MonoBehaviour {
                 if (!tPointerOverUI) {
                     int[] objColRow = new int[2];   //0 = column, 1 = row
 					float[] objPos = new float[2];  //0 = x, 1 = y
-                    if (transObj != null)
-                    {
+                    if (transObj != null) {
                         GetObjPosition(ref objColRow, ref objPos, transObj.position);
                         transObj = null;
                     }
-                    else
-                    {
+                    else {
                         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         GetObjPosition(ref objColRow, ref objPos, mousePosition);
                     }
+
                     if (LevelEditorInputs.GetBrush()) {
 						if(eraser)
 							AddDeleteTile(objColRow, objPos, false);
@@ -157,6 +155,8 @@ public class LevelEditor : MonoBehaviour {
 								AddDeleteTile(objColRow, objPos, true);
 						}
 					}
+					else if(LevelEditorInputs.GetEraser())
+						AddDeleteTile(objColRow, objPos, false);
 				}
 				GlobalInputs.ClearInputs();
             }

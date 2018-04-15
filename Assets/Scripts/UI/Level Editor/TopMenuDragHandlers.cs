@@ -66,6 +66,7 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 
 						//Enable dragging.
 						_objectDrag = true;
+						Camera.main.GetComponent<CameraController>().isDraging = true;
 					}
 					else
 						//Enable the menu scrolling.
@@ -86,6 +87,7 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 		if(_objectDrag) {
 			tempImg.gameObject.SetActive(false);
 			_objectDrag = false;
+			Camera.main.GetComponent<CameraController>().isDraging = false;
 
 			//Get the toggle's id by parsing its name ( the toggles are named in a increasing numerical order ).
 			ushort tId;

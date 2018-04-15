@@ -589,6 +589,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 95489125699474312}
   lookAtHero: 0
   isFlying: 0
+  IsInvincible: 0
   stickToWalls: 0
   useAdvancedBehaviors: 1
   abList: 00000001

@@ -17,6 +17,7 @@ public class LevelManager : Singleton<LevelManager> {
 			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
 		}
 	}
+
     //bool hasBeenInit = false;
     public List<GameObject> doorList;
     /*public List<GameObject> ghostObjects;
@@ -101,8 +102,18 @@ public class LevelManager : Singleton<LevelManager> {
         }*/
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
-		IsPaused = false;
-	}
+    }
+
+	//set all GameObject from a List to true;
+	private void SetActiveFunction(List<GameObject> list) {
+        foreach (GameObject o in list)
+            o.gameObject.SetActive(true);
+    }
+
+    private void CreateMapContainer() {
+		Destroy(mapContainer);
+		mapContainer = new GameObject() { name = "Map Container " + Time.time.ToString() };
+  }
 
 	//Reset all the level variables.
 	public void ClearLevel() {
@@ -229,14 +240,6 @@ public class LevelManager : Singleton<LevelManager> {
                     if (tPrefab.gameObject.name.Contains("Door"))
                         doorList.Add(tPrefab.gameObject);
 
-                    if (tPrefab.tag != "Untagged") {
-                        switch (tPrefab.tag) {
-                            case "Connectable":
-                                _tileConnector.SetSprite(ref tPrefab);
-                                break;
-                        }
-                    }
-
 					//Instantiate the prefab with the serialized object's position and links it to the map container.
 					levelData.objectList[i][j].Add(tPrefab);
                     levelData.objectList[i][j][k].transform.SetParent(mapContainer.transform);
@@ -244,10 +247,17 @@ public class LevelManager : Singleton<LevelManager> {
 			}
         }
 
-		for(int i = 0; i < serializedData.objectList.Count; i++)
-			for(int j = 0; j < serializedData.objectList[i].Count; j++)
-				for(int k = 0; k < serializedData.objectList[i][j].Count; k++)
-					_tileConnector.RefreshZone(levelData.objectList[i][j][k].transform.position);
+		for(int i = 0; i < serializedData.objectList.Count; i++) {
+			for(int j = 0; j < serializedData.objectList[i].Count; j++) {
+				for(int k = 0; k < serializedData.objectList[i][j].Count; k++) {
+					if(levelData.objectList[i][j][k].tag == "Connectable") {
+						GameObject go = levelData.objectList[i][j][k];
+						_tileConnector.SetSprite(ref go);
+						levelData.objectList[i][j][k] = go;
+					}
+				}
+			}
+		}
 	}
 
 

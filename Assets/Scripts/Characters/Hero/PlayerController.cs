@@ -117,8 +117,7 @@ public class PlayerController : CharacterMotor
     }
 
     //ushort health, ushort combo, ushort strength, ushort range,float topSpeed, float acceleration, float stamina, float recuperation, float propulsion, float dashSpeed, float dodge
-    public void ReInitialize(List<int> list)
-    {
+    public void ReInitialize(List<int> list) {
         rg = transform.GetComponent<Rigidbody2D>();
         _convoyerBeltForce = 0;
         animator.Play("idle");
@@ -706,6 +705,7 @@ public class PlayerController : CharacterMotor
 		LevelManager.Instance.ReloadLevel();
         rg.velocity = Vector2.zero;
         Restart();
+		LevelManager.Instance.IsPaused = false;
     }
 
     //use after dash to make the player jump after hit

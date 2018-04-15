@@ -1921,7 +1921,6 @@ GameObject:
   - component: {fileID: 124352586997099582}
   - component: {fileID: 81323986056717526}
   - component: {fileID: 114174337794843312}
-  - component: {fileID: 114568429253223618}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5064,7 +5063,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702241457611366}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!92 &92069567676655190
 Behaviour:
   m_ObjectHideFlags: 1
@@ -5205,7 +5204,8 @@ MonoBehaviour:
   cameraType: 0
   isControlActive: 0
   scrollerSpeed: 0
-  gridMaterial: {fileID: 2100000, guid: e2c8d6845c95d445685323e25880e162, type: 2}
+  gridMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  gridColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114257871974635142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5322,17 +5322,6 @@ MonoBehaviour:
     boundaries: 28.5
     affectYAxis: 1
     elements: []
---- !u!114 &114568429253223618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1702241457611366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f5d48bfd05ef494b802cf55f5208624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114612912542491140
 MonoBehaviour:
   m_ObjectHideFlags: 1
