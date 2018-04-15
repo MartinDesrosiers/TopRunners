@@ -3,13 +3,12 @@
 public class TriggerHurtEnemy : MonoBehaviour {
 	public ushort damage;
 	public bool overrideDash;
-
-	//if the player is dashing he doesn't get hurt instead, it kills the enemie, reset the dash and makes the player jump after the kill. If not dashing, get hurt
+	
 	private void OnTriggerEnter2D(Collider2D col) {
 		if(col.gameObject.name == "NormalColliders" || col.gameObject.name == "RollCollider") {
+            NewPlayerController controller = col.transform.parent.GetComponentInParent<NewPlayerController>();
 
-            PlayerController controller = col.transform.parent.GetComponentInParent<PlayerController>();
-			if(!controller.GetMovementState[BooleenStruct.ISDASHING] && !controller.GetHurt || transform.tag == "Trap" || overrideDash) {
+			if(controller.CurrentState.CompareTo(PlayerStates.Dash) != 0 && !controller.IsRecovering || transform.tag == "Trap" || overrideDash) {
 				bool b;
 				
 				if(transform.tag != "Trap")
@@ -23,9 +22,9 @@ public class TriggerHurtEnemy : MonoBehaviour {
 
 				controller.TakeDamage(damage, overrideDash, b);
 			}
-			else if(controller.GetMovementState[BooleenStruct.ISDASHING]) {
+			else if(controller.CurrentState.CompareTo(PlayerStates.Dash) == 0) {
                 transform.parent.parent.gameObject.GetComponent<EnemyAI>().TakeDamage();
-				controller.CheckPropulsion();
+				controller.ForceJump();
                 controller.ResetDash(); 
             }
 		}

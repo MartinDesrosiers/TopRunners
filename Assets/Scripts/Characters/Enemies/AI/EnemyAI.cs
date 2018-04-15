@@ -7,7 +7,7 @@ public class EnemyAI : CharacterMotor
 {
 
     //Is the character active ( used for LevelEditor ).
-	PlayerController _player;
+	NewPlayerController _player;
     GameObject _objPlayer;
     SpriteRenderer enemiesRender;
     public DashState dashState = DashState.passive;
@@ -80,8 +80,8 @@ public class EnemyAI : CharacterMotor
         origin = transform.position;
 		enemiesRender = transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
         rg = transform.GetComponent<Rigidbody2D>();
-        _objPlayer = GameObject.Find("PlayerTest").gameObject;
-        _player = _objPlayer.GetComponent<PlayerController>();
+        _objPlayer = GameObject.Find("NewPlayer").gameObject;
+        _player = _objPlayer.GetComponent<NewPlayerController>();
         movementSpeed = 50.0f;
         maxDistance = 6f;
 
@@ -162,7 +162,7 @@ public class EnemyAI : CharacterMotor
 					FollowReturn();
 				else {
 					if(basicBehavior != BasicBehavior.Motionless) {
-						if(lookAtHero && !_player.isInvisible) {
+						if(lookAtHero && !_player.IsInvisible) {
 							float heroXPosition = _player.transform.position.x - transform.position.x;
 							if(horiAxes > 0f && heroXPosition < 0f) {
 								if(heroXPosition > -0.25f)
@@ -184,7 +184,7 @@ public class EnemyAI : CharacterMotor
 							}
 						}
 
-						if(!_player.isInvisible) {
+						if(!_player.IsInvisible) {
 							for(int i = 0, j = 0; i < abList.Length; i++) {
 								if(abList[i] == true) {
 									advancedBehaviors[j++].FixUpdate(_objPlayer, i, ref dashState);

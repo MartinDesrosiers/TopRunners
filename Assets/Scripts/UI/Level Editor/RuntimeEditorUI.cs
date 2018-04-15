@@ -21,7 +21,7 @@ public class RuntimeEditorUI : MonoBehaviour {
 
     //Called when using the create button while in play mode.
     public void CreateButton() {
-        LevelManager.Instance.player.GetComponent<PlayerController>().Restart();
+        LevelManager.Instance.player.GetComponent<NewPlayerController>().Restart();
 		LevelManager.Instance.player.transform.SetParent(null);
         //Changes gamemode to level editor.
         LevelManager.Instance.ToggleCheckPoint(false);
@@ -32,7 +32,8 @@ public class RuntimeEditorUI : MonoBehaviour {
 		LevelManager.Instance.IsPaused = true;
 
 		LevelManager.Instance.player.transform.position = LevelManager.Instance.spawnPoint;
-        LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        //LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Kinematic);
+        LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 		//Centers camera on player position.
 		Vector3 cameraPosition = LevelManager.Instance.player.transform.position;
 		cameraPosition.z = Camera.main.transform.position.z;
