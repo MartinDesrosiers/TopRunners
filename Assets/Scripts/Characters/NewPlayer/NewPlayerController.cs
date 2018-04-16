@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class NewPlayerController : NewPlayerMotor {
 	public bool IsRecovering { get { return Time.time - _recoveryTimer < _recoveryDelay; } }
@@ -10,14 +11,20 @@ public class NewPlayerController : NewPlayerMotor {
 	public RuntimeEditorUI runtimeEditorUI;
 	public Animator animator;
 	public PlayerUI playerUI;
-	public float wallJumpDelay, slideDelay;
+	public float wallJumpDelay;
+	public float slideDelay;
 
 	private NewPlayerStatistics _stats;
 	private NewPlayercolliders _colliders;
 	private NewPlayerDash _dash;
-	private ushort _range, _key;
-	private float _jumpBoost, _recoveryTimer, _recoveryDelay;
+	private ushort _range;
+	private ushort _key;
+	private float _jumpBoost;
+	private float _recoveryTimer;
+	private float _recoveryDelay;
+	private float _currentStamina;
 	private bool _isInvincible;
+	private bool _isStaminaRefilling;
 
 	private void Awake() {
 		CustomStart();
@@ -41,6 +48,7 @@ public class NewPlayerController : NewPlayerMotor {
 		_jumpBoost = 1f;
 		_isInvincible = false;
 		_recoveryTimer = -_recoveryDelay;
+		_currentStamina = _stats.stamina;
 	}
 
 	public void Restart() {
@@ -49,6 +57,7 @@ public class NewPlayerController : NewPlayerMotor {
 		_rigidBody.velocity = Vector3.zero;
 		playerUI.ShowKeys(_key);
 		playerUI.CheckHealth(_stats.health);
+		playerUI.FillSprintBar(_currentStamina / _stats.stamina);
 		transform.position = LevelManager.Instance.spawnPoint;
 
 		LevelManager.Instance.ReloadLevel();
@@ -57,7 +66,46 @@ public class NewPlayerController : NewPlayerMotor {
 
 		SetToDefault();
 	}
+	
+	#region Stamina
+	public void FillStamina() {
+		_currentStamina = _stats.stamina;
+		playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+	}
 
+	public bool UseStamina() {
+		if(_currentStamina > 0) {
+			_isStaminaRefilling = false;
+			_currentStamina -= _stats.staminaUseSpeed * Time.deltaTime;
+			playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+			return true;
+		}
+		else {
+			_currentStamina = 0;
+			return false;
+		}
+	}
+
+	public IEnumerator RegenStaminaTimer() {
+		yield return new WaitForSeconds(2f);
+		_isStaminaRefilling = true;
+	}
+
+	public void RegenStamina() {
+		if(_isStaminaRefilling) {
+			if(_currentStamina + _stats.staminaUseSpeed * Time.deltaTime < _stats.stamina) {
+				_currentStamina += _stats.staminaUseSpeed * Time.fixedDeltaTime;
+				playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+			}
+			else {
+				_currentStamina = _stats.stamina;
+				_isStaminaRefilling = false;
+			}
+		}
+	}
+	#endregion
+
+	#region Colliders
 	public void ToggleJumpingColliders(bool enable) {
 		_colliders.mainEdgeCollider.points = enable ? _colliders.jumpingCollidersPoints : _colliders.normalCollidersPoints;
 	}
@@ -67,23 +115,9 @@ public class NewPlayerController : NewPlayerMotor {
 		_colliders.rollColliders.SetActive(enable);
 		_colliders.colliders.SetActive(!enable);
 	}
+	#endregion
 
-	public void ResetDash() {
-		_dash = null;
-		//inEnemiesRange = false;
-		//ResetBool(true, BooleenStruct.ISJUMPING);
-		//Animation("jump", movementState[BooleenStruct.ISJUMPING]);
-		//_dashTarget = Vector2.zero;
-		//ChangeJumpButtonSprite(0);
-	}
-
-	public void AddHealth(ushort hp = 1) {
-		_stats.health += hp;
-		if(_stats.health > 3)
-			_stats.health = 3;
-		playerUI.CheckHealth(_stats.health);
-	}
-
+	#region Keys
 	public void AddKey() {
 		_key++;
 		playerUI.ShowKeys(_key);
@@ -94,10 +128,12 @@ public class NewPlayerController : NewPlayerMotor {
 		playerUI.ShowKeys(_key);
 	}
 
-	public void Kill() {
-		_stateMachine.CurrentState = PlayerStates.Dead;
+	public ushort GetKey() {
+		return _key;
 	}
+	#endregion
 
+	#region Jump
 	public float Jump() {
 		float jumpForce = _stats.jumpForce * _jumpBoost;
 		_jumpBoost = 1f;
@@ -107,6 +143,15 @@ public class NewPlayerController : NewPlayerMotor {
 	public void ForceJump(float boost = 1f) {
 		_jumpBoost = boost;
 		_stateMachine.CurrentState = PlayerStates.Jump;
+	}
+	#endregion
+
+	#region Health
+	public void AddHealth(ushort hp = 1) {
+		_stats.health += hp;
+		if(_stats.health > 3)
+			_stats.health = 3;
+		playerUI.CheckHealth(_stats.health);
 	}
 
 	public void TakeDamage(ushort damage, bool overrideDash, bool hitOnLeftSide) {
@@ -133,6 +178,12 @@ public class NewPlayerController : NewPlayerMotor {
 		}
 	}
 
+	public void Kill() {
+		_stateMachine.CurrentState = PlayerStates.Dead;
+	}
+	#endregion
+
+	#region Dash
 	public void StartDash(bool isSprinting = false) {
 		_dash = new NewPlayerDash(transform.position, EnemyList.GetDash(transform.position, Direction), isSprinting);
 	}
@@ -142,4 +193,14 @@ public class NewPlayerController : NewPlayerMotor {
 		_dash.dashTimer += _dash.dashSpeed / magnitude * Time.deltaTime;
 		transform.position = Vector2.Lerp(transform.position, _dash.dashTarget.transform.position, _dash.dashTimer);
 	}
+
+	public void ResetDash() {
+		_dash = null;
+		//inEnemiesRange = false;
+		//ResetBool(true, BooleenStruct.ISJUMPING);
+		//Animation("jump", movementState[BooleenStruct.ISJUMPING]);
+		//_dashTarget = Vector2.zero;
+		//ChangeJumpButtonSprite(0);
+	}
+	#endregion
 }

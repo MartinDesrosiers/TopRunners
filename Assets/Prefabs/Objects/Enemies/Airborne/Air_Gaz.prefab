@@ -118,7 +118,6 @@ GameObject:
   - component: {fileID: 4396394192297320}
   - component: {fileID: 114299550568687334}
   - component: {fileID: 212527116204628706}
-  - component: {fileID: 58589978880839436}
   m_Layer: 0
   m_Name: DashArea
   m_TagString: Untagged
@@ -425,21 +424,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58589978880839436
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555804432135454}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!58 &58770659244918848
 CircleCollider2D:
   m_ObjectHideFlags: 1

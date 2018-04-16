@@ -7,6 +7,8 @@ public class NewPlayerStatistics {
 	public float walkingSpeed;
 	public float runningSpeed;
 	public float sprintingSpeed;
+	public float stamina;
+	public float staminaUseSpeed;
 
 	public NewPlayerStatistics() {
 		health = 3;
@@ -15,5 +17,7 @@ public class NewPlayerStatistics {
 		walkingSpeed = 2f;
 		runningSpeed = 10f;
 		sprintingSpeed = 15f;
+		stamina = 10f;
+		staminaUseSpeed = 5f;
 	}
 }

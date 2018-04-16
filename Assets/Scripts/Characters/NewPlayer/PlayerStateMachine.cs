@@ -29,6 +29,8 @@ public class PlayerStateMachine : StateMachine {
 	protected override void EarlyCustomUpdate() {
 		if(_inputs.Direction != 0 && CheckDirection() && !IsDirectionLocked)
 			_controller.FlipHorizontal();
+
+		_controller.RegenStamina();
 	}
 	
 	//Update loop called after the sate machine's main update loop.
@@ -154,10 +156,13 @@ public class PlayerStateMachine : StateMachine {
 
 	private void Sprint_CustomUpdate() {
 		RunUpdate();
+		if(!_controller.UseStamina())
+			CurrentState = PlayerStates.Run;
 	}
 
 	private void Sprint_ExitState() {
 		_controller.animator.speed = 1f;
+		StartCoroutine(_controller.RegenStaminaTimer());
 	}
 	#endregion
 
