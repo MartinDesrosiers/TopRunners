@@ -1,16 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Threading.Tasks;
 
-public class NewPlayerGlitch : MonoBehaviour {
+public abstract class NewPlayerGlitch {
+	protected NewPlayerController _controller;
+	protected float _timer;
+	protected float _timeStarted;
 
-	// Use this for initialization
-	void Start () {
-		
+	public void ResetTimer() {
+		_timeStarted = Time.time;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	protected NewPlayerGlitch(NewPlayerController controller, float timer) {
+		_controller = controller;
+		_timer = timer;
+		_timeStarted = Time.time;
+	}
+
+	protected async Task GlitchTimer() {
+		while(true) {
+			await Task.Delay(TimeSpan.FromSeconds(_timer - (Time.time - _timeStarted)));
+			if(Time.time - _timeStarted >= _timer)
+				return;
+		}
 	}
 }

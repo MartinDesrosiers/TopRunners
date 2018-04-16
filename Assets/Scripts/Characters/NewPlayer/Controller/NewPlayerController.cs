@@ -212,8 +212,9 @@ public class NewPlayerController : NewPlayerMotor {
 		Transform colTransform = col.transform;
 		TimedGlitch glitchContainer = colTransform.GetComponent<TimedGlitch>();
 
-		if(colTransform.tag == "Glitch")
+		if(colTransform.tag == "Glitch") {
 			StartGlitch(glitchContainer);
+		}
 		else if(colTransform.tag == "Collectable") {
 			switch(colTransform.GetComponent<Collectable>().CollectableName()) {
 				case "health_power_ups":
@@ -243,9 +244,19 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	private void StartGlitch(TimedGlitch glitchContainer) {
-		string glitch;
-		float timer;
-		glitchContainer.GlitchInfo(out glitch, out timer);
+		if(glitchContainer != null) {
+			string glitch;
+			float timer;
+			glitchContainer.GlitchInfo(out glitch, out timer);
+
+			if(glitch.Contains("DamageJump")) ;
+			else if(glitch.Contains("Flying"))
+				_glitches.Add(new NewPlayerFlyingGlitch(this, timer));
+			else if(glitch.Contains("Invincible")) ;
+			else if(glitch.Contains("Invisible")) ;
+			else if(glitch.Contains("Lag")) ;
+			else if(glitch.Contains("SpeedBoost")) ;
+		}
 	}
 	#endregion
 }

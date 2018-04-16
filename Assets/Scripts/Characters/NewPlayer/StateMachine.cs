@@ -36,15 +36,13 @@ public class StateMachine : MonoBehaviour {
 	}
 
 	private void ConfigureCurrentState() {
-		if(state.exitState != null)
-			state.exitState();
+		state.exitState?.Invoke();
 
 		state.customUpdate = ConfigureDelegate<Action>("CustomUpdate", DoNothing);
 		state.enterState = ConfigureDelegate<Action>("EnterState", DoNothing);
 		state.exitState = ConfigureDelegate<Action>("ExitState", DoNothing);
 
-		if(state.enterState != null)
-			state.enterState();
+		state.enterState?.Invoke();
 	}
 
 	Dictionary<Enum, Dictionary<string, Delegate>> _cache = new Dictionary<Enum, Dictionary<string, Delegate>>();
