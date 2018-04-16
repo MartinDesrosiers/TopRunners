@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4872894185837944}
   - component: {fileID: 61429816535596108}
-  - component: {fileID: 114667373551622996}
   - component: {fileID: 114572638898952520}
   m_Layer: 0
   m_Name: jump_power_ups
@@ -126,19 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114667373551622996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1408022863450134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba09c29507df914fb37b68b1e850b9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  glitchType: JumpBoost
-  timerDelay: 15
 --- !u!212 &212546287786755838
 SpriteRenderer:
   m_ObjectHideFlags: 1

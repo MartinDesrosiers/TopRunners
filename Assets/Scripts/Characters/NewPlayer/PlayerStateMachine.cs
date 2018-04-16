@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public enum PlayerStates { Idle, Walk, Run, Sprint, Jump, Fall, Slide, Dash, Walled, Dead }
 
@@ -40,8 +39,8 @@ public class PlayerStateMachine : StateMachine {
 	
 	//Resets all NewPlayerController variables to default value.
 	private void SetToDefault() {
-		CurrentState = PlayerStates.Idle;
 		_controller.SetToDefault();
+		CurrentState = PlayerStates.Idle;
 	}
 	
 	//Returns true if the player model is facing opposite way of it's direction.

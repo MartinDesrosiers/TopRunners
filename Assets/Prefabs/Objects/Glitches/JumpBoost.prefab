@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 61522233779945070}
   - component: {fileID: 114392132024960494}
   - component: {fileID: 114564479523051022}
-  - component: {fileID: 114734462872926620}
   m_Layer: 0
   m_Name: JumpBoost
   m_TagString: Untagged
@@ -91,19 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef451de2924f0643a20f1d775652de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 24
+  force: 3
   isDamage: 0
---- !u!114 &114734462872926620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1421732844886512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1b3e132d9c444ba32ffb61b84a726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212012100889961988
 SpriteRenderer:
   m_ObjectHideFlags: 1

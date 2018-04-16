@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class NewPlayercolliders {
+public class NewPlayerColliders {
 	public GameObject colliders;
 	public GameObject rollColliders;
 	public EdgeCollider2D mainEdgeCollider;
 	public EdgeCollider2D wallEdgeCollider;
 	public Vector2[] normalCollidersPoints, jumpingCollidersPoints, standingCollider, slidingCollider;
 
-	public NewPlayercolliders(Transform playerTransform) {
+	public NewPlayerColliders(Transform playerTransform) {
 		colliders = playerTransform.GetChild(0).GetChild(0).gameObject;
 		rollColliders = playerTransform.GetChild(0).GetChild(1).gameObject;
 		mainEdgeCollider = playerTransform.GetChild(0).GetChild(0).GetComponent<EdgeCollider2D>();

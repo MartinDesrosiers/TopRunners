@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NewPlayerController : NewPlayerMotor {
 	public bool IsRecovering { get { return Time.time - _recoveryTimer < _recoveryDelay; } }
@@ -15,8 +16,9 @@ public class NewPlayerController : NewPlayerMotor {
 	public float slideDelay;
 
 	private NewPlayerStatistics _stats;
-	private NewPlayercolliders _colliders;
+	private NewPlayerColliders _colliders;
 	private NewPlayerDash _dash;
+	private List<NewPlayerGlitch> _glitches;
 	private ushort _range;
 	private ushort _key;
 	private float _jumpBoost;
@@ -31,7 +33,7 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	protected override void CustomStart() {
-		_colliders = new NewPlayercolliders(transform);
+		_colliders = new NewPlayerColliders(transform);
 		_recoveryDelay = 0.4f;
 
 		base.CustomStart();
@@ -40,6 +42,7 @@ public class NewPlayerController : NewPlayerMotor {
 	public void SetToDefault() {
 		_dash = null;
 		_stats = new NewPlayerStatistics();
+		_glitches = new List<NewPlayerGlitch>();
 		wallJumpDelay = 0.2f;
 		slideDelay = 0.6f;
 		
@@ -52,6 +55,8 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void Restart() {
+		SetToDefault();
+
 		RuntimeUI.GetStartTimer = false;
 
 		_rigidBody.velocity = Vector3.zero;
@@ -63,8 +68,6 @@ public class NewPlayerController : NewPlayerMotor {
 		LevelManager.Instance.ReloadLevel();
 		runtimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
 		LevelManager.Instance.finishLoading = true;
-
-		SetToDefault();
 	}
 	
 	#region Stamina
@@ -201,6 +204,48 @@ public class NewPlayerController : NewPlayerMotor {
 		//Animation("jump", movementState[BooleenStruct.ISJUMPING]);
 		//_dashTarget = Vector2.zero;
 		//ChangeJumpButtonSprite(0);
+	}
+	#endregion
+
+	#region Collectibles & Glitches
+	private void OnTriggerEnter2D(Collider2D col) {
+		Transform colTransform = col.transform;
+		TimedGlitch glitchContainer = colTransform.GetComponent<TimedGlitch>();
+
+		if(colTransform.tag == "Glitch")
+			StartGlitch(glitchContainer);
+		else if(colTransform.tag == "Collectable") {
+			switch(colTransform.GetComponent<Collectable>().CollectableName()) {
+				case "health_power_ups":
+					AddHealth();
+					break;
+				case "sprint_power_ups":
+					FillStamina();
+					break;
+				case "speed_power_ups":
+					StartGlitch(glitchContainer);
+					break;
+				case "jump_power_ups":
+					StartGlitch(glitchContainer);
+					break;
+				case "defense_power_ups":
+					StartGlitch(glitchContainer);
+					break;
+				case "Ruby":
+					break;
+				case "Key":
+					AddKey();
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
+	private void StartGlitch(TimedGlitch glitchContainer) {
+		string glitch;
+		float timer;
+		glitchContainer.GlitchInfo(out glitch, out timer);
 	}
 	#endregion
 }
