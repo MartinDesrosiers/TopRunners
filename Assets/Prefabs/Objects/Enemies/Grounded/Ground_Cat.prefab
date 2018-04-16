@@ -84,7 +84,6 @@ GameObject:
   - component: {fileID: 114588799311260774}
   - component: {fileID: 212936356672613838}
   - component: {fileID: 58177913472818324}
-  - component: {fileID: 114677571946553540}
   m_Layer: 0
   m_Name: DashArea
   m_TagString: Untagged
@@ -614,7 +613,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281452519157508}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -834,17 +833,6 @@ MonoBehaviour:
   overrideMove: 0
   isInit: 0
   health: 1
---- !u!114 &114677571946553540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1281452519157508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502ccf1fb9118bf4d86655d46c93df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114755120644671258
 MonoBehaviour:
   m_ObjectHideFlags: 1

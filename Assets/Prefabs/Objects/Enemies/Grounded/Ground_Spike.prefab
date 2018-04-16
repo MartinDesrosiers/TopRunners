@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 114633531738805586}
   - component: {fileID: 212181737721846714}
   - component: {fileID: 58585485039056308}
-  - component: {fileID: 114667147937645488}
   m_Layer: 0
   m_Name: DashArea
   m_TagString: Untagged
@@ -371,7 +370,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857863914793622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -494,17 +493,6 @@ MonoBehaviour:
   priority: 1
   area: {fileID: 0}
   isInvincible: 1
---- !u!114 &114667147937645488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1857863914793622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502ccf1fb9118bf4d86655d46c93df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114976419196049706
 MonoBehaviour:
   m_ObjectHideFlags: 1

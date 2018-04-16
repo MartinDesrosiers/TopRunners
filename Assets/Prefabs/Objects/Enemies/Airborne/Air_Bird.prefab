@@ -641,7 +641,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921222540938952}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -785,6 +785,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 95786014642597132}
   lookAtHero: 0
   isFlying: 1
+  IsInvincible: 0
   stickToWalls: 0
   useAdvancedBehaviors: 1
   abList: 00000100
