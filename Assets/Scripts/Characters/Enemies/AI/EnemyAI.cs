@@ -65,10 +65,8 @@ public class EnemyAI : CharacterMotor
 	public void TakeDamage() {
 		if(!IsInvincible) {
 			health--;
-			if(health < 1) {
+			if(health < 1)
 				Kill();
-				_player.ResetDash();
-			}
 		}
 	}
     public void Kill()

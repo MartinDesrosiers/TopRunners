@@ -69,6 +69,7 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void ResetDash() {
+		_dash = null;
 		//inEnemiesRange = false;
 		//ResetBool(true, BooleenStruct.ISJUMPING);
 		//Animation("jump", movementState[BooleenStruct.ISJUMPING]);
@@ -132,7 +133,13 @@ public class NewPlayerController : NewPlayerMotor {
 		}
 	}
 
-	public void StartDash() {
-		_dash = new NewPlayerDash(transform.position, EnemyList.GetDash(transform.position, Direction));
+	public void StartDash(bool isSprinting = false) {
+		_dash = new NewPlayerDash(transform.position, EnemyList.GetDash(transform.position, Direction), isSprinting);
+	}
+
+	public void LerpDash() {
+		float magnitude = (transform.position - _dash.dashTarget.transform.position).magnitude;
+		_dash.dashTimer += _dash.dashSpeed / magnitude * Time.deltaTime;
+		transform.position = Vector2.Lerp(transform.position, _dash.dashTarget.transform.position, _dash.dashTimer);
 	}
 }

@@ -110,11 +110,6 @@ public class LevelManager : Singleton<LevelManager> {
             o.gameObject.SetActive(true);
     }
 
-    private void CreateMapContainer() {
-		Destroy(mapContainer);
-		mapContainer = new GameObject() { name = "Map Container " + Time.time.ToString() };
-  }
-
 	//Reset all the level variables.
 	public void ClearLevel() {
 		IsPaused = true;

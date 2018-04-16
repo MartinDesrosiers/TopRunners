@@ -270,11 +270,15 @@ public class PlayerStateMachine : StateMachine {
 	#region Dash
 	private void Dash_EnterState() {
 		_controller.animator.Play("dash");
-		_controller.StartDash();
+		_controller.StartDash(_inputs.Sprint);
 	}
 
 	private void Dash_CustomUpdate() {
+		_controller.LerpDash();
+	}
 
+	private void Dash_ExitState() {
+		_controller.ResetDash();
 	}
 	#endregion
 

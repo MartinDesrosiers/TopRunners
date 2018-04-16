@@ -43,10 +43,6 @@ public static class EnemyList {
 				}
 			}
 
-			//If the enemy isn't invincible, destroy it once the hero finishes dashing ( temporary solution to destroy enemies ).
-			//if(!enemiesInRadius[tEnemy].isInvincible)
-			//	Object.Destroy(enemiesInRadius[tEnemy].transform.parent.gameObject, (position - (Vector2)enemiesInRadius[tEnemy].transform.position).magnitude / 14f - 0.05f);
-
 			//Returns the highest priority / closest enemy.
 			return enemiesInRadius[tEnemy].transform.parent.parent.gameObject;
 		}

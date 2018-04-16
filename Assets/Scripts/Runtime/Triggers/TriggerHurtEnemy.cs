@@ -25,7 +25,6 @@ public class TriggerHurtEnemy : MonoBehaviour {
 			else if(controller.CurrentState.CompareTo(PlayerStates.Dash) == 0) {
                 transform.parent.parent.gameObject.GetComponent<EnemyAI>().TakeDamage();
 				controller.ForceJump();
-                controller.ResetDash(); 
             }
 		}
 	}
