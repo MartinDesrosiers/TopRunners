@@ -105,8 +105,10 @@ public class LevelEditor : MonoBehaviour {
 
 	private void Start() {
 		cursor = eraser = false;
+		LevelManager.Instance.isReloading = true;
 		ClearLevel();
 		LoadLevel();
+		LevelManager.Instance.isReloading = false;
 	}
 
 

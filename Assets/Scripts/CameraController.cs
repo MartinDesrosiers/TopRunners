@@ -130,6 +130,11 @@ public class CameraController : MonoBehaviour {
         CheckBoundaries();
 	}
 
+	public void SetInitialPosition() {
+		SetPositionXY(LevelManager.Instance.player.transform.position);
+		CheckBoundaries();
+	}
+
 	private void GetCameraInputs() {
 		if(LevelEditorInputs.GetCameraUp(isDraging))
 			Camera.main.transform.Translate(Vector2.up * _translationSpeed * Time.deltaTime);
