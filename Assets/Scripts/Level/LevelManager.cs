@@ -37,16 +37,13 @@ public class LevelManager : Singleton<LevelManager> {
 	public GameObject mapContainer;
 	public bool isReloading = false;
     public int theme = 0;
-
-	private UniqueObjects _uniqueObjects;
 	private TileConnector _tileConnector;
 	private ushort _reloadFrame = 0;
-    bool newCheckPointSet;
-    bool containExit = false;
+	bool containExit = false;
     public bool finishLoading = false;
-    public bool GetNewCheckPointSet { get { return newCheckPointSet; } }
-    public bool GetContainExit { get { return containExit; } }
-    public UniqueObjects GetUniqueObject { get { return _uniqueObjects; } }
+	public bool GetNewCheckPointSet { get; private set; }
+	public bool GetContainExit { get { return containExit; } }
+	public UniqueObjects GetUniqueObject { get; private set; }
 
 	public enum SortOption {
 		Latest,
@@ -73,7 +70,7 @@ public class LevelManager : Singleton<LevelManager> {
         //Initialize the level data, serialized level data and unique objects list to prevent nullreferences.
 		levelData = new LevelData();
 		serializedData = new SerializedLevelData();
-		_uniqueObjects = new UniqueObjects();
+		GetUniqueObject = new UniqueObjects();
 
         //ghostObjects = new List<GameObject>();
     }
@@ -118,7 +115,7 @@ public class LevelManager : Singleton<LevelManager> {
 		doorList = null;
 		serializedData.objectList.Clear();
 		serializedData = null;
-		_uniqueObjects = null;
+		GetUniqueObject = null;
 		levelData.objectList.Clear();
 		levelData = null;
 		EnemyList.Clear();
@@ -214,7 +211,7 @@ public class LevelManager : Singleton<LevelManager> {
 					tPrefab.transform.localScale = tScale;
 
 					//Update the unique object list.
-					_uniqueObjects.CheckUniqueObject(new int[2] { i, j }, tPrefab, UniqueObjects.Mode.Add, newCheckPointSet);
+					GetUniqueObject.CheckUniqueObject(new int[2] { i, j }, tPrefab, UniqueObjects.Mode.Add, GetNewCheckPointSet);
 
 					//If the serialized tile type is extended ( has special attributes ), deserialize the extra attributes.
 					if(serializedData.objectList[i][j][k].isExtended) {
@@ -416,7 +413,7 @@ public class LevelManager : Singleton<LevelManager> {
 		//Return the object's tile script ( which contains serialized information ) and the selected gameobject prefab.
 		Tile tTile = tileManager.GetTile(type, id, out tObj, new Vector3(tPos[0], tPos[1], 0.0f));
             //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
-            if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
+            if (GetUniqueObject.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, GetNewCheckPointSet)) {
 			if(tObj.tag == "Connectable")
 				_tileConnector.SetSprite(ref tObj);
 
@@ -448,7 +445,7 @@ public class LevelManager : Singleton<LevelManager> {
 			Vector2 tPos = levelData.objectList[tColRow[0]][tColRow[1]][index].transform.position;
 
 			//Update the unique objects list.
-			_uniqueObjects.CheckUniqueObject(tColRow, levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject, UniqueObjects.Mode.Delete, newCheckPointSet);
+			GetUniqueObject.CheckUniqueObject(tColRow, levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject, UniqueObjects.Mode.Delete, GetNewCheckPointSet);
             if (levelData.objectList[tColRow[0]][tColRow[1]][index].transform.tag == "Door") {
 				for(int i = 0; i < doorList.Count; i++) {
 					if(doorList[i].gameObject.transform.position == levelData.objectList[tColRow[0]][tColRow[1]][index].gameObject.transform.position)
@@ -536,13 +533,13 @@ public class LevelManager : Singleton<LevelManager> {
 
 	public bool NewCheckPointSet {
 		get {
-			return newCheckPointSet;
+			return GetNewCheckPointSet;
 		}
 	}
 
     public void ToggleCheckPoint(bool b)
     {
-        newCheckPointSet = b;
+        GetNewCheckPointSet = b;
     }
 
 	private void Update() {
