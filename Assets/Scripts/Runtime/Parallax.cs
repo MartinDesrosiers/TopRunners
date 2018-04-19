@@ -37,36 +37,40 @@ public class Parallax : MonoBehaviour {
 	}
 
 	private void Update() {
-		Vector2 distanceTraveled = mainCamera.transform.position - lastPosition;
+		if(!LevelManager.Instance.IsPaused) {
+			Vector2 distanceTraveled = mainCamera.transform.position - lastPosition;
 
-		for(int i = 0; i < parallaxLevels.Count; i++) {
-			float tSpeed = parallaxLevels[i].relativeSpeed;
-			float tBoundaries = parallaxLevels[i].boundaries;
-			bool tAffectYAxis = parallaxLevels[i].affectYAxis;
+			for(int i = 0; i < parallaxLevels.Count; i++) {
+				float tSpeed = parallaxLevels[i].relativeSpeed;
+				float tBoundaries = parallaxLevels[i].boundaries;
+				bool tAffectYAxis = parallaxLevels[i].affectYAxis;
 
-			for(int o = 0; o < parallaxLevels[i].elements.Count; o++) {
-				parallaxLevels[i].elements[o].transform.Translate(new Vector2(distanceTraveled.x * -tSpeed, tAffectYAxis ? distanceTraveled.y * -tSpeed : 0.0f));
+				for(int o = 0; o < parallaxLevels[i].elements.Count; o++) {
+					parallaxLevels[i].elements[o].transform.Translate(new Vector2(distanceTraveled.x * -tSpeed, tAffectYAxis ? distanceTraveled.y * -tSpeed : 0.0f));
 
-				Vector2 tPos = parallaxLevels[i].elements[o].transform.position;
-				if(tPos.x < mainCamera.transform.position.x - tBoundaries) {
-					tPos.x += tBoundaries * 2;
-					parallaxLevels[i].elements[o].transform.position = tPos;
-				}
-				else if(tPos.x > mainCamera.transform.position.x + tBoundaries) {
-					tPos.x -= tBoundaries * 2;
-					parallaxLevels[i].elements[o].transform.position = tPos;
+					Vector2 tPos = parallaxLevels[i].elements[o].transform.position;
+					if(tPos.x < mainCamera.transform.position.x - tBoundaries) {
+						tPos.x += tBoundaries * 2;
+						parallaxLevels[i].elements[o].transform.position = tPos;
+					}
+					else if(tPos.x > mainCamera.transform.position.x + tBoundaries) {
+						tPos.x -= tBoundaries * 2;
+						parallaxLevels[i].elements[o].transform.position = tPos;
+					}
 				}
 			}
-		}
 
-		lastPosition = mainCamera.transform.position;
+			lastPosition = mainCamera.transform.position;
+		}
 	}
 
 	//Called during the cameraController's update to counter the Y movement.
 	//Has to be called by the camera in order to cancel the sprites jittering ( delay between updates ).
 	public void SmoothBackground() {
-		Vector2 distanceTraveled = mainCamera.transform.position - lastPosition;
+		if(!LevelManager.Instance.IsPaused) {
+			Vector2 distanceTraveled = mainCamera.transform.position - lastPosition;
 
-		transform.GetChild(0).transform.Translate(new Vector2(0.0f, -distanceTraveled.y));
+			transform.GetChild(0).transform.Translate(new Vector2(0.0f, -distanceTraveled.y));
+		}
 	}
 }

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour {
-
 	public bool isFacingRight = true;
+
+	private static bool isFirstLoad = true;
 
 	private void Start() {
         if (!LevelManager.Instance.GetNewCheckPointSet) {
@@ -15,8 +16,10 @@ public class SpawnPoint : MonoBehaviour {
 		tScale.z *= isFacingRight ? 1 : -1;
 		LevelManager.Instance.player.transform.localScale = tScale;
 		LevelManager.Instance.player.transform.position = transform.position;
-
-		if(LevelManager.Instance.isReloading)
+		
+		if(isFirstLoad == true) {
 			Camera.main.GetComponent<CameraController>().SetInitialPosition();
-    }
+			isFirstLoad = false;
+		}
+	}
 }
