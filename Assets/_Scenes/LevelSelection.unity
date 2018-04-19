@@ -1312,6 +1312,11 @@ Prefab:
       propertyPath: levelName
       value: 
       objectReference: {fileID: 2147322602}
+    - target: {fileID: 114341712233715138, guid: dd97ac77620aa2b4989b63218642172d,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd97ac77620aa2b4989b63218642172d, type: 2}
   m_IsPrefabParent: 0

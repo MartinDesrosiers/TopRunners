@@ -1,9 +1,9 @@
 ﻿using UnityEngine.SceneManagement;
-using System.Xml;
-using System.IO;
+//using System.Xml;
+//using System.IO;
 using System.Collections.Generic;
-using System;
-using UnityEngine;
+//using System;
+//using UnityEngine;
 
 /// <summary>
 /// A singleton used to keep in memory certain values needed throughout the scenes.

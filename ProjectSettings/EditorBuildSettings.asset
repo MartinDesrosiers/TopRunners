@@ -8,37 +8,37 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Opening.unity
     guid: 6f16fb372337a8d40b213c08e4e90f30
-  - enabled: 1
-    path: Assets/_Scenes/LevelSelection.unity
-    guid: 7728976995d5f1447b1f7c0c02227de2
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/RunTime.unity
     guid: 13a3f06bee8a5c3429c8b5e369c2f685
   - enabled: 1
+    path: Assets/_Scenes/LevelSelection.unity
+    guid: 7728976995d5f1447b1f7c0c02227de2
+  - enabled: 0
     path: Assets/_Scenes/Game.unity
     guid: a8b4e374482f64bcb947c8fe10a27761
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/DressingRoom.unity
     guid: 11563605175c44e4f89f93d3d8f87048
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Gym.unity
     guid: 520b481e77dab6f4e87d292409ccfcac
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Online.unity
     guid: 86026cebbed246b44951249187aed09b
   - enabled: 0
     path: Assets/_Scenes/MainMenu.unity
     guid: 8cd3dad0f1ce8b54a9847235bbfa6b4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/MainMenu.unity
     guid: 8cd3dad0f1ce8b54a9847235bbfa6b4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/RunMap.unity
     guid: 3c113106222c4934493a90e47192df1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Scores.unity
     guid: 1235e419851c0c24bb88d7bff956a042
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Store.unity
     guid: 8dba98141bb764148be94303fca46639
   - enabled: 1
