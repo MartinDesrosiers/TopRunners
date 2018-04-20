@@ -67,8 +67,10 @@ public class GameManager : Singleton<GameManager>
     {
         if (SceneManager.GetActiveScene().name == "RunTime")
             currentState = GameState.RunTime;
-        else if (SceneManager.GetActiveScene().name == "LevelEditor")
-            currentState = GameState.LevelEditor;
+        else if (SceneManager.GetActiveScene().name == "LevelEditor") {
+			currentState = GameState.LevelEditor;
+			SpawnPoint.isFirstLoad = true;
+		}
         else if (SceneManager.GetActiveScene().name == "Online" || SceneManager.GetActiveScene().name == "RunMap")
             currentState = GameState.Map;
         else

@@ -3,7 +3,7 @@
 public class SpawnPoint : MonoBehaviour {
 	public bool isFacingRight = true;
 
-	private static bool isFirstLoad = true;
+	public static bool isFirstLoad = true;
 
 	private void Start() {
         if (!LevelManager.Instance.GetNewCheckPointSet) {
