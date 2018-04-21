@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CommentPanel : MonoBehaviour {
 	public Button popUpButton;
@@ -8,19 +9,20 @@ public class CommentPanel : MonoBehaviour {
 	public float radius;
 
 	private GameObject _panel;
+	private Action _levelEditorCheck;
 	private bool _isPopUp = false;
 
 	private void Awake() {
 		_panel = transform.GetChild(0).gameObject;
 		if(GameManager.Instance.currentState == GameManager.GameState.LevelEditor)
-		if(GameManager.Instance.currentState == GameManager.GameState.RunTime) {
-			popUpButton.gameObject.SetActive(false);
-			confirmButton.gameObject.SetActive(false);
-			inputField.interactable = false;
-		}
+			_levelEditorCheck = LevelEditorCheck;
+		if(GameManager.Instance.currentState == GameManager.GameState.RunTime)
+			ToggleEditorUI();
 	}
 
 	private void FixedUpdate() {
+		_levelEditorCheck?.Invoke();
+
 		if(!LevelManager.Instance.IsPaused) {
 			if(_isPopUp) {
 				if((LevelManager.Instance.player.transform.position - transform.position).magnitude < radius) {
@@ -29,10 +31,8 @@ public class CommentPanel : MonoBehaviour {
 					_panel.SetActive(true);
 				}
 			}
-			else {
-				if((LevelManager.Instance.player.transform.position - transform.position).magnitude > radius)
-					_isPopUp = true;
-			}
+			else if((LevelManager.Instance.player.transform.position - transform.position).magnitude > radius)
+				_isPopUp = true;
 		}
 	}
 
@@ -51,5 +51,15 @@ public class CommentPanel : MonoBehaviour {
 			LevelManager.Instance.IsPaused = false;
 
 		_panel.SetActive(false);
+	}
+
+	private void LevelEditorCheck() {
+		ToggleEditorUI(GameManager.Instance.currentState == GameManager.GameState.LevelEditor);
+	}
+
+	private void ToggleEditorUI(bool on = false) {
+		popUpButton.gameObject.SetActive(on);
+		confirmButton.gameObject.SetActive(on);
+		inputField.interactable = on;
 	}
 }
