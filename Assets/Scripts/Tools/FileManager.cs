@@ -25,7 +25,7 @@ public static class FileManager {
 	}
 
 	public static bool LoadLevel(string tName, out SerializedLevelData tLProp) {
-		if(tName != "Template.sld") {
+		if(tName != "Template.sld" && tName != "Tutorial.sld" && tName != "Demo ( Easy )" && tName != "Demo ( Hard )") {
 			CheckDirectory("/Levels");
 
 			//Checks if level exists.
