@@ -12,6 +12,7 @@ public class CommentPanel : MonoBehaviour {
 
 	private void Awake() {
 		_panel = transform.GetChild(0).gameObject;
+		if(GameManager.Instance.currentState == GameManager.GameState.LevelEditor)
 		if(GameManager.Instance.currentState == GameManager.GameState.RunTime) {
 			popUpButton.gameObject.SetActive(false);
 			confirmButton.gameObject.SetActive(false);

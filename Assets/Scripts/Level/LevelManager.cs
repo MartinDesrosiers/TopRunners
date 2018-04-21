@@ -9,12 +9,16 @@ public class LevelManager : Singleton<LevelManager> {
 	//Needed to prevent non singleton constructor calls.
 	protected LevelManager() { }
 
-    private bool _isPaused;
+    private bool? _isPaused = null;
 	public bool IsPaused {
-		get { return _isPaused; }
+		get { return (bool)_isPaused; }
 		set {
+			if(_isPaused != null) {
+				EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+				SetPlayerBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+			}
+
 			_isPaused = value;
-			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
 		}
 	}
 
@@ -86,6 +90,11 @@ public class LevelManager : Singleton<LevelManager> {
         ghostReplay.InitGhostList();
         //ghostReplay.SetGhostList();
     }*/
+
+	public void SetPlayerBodyType(RigidbodyType2D type) {
+		if(player != null)
+			player.GetComponent<Rigidbody2D>().bodyType = type;
+	}
 
 
 	public void ReloadLevel() {

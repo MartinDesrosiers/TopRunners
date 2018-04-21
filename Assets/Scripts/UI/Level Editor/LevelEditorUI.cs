@@ -314,7 +314,6 @@ public class LevelEditorUI : MonoBehaviour {
 
 		Camera.main.GetComponent<CameraController>().ResetCamera();
 		GameManager.Instance.currentState = GameManager.GameState.RunTime;
-        LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         /*if (LevelManager.Instance.isGhostReplayActive)
             LevelManager.Instance.ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;*/
         LevelManager.Instance.IsPaused = false;
