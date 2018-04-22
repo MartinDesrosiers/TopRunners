@@ -12,6 +12,7 @@ public class LevelEditorUI : MonoBehaviour {
     public LevelEditor levelEditor;
     //Object that contains every object id buttons in the level editor ui.
     public GameObject idContainer;
+	public GameObject homePanel;
 
     public Button categoryButton;
     public Image topMenuImage;
