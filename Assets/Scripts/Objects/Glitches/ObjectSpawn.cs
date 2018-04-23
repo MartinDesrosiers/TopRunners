@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 public class ObjectSpawn : MonoBehaviour {
-	
 	private bool _isOn = true;
 
 	private void OnTriggerEnter2D(Collider2D col) {

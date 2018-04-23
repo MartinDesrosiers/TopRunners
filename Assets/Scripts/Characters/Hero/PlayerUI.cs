@@ -10,7 +10,7 @@ public class PlayerUI {
 	public GameObject jumpButton;
 
     public void ShowKeys(int t_key) {
-        keys.transform.GetChild(0).GetComponent<Text>().text = t_key.ToString();
+        keys.GetComponent<Text>().text = t_key.ToString();
     }
 
     public void CheckHealth(int t_health) {

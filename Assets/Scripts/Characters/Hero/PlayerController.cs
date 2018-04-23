@@ -773,7 +773,7 @@ public class PlayerController : CharacterMotor
         {
             string glitch = "";
             float timer = 0.0f;
-            col.transform.GetComponent<TimedGlitch>().GlitchInfo(ref glitch, ref timer);
+            //col.transform.GetComponent<TimedGlitch>().GlitchInfo(ref glitch, ref timer);
             StartCoroutine(GlitchTimer(glitch, timer));
         }
         else if (col.transform.tag == "Collectable")

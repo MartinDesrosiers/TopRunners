@@ -67,8 +67,6 @@ GameObject:
   - component: {fileID: 4335791263267398}
   - component: {fileID: 114789383822348158}
   - component: {fileID: 212268980922363258}
-  - component: {fileID: 58666080417457986}
-  - component: {fileID: 114736591132923332}
   m_Layer: 0
   m_Name: DashArea
   m_TagString: Untagged
@@ -396,21 +394,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58666080417457986
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1183653011170562}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!61 &61698128022052810
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -511,6 +494,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 95314995963696132}
   lookAtHero: 1
   isFlying: 1
+  IsInvincible: 0
   stickToWalls: 0
   useAdvancedBehaviors: 0
   abList: 00000000
@@ -567,17 +551,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   overrideDash: 0
---- !u!114 &114736591132923332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1183653011170562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502ccf1fb9118bf4d86655d46c93df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114789383822348158
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,11 +9,11 @@ public class JumpBoost : MonoBehaviour {
 		if(col.gameObject.name == "NormalColliders") {
 			if(isDamage) {
 				bool b = (transform.position.x < col.gameObject.transform.position.x);
-				col.transform.parent.parent.gameObject.GetComponent<PlayerController>().TakeDamage(1, true, b);
+				col.transform.parent.parent.gameObject.GetComponent<NewPlayerController>().TakeDamage(1, true, b);
 				Destroy(gameObject);
 			}
 			else
-				col.transform.parent.parent.gameObject.GetComponent<PlayerController>().CheckPropulsion(3f);
+				col.transform.parent.parent.gameObject.GetComponent<NewPlayerController>().ForceJump(force);
 		}
 	}
 }

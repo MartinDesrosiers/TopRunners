@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4632739409797408}
   - component: {fileID: 212622378482582438}
   - component: {fileID: 61199844833419710}
-  - component: {fileID: 114425085501426758}
   - component: {fileID: 114551398383239158}
+  - component: {fileID: 114425085501426758}
   m_Layer: 0
   m_Name: RevertGlitch
   m_TagString: Untagged
