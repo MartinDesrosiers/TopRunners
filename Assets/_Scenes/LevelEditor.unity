@@ -1501,25 +1501,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
-        type: 2}
-      propertyPath: gridColor.r
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
-        type: 2}
-      propertyPath: gridColor.g
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
-        type: 2}
-      propertyPath: gridColor.b
-      value: 0.8627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 114174337794843312, guid: 99ff4a7ad197f73469286f535b7bdf20,
-        type: 2}
-      propertyPath: gridColor.a
-      value: 0.78431374
+    - target: {fileID: 1630430642263626, guid: 99ff4a7ad197f73469286f535b7bdf20, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99ff4a7ad197f73469286f535b7bdf20, type: 2}
@@ -7909,17 +7893,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 860324053}
-        m_MethodName: ToggleUI
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1590922886}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &783126025
@@ -8521,6 +8494,7 @@ MonoBehaviour:
   devMode: 1
   levelEditor: {fileID: 1275362740}
   idContainer: {fileID: 1439121894}
+  homePanel: {fileID: 1590922886}
   categoryButton: {fileID: 720778306}
   topMenuImage: {fileID: 1009801888}
   topMenuColors:
@@ -8583,6 +8557,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 578bbb45318d13b46a4d8a911b3e672f, type: 3}
   - {fileID: 21300000, guid: 62aa5ac0020edb443aa00bea184c2596, type: 3}
   - {fileID: 21300000, guid: 5767f54f309fe9a43b7e1e803a7a67fc, type: 3}
+  - {fileID: 21300000, guid: 2a4638b95b541b241b102b9264744576, type: 3}
   lockedSprite: {fileID: 21300000, guid: f8ef831cbf273e541a6662ad2a4b70fe, type: 3}
   pcUIExceptions:
   - {fileID: 208980503}
@@ -8591,7 +8566,7 @@ MonoBehaviour:
   customCollectOrder: 0000030006000800050007000100
   customGroundsOrder: 000001000200030004000c000a000b0007000600090008000d000e00
   customGlitchesOrder: 07000900050002000400010006000a0003000b00
-  customObjectsOrder: 00000300050009000800070006000400010002000a00
+  customObjectsOrder: 00000300050009000800070006000400010002000a000b00
   customLevelsOrder: 
   tileManager: {fileID: 1185901821}
   runtimeEditorUI: {fileID: 289480038}
@@ -10896,7 +10871,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -14021,7 +13996,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -14617,7 +14592,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -19984,7 +19959,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1981916322}
   m_OnClick:
     m_PersistentCalls:

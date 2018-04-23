@@ -37,19 +37,10 @@ public class TileManager : MonoBehaviour {
 	private Tile GetTile(string tObjName) {
 		Tile tTile;
 
-		switch(tObjName) {
-			case "SpawnPoint":
-				tTile = new Tile_SpawnPoint();
-			break;
-			
-			case "Teleport":
-				tTile = new Tile_TeleportGlitch();
-			break;
-
-			default:
-				tTile = new Tile_Default();
-			break;
-		}
+		if(tObjName.Contains("CommentBlock"))
+			tTile = new Tile_CommentBlock();
+		else
+			tTile = new Tile_Default();
 
 		return tTile;
 	}
@@ -86,7 +77,7 @@ public class TileManager : MonoBehaviour {
 
             case 4:
                 //Objects
-                unlockedEntities =  new bool[] { false, false, false, false, false, true, true, true, true, true, true };
+                unlockedEntities =  new bool[] { false, false, false, false, false, true, true, true, true, true, true, true };
                 break;
 
             case 5:

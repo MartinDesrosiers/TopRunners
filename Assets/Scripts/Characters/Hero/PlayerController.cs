@@ -792,7 +792,6 @@ public class PlayerController : CharacterMotor
                     AddKey();
                     break;
                 default:
-                    Debug.Log(col.transform.GetComponent<Collectable>().CollectableName());
                     break;
             }
         }

@@ -17,26 +17,43 @@ public class LevelSelection : MonoBehaviour {
 	public GameObject modelButton;                  //Prefab of the load level button.
 	public LevelSelectionUI levelSelectionUI;
 
+	private int i = 0;
+
 	private void Start() {
 		RefreshLevelList();
 	}
 
 	public void RefreshLevelList() {
+		i = 0;
 		if(localContent.transform.childCount > 0) {
 			for(int j = 0; j < localContent.transform.childCount; j++)
 				Destroy(localContent.transform.GetChild(j).gameObject);
 		}
 
+		RefreshLevelList(true);
+		RefreshLevelList(false);
+	}
+
+	private void RefreshLevelList(bool basicLevels) {
+		string directory;
+		Color buttonColor = Color.white;
+
+		if(basicLevels) {
+			directory = Application.streamingAssetsPath;
+			buttonColor = new Color(255f, 0f, 195f);
+		}
+		else
+			directory = Application.persistentDataPath + "/Levels";
+
 		//Check if the "Levels" folder exist, if not create it to avoid errors.
-		if(!Directory.Exists(Application.persistentDataPath + "/Levels"))
-			Directory.CreateDirectory(Application.persistentDataPath + "/Levels");
+		if(!Directory.Exists(directory))
+			Directory.CreateDirectory(directory);
 
 		//Directory containning all the levels.
-		DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath + "/Levels");
+		DirectoryInfo directoryInfo = new DirectoryInfo(directory);
 		//Create an array of fileInfo containning all the files inside "/Levels".
 		FileInfo[] fileInfo = directoryInfo.GetFiles();
-
-		int i = 0;
+		
 		foreach(FileInfo k in fileInfo) {
 			//If the file is a level.
 			if(k.Extension == ".sld") {
@@ -48,9 +65,10 @@ public class LevelSelection : MonoBehaviour {
 				GameObject tObj = Instantiate(modelButton, Vector3.zero, Quaternion.identity, localContent.transform);
 				//Replace the button's text with the name of the level.
 				tObj.transform.GetChild(0).GetComponent<Text>().text = levelName;
+				tObj.GetComponent<Image>().color = buttonColor;
 
 				//Get the date of the level's creation.
-				string tString = File.GetCreationTime(Application.persistentDataPath + "/Levels/" + k.Name).ToString();
+				string tString = File.GetCreationTime(directory + "/" + k.Name).ToString();
 				//Get the position of the space between the date and time of creation.
 				int tIndex = tString.IndexOf(" ");
 				//Replace the button's date of creation text with the level's date of creation ( excluding the time of creation ).

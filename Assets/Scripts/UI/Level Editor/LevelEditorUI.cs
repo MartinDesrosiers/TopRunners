@@ -12,6 +12,7 @@ public class LevelEditorUI : MonoBehaviour {
     public LevelEditor levelEditor;
     //Object that contains every object id buttons in the level editor ui.
     public GameObject idContainer;
+	public GameObject homePanel;
 
     public Button categoryButton;
     public Image topMenuImage;
@@ -312,8 +313,8 @@ public class LevelEditorUI : MonoBehaviour {
             return;
         }
 
+		Camera.main.GetComponent<CameraController>().ResetCamera();
 		GameManager.Instance.currentState = GameManager.GameState.RunTime;
-        LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         /*if (LevelManager.Instance.isGhostReplayActive)
             LevelManager.Instance.ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;*/
         LevelManager.Instance.IsPaused = false;

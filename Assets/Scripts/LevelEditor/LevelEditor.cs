@@ -218,6 +218,8 @@ public class LevelEditor : MonoBehaviour {
 							StartCoroutine(PassableEndFrame(tPos, tColRow, tTile.type, tTile.id));
 						}
 					}
+					else if(objType == 4 && objId == 11)
+						LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.GetChild(0).gameObject.SetActive(true);
 					else {
 						if(LevelEditorInputs.Rotate()) {
 							int tRotation = ObjectRotation.GetObectRotation(LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].name);
