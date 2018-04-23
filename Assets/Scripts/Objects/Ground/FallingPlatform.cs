@@ -33,7 +33,9 @@ public class FallingPlatform : MonoBehaviour {
 
 	private IEnumerator DestroyTimer() {
 		yield return new WaitForSeconds(_timeBeforeDestruction);
-		transform.GetChild(0).transform.parent = null;
+		if(transform.childCount > 0)
+			transform.GetChild(0).transform.SetParent(null);
+
 		Destroy(transform.parent.gameObject);
 	}
 }

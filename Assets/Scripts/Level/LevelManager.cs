@@ -319,7 +319,6 @@ public class LevelManager : Singleton<LevelManager> {
 		tColRow[1] = (int)(obj.transform.position.y / 10);
 		for(int i = 0; i < levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
 			if(levelData.objectList[tColRow[0]][tColRow[1]][i] == obj) {
-				Debug.Log("test");
 				serializedData.objectList[tColRow[0]][tColRow[1]][i].Serialize(obj);
 				return;
 			}
