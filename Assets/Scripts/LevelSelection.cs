@@ -75,7 +75,7 @@ public class LevelSelection : MonoBehaviour {
 				tObj.transform.GetChild(1).GetComponent<Text>().text = tString.Substring(0, tIndex);
 
 				//Add an onClick event to load the specified level.
-				tObj.GetComponent<Button>().onClick.AddListener(() => { levelSelectionUI.SelectLevel(); GameManager.Instance.currentLevel = k.Name; });
+				tObj.GetComponent<Button>().onClick.AddListener(() => { GameManager.Instance.currentLevel = k.Name; levelSelectionUI.SelectLevel(); });
 
 				//Attach the button to the container.
 				//tObj.transform.SetParent(container.transform, false);

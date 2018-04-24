@@ -326,11 +326,11 @@ public class LevelEditorUI : MonoBehaviour {
 
 	public void ToggleUI(GameObject tObj) {
 		tObj.SetActive(!tObj.activeSelf);
-        idContainer.SetActive(!idContainer.activeSelf);
-        leftArrow.SetActive(!leftArrow.activeSelf);
-        rightArrow.SetActive(!rightArrow.activeSelf);
-        activeLevelCategory = !activeLevelCategory;
-        UpdateIDRow();
+        //idContainer.SetActive(!idContainer.activeSelf);
+        //leftArrow.SetActive(!leftArrow.activeSelf);
+        //rightArrow.SetActive(!rightArrow.activeSelf);
+        //activeLevelCategory = !activeLevelCategory;
+        //UpdateIDRow();
     }
 
 	//Used to load a specidifed scene using it's build index.

@@ -2,18 +2,13 @@
 
 [System.Serializable]
 public class Tile_TeleportGlitch : Tile {
-	public override bool isExtended {
-		get {
-			return true;
-		}
-	}
+	public override bool isExtended { get { return true; } }
 
 	public float destinationX;
 	public float destinationY;
 	public bool isEntrance;
 
 	public override void Serialize(GameObject tObj) {
-		Debug.Log("Serialize Teleport");
 		Teleport tTeleport = tObj.GetComponent<Teleport>();
 		destinationX = tTeleport.destination.x;
 		destinationY = tTeleport.destination.y;

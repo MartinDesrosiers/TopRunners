@@ -112,16 +112,21 @@ public class LevelSelectionUI : MonoBehaviour {
 	}
 
     public void SelectLevel() {
+		bool isLevelPremade = CheckForPremadeLevel();
+
         if (currentFilter == "Local")
-            foreach (GameObject buttons in LocalInterfaceButtons)
-                buttons.GetComponent<Button>().interactable = true;
+            foreach (GameObject buttons in LocalInterfaceButtons) {
+				if(isLevelPremade)
+					buttons.GetComponent<Button>().interactable = buttons.name != "RenameBTN" && buttons.name != "DestroyBTN";
+				else
+					buttons.GetComponent<Button>().interactable = true;
+			}
         else if (currentFilter == "Published")
             foreach (GameObject buttons in PublishedInterfaceButtons)
                 buttons.GetComponent<Button>().interactable = true;
     }
 
-	public void CreateNewLevel()
-    {
+	public void CreateNewLevel() {
         StartCoroutine(LevelManager.Instance.LoadingScreen());
         GameManager.Instance.currentLevel = "";
 		SceneManager.LoadScene("LevelEditor");
@@ -131,7 +136,7 @@ public class LevelSelectionUI : MonoBehaviour {
 		DirectoryInfo directory = new DirectoryInfo(Application.persistentDataPath + "/Levels");
 		FileInfo[] file = directory.GetFiles(GameManager.Instance.currentLevel);
 		Debug.Log(directory.FullName + " , " + directory.Root);
-		 file[0].MoveTo(directory.FullName + "/" + levelName.text + ".sld");
+		file[0].MoveTo(directory.FullName + "/" + levelName.text + ".sld");
 		levelSelection.RefreshLevelList();
 	}
 
@@ -231,4 +236,15 @@ public class LevelSelectionUI : MonoBehaviour {
                 break;
         }
     }
+
+	private bool CheckForPremadeLevel() {
+		switch(GameManager.Instance.currentLevel) {
+			case "Tutorial.sld":
+			case "Demo ( Easy ).sld":
+			case "Demo ( Hard ).sld":
+				return true;
+			default:
+				return false;
+		}
+	}
 }

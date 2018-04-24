@@ -218,8 +218,6 @@ public class LevelEditor : MonoBehaviour {
 							StartCoroutine(PassableEndFrame(tPos, tColRow, tTile.type, tTile.id));
 						}
 					}
-					else if(objType == 4 && objId == 11)
-						LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.GetChild(0).gameObject.SetActive(true);
 					else {
 						if(LevelEditorInputs.Rotate()) {
 							int tRotation = ObjectRotation.GetObectRotation(LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].name);
@@ -233,12 +231,15 @@ public class LevelEditor : MonoBehaviour {
 									LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].horizontalMirror = (rotation.x < 0);
 								//}
 							}
-							else {
+							else if(tRotation > 0) {
 								rotation = LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.localEulerAngles;
 								rotation.z += tRotation;
 								LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.localEulerAngles = rotation;
 								LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].rotation = rotation.z;
 							}
+							else if(LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].type == 4 &&
+									LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].id == 11)
+								LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.GetChild(0).gameObject.SetActive(true);
 						}
 					}
 				}

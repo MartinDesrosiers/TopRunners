@@ -82,8 +82,8 @@ public static class FileManager {
 	private static string GetDirectory(string levelName) {
 		switch(levelName) {
 			case "Tutorial.sld":
-			case "Demo ( Easy )":
-			case "Demo ( Hard )":
+			case "Demo ( Easy ).sld":
+			case "Demo ( Hard ).sld":
 				return Application.streamingAssetsPath + "/";
 			default:
 				return Application.persistentDataPath + "/Levels/";

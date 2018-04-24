@@ -628,7 +628,7 @@ PlayerSettings:
     Hub: 0
     UNet: 0
   facebookSdkVersion: 7.9.1
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 
   projectName: 
   organizationId: 
