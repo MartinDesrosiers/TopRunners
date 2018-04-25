@@ -1,41 +1,38 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class FallingPlatform : MonoBehaviour {
-    private bool _isFalling;
+	private Transform _parentTransform;
+	private bool _isFalling;
 	private float _fallingSpeed;
 	private float _maxFallingSpeed;
-	private float _timeBeforeDestruction;
-    Transform parentTransform;
+	private float _gravity;
 
     private void Start() {
-        parentTransform = transform.parent.transform;
+		_parentTransform = transform.parent.transform;
 		_isFalling = false;
-		_fallingSpeed = -2;
-		_maxFallingSpeed = -16;
-		_timeBeforeDestruction = 6f;
-    }
+		_fallingSpeed = -1.5f;
+		_maxFallingSpeed = -12;
+		_gravity = -2.5f;
+	}
 
     private void FixedUpdate() {
         if (transform.childCount > 0 || _isFalling) {
-			_fallingSpeed += Physics2D.gravity.y * Time.fixedDeltaTime;
-			if(_fallingSpeed < _maxFallingSpeed)
-				_fallingSpeed = _maxFallingSpeed;
+			_fallingSpeed += _gravity * Time.fixedDeltaTime;
+			
+			if(transform.position.y < 0) {
+				if(transform.childCount > 0)
+					transform.GetChild(0).transform.SetParent(null);
 
-			parentTransform.Translate(new Vector3(0f, _fallingSpeed * Time.fixedDeltaTime, 0f));
+				Destroy(transform.parent.gameObject);
+			}
+			else {
+				if(_fallingSpeed < _maxFallingSpeed)
+					_fallingSpeed = _maxFallingSpeed;
 
-            if (!_isFalling) {
+				_parentTransform.Translate(new Vector3(0f, _fallingSpeed * Time.fixedDeltaTime, 0f));
+				
 				_isFalling = true;
-				StartCoroutine(DestroyTimer());
-            }
+			}
         }
     }
-
-	private IEnumerator DestroyTimer() {
-		yield return new WaitForSeconds(_timeBeforeDestruction);
-		if(transform.childCount > 0)
-			transform.GetChild(0).transform.SetParent(null);
-
-		Destroy(transform.parent.gameObject);
-	}
 }
