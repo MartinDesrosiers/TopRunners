@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: glass-anim
+  m_Name: glass-anim 1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -52,27 +52,8 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: 21300000, guid: 7de28f4cff81d7e4ab98092bb5705a27, type: 3}
-    - {fileID: 21300000, guid: 7064da6146aec0b4b85c2001f30d3b88, type: 3}
-    - {fileID: 21300000, guid: be579f4d884e7734c965ae207aa35628, type: 3}
-    - {fileID: 21300000, guid: 01a71a98a29ca424f91ca2436ee44b03, type: 3}
-    - {fileID: 21300000, guid: 9bf37b1b6d19de545900b8a5f7c00a1e, type: 3}
-    - {fileID: 21300000, guid: 551e7c0c5461cb94bb49a1ba5f4a3c7c, type: 3}
-    - {fileID: 21300000, guid: 2c1196486282ad9428856f362cd33643, type: 3}
-    - {fileID: 21300000, guid: 755907db99b9f9d418b2184eaaf52652, type: 3}
-    - {fileID: 21300000, guid: 449dc6fef1b021a41823ff91472c8d84, type: 3}
-    - {fileID: 21300000, guid: 9a992959ab07cfd4980bd45441b81e6a, type: 3}
-    - {fileID: 21300000, guid: ecc575a7492cfed45af2fea6175068be, type: 3}
-    - {fileID: 21300000, guid: c1299d130665fc24da7caf0498ede2a4, type: 3}
+    genericBindings: []
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -99,7 +80,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.73333335
+  - time: 0.8
     functionName: DestroyObject
     data: 
     objectReferenceParameter: {fileID: 0}
