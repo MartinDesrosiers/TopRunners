@@ -339,8 +339,7 @@ public class LevelEditorUI : MonoBehaviour {
 		SceneManager.LoadScene(sceneIndex);
 	}
 
-    System.Collections.IEnumerator NoExit()
-    {
+    System.Collections.IEnumerator NoExit() {
         float timer = 0f;
         GameObject temp = GameObject.Find("Play Button").gameObject;
         temp.transform.GetChild(1).gameObject.SetActive(true);
