@@ -495,6 +495,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc263778e8f89c94ba74d9fe5316a81f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &151987422 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1541194691072526, guid: cc263778e8f89c94ba74d9fe5316a81f,
+    type: 2}
+  m_PrefabInternal: {fileID: 151987421}
+--- !u!114 &151987423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151987422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Forest World
+  frenchText: "Monde de la for\xEAt"
 --- !u!1 &177884038
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +525,7 @@ GameObject:
   - component: {fileID: 177884042}
   - component: {fileID: 177884041}
   - component: {fileID: 177884040}
+  - component: {fileID: 177884044}
   m_Layer: 5
   m_Name: levelNameTXT
   m_TagString: Untagged
@@ -599,6 +618,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 177884038}
+--- !u!114 &177884044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 177884038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: LEVEL 1
+  frenchText: NIVEAU 1
 --- !u!1001 &232026308
 Prefab:
   m_ObjectHideFlags: 0
@@ -704,6 +736,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae04888b5adb4cb4ba0ad72088171d1c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &232026309 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1635693769121404, guid: ae04888b5adb4cb4ba0ad72088171d1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 232026308}
+--- !u!114 &232026310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 232026309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Back
+  frenchText: Retour
 --- !u!1 &289451493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1069,7 @@ GameObject:
   - component: {fileID: 613584952}
   - component: {fileID: 613584954}
   - component: {fileID: 613584953}
+  - component: {fileID: 613584955}
   m_Layer: 5
   m_Name: elementTXT
   m_TagString: Untagged
@@ -1083,6 +1134,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 613584951}
+--- !u!114 &613584955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 613584951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: FOREST
+  frenchText: "FOR\xCAT"
 --- !u!1 &646294805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1313,7 @@ GameObject:
   - component: {fileID: 663808471}
   - component: {fileID: 663808474}
   - component: {fileID: 663808473}
+  - component: {fileID: 663808475}
   m_Layer: 5
   m_Name: rulesTitleTXT
   m_TagString: Untagged
@@ -1341,6 +1406,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &663808475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663808469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: RULES
+  frenchText: "R\xC8GLES"
 --- !u!1 &694949927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +1753,7 @@ GameObject:
   - component: {fileID: 753993749}
   - component: {fileID: 753993748}
   - component: {fileID: 753993747}
+  - component: {fileID: 753993751}
   m_Layer: 5
   m_Name: rule1TXT
   m_TagString: Untagged
@@ -1767,6 +1846,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 753993745}
+--- !u!114 &753993751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753993745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ANY %
+  frenchText: TOUT %
 --- !u!1 &757281402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +2009,7 @@ GameObject:
   - component: {fileID: 815902670}
   - component: {fileID: 815902669}
   - component: {fileID: 815902668}
+  - component: {fileID: 815902672}
   m_Layer: 5
   m_Name: scoreTitleTXT
   m_TagString: Untagged
@@ -2009,6 +2102,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815902666}
+--- !u!114 &815902672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815902666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: YOUR SCORE
+  frenchText: "VOTRE R\xC9SULTAT"
 --- !u!1 &841133941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2127,7 @@ GameObject:
   - component: {fileID: 841133945}
   - component: {fileID: 841133944}
   - component: {fileID: 841133943}
+  - component: {fileID: 841133947}
   m_Layer: 5
   m_Name: rule3TXT
   m_TagString: Untagged
@@ -2113,6 +2220,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841133941}
+--- !u!114 &841133947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841133941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ANY %
+  frenchText: TOUT %
 --- !u!1 &927717094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,6 +2313,7 @@ GameObject:
   - component: {fileID: 1108945150}
   - component: {fileID: 1108945149}
   - component: {fileID: 1108945148}
+  - component: {fileID: 1108945152}
   m_Layer: 5
   m_Name: playTXT
   m_TagString: Untagged
@@ -2285,6 +2406,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1108945146}
+--- !u!114 &1108945152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1108945146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: PLAY!
+  frenchText: JOUER!
 --- !u!1 &1120245553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,6 +3349,8 @@ MonoBehaviour:
   isControlActive: 0
   scrollerSpeed: 4
   gridMaterial: {fileID: 0}
+  gridColor: {r: 0, g: 0, b: 0, a: 0}
+  isDraging: 0
 --- !u!1 &1679106100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,6 +3981,7 @@ GameObject:
   - component: {fileID: 2093877665}
   - component: {fileID: 2093877667}
   - component: {fileID: 2093877666}
+  - component: {fileID: 2093877668}
   m_Layer: 5
   m_Name: hiddenTXT
   m_TagString: Untagged
@@ -3911,6 +4048,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2093877664}
+--- !u!114 &2093877668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093877664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: HIDDEN<br>OBJECTS
+  frenchText: "OBJETS<br>CACH\xC9S"
 --- !u!1 &2117221788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3992,6 +4142,7 @@ GameObject:
   - component: {fileID: 2117985311}
   - component: {fileID: 2117985310}
   - component: {fileID: 2117985309}
+  - component: {fileID: 2117985313}
   m_Layer: 5
   m_Name: rule1TXT
   m_TagString: Untagged
@@ -4084,6 +4235,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2117985307}
+--- !u!114 &2117985313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117985307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ANY %
+  frenchText: TOUT %
 --- !u!1 &2132951966
 GameObject:
   m_ObjectHideFlags: 0

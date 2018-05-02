@@ -515,6 +515,26 @@ GameObject:
   m_PrefabParentObject: {fileID: 1850673580094524, guid: a4f45ccc9fb3d6a4981b70486d5116be,
     type: 2}
   m_PrefabInternal: {fileID: 249709936}
+--- !u!1 &249709939 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1252092874512650, guid: a4f45ccc9fb3d6a4981b70486d5116be,
+    type: 2}
+  m_PrefabInternal: {fileID: 249709936}
+--- !u!114 &249709940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 249709939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: An error occured while establishing a connexion to the database.<br>Please
+    try again later.
+  frenchText: "une erreur est survenue lors de la connexion \xE0 la base de donn\xE9es.
+    R\xE9essayez plus tard."
 --- !u!224 &439281990 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224576919659198586, guid: a832546a48086e147825ae16291a9a62,
@@ -1386,6 +1406,7 @@ GameObject:
   - component: {fileID: 1234221672}
   - component: {fileID: 1234221671}
   - component: {fileID: 1234221670}
+  - component: {fileID: 1234221674}
   m_Layer: 5
   m_Name: backTXT
   m_TagString: Untagged
@@ -1478,6 +1499,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234221668}
+--- !u!114 &1234221674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234221668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: BACK
+  frenchText: RETOUR
 --- !u!1 &1262102076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,6 +1735,7 @@ GameObject:
   - component: {fileID: 1506043417}
   - component: {fileID: 1506043416}
   - component: {fileID: 1506043415}
+  - component: {fileID: 1506043419}
   m_Layer: 5
   m_Name: yourscoreTXT
   m_TagString: Untagged
@@ -1793,6 +1828,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1506043413}
+--- !u!114 &1506043419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506043413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: YOUR SCORE
+  frenchText: "VOTRE R\xC9SULTAT"
 --- !u!1 &1523010204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1853,7 @@ GameObject:
   - component: {fileID: 1523010208}
   - component: {fileID: 1523010207}
   - component: {fileID: 1523010206}
+  - component: {fileID: 1523010210}
   m_Layer: 5
   m_Name: searchTXT
   m_TagString: Untagged
@@ -1897,6 +1946,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1523010204}
+--- !u!114 &1523010210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523010204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: SEARCH
+  frenchText: RECHERCHER
 --- !u!1 &1689886992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,6 +2307,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a832546a48086e147825ae16291a9a62, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1932509996 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1025877755850354, guid: a832546a48086e147825ae16291a9a62,
+    type: 2}
+  m_PrefabInternal: {fileID: 1932509995}
+--- !u!114 &1932509997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932509996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: RANK
+  frenchText: RANG
 --- !u!1 &1935655413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,6 +2459,7 @@ GameObject:
   - component: {fileID: 1966306971}
   - component: {fileID: 1966306970}
   - component: {fileID: 1966306969}
+  - component: {fileID: 1966306973}
   m_Layer: 5
   m_Name: topmakersTXT
   m_TagString: Untagged
@@ -2471,6 +2552,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966306967}
+--- !u!114 &1966306973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1966306967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: TOPMAKERS
+  frenchText: TOPCONSTRUCTEURS
 --- !u!1 &2139725816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,6 +2577,7 @@ GameObject:
   - component: {fileID: 2139725820}
   - component: {fileID: 2139725819}
   - component: {fileID: 2139725818}
+  - component: {fileID: 2139725822}
   m_Layer: 5
   m_Name: filterTXT
   m_TagString: Untagged
@@ -2575,3 +2670,16 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2139725816}
+--- !u!114 &2139725822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2139725816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b7fef1517f427cb53c7b6e2d8fbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: ADD FILTERS
+  frenchText: AJOUTER DES FILTRES
