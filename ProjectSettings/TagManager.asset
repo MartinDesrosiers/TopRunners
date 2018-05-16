@@ -56,9 +56,6 @@ TagManager:
   - name: Background
     uniqueID: 1558575507
     locked: 0
-  - name: bg props
-    uniqueID: 3585969851
-    locked: 0
   - name: Objects
     uniqueID: 3837075121
     locked: 0

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class PlayerUI {
 	public GameObject[] hearts;
-    public GameObject[] powerups;
 	public GameObject keys;
 	public GameObject sprintBar;
 	public Image sprintBarImage;

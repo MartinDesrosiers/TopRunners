@@ -720,9 +720,7 @@ public class PlayerController : CharacterMotor
 
     //name Speak by itself :p
 	public void AddHealth() {
-        RuntimeEditorUI.transform.GetComponent<Animator>().SetTrigger("powerup");
-
-        if (_health < 3) {
+		if(_health < 3) {
 			_health++;
 			playerUI.CheckHealth(_health);
 		}
