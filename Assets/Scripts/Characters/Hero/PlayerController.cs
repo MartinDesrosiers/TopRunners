@@ -117,8 +117,7 @@ public class PlayerController : CharacterMotor
     }
 
     //ushort health, ushort combo, ushort strength, ushort range,float topSpeed, float acceleration, float stamina, float recuperation, float propulsion, float dashSpeed, float dodge
-    public void ReInitialize(List<int> list)
-    {
+    public void ReInitialize(List<int> list) {
         rg = transform.GetComponent<Rigidbody2D>();
         _convoyerBeltForce = 0;
         animator.Play("idle");
@@ -183,7 +182,7 @@ public class PlayerController : CharacterMotor
     private void Update()
     {
         //TODO capter les controls dans l'update et appliquer leurs behaviors dans le fixed update
-        if (!LevelManager.Instance.isPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
+        if (!LevelManager.Instance.IsPaused && GameManager.Instance.currentState == GameManager.GameState.RunTime && !_isDead)
         {
             EnemyList.UpdateAreaAlpha(transform.position);
             axisXY = inputScript.PlayerInput(true);
@@ -298,7 +297,7 @@ public class PlayerController : CharacterMotor
     }
 
     private void FixedUpdate() {
-        if(!LevelManager.Instance.isPaused) {
+        if(!LevelManager.Instance.IsPaused) {
             //Debug.Log(animator.GetCurrentAnimatorClipInfo(animator.GetLayerIndex("Base Layer")).Length);
             animator.speed = _speed;
             animator.SetFloat("VelY", rg.velocity.y);
@@ -572,7 +571,7 @@ public class PlayerController : CharacterMotor
 						return false;
 
 					_timedGlitches[1] = false;
-					GetComponent<Rigidbody2D>().gravityScale = 1f;
+					GetComponent<Rigidbody2D>().gravityScale = 1.5f;
 				}
 			}
 			break;
@@ -674,16 +673,15 @@ public class PlayerController : CharacterMotor
 		StartCoroutine(Die());
     }
 
-    public void Restart()
-    {
+    public void Restart() {
         RuntimeUI.GetStartTimer = false;
         //LevelManager.Instance.isGhostReplayActive = true;
         //Stop all glitch coroutines and clear the coroutine list.
-        for (int i = 0; i < glitches.Count; i++)
-        {
+        for (int i = 0; i < glitches.Count; i++) {
             if (glitches[i] != null)
                 StopCoroutine(glitches[i]);
         }
+
         glitches.Clear();
         _health = 3;
         _key = 0;
@@ -691,7 +689,6 @@ public class PlayerController : CharacterMotor
         playerUI.ShowKeys(_key);
         playerUI.CheckHealth(_health);
         transform.position = LevelManager.Instance.spawnPoint;
-        LevelManager.Instance.ReloadLevel();
         ReInitialize(GameManager.Instance.myList);
         RuntimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
         LevelManager.Instance.finishLoading = true;
@@ -705,8 +702,10 @@ public class PlayerController : CharacterMotor
             timer += 2f * Time.timeScale * Time.deltaTime;
         }
         StartCoroutine(LevelManager.Instance.LoadingScreen());
+		LevelManager.Instance.ReloadLevel();
         rg.velocity = Vector2.zero;
         Restart();
+		LevelManager.Instance.IsPaused = false;
     }
 
     //use after dash to make the player jump after hit
@@ -795,7 +794,6 @@ public class PlayerController : CharacterMotor
                     AddKey();
                     break;
                 default:
-                    Debug.Log(col.transform.GetComponent<Collectable>().CollectableName());
                     break;
             }
         }

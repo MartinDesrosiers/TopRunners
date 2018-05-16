@@ -93,107 +93,135 @@ public class InputScript
             }
             return axisXY;
 #elif UNITY_EDITOR || UNITY_STANDALONE
-        /*if (aPressed || dPressed || wPressed || sPressed && reference == 0)
+		/*if (aPressed || dPressed || wPressed || sPressed && reference == 0)
         {
             RuntimeUI.GetStartTimer = true;
             SetReference();
         }*/
-        //Move forward or backward
-       
-            if (Input.GetKey("a") && !Input.GetKey("d"))
-            {
-                if (Time.time - pressedTimerA < delay)
-                    sprinting = true;
+		//Move forward or backward
 
-                axisXY[0] = -1f;
-                /*if (!aPressed)
-                {
-                    aPressed = true;
-                    horiTimePressed.Add(Time.time - reference);
-                    horiPressed.Add(-1);
-                }*/
-            }
+		axisXY[0] = 0;
+		axisXY[1] = 0;
 
-            if (Input.GetKey("d") && !Input.GetKey("a"))
-            {
-                if (Time.time - pressedTimerD < delay)
-                    sprinting = true;
+		if(Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow)) {
+			if(Time.time - pressedTimerA < delay)
+				sprinting = true;
+			axisXY[0] -= 1;
+		}
+		if(Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow)) {
+			if(Time.time - pressedTimerD < delay)
+				sprinting = true;
+			axisXY[0] += 1;
+		}
+		if(Input.GetKeyUp(KeyCode.A) | Input.GetKeyUp(KeyCode.LeftArrow)) {
+			pressedTimerA = Time.time;
+			sprinting = false;
+		}
+		if(Input.GetKeyUp(KeyCode.D) | Input.GetKeyUp(KeyCode.RightArrow)) {
+			pressedTimerD = Time.time;
+			sprinting = false;
+		}
+		if(Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.UpArrow) | Input.GetKey(KeyCode.Space))
+			axisXY[1] += 1;
+		if(Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.DownArrow))
+			axisXY[1] -= 1;
+		if(axisXY[0] == 0)
+			sprinting = false;
 
-                axisXY[0] = 1f;
-                /*if (!dPressed)
-                {
-                    dPressed = true;
-                    horiTimePressed.Add(Time.time - reference);
-                    horiPressed.Add(1);
-                }*/
-            }
-
-            if (Input.GetKeyUp("a"))
-            {
-                axisXY[0] = 0f;
-                pressedTimerA = Time.time;
-                sprinting = false;
-                /*if (aPressed)
-                {
-                    aPressed = false;
-                    horiTimePressed.Add(Time.time - reference);
-                }*/
-            }
-
-            if (Input.GetKeyUp("d"))
-            {
-                axisXY[0] = 0f;
-                pressedTimerD = Time.time;
-                sprinting = false;
-                /*if (dPressed)
-                {
-                    dPressed = false;
-                    horiTimePressed.Add(Time.time - reference);
-                }*/
-            }
-
-            //Jump or roll
-            if (Input.GetKey("w") && !Input.GetKey("s"))
-            {
-                axisXY[1] = 1f;
-                /*if (!wPressed)
-                {
-                    wPressed = true;
-                    vertiTimePressed.Add(Time.time - reference);
-                    vertiPressed.Add(1);
-                }*/
-            }
-
-            if (Input.GetKey("s") && !Input.GetKey("w"))
-            {
-                axisXY[1] = -1f;
-                /*if (!sPressed)
-                {
-                    sPressed = true;
-                    vertiTimePressed.Add(Time.time - reference);
-                    vertiPressed.Add(-1);
-                }*/
-            }
-
-            if (Input.GetKeyUp("w"))
-            {
-                axisXY[1] = 0f;
-                /*if (wPressed)
-                {
-                    wPressed = false;
-                    vertiTimePressed.Add(Time.time - reference);
-                }*/
-            }
-
-            if (Input.GetKeyUp("s"))
-            {
-                axisXY[1] = 0f;
-                /*if (sPressed)
-                {
-                    sPressed = false;
-                    vertiTimePressed.Add(Time.time - reference);
-                }*/
-            }
+		//if (Input.GetKey("a") && !Input.GetKey("d"))
+        //    {
+        //        if (Time.time - pressedTimerA < delay)
+        //            sprinting = true;
+		//
+        //        axisXY[0] = -1f;
+        //        /*if (!aPressed)
+        //        {
+        //            aPressed = true;
+        //            horiTimePressed.Add(Time.time - reference);
+        //            horiPressed.Add(-1);
+        //        }*/
+        //    }
+		//
+        //    if (Input.GetKey("d") && !Input.GetKey("a"))
+        //    {
+        //        if (Time.time - pressedTimerD < delay)
+        //            sprinting = true;
+		//
+        //        axisXY[0] = 1f;
+        //        /*if (!dPressed)
+        //        {
+        //            dPressed = true;
+        //            horiTimePressed.Add(Time.time - reference);
+        //            horiPressed.Add(1);
+        //        }*/
+        //    }
+		//
+        //    if (Input.GetKeyUp("a"))
+        //    {
+        //        axisXY[0] = 0f;
+        //        pressedTimerA = Time.time;
+        //        sprinting = false;
+        //        /*if (aPressed)
+        //        {
+        //            aPressed = false;
+        //            horiTimePressed.Add(Time.time - reference);
+        //        }*/
+        //    }
+		//
+        //    if (Input.GetKeyUp("d"))
+        //    {
+        //        axisXY[0] = 0f;
+        //        pressedTimerD = Time.time;
+        //        sprinting = false;
+        //        /*if (dPressed)
+        //        {
+        //            dPressed = false;
+        //            horiTimePressed.Add(Time.time - reference);
+        //        }*/
+        //    }
+		//
+        //    //Jump or roll
+        //    if (Input.GetKey("w") && !Input.GetKey("s"))
+        //    {
+        //        axisXY[1] = 1f;
+        //        /*if (!wPressed)
+        //        {
+        //            wPressed = true;
+        //            vertiTimePressed.Add(Time.time - reference);
+        //            vertiPressed.Add(1);
+        //        }*/
+        //    }
+		//
+        //    if (Input.GetKey("s") && !Input.GetKey("w"))
+        //    {
+        //        axisXY[1] = -1f;
+        //        /*if (!sPressed)
+        //        {
+        //            sPressed = true;
+        //            vertiTimePressed.Add(Time.time - reference);
+        //            vertiPressed.Add(-1);
+        //        }*/
+        //    }
+		//
+        //    if (Input.GetKeyUp("w"))
+        //    {
+        //        axisXY[1] = 0f;
+        //        /*if (wPressed)
+        //        {
+        //            wPressed = false;
+        //            vertiTimePressed.Add(Time.time - reference);
+        //        }*/
+        //    }
+		//
+        //    if (Input.GetKeyUp("s"))
+        //    {
+        //        axisXY[1] = 0f;
+        //        /*if (sPressed)
+        //        {
+        //            sPressed = false;
+        //            vertiTimePressed.Add(Time.time - reference);
+        //        }*/
+        //    }
             /*else
             {
                 if (RuntimeUI.GetStartTimer)

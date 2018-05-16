@@ -1,11 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FinishScreenCloseButton : MonoBehaviour {
+	public void CloseWindow() {
+		LevelManager.Instance.ToggleCheckPoint(false);
+		LevelManager.Instance.ReloadLevel();
 
-	public void CloseWindow()
-    {
-        LevelManager.Instance.isPaused = false; //FIX
-    }
+		LevelManager.Instance.player.transform.SetParent(null);
+		LevelManager.Instance.player.GetComponent<PlayerController>().Restart();
+		LevelManager.Instance.player.transform.position = LevelManager.Instance.spawnPoint;
+
+		Vector3 cameraPosition = LevelManager.Instance.player.transform.position;
+		cameraPosition.z = Camera.main.transform.position.z;
+		Camera.main.transform.position = cameraPosition;
+		
+		LevelManager.Instance.IsPaused = false;
+	}
 }

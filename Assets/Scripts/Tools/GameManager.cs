@@ -1,9 +1,9 @@
 ﻿using UnityEngine.SceneManagement;
-using System.Xml;
-using System.IO;
+//using System.Xml;
+//using System.IO;
 using System.Collections.Generic;
-using System;
-using UnityEngine;
+//using System;
+//using UnityEngine;
 
 /// <summary>
 /// A singleton used to keep in memory certain values needed throughout the scenes.
@@ -30,8 +30,7 @@ public class GameManager : Singleton<GameManager>
 	public int myUid = 0;
 
     //Updates the game state and initializes the LevelManager.
-    private void Awake()
-    {
+    private void Awake() {
         InitLevelManager();
         CheckGameState();
     }
@@ -46,37 +45,34 @@ public class GameManager : Singleton<GameManager>
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
-    {
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode) {
         CheckGameState();
         InitLevelManager();
     }
 
-    private void InitLevelManager()
-    {
-        if (currentState == GameState.RunTime || currentState == GameState.LevelEditor)
-        {
+    private void InitLevelManager() {
+        if (currentState == GameState.RunTime || currentState == GameState.LevelEditor) {
             if (currentState == GameState.RunTime)
-                LevelManager.Instance.isPaused = false;
+                LevelManager.Instance.IsPaused = false;
             else
-                LevelManager.Instance.isPaused = true;
+                LevelManager.Instance.IsPaused = true;
         }
     }
 
-    private void CheckGameState()
-    {
+    private void CheckGameState() {
         if (SceneManager.GetActiveScene().name == "RunTime")
             currentState = GameState.RunTime;
-        else if (SceneManager.GetActiveScene().name == "LevelEditor")
-            currentState = GameState.LevelEditor;
+        else if (SceneManager.GetActiveScene().name == "LevelEditor") {
+			currentState = GameState.LevelEditor;
+			SpawnPoint.isFirstLoad = true;
+		}
         else if (SceneManager.GetActiveScene().name == "Online" || SceneManager.GetActiveScene().name == "RunMap")
             currentState = GameState.Map;
         else
             currentState = GameState.Menu;
     }
 
-    private void OnApplicationQuit()
-    {
+    private void OnApplicationQuit() {
         LevelManager.Instance.ClearLevel();
         Destroy(LevelManager.Instance.gameObject);
         Destroy(this.gameObject);

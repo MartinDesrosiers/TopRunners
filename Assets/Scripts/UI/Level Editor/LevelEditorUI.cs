@@ -12,6 +12,7 @@ public class LevelEditorUI : MonoBehaviour {
     public LevelEditor levelEditor;
     //Object that contains every object id buttons in the level editor ui.
     public GameObject idContainer;
+	public GameObject homePanel;
 
     public Button categoryButton;
     public Image topMenuImage;
@@ -23,6 +24,8 @@ public class LevelEditorUI : MonoBehaviour {
     public Sprite[] glitchesSprites;
     public Sprite[] objectsSprites;
     public Sprite lockedSprite;
+
+	public GameObject[] pcUIExceptions;
 
     // This is where we order the level editor items according to the Level Editor custom order, not the Level Manager ID Order
     // It remaps every ID
@@ -76,12 +79,20 @@ public class LevelEditorUI : MonoBehaviour {
     public LevelEditor GetLevelEditor { get { return levelEditor; } }
 
 	private void Start() {
-        //Safety update to make sure items show up on the top menu.
+		#if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
+		foreach(GameObject go in pcUIExceptions)
+			go.SetActive(false);
+		#endif
 
-        cr_Running = false;
+		//Safety update to make sure items show up on the top menu.
+		cr_Running = false;
         currentObjType = levelEditor.objType;
         UpdateIDRow();
     }
+
+	public void ExitEditor() {
+		LevelManager.Instance.ClearLevel();
+	}
 
 	public void SetTheme(int themeNumber) {
 		LevelManager.Instance.theme = themeNumber;
@@ -109,13 +120,10 @@ public class LevelEditorUI : MonoBehaviour {
 	//Turns all the objects in LevelData to serializable objects ( SerializedData ) and save the level using the FileManager script.
 	//Called when using the save button in the home menu.
 	public void SaveLevel() {
-		if(GameManager.Instance.currentLevel == "")
+		if(GameManager.Instance.currentLevel == "Template.sld")
 			GameManager.Instance.currentLevel = levelName.text + ".sld";
 
 		LevelManager.Instance.SerializeLevel();
-
-		//if(GameManager.Instance.currentLevel == "Template.sld")
-		//	GameManager.Instance.currentLevel = ((int)DateTime.Now.Ticks).ToString() + ".sld";
 
 		FileManager.SaveLevel(GameManager.Instance.currentLevel, LevelManager.Instance.serializedData);
 	}
@@ -299,18 +307,17 @@ public class LevelEditorUI : MonoBehaviour {
 
     //Called when using the play button in editor mode.
     public void PlayButton() {
-        if (!LevelManager.Instance.GetUniqueObject.EndPoint.isUsed)
-        {
+        if (!LevelManager.Instance.GetUniqueObject.EndPoint.isUsed) {
             if (!cr_Running)
                 StartCoroutine(NoExit());
             return;
         }
+
+		Camera.main.GetComponent<CameraController>().ResetCamera();
 		GameManager.Instance.currentState = GameManager.GameState.RunTime;
-        LevelManager.Instance.SetEnemiesDynamique(RigidbodyType2D.Dynamic);
-        LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         /*if (LevelManager.Instance.isGhostReplayActive)
             LevelManager.Instance.ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;*/
-        LevelManager.Instance.isPaused = false;
+        LevelManager.Instance.IsPaused = false;
 		runtimeEditorUI.SetActive(true);
 		gameObject.SetActive(false);
         if(LevelManager.Instance.player.GetComponent<PlayerController>().GetPlayerUI == null)
@@ -318,12 +325,12 @@ public class LevelEditorUI : MonoBehaviour {
     }
 
 	public void ToggleUI(GameObject tObj) {
-		tObj.SetActive(tObj.activeSelf ? false : true);
-        idContainer.SetActive(idContainer.activeSelf ? false : true);
-        leftArrow.SetActive(leftArrow.activeSelf ? false : true);
-        rightArrow.SetActive(rightArrow.activeSelf ? false : true);
-        activeLevelCategory = activeLevelCategory ? false : true;
-        UpdateIDRow();
+		tObj.SetActive(!tObj.activeSelf);
+        //idContainer.SetActive(!idContainer.activeSelf);
+        //leftArrow.SetActive(!leftArrow.activeSelf);
+        //rightArrow.SetActive(!rightArrow.activeSelf);
+        //activeLevelCategory = !activeLevelCategory;
+        //UpdateIDRow();
     }
 
 	//Used to load a specidifed scene using it's build index.
@@ -332,8 +339,7 @@ public class LevelEditorUI : MonoBehaviour {
 		SceneManager.LoadScene(sceneIndex);
 	}
 
-    System.Collections.IEnumerator NoExit()
-    {
+    System.Collections.IEnumerator NoExit() {
         float timer = 0f;
         GameObject temp = GameObject.Find("Play Button").gameObject;
         temp.transform.GetChild(1).gameObject.SetActive(true);

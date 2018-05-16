@@ -24,20 +24,25 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 
 
 	public void OnBeginDrag(PointerEventData data) {
+		//Lock the level editor to prevent objects being added when the player is dragging the menu.
+		_editorUI.levelEditor.isLocked = true;
+
 		//Detect and save the toggle below the initial finger position.
 		if(data.pointerPressRaycast.gameObject.name == "Image")
 			_currentToggle = data.pointerPressRaycast.gameObject.transform.parent.GetComponent<Toggle>();
 		else if(data.pointerPressRaycast.gameObject.name == "Highlight")
 			_currentToggle = data.pointerPressRaycast.gameObject.transform.parent.transform.parent.GetComponent<Toggle>();
+		else
+			return;
 
-		//Lock the level editor to prevent objects being added when the player is dragging the menu.
-		_editorUI.levelEditor.isLocked = true;
 		//Lock the menu's scrolling.
 		_scrollRect.horizontal = false;
+		
+		tempImg.sprite = GetTempImage();
 
 		//Set the starting position of the finger drag.
 		_startPos = data.position;
-        tempImg.sprite = GetTempImage();
+
         _editorUI.UpdateObjType();
         int i;
         int.TryParse(_currentToggle.gameObject.name, out i);
@@ -61,6 +66,7 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 
 						//Enable dragging.
 						_objectDrag = true;
+						Camera.main.GetComponent<CameraController>().isDraging = true;
 					}
 					else
 						//Enable the menu scrolling.
@@ -81,6 +87,7 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 		if(_objectDrag) {
 			tempImg.gameObject.SetActive(false);
 			_objectDrag = false;
+			Camera.main.GetComponent<CameraController>().isDraging = false;
 
 			//Get the toggle's id by parsing its name ( the toggles are named in a increasing numerical order ).
 			ushort tId;
@@ -95,15 +102,15 @@ public class TopMenuDragHandlers : MonoBehaviour, IBeginDragHandler, IDragHandle
 			//Unlock the scrollview.
 			_scrollRect.horizontal = true;
 		}
+
+		_currentToggle = null;
 	}
 
-    Sprite GetTempImage()
-    {
+    Sprite GetTempImage() {
         int i;
         if (int.TryParse(_currentToggle.gameObject.name, out i))
-        {
             return content.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite;
-        }
+
         return content.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite;
     }
 

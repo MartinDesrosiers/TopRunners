@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LevelEditor : MonoBehaviour {
+	public static bool firstLoad = true;
 
 	public InputField newLevelName;
     Transform transObj;
@@ -89,7 +90,6 @@ public class LevelEditor : MonoBehaviour {
 #endif
 
 		if(!tPointerOverUI) {
-			Debug.Log("WORKING");
 			int[] objColRow = new int[2];   //0 = column, 1 = row
 			float[] objPos = new float[2];  //0 = x, 1 = y
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -138,16 +138,15 @@ public class LevelEditor : MonoBehaviour {
                 if (!tPointerOverUI) {
                     int[] objColRow = new int[2];   //0 = column, 1 = row
 					float[] objPos = new float[2];  //0 = x, 1 = y
-                    if (transObj != null)
-                    {
+                    if (transObj != null) {
                         GetObjPosition(ref objColRow, ref objPos, transObj.position);
                         transObj = null;
                     }
-                    else
-                    {
+                    else {
                         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         GetObjPosition(ref objColRow, ref objPos, mousePosition);
                     }
+
                     if (LevelEditorInputs.GetBrush()) {
 						if(eraser)
 							AddDeleteTile(objColRow, objPos, false);
@@ -158,6 +157,8 @@ public class LevelEditor : MonoBehaviour {
 								AddDeleteTile(objColRow, objPos, true);
 						}
 					}
+					else if(LevelEditorInputs.GetEraser())
+						AddDeleteTile(objColRow, objPos, false);
 				}
 				GlobalInputs.ClearInputs();
             }
@@ -232,12 +233,15 @@ public class LevelEditor : MonoBehaviour {
 									LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].horizontalMirror = (rotation.x < 0);
 								//}
 							}
-							else {
+							else if(tRotation > 0) {
 								rotation = LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.localEulerAngles;
 								rotation.z += tRotation;
 								LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.localEulerAngles = rotation;
 								LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].rotation = rotation.z;
 							}
+							else if(LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].type == 4 &&
+									LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].id == 11)
+								LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.GetChild(0).gameObject.SetActive(true);
 						}
 					}
 				}

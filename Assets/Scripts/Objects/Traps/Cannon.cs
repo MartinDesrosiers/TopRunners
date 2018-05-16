@@ -8,7 +8,7 @@ public class Cannon : MonoBehaviour {
 	private float _timerPosition = 0f;
 
 	private void FixedUpdate() {
-		if(!LevelManager.Instance.isPaused) {
+		if(!LevelManager.Instance.IsPaused) {
 			if((Camera.main.transform.position - transform.position).magnitude < 22f) {
 				if(Mathf.Abs(Camera.main.transform.position.y - transform.position.y) < 5.5f) {
 					if(_timerPosition == 0f) {

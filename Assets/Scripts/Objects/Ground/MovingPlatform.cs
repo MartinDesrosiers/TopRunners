@@ -27,7 +27,7 @@ public class MovingPlatform : MonoBehaviour {
     }
 	
 	void FixedUpdate () {
-        if (!LevelManager.Instance.isPaused)
+        if (!LevelManager.Instance.IsPaused)
         {
             platform.Translate(new Vector3(0f, direction * speed * Time.fixedDeltaTime, 0f));
             if (platform.localPosition.y + (platform.localScale.y / 2) > railHeight / 2 ||

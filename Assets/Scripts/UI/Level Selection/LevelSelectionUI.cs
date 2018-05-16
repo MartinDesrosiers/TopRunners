@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 public class LevelSelectionUI : MonoBehaviour {
-
+	public LevelSelection levelSelection;
 	public GameObject LocalInterface;
     public GameObject[] LocalInterfaceButtons;
     public GameObject LocalButton;
@@ -15,6 +18,8 @@ public class LevelSelectionUI : MonoBehaviour {
     public GameObject PublishedEntry;
 
     public GameObject[] Panels;
+
+	public Text levelName;
 
     private string currentFilter = "Local";
 
@@ -106,27 +111,43 @@ public class LevelSelectionUI : MonoBehaviour {
 		//runs.GetComponent<Text>().text = level.runs;
 	}
 
-    public void SelectLevel(int SelectedLevelID) {
-        if (currentFilter == "Local") {
+    public void SelectLevel() {
+		bool isLevelPremade = CheckForPremadeLevel();
+
+        if (currentFilter == "Local")
             foreach (GameObject buttons in LocalInterfaceButtons) {
+				if(isLevelPremade)
+					buttons.GetComponent<Button>().interactable = buttons.name != "RenameBTN" && buttons.name != "DestroyBTN";
+				else
+					buttons.GetComponent<Button>().interactable = true;
+			}
+        else if (currentFilter == "Published")
+            foreach (GameObject buttons in PublishedInterfaceButtons)
                 buttons.GetComponent<Button>().interactable = true;
-            }
-        }
-        else if (currentFilter == "Published") {
-            foreach (GameObject buttons in PublishedInterfaceButtons) {
-                buttons.GetComponent<Button>().interactable = true;
-            }
-        }
     }
 
-	public void CreateNewLevel()
-    {
+	public void CreateNewLevel() {
         StartCoroutine(LevelManager.Instance.LoadingScreen());
         GameManager.Instance.currentLevel = "";
 		SceneManager.LoadScene("LevelEditor");
 	}
 
-    //TODO adapt to new save load function
+	public void RenameLevel() {
+		DirectoryInfo directory = new DirectoryInfo(Application.persistentDataPath + "/Levels");
+		FileInfo[] file = directory.GetFiles(GameManager.Instance.currentLevel);
+		Debug.Log(directory.FullName + " , " + directory.Root);
+		file[0].MoveTo(directory.FullName + "/" + levelName.text + ".sld");
+		levelSelection.RefreshLevelList();
+	}
+
+	public void RemoveLevel() {
+		DirectoryInfo directory = new DirectoryInfo(Application.persistentDataPath + "/Levels");
+		FileInfo[] file = directory.GetFiles(GameManager.Instance.currentLevel);
+		file[0].Delete();
+		levelSelection.RefreshLevelList();
+	}
+
+	//TODO adapt to new save load function
 	void loadLevel(int levelID){
 		/*SettingsData.current = new SettingsData ();
 		SettingsData.current.loadLevelId = levelID;
@@ -215,4 +236,15 @@ public class LevelSelectionUI : MonoBehaviour {
                 break;
         }
     }
+
+	private bool CheckForPremadeLevel() {
+		switch(GameManager.Instance.currentLevel) {
+			case "Tutorial.sld":
+			case "Demo ( Easy ).sld":
+			case "Demo ( Hard ).sld":
+				return true;
+			default:
+				return false;
+		}
+	}
 }

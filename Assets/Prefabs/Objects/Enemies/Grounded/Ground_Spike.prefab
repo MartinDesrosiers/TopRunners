@@ -352,7 +352,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1112148438390268}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -364,7 +364,7 @@ Rigidbody2D:
   m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!58 &58585485039056308
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207dea8d742853c4ea47faff27fec7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 1
   overrideDash: 0
 --- !u!114 &114633531738805586
 MonoBehaviour:
@@ -521,6 +521,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 95233123829072952}
   lookAtHero: 1
   isFlying: 0
+  IsInvincible: 1
   stickToWalls: 0
   useAdvancedBehaviors: 0
   abList: 

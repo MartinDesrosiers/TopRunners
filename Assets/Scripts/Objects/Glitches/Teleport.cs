@@ -22,9 +22,12 @@ public class Teleport : MonoBehaviour {
 			int[] tColRow = new int[2];
 			tColRow[0] = (int)(destination.x / 10);
 			tColRow[1] = (int)(destination.y / 10);
-			for(int i = 0; i < LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
-				if(LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.position == new Vector3(destination.x, destination.y, 0.0f)) {
-					LevelManager.Instance.DeleteObject(tColRow, i);
+
+			if(LevelManager.Instance.levelData != null) {
+				for(int i = 0; i < LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
+					if(LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.position == new Vector3(destination.x, destination.y, 0.0f)) {
+						LevelManager.Instance.DeleteObject(tColRow, i);
+					}
 				}
 			}
 		}

@@ -18,18 +18,18 @@ public static class FileManager {
 
 		BinaryFormatter bf = new BinaryFormatter();
 		//Creates a file with given level name.
-		FileStream file = File.Create(Application.persistentDataPath + "/Levels/" + tName);
+		FileStream file = File.Create(GetDirectory(tName) + tName);
 		//Uses created file to write current level data.
 		bf.Serialize(file, tLProp);
 		file.Close();
 	}
 
 	public static bool LoadLevel(string tName, out SerializedLevelData tLProp) {
-		if(tName != "Tutorial2.sld") {
+		if(tName != "Template.sld") {
 			CheckDirectory("/Levels");
 
 			//Checks if level exists.
-			if(!File.Exists(Application.persistentDataPath + "/Levels/" + tName)) {
+			if(!File.Exists(GetDirectory(tName) + tName)) {
 				Debug.Log("Error loading level. Level cannot be found.");
 				tLProp = null;
 				return false;
@@ -37,7 +37,7 @@ public static class FileManager {
 
 			BinaryFormatter bf = new BinaryFormatter();
 			//Opens level file according to given file name.
-			FileStream file = File.Open(Application.persistentDataPath + "/Levels/" + tName, FileMode.Open);
+			FileStream file = File.Open(GetDirectory(tName) + tName, FileMode.Open);
 			//Uses opened file to paste level data in container tLProp.
 			tLProp = (SerializedLevelData)bf.Deserialize(file);
 			file.Close();
@@ -77,5 +77,16 @@ public static class FileManager {
 	public static void CheckDirectory(string path) {
 		if(!Directory.Exists(Application.persistentDataPath + path))
 			Directory.CreateDirectory(Application.persistentDataPath + path);
+	}
+
+	private static string GetDirectory(string levelName) {
+		switch(levelName) {
+			case "Tutorial.sld":
+			case "Demo ( Easy ).sld":
+			case "Demo ( Hard ).sld":
+				return Application.streamingAssetsPath + "/";
+			default:
+				return Application.persistentDataPath + "/Levels/";
+		}
 	}
 }

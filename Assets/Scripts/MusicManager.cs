@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour {
@@ -11,8 +9,7 @@ public class MusicManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-
-        if (SceneManager.GetActiveScene().name == "LevelEditor" && LevelManager.Instance.isPaused) {
+        if (SceneManager.GetActiveScene().name == "LevelEditor" && LevelManager.Instance.IsPaused) {
             musicSources[7].Play();
         }
         else {
