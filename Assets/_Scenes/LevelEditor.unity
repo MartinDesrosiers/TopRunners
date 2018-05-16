@@ -2527,16 +2527,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114171307821388776, guid: 4293a44651e0d0c43bb2dbe51b364824,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 246934445}
     - target: {fileID: 223962988800455870, guid: 4293a44651e0d0c43bb2dbe51b364824,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 962850674}
+    - target: {fileID: 114171307821388776, guid: 4293a44651e0d0c43bb2dbe51b364824,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 246934445}
     - target: {fileID: 114786858412756728, guid: 4293a44651e0d0c43bb2dbe51b364824,
         type: 2}
       propertyPath: levelEditorUI
