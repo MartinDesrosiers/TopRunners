@@ -4,10 +4,13 @@ using System.Collections.Generic;
 
 public class NewPlayerController : NewPlayerMotor {
 	public bool IsRecovering { get { return Time.time - _recoveryTimer < _recoveryDelay; } }
-	public bool IsInvisible { get; private set; }
+	public bool IsInvisible { get; set; }
+	public bool IsInvincible { get; set; }
+	public float SpeedBoost { get; set; }
 	public float WalkingSpeed { get { return _stats.walkingSpeed; } }
-	public float RunningSpeed { get { return _stats.runningSpeed; } }
-	public float SprintingSpeed { get { return _stats.sprintingSpeed; } }
+	public float RunningSpeed { get { return _stats.runningSpeed * SpeedBoost; } }
+	public float SprintingSpeed { get { return _stats.sprintingSpeed * SpeedBoost; } }
+	public float CurrentStamina { get; private set; }
 
 	public RuntimeEditorUI runtimeEditorUI;
 	public Animator animator;
@@ -24,8 +27,6 @@ public class NewPlayerController : NewPlayerMotor {
 	private float _jumpBoost;
 	private float _recoveryTimer;
 	private float _recoveryDelay;
-	private float _currentStamina;
-	private bool _isInvincible;
 	private bool _isStaminaRefilling;
 
 	private void Awake() {
@@ -33,13 +34,19 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	protected override void CustomStart() {
+		base.CustomStart();
+
 		_colliders = new NewPlayerColliders(transform);
 		_recoveryDelay = 0.4f;
 
-		base.CustomStart();
+		SetToDefault();
 	}
 
 	public void SetToDefault() {
+		IsInvisible = false;
+		IsInvincible = false;
+		SpeedBoost = 1.0f;
+
 		_dash = null;
 		_stats = new NewPlayerStatistics();
 		_glitches = new List<NewPlayerGlitch>();
@@ -49,9 +56,8 @@ public class NewPlayerController : NewPlayerMotor {
 		_range = 5;
 		_key = 0;
 		_jumpBoost = 1f;
-		_isInvincible = false;
 		_recoveryTimer = -_recoveryDelay;
-		_currentStamina = _stats.stamina;
+		CurrentStamina = _stats.stamina;
 	}
 
 	public void Restart() {
@@ -62,7 +68,7 @@ public class NewPlayerController : NewPlayerMotor {
 		_rigidBody.velocity = Vector3.zero;
 		playerUI.ShowKeys(_key);
 		playerUI.CheckHealth(_stats.health);
-		playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+		playerUI.FillSprintBar(CurrentStamina / _stats.stamina);
 		transform.position = LevelManager.Instance.spawnPoint;
 
 		LevelManager.Instance.ReloadLevel();
@@ -72,19 +78,19 @@ public class NewPlayerController : NewPlayerMotor {
 	
 	#region Stamina
 	public void FillStamina() {
-		_currentStamina = _stats.stamina;
-		playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+		CurrentStamina = _stats.stamina;
+		playerUI.FillSprintBar(CurrentStamina / _stats.stamina);
 	}
 
 	public bool UseStamina() {
-		if(_currentStamina > 0) {
+		if(CurrentStamina > 0) {
 			_isStaminaRefilling = false;
-			_currentStamina -= _stats.staminaUseSpeed * Time.deltaTime;
-			playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+			CurrentStamina -= _stats.staminaUseSpeed * Time.deltaTime;
+			playerUI.FillSprintBar(CurrentStamina / _stats.stamina);
 			return true;
 		}
 		else {
-			_currentStamina = 0;
+			CurrentStamina = 0;
 			return false;
 		}
 	}
@@ -96,12 +102,12 @@ public class NewPlayerController : NewPlayerMotor {
 
 	public void RegenStamina() {
 		if(_isStaminaRefilling) {
-			if(_currentStamina + _stats.staminaUseSpeed * Time.deltaTime < _stats.stamina) {
-				_currentStamina += _stats.staminaUseSpeed * Time.fixedDeltaTime;
-				playerUI.FillSprintBar(_currentStamina / _stats.stamina);
+			if(CurrentStamina + _stats.staminaUseSpeed * Time.deltaTime < _stats.stamina) {
+				CurrentStamina += _stats.staminaUseSpeed * Time.fixedDeltaTime;
+				playerUI.FillSprintBar(CurrentStamina / _stats.stamina);
 			}
 			else {
-				_currentStamina = _stats.stamina;
+				CurrentStamina = _stats.stamina;
 				_isStaminaRefilling = false;
 			}
 		}
@@ -158,7 +164,7 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void TakeDamage(ushort damage, bool overrideDash, bool hitOnLeftSide) {
-		if(!_isInvincible && !IsRecovering && (CurrentState.CompareTo(PlayerStates.Dash) != 0 || overrideDash)) {
+		if(!IsInvincible && !IsRecovering && (CurrentState.CompareTo(PlayerStates.Dash) != 0 || overrideDash)) {
 			if(damage >= _stats.health) {
 				_stats.health = 0;
 				playerUI.CheckHealth(_stats.health);
@@ -208,34 +214,37 @@ public class NewPlayerController : NewPlayerMotor {
 	#endregion
 
 	#region Collectibles & Glitches
+	public void ToggleGravity(bool isOn) {
+		_rigidBody.gravityScale = isOn ? 1.0f : 0.0f;
+	}
+
+	public void RemoveGlitch(NewPlayerGlitch glitch) {
+		_glitches.Remove(glitch);
+	}
+
 	private void OnTriggerEnter2D(Collider2D col) {
 		Transform colTransform = col.transform;
 		TimedGlitch glitchContainer = colTransform.GetComponent<TimedGlitch>();
-
-		if(colTransform.tag == "Glitch") {
+		
+		if(glitchContainer != null)
 			StartGlitch(glitchContainer);
-		}
 		else if(colTransform.tag == "Collectable") {
-			switch(colTransform.GetComponent<Collectable>().CollectableName()) {
+			Debug.Log("FUCK");
+			switch(colTransform.name.Substring(0, colTransform.name.Length - 7)) {
 				case "health_power_ups":
 					AddHealth();
+					Destroy(colTransform.gameObject);
 					break;
 				case "sprint_power_ups":
 					FillStamina();
-					break;
-				case "speed_power_ups":
-					StartGlitch(glitchContainer);
-					break;
-				case "jump_power_ups":
-					StartGlitch(glitchContainer);
-					break;
-				case "defense_power_ups":
-					StartGlitch(glitchContainer);
+					Destroy(colTransform.gameObject);
 					break;
 				case "Ruby":
+					Destroy(colTransform.gameObject);
 					break;
 				case "Key":
 					AddKey();
+					Destroy(colTransform.gameObject);
 					break;
 				default:
 					break;
@@ -244,19 +253,28 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	private void StartGlitch(TimedGlitch glitchContainer) {
-		if(glitchContainer != null) {
-			string glitch;
-			float timer;
-			glitchContainer.GlitchInfo(out glitch, out timer);
+		string glitchName;
+		float timer;
+		glitchContainer.GlitchInfo(out glitchName, out timer);
 
-			if(glitch.Contains("DamageJump")) ;
-			else if(glitch.Contains("Flying"))
-				_glitches.Add(new NewPlayerFlyingGlitch(this, timer));
-			else if(glitch.Contains("Invincible")) ;
-			else if(glitch.Contains("Invisible")) ;
-			else if(glitch.Contains("Lag")) ;
-			else if(glitch.Contains("SpeedBoost")) ;
+		foreach(NewPlayerGlitch glitch in _glitches) {
+			if(glitch.GetType().ToString().Contains(glitchName)) {
+				glitch.ResetTimer();
+				return;
+			}
 		}
+
+		if(glitchName.Contains("DamageJump")) ;
+		else if(glitchName == "Flying")
+			_glitches.Add(new NewPlayerFlyingGlitch(this, timer));
+		else if(glitchName == "Invincible")
+			_glitches.Add(new NewPlayerInvincibleGlitch(this, timer));
+		else if(glitchName == "Invisible")
+			_glitches.Add(new NewPlayerInvisibleGlitch(this, timer));
+		else if(glitchName == "Lag")
+			_glitches.Add(new NewPlayerLagGlitch(this, timer));
+		else if(glitchName == "SpeedBoost")
+			_glitches.Add(new NewPlayerSpeedBoostGlitch(this, timer));
 	}
 	#endregion
 }

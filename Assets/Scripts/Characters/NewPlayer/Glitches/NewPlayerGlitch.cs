@@ -24,4 +24,8 @@ public abstract class NewPlayerGlitch {
 				return;
 		}
 	}
+
+	protected void DestroySelf() {
+		_controller.RemoveGlitch(this);
+	}
 }
