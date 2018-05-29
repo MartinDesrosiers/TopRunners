@@ -9,12 +9,16 @@ public class LevelManager : Singleton<LevelManager> {
 	//Needed to prevent non singleton constructor calls.
 	protected LevelManager() { }
 
-    private bool _isPaused;
+    private bool? _isPaused = null;
 	public bool IsPaused {
-		get { return _isPaused; }
+		get { return (bool)_isPaused; }
 		set {
+			if(_isPaused != null) {
+				EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+				SetPlayerBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+			}
+
 			_isPaused = value;
-			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
 		}
 	}
 
@@ -86,6 +90,11 @@ public class LevelManager : Singleton<LevelManager> {
         ghostReplay.InitGhostList();
         //ghostReplay.SetGhostList();
     }*/
+
+	public void SetPlayerBodyType(RigidbodyType2D type) {
+		if(player != null)
+			player.GetComponent<Rigidbody2D>().bodyType = type;
+	}
 
 
 	public void ReloadLevel() {
@@ -304,6 +313,18 @@ public class LevelManager : Singleton<LevelManager> {
 		}));
 	}
 
+	public void SerializeCommentPanel(GameObject obj) {
+		int[] tColRow = new int[2];
+		tColRow[0] = (int)(obj .transform.position.x / 10);
+		tColRow[1] = (int)(obj.transform.position.y / 10);
+		for(int i = 0; i < levelData.objectList[tColRow[0]][tColRow[1]].Count; i++) {
+			if(levelData.objectList[tColRow[0]][tColRow[1]][i] == obj) {
+				serializedData.objectList[tColRow[0]][tColRow[1]][i].Serialize(obj);
+				return;
+			}
+		}
+	}
+
 	private IEnumerator _LoadLevelDataFromDb (string uniqueId, System.Action<SerializedLevelData> levelData) {
 		WWWForm form = new WWWForm();
 		form.AddField("uniqueId", uniqueId);
@@ -413,8 +434,8 @@ public class LevelManager : Singleton<LevelManager> {
 		GameObject tObj;
 		//Return the object's tile script ( which contains serialized information ) and the selected gameobject prefab.
 		Tile tTile = tileManager.GetTile(type, id, out tObj, new Vector3(tPos[0], tPos[1], 0.0f));
-            //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
-            if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
+        //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
+        if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
 			if(tObj.tag == "Connectable")
 				_tileConnector.SetSprite(ref tObj);
 

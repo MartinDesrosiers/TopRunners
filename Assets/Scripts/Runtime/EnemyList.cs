@@ -127,8 +127,12 @@ public static class EnemyList {
 
 	public static void SetBodyType(RigidbodyType2D bodyType) {
 		if(enemyList != null) {
-			foreach(EnemyRadius enemy in enemyList)
-				enemy.transform.parent.parent.GetComponent<Rigidbody2D>().bodyType = bodyType;
+			for(int i = 0; i < enemyList.Count; i++) {
+				if(enemyList[i] == null)
+					enemyList.RemoveAt(i);
+				else
+					enemyList[i].transform.parent.parent.GetComponent<Rigidbody2D>().bodyType = bodyType;
+			}
 		}
 	}
 

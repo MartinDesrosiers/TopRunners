@@ -12,6 +12,7 @@ public class LevelEditorUI : MonoBehaviour {
     public LevelEditor levelEditor;
     //Object that contains every object id buttons in the level editor ui.
     public GameObject idContainer;
+	public GameObject homePanel;
 
     public Button categoryButton;
     public Image topMenuImage;
@@ -312,8 +313,8 @@ public class LevelEditorUI : MonoBehaviour {
             return;
         }
 
+		Camera.main.GetComponent<CameraController>().ResetCamera();
 		GameManager.Instance.currentState = GameManager.GameState.RunTime;
-        LevelManager.Instance.player.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         /*if (LevelManager.Instance.isGhostReplayActive)
             LevelManager.Instance.ghostPlayer.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;*/
         LevelManager.Instance.IsPaused = false;
@@ -325,11 +326,11 @@ public class LevelEditorUI : MonoBehaviour {
 
 	public void ToggleUI(GameObject tObj) {
 		tObj.SetActive(!tObj.activeSelf);
-        idContainer.SetActive(!idContainer.activeSelf);
-        leftArrow.SetActive(!leftArrow.activeSelf);
-        rightArrow.SetActive(!rightArrow.activeSelf);
-        activeLevelCategory = !activeLevelCategory;
-        UpdateIDRow();
+        //idContainer.SetActive(!idContainer.activeSelf);
+        //leftArrow.SetActive(!leftArrow.activeSelf);
+        //rightArrow.SetActive(!rightArrow.activeSelf);
+        //activeLevelCategory = !activeLevelCategory;
+        //UpdateIDRow();
     }
 
 	//Used to load a specidifed scene using it's build index.
@@ -338,8 +339,7 @@ public class LevelEditorUI : MonoBehaviour {
 		SceneManager.LoadScene(sceneIndex);
 	}
 
-    System.Collections.IEnumerator NoExit()
-    {
+    System.Collections.IEnumerator NoExit() {
         float timer = 0f;
         GameObject temp = GameObject.Find("Play Button").gameObject;
         temp.transform.GetChild(1).gameObject.SetActive(true);

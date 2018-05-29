@@ -69,11 +69,16 @@ public class CameraController : MonoBehaviour {
 					GetCameraInputs();
 			#endif
 
-            //Makes sure you can't zoome in / out too much.
+            //Makes sure you can't zoom in / out too much.
             Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, _baseSize, _baseSize * 3);
 
-            //After moving the camera, checks if it's still inside the gameview.
-            CheckBoundaries();
+			Vector3 scale = transform.localScale;
+			scale.x = Camera.main.orthographicSize / _baseSize;
+			scale.y = scale.x;
+			transform.localScale = scale;
+
+			//After moving the camera, checks if it's still inside the gameview.
+			CheckBoundaries();
 
             UpdateGrid();
         }
@@ -128,6 +133,17 @@ public class CameraController : MonoBehaviour {
             _editorUIDeadzone = 0f;
 
         CheckBoundaries();
+	}
+
+	public void SetInitialPosition() {
+		SetPositionXY(LevelManager.Instance.player.transform.position);
+		CheckBoundaries();
+	}
+
+	public void ResetCamera() {
+		Camera.main.orthographicSize = _baseSize;
+		transform.localScale = new Vector3(1f, 1f, 1f);
+		transform.position = new Vector3(100f, 30f, -10f);
 	}
 
 	private void GetCameraInputs() {

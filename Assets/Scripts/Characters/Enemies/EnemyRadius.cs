@@ -24,7 +24,7 @@ public class EnemyRadius : MonoBehaviour {
 	}
 
 	public void OnDestroy() {
-		if(!LevelManager.Instance.isReloading)
+		if(LevelManager.Instance != null && !LevelManager.Instance.IsPaused)
 			EnemyList.DestroyEnemy(this);
 	}
 }

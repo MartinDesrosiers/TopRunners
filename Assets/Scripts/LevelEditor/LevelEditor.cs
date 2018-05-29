@@ -6,6 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LevelEditor : MonoBehaviour {
+	public static bool firstLoad = true;
+
 	public InputField newLevelName;
     Transform transObj;
     public ushort objType;
@@ -231,12 +233,15 @@ public class LevelEditor : MonoBehaviour {
 									LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].horizontalMirror = (rotation.x < 0);
 								//}
 							}
-							else {
+							else if(tRotation > 0) {
 								rotation = LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.localEulerAngles;
 								rotation.z += tRotation;
 								LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.localEulerAngles = rotation;
 								LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].rotation = rotation.z;
 							}
+							else if(LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].type == 4 &&
+									LevelManager.Instance.serializedData.objectList[tColRow[0]][tColRow[1]][i].id == 11)
+								LevelManager.Instance.levelData.objectList[tColRow[0]][tColRow[1]][i].transform.GetChild(0).gameObject.SetActive(true);
 						}
 					}
 				}
