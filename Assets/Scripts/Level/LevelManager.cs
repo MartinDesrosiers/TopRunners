@@ -19,6 +19,7 @@ public class LevelManager : Singleton<LevelManager> {
 			}
 
 			_isPaused = value;
+			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
 		}
 	}
 
@@ -434,8 +435,8 @@ public class LevelManager : Singleton<LevelManager> {
 		GameObject tObj;
 		//Return the object's tile script ( which contains serialized information ) and the selected gameobject prefab.
 		Tile tTile = tileManager.GetTile(type, id, out tObj, new Vector3(tPos[0], tPos[1], 0.0f));
-        //Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
-        if (_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
+		//Verifie if the object is of unique type, and if so, if an object of the same type has already been placed in the level.
+		if(_uniqueObjects.CheckUniqueObject(tColRow, tObj, UniqueObjects.Mode.Add, newCheckPointSet)) {
 			if(tObj.tag == "Connectable")
 				_tileConnector.SetSprite(ref tObj);
 
