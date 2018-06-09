@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public enum DashState { passive, attacking, returning };
-public class EnemyAI : CharacterMotor
-{
 
+public class EnemyAI : CharacterMotor {
     //Is the character active ( used for LevelEditor ).
 	NewPlayerController _player;
     GameObject _objPlayer;
@@ -54,13 +52,13 @@ public class EnemyAI : CharacterMotor
     public float SetEscapeModifier { set { escapeVelModifier = value; } }
     #endregion
 
-    public void OnEnable()
-    {
-        if (origin == Vector2.zero)//pour prevenir au cas ou OnEnable is called first;
-            return;
-        transform.position = origin;
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-    }
+	public void OnEnable() {
+		if (origin == Vector2.zero)//pour prevenir au cas ou OnEnable is called first;
+			return;
+
+		transform.position = origin;
+		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+	}
 
 	public void TakeDamage() {
 		if(!IsInvincible) {
@@ -71,75 +69,75 @@ public class EnemyAI : CharacterMotor
 			}
 		}
 	}
-    public void Kill()
-    {
-        gameObject.SetActive(false);
-    }
-    void Start()
-    {
-        origin = transform.position;
+
+	public void Kill() {
+		gameObject.SetActive(false);
+	}
+
+	private void Start() {
+		origin = transform.position;
 		enemiesRender = transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
-        rg = transform.GetComponent<Rigidbody2D>();
-        _objPlayer = GameObject.Find("PlayerTest").gameObject;
-        _player = _objPlayer.GetComponent<NewPlayerController>();
-        movementSpeed = 50.0f;
-        maxDistance = 6f;
-
-        //Changes certain basic variables depending on basic behavior type.
-        switch (basicBehavior) {
-            case BasicBehavior.LeftRight:
-                horiAxes = 1f; vertAxis = 0f;
-                break;
-
-            case BasicBehavior.TopDown:
-                horiAxes = 0f; vertAxis = 1f;
-                ignoreHoles = true;
+		rg = transform.GetComponent<Rigidbody2D>();
+		_objPlayer = GameObject.Find("PlayerTest").gameObject;
+		_player = _objPlayer.GetComponent<NewPlayerController>();
+		movementSpeed = 50.0f;
+		maxDistance = 6f;
+		
+		//Changes certain basic variables depending on basic behavior type.
+		switch (basicBehavior) {
+			case BasicBehavior.LeftRight:
+				horiAxes = 1f; vertAxis = 0f;
+				break;
+		
+			case BasicBehavior.TopDown:
+				horiAxes = 0f; vertAxis = 1f;
+				ignoreHoles = true;
 				_gaz = new AB_Gaz(this);
 				break;
-
-            case BasicBehavior.WaveLR:
-                horiAxes = 1f; vertAxis = 0f;
-                ignoreHoles = true;
-                break;
-
-            case BasicBehavior.Motionless:
-                horiAxes = 0f;
-                vertAxis = 0f;
-                break;
-
+		
+			case BasicBehavior.WaveLR:
+				horiAxes = 1f; vertAxis = 0f;
+				ignoreHoles = true;
+				break;
+		
+			case BasicBehavior.Motionless:
+				horiAxes = 0f;
+				vertAxis = 0f;
+				break;
+		
 			default:
 				horiAxes = 1f;
 				vertAxis = 0f;
 				break;
-        }
+		}
 
-	    //Initialise the list of Advanced Behaviors according to the ones chosen in inspector.
-	    if(abList.Length > 0) {
-	        for(int i = 0; i < abList.Length; i++) {
-	            if(abList[i]) {
-	                advancedBehaviors.Add(new AB_RadiusBased(this, movementSpeed));
-	
+		//Initialise the list of Advanced Behaviors according to the ones chosen in inspector.
+		if(abList.Length > 0) {
+			for(int i = 0; i < abList.Length; i++) {
+				if(abList[i]) {
+					advancedBehaviors.Add(new AB_RadiusBased(this, movementSpeed));
+					
 					float radius;
 					EnemyRadius enemyRadius = transform.GetChild(0).GetChild(1).GetComponent<EnemyRadius>();
 					if(enemyRadius == null)
 						Debug.Log("Error getting enemy's radius.");
 					else {
 						radius = enemyRadius.radius * 2;
-	
+						
 						if(i == 0) {
-						    (advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(0, radius, false);
-						    //stickToWalls = true;
+							(advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(0, radius, false);
+							//stickToWalls = true;
 						}
 						else if(i == 1)
-						    (advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(1, radius, false);
+							(advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(1, radius, false);
 						else if(i == 2)
-						    (advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(2, radius, false);
+							(advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(2, radius, false);
 						else if(i == 3)
-						    (advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(3, radius, false);
+							(advancedBehaviors[advancedBehaviors.Count - 1] as AB_RadiusBased).SetValues(3, radius, false);
 					}
-	            }
-	        }
-	    }
+				}
+			}
+		}
 	}
 
 	private void FixedUpdate() {
@@ -258,36 +256,35 @@ public class EnemyAI : CharacterMotor
 		rg.AddForce(tDirection * tForce, ForceMode2D.Impulse);
     }
     
-    public void IsWalled(bool iswall)
-    {
-        _isWalled = iswall;
-    }
-    public void IsGrounded(bool tof)
-    {
-        _isGrounded = tof;
+	public void IsWalled(bool iswall) {
+		_isWalled = iswall;
+	}
+
+	public void IsGrounded(bool tof) {
+		_isGrounded = tof;
 		if(name.Contains("Cool") || name.Contains("Cat")) {
 			Vector3 rDir = transform.position;
 			if(horiAxes > 0)
 				rDir.x += 0.51f;
 			else
 				rDir.x -= 0.51f;
-
+			
 			RaycastHit2D rHit2D = Physics2D.Raycast(rDir, Vector2.down, 2f, 1 << LayerMask.NameToLayer("Ground"));
 			if(rHit2D.collider != null && rHit2D.collider.name.Contains("Ramp")) {
 				_isGrounded = true;
 			}
 		}
+		
+		if (movementSpeed == 0f)
+			movementSpeed = 50f;
+	}
 
-        if (movementSpeed == 0f)
-            movementSpeed = 50f;
-    }
-    public void SwitchDirection()
-    {
-        horiAxes = -horiAxes;
-    }
-    public void SetDashState()
-    {
-        dashState = DashState.returning;
+	public void SwitchDirection() {
+		horiAxes = -horiAxes;
+	}
+
+	public void SetDashState() {
+		dashState = DashState.returning;
 	}
 
 	private void FollowReturn() {
@@ -319,4 +316,3 @@ public class EnemyAI : CharacterMotor
 			Movement(0f, 0f);
 	}
 }
-//18887762269
