@@ -78,7 +78,7 @@ public class EnemyAI : CharacterMotor {
 		origin = transform.position;
 		enemiesRender = transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
 		rg = transform.GetComponent<Rigidbody2D>();
-		_objPlayer = GameObject.Find("PlayerTest").gameObject;
+		_objPlayer = GameObject.Find("NewPlayer").gameObject;
 		_player = _objPlayer.GetComponent<NewPlayerController>();
 		movementSpeed = 50.0f;
 		maxDistance = 6f;

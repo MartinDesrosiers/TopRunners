@@ -136,8 +136,6 @@ GameObject:
   - component: {fileID: 4353444723614984}
   - component: {fileID: 114633531738805586}
   - component: {fileID: 212181737721846714}
-  - component: {fileID: 58585485039056308}
-  - component: {fileID: 114667147937645488}
   m_Layer: 0
   m_Name: DashArea
   m_TagString: Untagged
@@ -230,7 +228,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4565809171199408}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4231803219658584
 Transform:
@@ -273,7 +271,7 @@ Transform:
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 4565809171199408}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4387885742559184
 Transform:
@@ -313,9 +311,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4175876661814274}
   - {fileID: 4746358227362680}
   - {fileID: 4353444723614984}
+  - {fileID: 4175876661814274}
   m_Father: {fileID: 4550910708992650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -343,7 +341,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4565809171199408}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50539659949307032
 Rigidbody2D:
@@ -365,21 +363,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &58585485039056308
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1857863914793622}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!61 &61001089408767306
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -494,17 +477,6 @@ MonoBehaviour:
   priority: 1
   area: {fileID: 0}
   isInvincible: 1
---- !u!114 &114667147937645488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1857863914793622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502ccf1fb9118bf4d86655d46c93df43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114976419196049706
 MonoBehaviour:
   m_ObjectHideFlags: 1
