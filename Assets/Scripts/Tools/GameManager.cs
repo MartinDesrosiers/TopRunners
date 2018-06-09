@@ -31,17 +31,15 @@ public class GameManager : Singleton<GameManager>
 
     //Updates the game state and initializes the LevelManager.
     private void Awake() {
-        InitLevelManager();
-        CheckGameState();
+		CheckGameState();
+		InitLevelManager();
     }
 
-    void OnEnable()
-    {
+    void OnEnable() {
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
-    void OnDisable()
-    {
+    void OnDisable() {
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
@@ -50,14 +48,12 @@ public class GameManager : Singleton<GameManager>
         InitLevelManager();
     }
 
-    private void InitLevelManager() {
-        if (currentState == GameState.RunTime || currentState == GameState.LevelEditor) {
-            if (currentState == GameState.RunTime)
-                LevelManager.Instance.IsPaused = false;
-            else
-                LevelManager.Instance.IsPaused = true;
-        }
-    }
+	private void InitLevelManager() {
+		if(currentState == GameState.RunTime)
+		    LevelManager.Instance.IsPaused = false;
+		else if(currentState == GameState.LevelEditor)
+		    LevelManager.Instance.IsPaused = true;
+	}
 
     private void CheckGameState() {
         if (SceneManager.GetActiveScene().name == "RunTime")

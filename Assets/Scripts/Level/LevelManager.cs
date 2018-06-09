@@ -9,17 +9,14 @@ public class LevelManager : Singleton<LevelManager> {
 	//Needed to prevent non singleton constructor calls.
 	protected LevelManager() { }
 
-    private bool? _isPaused = null;
+    private bool _isPaused = true;
 	public bool IsPaused {
-		get { return (bool)_isPaused; }
+		get { return _isPaused; }
 		set {
-			if(_isPaused != null) {
-				EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
-				SetPlayerBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
-			}
-
 			_isPaused = value;
-			EnemyList.SetBodyType(value ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+
+			EnemyList.SetBodyType(_isPaused ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
+			SetPlayerBodyType(_isPaused ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic);
 		}
 	}
 
@@ -62,11 +59,10 @@ public class LevelManager : Singleton<LevelManager> {
 		Uid
 	}
 
-    private void Start()
-    {
-        checkPointFlag = Instantiate(Resources.Load("Flag", typeof(GameObject)) as GameObject);
-        checkPointFlag.transform.position = new Vector2(-10f, -10f);
-    }
+	private void Start() {
+	    checkPointFlag = Instantiate(Resources.Load("Flag", typeof(GameObject)) as GameObject);
+	    checkPointFlag.transform.position = new Vector2(-10f, -10f);
+	}
 
     public void InitializeLevel() {
 		IsPaused = true;
