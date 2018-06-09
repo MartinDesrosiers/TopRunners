@@ -230,8 +230,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4266963158505642}
-  - component: {fileID: 114755120644671258}
   - component: {fileID: 68746172286943534}
+  - component: {fileID: 114905982136453384}
   m_Layer: 10
   m_Name: WallCollider
   m_TagString: Untagged
@@ -280,8 +280,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4138836588009844}
   - component: {fileID: 68739605186873454}
-  - component: {fileID: 114592475663766914}
   - component: {fileID: 61349628124074808}
+  - component: {fileID: 114521298782585032}
   m_Layer: 10
   m_Name: Groundedtrigger
   m_TagString: Enemies
@@ -737,6 +737,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   overrideDash: 0
+--- !u!114 &114521298782585032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935140724072294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699c6a3ef7a749a4bb69361515f0848b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114535202071737672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -775,17 +786,6 @@ MonoBehaviour:
   priority: 3
   area: {fileID: 0}
   isInvincible: 0
---- !u!114 &114592475663766914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935140724072294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d516546020204ac45b1716dc29dce44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114642164662190964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,7 +817,7 @@ MonoBehaviour:
   overrideMove: 0
   isInit: 0
   health: 1
---- !u!114 &114755120644671258
+--- !u!114 &114905982136453384
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754893437542930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 195e7a1ce46663a449f95b0cfd3907a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7104bba1665bf0f4ab09ae04ba731dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212090746079361000

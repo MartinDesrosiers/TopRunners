@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4703275604190068}
   - component: {fileID: 68033590044035798}
-  - component: {fileID: 114910993353082086}
+  - component: {fileID: 114541038111372228}
   m_Layer: 10
   m_Name: WallCollider
   m_TagString: Untagged
@@ -521,6 +521,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   overrideDash: 0
+--- !u!114 &114541038111372228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709019084570420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7104bba1665bf0f4ab09ae04ba731dc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114852473911717490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,17 +563,6 @@ MonoBehaviour:
   overrideMove: 0
   isInit: 0
   health: 1
---- !u!114 &114910993353082086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709019084570420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 195e7a1ce46663a449f95b0cfd3907a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212023732052777278
 SpriteRenderer:
   m_ObjectHideFlags: 1

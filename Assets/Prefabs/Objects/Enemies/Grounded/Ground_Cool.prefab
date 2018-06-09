@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487239574622142}
   - component: {fileID: 68495503890816220}
-  - component: {fileID: 114626661665350776}
+  - component: {fileID: 114185798655298122}
   m_Layer: 10
   m_Name: WallCollider
   m_TagString: Untagged
@@ -213,8 +213,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4945384364141726}
-  - component: {fileID: 114341756044279764}
   - component: {fileID: 61942414518551378}
+  - component: {fileID: 114032387064428370}
   m_Layer: 10
   m_Name: GroundTrigger
   m_TagString: Enemies
@@ -556,6 +556,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114032387064428370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915703353287184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699c6a3ef7a749a4bb69361515f0848b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114074287056871634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,18 +617,7 @@ MonoBehaviour:
   - {fileID: 212280121525045812}
   - {fileID: 212606157741078294}
   - {fileID: 212026254500539922}
---- !u!114 &114341756044279764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1915703353287184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d516546020204ac45b1716dc29dce44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114626661665350776
+--- !u!114 &114185798655298122
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1457334671861846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 195e7a1ce46663a449f95b0cfd3907a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7104bba1665bf0f4ab09ae04ba731dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114898843287950850
