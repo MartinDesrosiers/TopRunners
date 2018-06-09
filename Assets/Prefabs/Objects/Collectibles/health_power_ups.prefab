@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4362960585221118}
   - component: {fileID: 61300670687674470}
-  - component: {fileID: 114853639058120590}
   - component: {fileID: 114839209824155534}
   m_Layer: 0
   m_Name: health_power_ups
@@ -124,17 +123,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 640b81a0fc3165449a057067ab46faa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114853639058120590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887447972864164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1063eace406b0674783861a47dc3d863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212185707493571114

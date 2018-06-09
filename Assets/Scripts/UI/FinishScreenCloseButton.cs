@@ -6,7 +6,7 @@ public class FinishScreenCloseButton : MonoBehaviour {
 		LevelManager.Instance.ReloadLevel();
 
 		LevelManager.Instance.player.transform.SetParent(null);
-		LevelManager.Instance.player.GetComponent<PlayerController>().Restart();
+		LevelManager.Instance.player.GetComponent<NewPlayerController>().Restart();
 		LevelManager.Instance.player.transform.position = LevelManager.Instance.spawnPoint;
 
 		Vector3 cameraPosition = LevelManager.Instance.player.transform.position;

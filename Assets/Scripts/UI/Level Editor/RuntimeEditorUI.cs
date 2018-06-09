@@ -21,7 +21,7 @@ public class RuntimeEditorUI : MonoBehaviour {
 
     //Called when using the create button while in play mode.
     public void CreateButton() {
-        LevelManager.Instance.player.GetComponent<PlayerController>().Restart();
+        LevelManager.Instance.player.GetComponent<NewPlayerController>().Restart();
 		LevelManager.Instance.player.transform.SetParent(null);
         //Changes gamemode to level editor.
         LevelManager.Instance.ToggleCheckPoint(false);

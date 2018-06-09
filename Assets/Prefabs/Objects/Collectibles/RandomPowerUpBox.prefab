@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4265371790850388}
   - component: {fileID: 61231101509634632}
-  - component: {fileID: 114233982304092130}
   - component: {fileID: 114508249072753170}
+  - component: {fileID: 114233982304092130}
   m_Layer: 0
   m_Name: RandomPowerUpBox
   m_TagString: Collectable

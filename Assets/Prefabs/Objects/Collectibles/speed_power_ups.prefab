@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4616871821754624}
   - component: {fileID: 61835586773893566}
-  - component: {fileID: 114819420147952374}
   - component: {fileID: 114907699316368452}
+  - component: {fileID: 114819420147952374}
   m_Layer: 0
   m_Name: speed_power_ups
   m_TagString: Collectable
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glitchType: SpeedBoost
-  timerDelay: 15
+  timerDelay: 4
 --- !u!114 &114907699316368452
 MonoBehaviour:
   m_ObjectHideFlags: 1

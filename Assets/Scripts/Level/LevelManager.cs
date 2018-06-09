@@ -69,7 +69,7 @@ public class LevelManager : Singleton<LevelManager> {
 
     public void InitializeLevel() {
 		IsPaused = true;
-        player = GameObject.Find("PlayerTest");
+        player = GameObject.Find("NewPlayer");
         tileManager = GameObject.Find("TileManager").GetComponent<TileManager>();
 		_tileConnector = GameObject.Find("TileConnector").GetComponent<TileConnector>();
         //Initialize the level data, serialized level data and unique objects list to prevent nullreferences.
@@ -586,7 +586,7 @@ public class LevelManager : Singleton<LevelManager> {
         float time = Time.time;
         while (Time.time - time < 0.5f)
             yield return new WaitForSeconds(.1f);
-        player.GetComponent<PlayerController>().SetIsDead = false;
+        //player.GetComponent<NewPlayerController>().SetIsDead = false;
     }
     public void FinishLevelScreen() {
         if (finishScreen == null)
