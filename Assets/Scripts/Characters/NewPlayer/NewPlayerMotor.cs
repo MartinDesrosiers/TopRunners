@@ -10,10 +10,10 @@ public class NewPlayerMotor : MonoBehaviour {
 	//Returns the player model's orientation.
 	public float Direction { get { return transform.localScale.x; } }
 
-	private List<Collider2D> _grounds;
-	private List<Collider2D> _walls;
 	private float _destructionDelay = 1f;
 
+	protected List<Collider2D> _grounds;
+	protected List<Collider2D> _walls;
 	protected Rigidbody2D _rigidBody;
 	protected NewPlayerStateMachine _stateMachine;
 	protected bool _isGrounded;

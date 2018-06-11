@@ -1717,7 +1717,8 @@ Prefab:
       propertyPath: playerUI.jumpButton
       value: 
       objectReference: {fileID: 2042788416}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114188486945524482, guid: 49ca1fbe130ff004e898a0a000e1bab3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 49ca1fbe130ff004e898a0a000e1bab3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &142641265
@@ -5616,7 +5617,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1275070526923288, guid: c1dea664a782da644b74a737808819c1, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1dea664a782da644b74a737808819c1, type: 2}

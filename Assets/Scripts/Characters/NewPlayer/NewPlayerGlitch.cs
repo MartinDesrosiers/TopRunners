@@ -28,6 +28,6 @@ public abstract class NewPlayerGlitch {
 	}
 
 	protected void DestroySelf() {
-		//_controller.RemoveGlitch(this);
+		_controller.RemoveGlitch(this);
 	}
 }

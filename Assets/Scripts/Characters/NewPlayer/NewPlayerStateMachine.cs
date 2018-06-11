@@ -41,8 +41,6 @@ public class NewPlayerStateMachine : StateMachine {
 	protected override void EarlyCustomUpdate() {
 		if(_inputs.Direction != 0 && CheckDirection() && !IsDirectionLocked)
 			_controller.FlipHorizontal();
-
-		UpdateSprint();
 	}
 
 	//Update loop called after the sate machine's main update loop.
@@ -102,19 +100,6 @@ public class NewPlayerStateMachine : StateMachine {
 			_controller.Move(new Vector2(_inputs.Direction * MovementSpeed, _controller.Velocity.y));
 	}
 
-	private void UpdateSprint() {
-		if(_inputs.Sprint) {
-			int enumIndex = CurrentState.CompareTo(PlayerStates.Run);
-			//Sprint off if new state isn't Run, Jump, Fall or Slide.
-			if(enumIndex >= 0 && enumIndex <= 3 && _controller.CurrentStamina > 0)
-				Sprint = true;
-			else
-				Sprint = false;
-		}
-		else
-			Sprint = false;
-	}
-
 	//All player states.
 
 	//Player character is not moving.
@@ -161,10 +146,6 @@ public class NewPlayerStateMachine : StateMachine {
 	private void Run_CustomUpdate() {
 		RunUpdate();
 	}
-
-	private void Run_ExitState() {
-		//UpdateSprint();
-	}
 	#endregion
 
 	//Player character is jumping ( only while going upwards before reaching the jump's peak height ).
@@ -206,7 +187,6 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void Jump_ExitState() {
-		//UpdateSprint();
 		_controller.ToggleJumpingColliders(false);
 	}
 	#endregion
@@ -314,7 +294,7 @@ public class NewPlayerStateMachine : StateMachine {
 	//Player character is dead.
 	#region Dead
 	private void Dead_EnterState() {
-		//_controller.animator.Play("dead");
+		SetToDefault();
 	}
 	#endregion
 }

@@ -8,10 +8,10 @@ public class NewPlayerWall : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
-		//_controller.TriggerEnter2D(collision, "Wall");
+		_controller.TriggerEnter2D(collision, "Wall");
 	}
 
 	private void OnTriggerExit2D(Collider2D collision) {
-		//_controller.TriggerExit2D(collision, "Wall");
+		_controller.TriggerExit2D(collision, "Wall");
 	}
 }

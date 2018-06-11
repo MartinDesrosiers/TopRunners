@@ -46,6 +46,8 @@ public class NewPlayerController : NewPlayerMotor {
 		IsInvisible = false;
 		IsInvincible = false;
 		SpeedBoost = 1.0f;
+		Time.timeScale = 1.0f;
+		_rigidBody.gravityScale = 1.0f;
 
 		_dash = null;
 		_stats = new NewPlayerStatistics();
@@ -61,19 +63,27 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void Restart() {
-		SetToDefault();
+		LevelManager.Instance.IsPaused = true;
 
+		SetToDefault();
+		
 		RuntimeUI.GetStartTimer = false;
 
 		_rigidBody.velocity = Vector3.zero;
 		playerUI.ShowKeys(_key);
 		playerUI.CheckHealth(_stats.health);
 		playerUI.FillSprintBar(CurrentStamina / _stats.stamina);
-		transform.position = LevelManager.Instance.spawnPoint;
-
-		LevelManager.Instance.ReloadLevel();
+		
 		runtimeEditorUI.transform.GetComponent<RuntimeUI>().ResetTime();
-		LevelManager.Instance.finishLoading = true;
+
+		transform.SetParent(null);
+		LevelManager.Instance.ReloadLevel();
+		LevelManager.Instance.IsPaused = false;
+		
+		_grounds = new List<Collider2D>();
+		_walls = new List<Collider2D>();
+
+		transform.position = LevelManager.Instance.spawnPoint;
 	}
 
 	#region Stamina
@@ -188,7 +198,8 @@ public class NewPlayerController : NewPlayerMotor {
 	}
 
 	public void Kill() {
-		_stateMachine.CurrentState = PlayerStates.Dead;
+		Restart();
+		LevelManager.Instance.IsPaused = false;
 	}
 	#endregion
 

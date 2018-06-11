@@ -8,10 +8,10 @@ public class NewPlayerGround : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
-		//_controller.TriggerEnter2D(collision, "Ground");
+		_controller.TriggerEnter2D(collision, "Ground");
 	}
 
 	private void OnTriggerExit2D(Collider2D collision) {
-		//_controller.TriggerExit2D(collision, "Ground");
+		_controller.TriggerExit2D(collision, "Ground");
 	}
 }
