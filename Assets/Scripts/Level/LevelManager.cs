@@ -116,7 +116,7 @@ public class LevelManager : Singleton<LevelManager> {
         }*/
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
-    }
+	}
 
 	//set all GameObject from a List to true;
 	private void SetActiveFunction(List<GameObject> list) {
@@ -544,11 +544,10 @@ public class LevelManager : Singleton<LevelManager> {
 		levelData.objectList[tColRow[0]][tColRow[1]].Add(tObj);
 	}
 
-    public void CheckPoint()
-    {
-        ToggleCheckPoint(true);
-        checkPointFlag.transform.position = spawnPoint = player.transform.position;
-    }
+	public void CheckPoint() {
+		ToggleCheckPoint(true);
+		checkPointFlag.transform.position = spawnPoint = player.transform.position;
+	}
 
 	public bool NewCheckPointSet {
 		get {
@@ -556,10 +555,9 @@ public class LevelManager : Singleton<LevelManager> {
 		}
 	}
 
-    public void ToggleCheckPoint(bool b)
-    {
-        newCheckPointSet = b;
-    }
+	public void ToggleCheckPoint(bool b) {
+		newCheckPointSet = b;
+	}
 
 	private void Update() {
 		if(isReloading) {
@@ -571,20 +569,21 @@ public class LevelManager : Singleton<LevelManager> {
 			}
 		}
 	}
-    public IEnumerator LoadingScreen()
-    {
-        if (loadingScreen == null)
-            loadingScreen = Instantiate(Resources.Load("LoadingScreen", typeof(GameObject)) as GameObject);
-        loadingScreen.SetActive(true);
-        if (!finishLoading)
-            yield return new WaitForSeconds(.5f);
-        finishLoading = false;
-        loadingScreen.SetActive(false);
-        float time = Time.time;
-        while (Time.time - time < 0.5f)
-            yield return new WaitForSeconds(.1f);
-        //player.GetComponent<NewPlayerController>().SetIsDead = false;
+
+    public IEnumerator LoadingScreen() {
+		if (loadingScreen == null)
+			loadingScreen = Instantiate(Resources.Load("LoadingScreen", typeof(GameObject)) as GameObject);
+		loadingScreen.SetActive(true);
+		if (!finishLoading)
+			yield return new WaitForSeconds(.5f);
+		finishLoading = false;
+		loadingScreen.SetActive(false);
+		float time = Time.time;
+		while (Time.time - time < 0.5f)
+			yield return new WaitForSeconds(.1f);
+		//player.GetComponent<NewPlayerController>().SetIsDead = false;
     }
+
     public void FinishLevelScreen() {
         if (finishScreen == null)
             finishScreen = Instantiate(Resources.Load("finishScreen", typeof(GameObject)) as GameObject);

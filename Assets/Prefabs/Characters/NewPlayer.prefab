@@ -34,7 +34,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4855346522313840}
-  - component: {fileID: 114188486945524482}
   - component: {fileID: 61400796774832660}
   - component: {fileID: 114975844290319204}
   m_Layer: 0
@@ -373,7 +372,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.070482254}
+  m_Size: {x: 0.55, y: 0.07}
   m_EdgeRadius: 0
 --- !u!68 &68015017210978566
 EdgeCollider2D:
@@ -404,11 +403,11 @@ EdgeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.33, y: 0.7}
-  - {x: 0.33, y: -1.1}
+  - {x: 0.33, y: 0.6}
+  - {x: 0.33, y: -0.6}
 --- !u!68 &68243067050066846
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -465,17 +464,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c55f158e281d6429e3adb907add234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114188486945524482
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1169847537278266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d516546020204ac45b1716dc29dce44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114833325676766144

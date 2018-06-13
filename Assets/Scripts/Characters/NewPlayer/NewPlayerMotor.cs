@@ -29,9 +29,12 @@ public class NewPlayerMotor : MonoBehaviour {
 	private void FixedUpdate() {
 		if(!LevelManager.Instance.IsPaused) {
 			if(_grounds.Count > 0) {
+				int subIndex = 0;
 				for(int i = 0; i < _grounds.Count; i++) {
-					if(!_grounds[i].gameObject.activeInHierarchy)
-						_grounds.RemoveAt(0);
+					if(_grounds[i] == null || !_grounds[i].gameObject.activeInHierarchy) {
+						_grounds.RemoveAt(i - subIndex);
+						subIndex++;
+					}
 				}
 
 				if(_grounds.Count == 0)
@@ -39,9 +42,11 @@ public class NewPlayerMotor : MonoBehaviour {
 			}
 
 			if(_walls.Count > 0) {
+				int subIndex = 0;
 				for(int i = 0; i < _walls.Count; i++) {
-					if(!_walls[i].gameObject.activeInHierarchy) {
-						_walls.RemoveAt(i);
+					if(_walls[i] == null || !_walls[i].gameObject.activeInHierarchy) {
+						_walls.RemoveAt(i - subIndex);
+						subIndex++;
 					}
 				}
 
