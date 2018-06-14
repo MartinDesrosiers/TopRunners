@@ -19,8 +19,7 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 	private NewPlayerController _controller;
 	private NewPlayerInputs _inputs;
-	private bool IsDirectionLocked { get { return lastState.CompareTo(PlayerStates.Walled) == 0 && Time.time - timeEnteredState < _controller.wallJumpDelay; } }
-	private bool _wasWalled = false;
+	private bool IsDirectionLocked { get { return (lastState.CompareTo(PlayerStates.Walled) == 0 && Time.time - timeEnteredState < _controller.wallJumpDelay) || CurrentState.CompareTo(PlayerStates.Slide) == 0; } }
 	private float MovementSpeed { get { return _sprint ? _controller.SprintingSpeed : _controller.RunningSpeed; } }
 
 	private void Start() {
@@ -41,6 +40,8 @@ public class NewPlayerStateMachine : StateMachine {
 	protected override void EarlyCustomUpdate() {
 		if(_inputs.Direction != 0 && CheckDirection() && !IsDirectionLocked)
 			_controller.FlipHorizontal();
+
+		UpdateSprint();
 	}
 
 	//Update loop called after the sate machine's main update loop.
@@ -86,18 +87,32 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void RunUpdate() {
-		if(!_controller.GetGround())
+		if(_controller.GetWall())
+			CurrentState = PlayerStates.Idle;
+		else if(!_controller.GetGround())
 			CurrentState = PlayerStates.Fall;
 		else if(_inputs.Jump)
 			CurrentState = PlayerStates.Jump;
 		else if(_inputs.Slide)
 			CurrentState = PlayerStates.Slide;
 		else if(_inputs.Direction == 0) {
-			//if(_controller.Velocity.x == 0)			Decceleration
 			CurrentState = PlayerStates.Idle;
 		}
-		else if(!_controller.GetWall())
+		else
 			_controller.Move(new Vector2(_inputs.Direction * MovementSpeed, _controller.Velocity.y));
+	}
+
+	private void UpdateSprint() {
+		if(_inputs.Sprint) {
+			int enumIndex = CurrentState.CompareTo(PlayerStates.Run);
+
+			if(enumIndex >= 0 && enumIndex <= 3 && _controller.CurrentStamina > 0)
+				Sprint = true;
+			else
+				Sprint = false;
+		}
+		else
+			Sprint = false;
 	}
 
 	//All player states.
@@ -114,7 +129,7 @@ public class NewPlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Fall;
 		else if(_inputs.Jump)
 			CurrentState = PlayerStates.Jump;
-		else if(_inputs.Direction != 0)
+		else if(_inputs.Direction != 0 && !_controller.GetWall())
 			CurrentState = PlayerStates.Run;
 	}
 	#endregion
@@ -129,7 +144,6 @@ public class NewPlayerStateMachine : StateMachine {
 		if(!_controller.GetGround())
 			CurrentState = PlayerStates.Fall;
 		else if(_inputs.Direction == 0) {
-			//if(_controller.Velocity.x == 0)			Decceleration
 			CurrentState = PlayerStates.Idle;
 		}
 		else if(!_controller.GetWall())
@@ -145,6 +159,10 @@ public class NewPlayerStateMachine : StateMachine {
 
 	private void Run_CustomUpdate() {
 		RunUpdate();
+	}
+
+	private void Run_ExitState() {
+		UpdateSprint();
 	}
 	#endregion
 
@@ -187,6 +205,7 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void Jump_ExitState() {
+		UpdateSprint();
 		_controller.ToggleJumpingColliders(false);
 	}
 	#endregion
@@ -232,18 +251,6 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void Slide_CustomUpdate() {
-		//if(_controller.GetWall()) {
-		//	if(_wasWalled) {
-		//		CurrentState = PlayerStates.Walled;
-		//		_wasWalled = false;
-		//		return;
-		//	}
-		//	else
-		//		_wasWalled = true;
-		//}
-		//else
-		//	_wasWalled = false;
-
 		RaycastHit2D hit;
 		hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - transform.localScale.y / 2), Vector2.up, 1.5f, 1 << LayerMask.NameToLayer("Ground"));
 		if(Time.time - timeEnteredState > _controller.slideDelay && hit.collider == null)
@@ -253,7 +260,7 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void Slide_ExitState() {
-		//UpdateSprint();
+		UpdateSprint();
 		_controller.ToggleSlidingColliders(false);
 	}
 	#endregion
