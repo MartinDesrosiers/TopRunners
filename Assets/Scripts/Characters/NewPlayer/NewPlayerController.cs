@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class NewPlayerController : NewPlayerMotor {
-	public bool IsRecovering { get { return Time.time - _recoveryTimer < _recoveryDelay; } }
 	public bool IsInvisible { get; set; }
 	public bool IsInvincible { get; set; }
 	public float SpeedBoost { get; set; }
+	public float CurrentStamina { get; private set; }
+	public bool IsRecovering { get { return Time.time - _recoveryTimer < _recoveryDelay; } }
 	public float WalkingSpeed { get { return _stats.walkingSpeed; } }
 	public float RunningSpeed { get { return _stats.runningSpeed * SpeedBoost; } }
 	public float SprintingSpeed { get { return _stats.sprintingSpeed * SpeedBoost; } }
-	public float CurrentStamina { get; private set; }
 
 	public RuntimeEditorUI runtimeEditorUI;
 	public Animator animator;
@@ -78,20 +78,23 @@ public class NewPlayerController : NewPlayerMotor {
 
 		transform.SetParent(null);
 		LevelManager.Instance.ReloadLevel();
-		LevelManager.Instance.IsPaused = false;
 		
 		_grounds = new List<Collider2D>();
 		_walls = new List<Collider2D>();
 
 		transform.position = LevelManager.Instance.spawnPoint;
+
+		LevelManager.Instance.IsPaused = false;
 	}
 
 	#region Stamina
+	//Fills up the stamina bar and updates the stamina UI.
 	public void FillStamina() {
 		CurrentStamina = _stats.stamina;
 		playerUI.FillSprintBar(CurrentStamina / _stats.stamina);
 	}
 
+	//Consumes stamina and updates the stamina UI.
 	public bool UseStamina() {
 		if(CurrentStamina > 0) {
 			_isStaminaRefilling = false;
@@ -105,11 +108,13 @@ public class NewPlayerController : NewPlayerMotor {
 		}
 	}
 
+	//Triggers stamina regeneration after the player stopped consuming it for a set amount of time.
 	public IEnumerator RegenStaminaTimer() {
 		yield return new WaitForSeconds(2f);
 		_isStaminaRefilling = true;
 	}
 
+	//Regenerate stamina over time.
 	public void RegenStamina() {
 		if(_isStaminaRefilling) {
 			if(CurrentStamina + _stats.staminaUseSpeed * Time.deltaTime < _stats.stamina) {
@@ -125,10 +130,12 @@ public class NewPlayerController : NewPlayerMotor {
 	#endregion
 
 	#region Colliders
+	//Changes the player colliders when jumping to better fit the animation and have smoother corner collisions.
 	public void ToggleJumpingColliders(bool enable) {
 		_colliders.mainEdgeCollider.points = enable ? _colliders.jumpingCollidersPoints : _colliders.normalCollidersPoints;
 	}
 
+	//Changes the player colliders when sliding to better fit the animation and have smoother sliding collisions.
 	public void ToggleSlidingColliders(bool enable) {
 		_colliders.wallEdgeCollider.points = enable ? _colliders.slidingCollider : _colliders.standingCollider;
 		_colliders.rollColliders.SetActive(enable);
@@ -153,12 +160,15 @@ public class NewPlayerController : NewPlayerMotor {
 	#endregion
 
 	#region Jump
+	//Calculates and returns the player's jump velocity.
 	public float Jump() {
 		float jumpForce = _stats.jumpForce * _jumpBoost;
+		//Set jumpBoost to default.
 		_jumpBoost = 1f;
 		return jumpForce;
 	}
 
+	//Force changes the player's state to Jump and modifies the jump boost ( if specified ).
 	public void ForceJump(float boost = 1f) {
 		_jumpBoost = boost;
 		_stateMachine.CurrentState = PlayerStates.Jump;
@@ -183,12 +193,6 @@ public class NewPlayerController : NewPlayerMotor {
 			else {
 				Move(new Vector2(0, 0));
 
-				//if(hitOnLeftSide)
-				//	afterHit = new Vector2(10, 1);
-				//else
-				//	afterHit = new Vector2(-10, 1);
-				//StartCoroutine(RecoverFromDamage());
-
 				_stats.health -= damage;
 				playerUI.CheckHealth(_stats.health);
 
@@ -205,30 +209,36 @@ public class NewPlayerController : NewPlayerMotor {
 
 	#region Dash
 	public void StartDash(bool isSprinting = false) {
-		_dash = new NewPlayerDash(transform.position, EnemyList.GetDash(transform.position, Direction), isSprinting);
+		if(EnemyList.IsDashValid(transform.position, Direction))
+			_dash = new NewPlayerDash(transform.position, EnemyList.GetDash(transform.position, Direction), isSprinting);
+		else
+			_dash = new NewPlayerDash(transform.position, Direction, isSprinting);
 	}
 
-	public void LerpDash() {
-		float magnitude = (transform.position - _dash.dashTarget.transform.position).magnitude;
+	public bool LerpDash() {
+		Vector2 target = _dash.enemyTarget ? (Vector2)_dash.enemyTarget.transform.position : _dash.dashTarget;
+		float magnitude = ((Vector2)transform.position - target).magnitude;
 		_dash.dashTimer += _dash.dashSpeed / magnitude * Time.deltaTime;
-		transform.position = Vector2.Lerp(transform.position, _dash.dashTarget.transform.position, _dash.dashTimer);
+		transform.position = Vector2.Lerp(transform.position, target, _dash.dashTimer);
+
+		if(_dash.dashTarget != null && (Vector2)transform.position == target)
+			return true;
+
+		return false;
 	}
 
 	public void ResetDash() {
 		_dash = null;
-		//inEnemiesRange = false;
-		//ResetBool(true, BooleenStruct.ISJUMPING);
-		//Animation("jump", movementState[BooleenStruct.ISJUMPING]);
-		//_dashTarget = Vector2.zero;
-		//ChangeJumpButtonSprite(0);
 	}
 	#endregion
 
 	#region Collectibles & Glitches
+	//Used by the flying glitch class to toggle gravity on and off.
 	public void ToggleGravity(bool isOn) {
 		_rigidBody.gravityScale = isOn ? 1.0f : 0.0f;
 	}
 
+	//Removes a glitch from the list ( used by the glitch classes to remove themselves when they're over ).
 	public void RemoveGlitch(NewPlayerGlitch glitch) {
 		_glitches.Remove(glitch);
 	}

@@ -102,6 +102,7 @@ public class NewPlayerStateMachine : StateMachine {
 			_controller.Move(new Vector2(_inputs.Direction * MovementSpeed, _controller.Velocity.y));
 	}
 
+	//If the player state is not Run, Jump, Fall or Slide, stop sprinting even if the player is still using the sprint input.
 	private void UpdateSprint() {
 		if(_inputs.Sprint) {
 			int enumIndex = CurrentState.CompareTo(PlayerStates.Run);
@@ -190,7 +191,7 @@ public class NewPlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Slide;
 			return;
 		}
-		else if(_inputs.Jump && EnemyList.IsDashValid(_controller.transform.position, _controller.Direction)) {
+		else if(_inputs.Jump) {
 			CurrentState = PlayerStates.Dash;
 			return;
 		}
@@ -268,16 +269,20 @@ public class NewPlayerStateMachine : StateMachine {
 	//Player character is dashing.
 	#region Dash
 	private void Dash_EnterState() {
+		_controller.ToggleGravity(false);
+		_controller.CancelVelocity(false, true);
 		_controller.animator.Play("dash");
 		_controller.StartDash(_sprint);
 	}
 
 	private void Dash_CustomUpdate() {
-		_controller.LerpDash();
+		if(_controller.LerpDash())
+			ExitCurrentState();
 	}
 
 	private void Dash_ExitState() {
 		_controller.ResetDash();
+		_controller.ToggleGravity(true);
 	}
 	#endregion
 

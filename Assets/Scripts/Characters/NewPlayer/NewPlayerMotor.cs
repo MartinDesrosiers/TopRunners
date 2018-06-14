@@ -107,6 +107,10 @@ public class NewPlayerMotor : MonoBehaviour {
 		}
 	}
 
+	public void CancelVelocity(bool x, bool y) {
+		_rigidBody.velocity = new Vector2(x ? 0 : _rigidBody.velocity.x, y ? 0 : _rigidBody.velocity.y);
+	}
+
 	public bool GetGround() {
 		return _isGrounded;
 	}
