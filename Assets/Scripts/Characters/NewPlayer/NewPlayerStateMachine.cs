@@ -99,7 +99,7 @@ public class NewPlayerStateMachine : StateMachine {
 			CurrentState = PlayerStates.Idle;
 		}
 		else
-			_controller.Move(new Vector2(_inputs.Direction * MovementSpeed, _controller.Velocity.y));
+			_controller.Move((Vector2)transform.right * MovementSpeed * _inputs.Direction);
 	}
 
 	//If the player state is not Run, Jump, Fall or Slide, stop sprinting even if the player is still using the sprint input.

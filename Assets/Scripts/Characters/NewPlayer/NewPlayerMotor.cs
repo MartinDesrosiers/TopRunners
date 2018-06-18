@@ -53,6 +53,39 @@ public class NewPlayerMotor : MonoBehaviour {
 				if(_walls.Count == 0)
 					_isWalled = false;
 			}
+
+			if(_isGrounded) {
+				RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 2f, 1 << LayerMask.NameToLayer("Ground"));
+				if(hit.collider != null) {
+					transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+					Debug.DrawRay(transform.position, -transform.up * 2f, Color.red, 0.5f);
+					Debug.Log(Quaternion.FromToRotation(transform.up, hit.normal) + " , " + transform.rotation + " , " + hit.normal.ToString("F4"));
+				}
+				//RaycastHit2D[] hit2 = Physics2D.BoxCastAll(transform.position - transform.up, new Vector2(1f, 0.2f), 0f, -transform.up, 0.1f, 1 << LayerMask.NameToLayer("Ground"));
+				//if(hit2.Length > 0) {
+				//	float magnitude = 0;
+				//	Quaternion rotation = transform.rotation;
+				//	RaycastHit2D collision = hit2[0];
+				//	foreach(RaycastHit2D rHit in hit2) {
+				//		float tMagnitude = ((Vector2)transform.position - rHit.point).magnitude;
+				//		Quaternion tRotation = Quaternion.FromToRotation(transform.up, collision.normal) * transform.rotation;
+				//		float rotationDifference = Mathf.Abs(tRotation.eulerAngles.z - transform.rotation.eulerAngles.z);
+				//
+				//		Debug.Log(tMagnitude + " , " + transform.rotation.eulerAngles + " , " + tRotation.eulerAngles + " , " + rotationDifference);
+				//
+				//		if(tMagnitude < magnitude && rotationDifference < 45f) {
+				//			collision = rHit;
+				//			rotation = tRotation;
+				//		}
+				//	}
+				//	
+				//	transform.rotation = rotation;
+				//	Debug.DrawRay(transform.position, -transform.up * 2f, Color.red, 0.5f);
+				//	//Debug.Log(Quaternion.FromToRotation(transform.up, collision.normal) + " , " + transform.rotation + " , " + collision.normal.ToString("F4"));
+				//}
+			}
+			else
+				transform.rotation = Quaternion.identity;
 		}
 	}
 
@@ -96,13 +129,13 @@ public class NewPlayerMotor : MonoBehaviour {
 	public void TriggerExit2D(Collider2D col, string colliderType) {
 		if(col.gameObject.layer == 8) {
 			if(colliderType == "Ground") {
-				ExitCollider(ref _grounds, ref _isGrounded);
+				ExitCollider(ref _grounds, ref _isGrounded, col);
 
 				if(col.gameObject.name == "platform")
 					transform.SetParent(null);
 			}
 			else if(colliderType == "Wall") {
-				ExitCollider(ref _walls, ref _isWalled);
+				ExitCollider(ref _walls, ref _isWalled, col);
 			}
 		}
 	}
@@ -129,13 +162,10 @@ public class NewPlayerMotor : MonoBehaviour {
 		transform.localScale = tScale;
 	}
 
-	private void ExitCollider(ref List<Collider2D> colliders, ref bool collisionState) {
-		if(colliders.Count > 0)
-			colliders.RemoveAt(0);
+	private void ExitCollider(ref List<Collider2D> colliders, ref bool collisionState, Collider2D col) {
+		colliders.Remove(col);
 
-		if(colliders.Count == 0) {
-			if(transform.tag == "Player")
-				collisionState = false;
-		}
+		if(colliders.Count == 0)
+			collisionState = false;
 	}
 }

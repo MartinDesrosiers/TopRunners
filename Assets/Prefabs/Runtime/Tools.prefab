@@ -1344,6 +1344,8 @@ MonoBehaviour:
   - {fileID: 1216980456195474, guid: 98d9ed704d7bf654fb8b8432670ff216, type: 2}
   - {fileID: 1687211574111988, guid: 085eaa4cd7ad2b8449e81252444bd577, type: 2}
   - {fileID: 1797816446168838, guid: c25d92880dd17cb4fbcab1abda354a7e, type: 2}
+  - {fileID: 1939491809369742, guid: b9feb8c595b980b40a545d14fff06313, type: 2}
+  - {fileID: 1738580498593294, guid: 401f3011011bc564bbf1a38a29615fd9, type: 2}
   objectList:
   - {fileID: 1006113473139658, guid: 77741ff9ff96be840a9f5105cf4d1cc4, type: 2}
   - {fileID: 1833277202559188, guid: 0df384b16835e0348ab2f551e2a60874, type: 2}

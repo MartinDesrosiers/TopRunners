@@ -67,7 +67,7 @@ public class TileManager : MonoBehaviour {
 
             case 2:
                 //Grounds
-                unlockedEntities =  new bool[] { false, false, false, false, false, false, true, true, true, true, true, true, true, true };
+                unlockedEntities =  new bool[] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false , false };
                 break;
 
             case 3:
@@ -87,7 +87,7 @@ public class TileManager : MonoBehaviour {
 
             default:
                 Debug.Log("Invalid Category Type");
-                unlockedEntities = new bool[] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+                unlockedEntities = new bool[] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
                 break;
         }
         return unlockedEntities;
