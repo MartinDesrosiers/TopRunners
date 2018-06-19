@@ -17,6 +17,13 @@ public class NewPlayerMotor : MonoBehaviour {
 	protected Rigidbody2D _rigidBody;
 	protected NewPlayerStateMachine _stateMachine;
 	protected bool _isGrounded;
+	protected bool IsGrounded {
+		get { return _isGrounded; }
+		set {
+			_rigidBody.gravityScale = value ? 0f : 1f;
+			_isGrounded = value;
+		}
+	}
 	protected bool _isWalled;
 
 	protected virtual void CustomStart() {
@@ -28,6 +35,56 @@ public class NewPlayerMotor : MonoBehaviour {
 
 	private void FixedUpdate() {
 		if(!LevelManager.Instance.IsPaused) {
+			//RaycastHit2D[] hit4 = Physics2D.BoxCastAll(transform.position - transform.up, new Vector2(0.56f, 0.05f), 0f, -transform.up, 0.1f, 1 << LayerMask.NameToLayer("Ground"));
+			//List<Collider2D> stayColliders = new List<Collider2D>();
+			//if(hit4.Length > 0) {
+			//	foreach(RaycastHit2D col in hit4) {
+			//		Vector2 edgeNormal = Physics2D.Raycast(transform.position, -transform.up, 2f, 1 << LayerMask.NameToLayer("Ground")).normal;
+			//		float rotation = (Quaternion.FromToRotation(transform.up, col.normal) * transform.rotation).eulerAngles.z;
+			//
+			//		float direction = (Quaternion.FromToRotation(transform.up, Velocity) * transform.rotation).eulerAngles.z;
+			//
+			//		//float dotP = Vector2.Dot(Velocity, -col.normal);
+			//		//float mag = Velocity.magnitude * col.normal.magnitude;
+			//		//float bCos = Vector2.Dot(Velocity, -col.normal) / (Velocity.magnitude * col.normal.magnitude);
+			//		float angle = Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(Velocity.normalized, -edgeNormal));
+			//		//Debug.Log(col.collider.name + " , " + col.normal + " , " + edgeNormal + " , " + angle);
+			//		//Debug.Log(
+			//		//	$"Vel : {Velocity}\t" +
+			//		//	$"Normal : {col.normal}\t" +
+			//		//	$"Dot : {dotP}\t" +
+			//		//	$"Mag : {mag}\t" +
+			//		//	$"BCos : {bCos}\t" +
+			//		//	$"Angle : {Mathf.Rad2Deg * Mathf.Acos(bCos)}\t" +
+			//		//	$"Angle2 : {angle}"
+			//		//);
+			//
+			//		//Debug.Log(Vector2.Dot(Velocity, -col.normal) + " , " + Mathf.Cos(Vector2.Dot(Velocity, -col.normal)) + " , " +Mathf.Acos(Vector2.Dot(Velocity, -col.normal)));
+			//
+			//		if(Mathf.Abs(transform.rotation.eulerAngles.z - rotation) < 45f) {
+			//			stayColliders.Add(col.collider);
+			//
+			//			if(!_grounds.Contains(col.collider))
+			//				_grounds.Add(col.collider);
+			//
+			//			Debug.DrawLine(transform.position, col.collider.transform.position, Color.green, 0.2f);
+			//		}
+			//	}
+			//}
+
+			//List<int> removeIndices = new List<int>();
+			//for(int i = 0; i < _grounds.Count; i++) {
+			//	if(!stayColliders.Contains(_grounds[i]))
+			//		removeIndices.Add(i);
+			//}
+			//for(int i = _grounds.Count; i > 0; i--) {
+			//	if(removeIndices.Contains(i))
+			//		_grounds.RemoveAt(i);
+			//}
+			//
+			//if(_grounds.Count == 0)
+			//	_isGrounded = false;
+
 			if(_grounds.Count > 0) {
 				int subIndex = 0;
 				for(int i = 0; i < _grounds.Count; i++) {
@@ -36,9 +93,9 @@ public class NewPlayerMotor : MonoBehaviour {
 						subIndex++;
 					}
 				}
-
+			
 				if(_grounds.Count == 0)
-					_isGrounded = false;
+					IsGrounded = false;
 			}
 
 			if(_walls.Count > 0) {
@@ -54,12 +111,28 @@ public class NewPlayerMotor : MonoBehaviour {
 					_isWalled = false;
 			}
 
-			if(_isGrounded) {
-				RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 2f, 1 << LayerMask.NameToLayer("Ground"));
-				if(hit.collider != null) {
-					transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-					Debug.DrawRay(transform.position, -transform.up * 2f, Color.red, 0.5f);
-					Debug.Log(Quaternion.FromToRotation(transform.up, hit.normal) + " , " + transform.rotation + " , " + hit.normal.ToString("F4"));
+			if(_stateMachine.CurrentState.CompareTo(PlayerStates.Jump) == 0) {
+				_grounds.Clear();
+				IsGrounded = false;
+			}
+			else if(_grounds.Count > 0)
+				IsGrounded = true;
+
+			if(IsGrounded) {
+				RaycastHit2D hit1 = Physics2D.Raycast(transform.position, -transform.up, 2f, 1 << LayerMask.NameToLayer("Ground"));
+				if(hit1.collider != null) {
+					transform.rotation = Quaternion.FromToRotation(transform.up, hit1.normal) * transform.rotation;
+
+					RaycastHit2D hit2 = Physics2D.Raycast(transform.position, -transform.up, 2f, 1 << LayerMask.NameToLayer("Ground"));
+					if(hit2.collider != null && hit2.normal != hit1.normal)
+						transform.rotation = Quaternion.FromToRotation(transform.up, (hit1.normal + hit2.normal) / 2) * transform.rotation;
+
+					RaycastHit2D hit3 = Physics2D.Raycast(transform.position, -transform.up, 2f, 1 << LayerMask.NameToLayer("Ground"));
+					if(hit3.collider != null)
+						transform.position = hit3.point + (hit1.normal + hit2.normal) / 2 * 1.03f;
+
+					//Debug.DrawRay(transform.position, -transform.up * 2f, Color.red, 0.2f);
+					//Debug.Log(Quaternion.FromToRotation(transform.up, hit.normal) + " , " + transform.rotation + " , " + hit.normal.ToString("F4"));
 				}
 				//RaycastHit2D[] hit2 = Physics2D.BoxCastAll(transform.position - transform.up, new Vector2(1f, 0.2f), 0f, -transform.up, 0.1f, 1 << LayerMask.NameToLayer("Ground"));
 				//if(hit2.Length > 0) {
@@ -95,12 +168,12 @@ public class NewPlayerMotor : MonoBehaviour {
 				if(_grounds.Count == 0) {
 					if(transform.tag == "Player" && _stateMachine.CurrentState.CompareTo(PlayerStates.Dash) != 0) {
 						if(_rigidBody.velocity.y < .5f)
-							_isGrounded = true;
+							IsGrounded = true;
 						if(col.gameObject.name.Contains("platform"))
 							transform.SetParent(col.gameObject.transform);
 					}
 				}
-
+				
 				_grounds.Add(col);
 			}
 			else if(colliderType == "Wall") {
@@ -129,15 +202,19 @@ public class NewPlayerMotor : MonoBehaviour {
 	public void TriggerExit2D(Collider2D col, string colliderType) {
 		if(col.gameObject.layer == 8) {
 			if(colliderType == "Ground") {
-				ExitCollider(ref _grounds, ref _isGrounded, col);
+				IsGrounded = ExitCollider(ref _grounds, col);
 
 				if(col.gameObject.name == "platform")
 					transform.SetParent(null);
 			}
 			else if(colliderType == "Wall") {
-				ExitCollider(ref _walls, ref _isWalled, col);
+				_isWalled = ExitCollider(ref _walls, col);
 			}
 		}
+	}
+
+	public void SetVelocity(Vector2 velocity) {
+		_rigidBody.velocity = velocity;
 	}
 
 	public void CancelVelocity(bool x, bool y) {
@@ -145,7 +222,7 @@ public class NewPlayerMotor : MonoBehaviour {
 	}
 
 	public bool GetGround() {
-		return _isGrounded;
+		return IsGrounded;
 	}
 
 	public bool GetWall() {
@@ -162,10 +239,9 @@ public class NewPlayerMotor : MonoBehaviour {
 		transform.localScale = tScale;
 	}
 
-	private void ExitCollider(ref List<Collider2D> colliders, ref bool collisionState, Collider2D col) {
+	private bool ExitCollider(ref List<Collider2D> colliders, Collider2D col) {
 		colliders.Remove(col);
-
-		if(colliders.Count == 0)
-			collisionState = false;
+		
+		return colliders.Count > 0;
 	}
 }

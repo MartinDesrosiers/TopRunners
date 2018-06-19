@@ -159,6 +159,15 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void Run_CustomUpdate() {
+		Vector2 velocity = _controller.Velocity;
+		float magnitude = velocity.magnitude;
+		if(magnitude != 10 && velocity != Vector2.zero) {
+			//Debug.Log(velocity.magnitude + " , " + velocity * (1f / (magnitude / 10f)) + " , " + (velocity * (1f / (magnitude / 10f))).magnitude);
+			_controller.SetVelocity(velocity * (1f / (velocity.magnitude / 10f)));
+		}
+
+		Debug.Log(_controller.Velocity.magnitude);
+
 		RunUpdate();
 	}
 
@@ -239,7 +248,7 @@ public class NewPlayerStateMachine : StateMachine {
 	}
 
 	private void Fall_ExitState() {
-		//UpdateSprint();
+		UpdateSprint();
 	}
 	#endregion
 

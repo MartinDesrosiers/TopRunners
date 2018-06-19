@@ -409,6 +409,11 @@ Prefab:
       propertyPath: playerUI.jumpButton
       value: 
       objectReference: {fileID: 2042788416}
+    - target: {fileID: 68243067050066846, guid: 49ca1fbe130ff004e898a0a000e1bab3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49ca1fbe130ff004e898a0a000e1bab3, type: 2}
   m_IsPrefabParent: 0
@@ -2002,6 +2007,26 @@ GameObject:
   m_PrefabParentObject: {fileID: 1222382431589914, guid: a200a0553bc4464458f8e245fc43b9c1,
     type: 2}
   m_PrefabInternal: {fileID: 610037725}
+--- !u!1 &909946000 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1429434671142468, guid: 49ca1fbe130ff004e898a0a000e1bab3,
+    type: 2}
+  m_PrefabInternal: {fileID: 139360685}
+--- !u!70 &909946003
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909946000}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  m_Size: {x: 0.6, y: 1.84}
+  m_Direction: 0
 --- !u!20 &962850674 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20991421442911754, guid: 99ff4a7ad197f73469286f535b7bdf20,
